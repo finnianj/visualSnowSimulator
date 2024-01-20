@@ -61,10 +61,14 @@ const generateSnow = () =>
         // Position
         const radius = Math.random() * parameters.radius
 
-        const randomX = (Math.random() - 0.5) * parameters.radius;
-        const randomY = (Math.random() - 0.5) * parameters.radius;
-        const randomZ = (Math.random() - 0.5) * parameters.radius;
+        // Random positions on the surface of a sphere
+        const theta = Math.random() * Math.PI * 2; // Azimuthal angle
+        const phi = Math.acos(2 * Math.random() - 1); // Polar angle
 
+        const randomX = radius * Math.sin(phi) * Math.cos(theta);
+        const randomY = radius * Math.sin(phi) * Math.sin(theta);
+        const randomZ = radius * Math.cos(phi);
+        
         positions[i3    ] = randomX
         positions[i3 + 1] = randomY
         positions[i3 + 2] = randomZ
