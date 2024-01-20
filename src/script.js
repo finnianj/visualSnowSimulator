@@ -20,12 +20,10 @@ const scene = new THREE.Scene()
  * Snow
  */
 const parameters = {}
-parameters.count = 200000
+parameters.density = 200000
 parameters.size = 0.005
 parameters.radius = 5
 parameters.spin = 1
-parameters.randomness = 0.5
-parameters.randomnessPower = 3
 parameters.insideColor = '#ffffff'
 parameters.outsideColor = '#ffffff'
 
@@ -47,14 +45,14 @@ const generateSnow = () =>
      */
     geometry = new THREE.BufferGeometry()
 
-    const positions = new Float32Array(parameters.count * 3)
-    const colors = new Float32Array(parameters.count * 3)
-    const scales = new Float32Array(parameters.count * 1)
+    const positions = new Float32Array(parameters.density * 3)
+    const colors = new Float32Array(parameters.density * 3)
+    const scales = new Float32Array(parameters.density * 1)
 
     const insideColor = new THREE.Color(parameters.insideColor)
     const outsideColor = new THREE.Color(parameters.outsideColor)
 
-    for(let i = 0; i < parameters.count; i++)
+    for(let i = 0; i < parameters.density; i++)
     {
         const i3 = i * 3
 
@@ -114,10 +112,8 @@ const generateSnow = () =>
     scene.add(points)
 }
 
-gui.add(parameters, 'count').min(100).max(1000000).step(100).onFinishChange(generateSnow)
+gui.add(parameters, 'density').min(100).max(1000000).step(100).onFinishChange(generateSnow)
 gui.add(parameters, 'radius').min(0.01).max(20).step(0.01).onFinishChange(generateSnow)
-gui.add(parameters, 'randomness').min(0).max(2).step(0.001).onFinishChange(generateSnow)
-gui.add(parameters, 'randomnessPower').min(1).max(10).step(0.001).onFinishChange(generateSnow)
 // gui.addColor(parameters, 'insideColor').onFinishChange(generateSnow)
 // gui.addColor(parameters, 'outsideColor').onFinishChange(generateSnow)
 
