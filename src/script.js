@@ -127,7 +127,7 @@ const generateSnow = () =>
 gui.add(parameters, 'density').min(100).max(1000000).step(100).onFinishChange(generateSnow)
 gui.add(parameters, 'radius').min(0.01).max(20).step(0.01).onFinishChange(generateSnow)
 gui.add(parameters, 'brightness').min(0).max(1).step(0.01).onFinishChange(generateSnow)
-gui.add(parameters, 'speed').min(0).max(10).step(0.01).onFinishChange(generateSnow)
+gui.add(parameters, 'speed').min(0).max(0.1).step(0.001).onFinishChange(generateSnow)
 // gui.addColor(parameters, 'insideColor').onFinishChange(generateSnow)
 // gui.addColor(parameters, 'outsideColor').onFinishChange(generateSnow)
 
