@@ -22,6 +22,7 @@ const scene = new THREE.Scene()
 const parameters = {}
 parameters.density = 200000
 parameters.size = 0.005
+parameters.brightness = 1
 parameters.radius = 5
 parameters.spin = 1
 parameters.insideColor = '#ffffff'
@@ -101,7 +102,8 @@ const generateSnow = () =>
         uniforms:
           {
             uTime: { value: 0 },
-            uSize: { value: 10 * renderer.getPixelRatio() }
+            uSize: { value: 10 * renderer.getPixelRatio() },
+            uBrightness: { value: parameters.brightness },
           },
     })
 
@@ -114,6 +116,7 @@ const generateSnow = () =>
 
 gui.add(parameters, 'density').min(100).max(1000000).step(100).onFinishChange(generateSnow)
 gui.add(parameters, 'radius').min(0.01).max(20).step(0.01).onFinishChange(generateSnow)
+gui.add(parameters, 'brightness').min(0).max(1).step(0.01).onFinishChange(generateSnow)
 // gui.addColor(parameters, 'insideColor').onFinishChange(generateSnow)
 // gui.addColor(parameters, 'outsideColor').onFinishChange(generateSnow)
 
