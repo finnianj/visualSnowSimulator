@@ -26,8 +26,8 @@ parameters.radius = 5
 parameters.spin = 1
 parameters.randomness = 0.5
 parameters.randomnessPower = 3
-parameters.insideColor = '#ff6030'
-parameters.outsideColor = '#1b3984'
+parameters.insideColor = '#000000'
+parameters.outsideColor = '#000000'
 
 let geometry = null
 let material = null
@@ -110,11 +110,10 @@ const generateSnow = () =>
 
 gui.add(parameters, 'count').min(100).max(1000000).step(100).onFinishChange(generateSnow)
 gui.add(parameters, 'radius').min(0.01).max(20).step(0.01).onFinishChange(generateSnow)
-gui.add(parameters, 'branches').min(2).max(20).step(1).onFinishChange(generateSnow)
 gui.add(parameters, 'randomness').min(0).max(2).step(0.001).onFinishChange(generateSnow)
 gui.add(parameters, 'randomnessPower').min(1).max(10).step(0.001).onFinishChange(generateSnow)
-gui.addColor(parameters, 'insideColor').onFinishChange(generateSnow)
-gui.addColor(parameters, 'outsideColor').onFinishChange(generateSnow)
+// gui.addColor(parameters, 'insideColor').onFinishChange(generateSnow)
+// gui.addColor(parameters, 'outsideColor').onFinishChange(generateSnow)
 
 /**
  * Sizes
