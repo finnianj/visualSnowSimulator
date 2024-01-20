@@ -20,7 +20,7 @@ const scene = new THREE.Scene()
  * Snow
  */
 const parameters = {}
-parameters.density = 200000
+parameters.density = 20000
 parameters.size = 0.005
 parameters.brightness = 1
 parameters.radius = 5
@@ -28,6 +28,7 @@ parameters.spin = 1
 parameters.insideColor = '#ffffff'
 parameters.outsideColor = '#ffffff'
 parameters.speed = 0.01
+parameters.maxDistance = 10
 
 let geometry = null
 let material = null
@@ -113,7 +114,8 @@ const generateSnow = () =>
             uTime: { value: 0 },
             uSize: { value: 30 * renderer.getPixelRatio() },
             uBrightness: { value: parameters.brightness },
-            uSpeed: { value: parameters.speed },
+            uSpeed: { value: parameters.speed * 0.01 },
+            uMaxDistance: { value: parameters.maxDistance },
           },
     })
 
@@ -124,10 +126,11 @@ const generateSnow = () =>
     scene.add(points)
 }
 
-gui.add(parameters, 'density').min(100).max(1000000).step(100).onFinishChange(generateSnow)
+gui.add(parameters, 'density').min(100).max(100000).step(100).onFinishChange(generateSnow)
 gui.add(parameters, 'radius').min(0.01).max(20).step(0.01).onFinishChange(generateSnow)
 gui.add(parameters, 'brightness').min(0).max(1).step(0.01).onFinishChange(generateSnow)
-gui.add(parameters, 'speed').min(0).max(0.1).step(0.001).onFinishChange(generateSnow)
+gui.add(parameters, 'speed').min(0).max(1).step(0.001).onFinishChange(generateSnow)
+gui.add(parameters, 'maxDistance').name('Max travel area').min(0).max(50).step(0.1).onFinishChange(generateSnow)
 // gui.addColor(parameters, 'insideColor').onFinishChange(generateSnow)
 // gui.addColor(parameters, 'outsideColor').onFinishChange(generateSnow)
 
