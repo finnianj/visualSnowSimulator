@@ -9,7 +9,6 @@ attribute vec3 aOffset; // Random offsets for each particle
 varying vec3 vColor;
 
 void main() {
-     // Calculate animation factor based on uTime to continuously vary positions
      // Calculate a unique seed for each particle
     float seed = float(gl_VertexID);
 
