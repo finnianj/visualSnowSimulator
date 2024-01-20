@@ -126,11 +126,11 @@ const generateSnow = () =>
     scene.add(points)
 }
 
-gui.add(parameters, 'density').min(100).max(100000).step(100).onFinishChange(generateSnow)
-gui.add(parameters, 'radius').min(0.01).max(20).step(0.01).onFinishChange(generateSnow)
-gui.add(parameters, 'brightness').min(0).max(1).step(0.01).onFinishChange(generateSnow)
-gui.add(parameters, 'speed').min(0).max(1).step(0.001).onFinishChange(generateSnow)
-gui.add(parameters, 'maxDistance').name('Max travel area').min(0).max(50).step(0.1).onFinishChange(generateSnow)
+gui.add(parameters, 'density').name('Snow Density').min(100).max(1000000).step(100).onFinishChange(generateSnow)
+gui.add(parameters, 'radius').name('Snow Sphere Radius').min(0.2).max(20).step(0.01).onFinishChange(generateSnow)
+gui.add(parameters, 'brightness').name('Snow Brightness').min(0).max(1).step(0.01).onFinishChange(generateSnow)
+gui.add(parameters, 'speed').name('Shake Speed').min(0).max(1).step(0.001).onFinishChange(generateSnow)
+gui.add(parameters, 'maxDistance').name('Shake Area').min(0).max(5000).step(0.1).onFinishChange(generateSnow)
 // gui.addColor(parameters, 'insideColor').onFinishChange(generateSnow)
 // gui.addColor(parameters, 'outsideColor').onFinishChange(generateSnow)
 
