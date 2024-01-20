@@ -2,6 +2,7 @@ uniform float uTime;
 uniform float uSize;
 uniform float uSpeed; // Speed of particle movement (adjust as needed)
 uniform float uMaxDistance; // Maximum distance a particle can move
+uniform bool uAllowPerspectiveScaling; // Whether to scale particles based on perspective
 
 
 attribute float aScale;
@@ -28,7 +29,12 @@ void main() {
     vec4 projectedPosition = projectionMatrix * viewPosition;
     gl_Position = projectedPosition;
 
-    gl_PointSize = uSize * aScale;
+    // If statement for uniform boolean uAllowPerspectiveScaling
+    if (uAllowPerspectiveScaling) {
+      gl_PointSize = uSize * aScale;
+    } else {
+      gl_PointSize = uSize;
+    }
 
     vColor = color;
 }

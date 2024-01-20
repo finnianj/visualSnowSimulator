@@ -20,15 +20,20 @@ const scene = new THREE.Scene()
  * Snow
  */
 const parameters = {}
-parameters.density = 20000
-parameters.size = 0.005
+parameters.density = 1000
+// parameters.density = 20000
+parameters.size = 100
+parameters.softness = 0.5
 parameters.brightness = 1
-parameters.radius = 5
+parameters.radius = 0.2
+// parameters.radius = 5
 parameters.spin = 1
 parameters.insideColor = '#ffffff'
 parameters.outsideColor = '#ffffff'
-parameters.speed = 0.01
+parameters.speed = 0
+// parameters.speed = 0.01
 parameters.maxDistance = 10
+parameters.allowPerspectiveScaling = false
 
 let geometry = null
 let material = null
@@ -112,10 +117,12 @@ const generateSnow = () =>
         uniforms:
           {
             uTime: { value: 0 },
-            uSize: { value: 30 * renderer.getPixelRatio() },
+            uSize: { value: parameters.size },
+            uSoftness: { value: parameters.softness },
             uBrightness: { value: parameters.brightness },
             uSpeed: { value: parameters.speed * 0.01 },
             uMaxDistance: { value: parameters.maxDistance },
+            uAllowPerspectiveScaling: { value: parameters.allowPerspectiveScaling },
           },
     })
 
@@ -127,10 +134,13 @@ const generateSnow = () =>
 }
 
 gui.add(parameters, 'density').name('Snow Density').min(100).max(1000000).step(100).onFinishChange(generateSnow)
+gui.add(parameters, 'size').name('Snow Size').min(1).max(250).step(1).onFinishChange(generateSnow)
+gui.add(parameters, 'softness').name('Snow Softness').min(0).max(1).step(0.01).onFinishChange(generateSnow)
 gui.add(parameters, 'radius').name('Snow Sphere Radius').min(0.2).max(20).step(0.01).onFinishChange(generateSnow)
 gui.add(parameters, 'brightness').name('Snow Brightness').min(0).max(1).step(0.01).onFinishChange(generateSnow)
 gui.add(parameters, 'speed').name('Shake Speed').min(0).max(1).step(0.001).onFinishChange(generateSnow)
 gui.add(parameters, 'maxDistance').name('Shake Area').min(0).max(5000).step(0.1).onFinishChange(generateSnow)
+gui.add(parameters, 'allowPerspectiveScaling').name('Allow Perspective Scaling').onFinishChange(generateSnow)
 // gui.addColor(parameters, 'insideColor').onFinishChange(generateSnow)
 // gui.addColor(parameters, 'outsideColor').onFinishChange(generateSnow)
 
