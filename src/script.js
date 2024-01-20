@@ -58,20 +58,22 @@ const generateSnow = () =>
     {
         const i3 = i * 3
 
-        // Position
-        const radius = Math.random() * parameters.radius
+        // Generate random spherical coordinates (uniformly distributed)
+        const u = Math.random(); // Uniform random value between 0 and 1
+        const v = Math.random(); // Uniform random value between 0 and 1
 
-        // Random positions on the surface of a sphere
-        const theta = Math.random() * Math.PI * 2; // Azimuthal angle
-        const phi = Math.acos(2 * Math.random() - 1); // Polar angle
+        const theta = 2 * Math.PI * u; // Azimuthal angle
+        const phi = Math.acos(2 * v - 1); // Polar angle (from -1 to 1, then acos to get 0 to pi)
 
-        const randomX = radius * Math.sin(phi) * Math.cos(theta);
-        const randomY = radius * Math.sin(phi) * Math.sin(theta);
-        const randomZ = radius * Math.cos(phi);
-        
-        positions[i3    ] = randomX
-        positions[i3 + 1] = randomY
-        positions[i3 + 2] = randomZ
+        const radius = parameters.radius;
+
+        const x = radius * Math.sin(phi) * Math.cos(theta);
+        const y = radius * Math.sin(phi) * Math.sin(theta);
+        const z = radius * Math.cos(phi);
+
+        positions[i3] = x;
+        positions[i3 + 1] = y;
+        positions[i3 + 2] = z;
 
         // Color
         const mixedColor = insideColor.clone()
