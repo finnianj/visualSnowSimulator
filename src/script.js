@@ -26,8 +26,8 @@ parameters.radius = 5
 parameters.spin = 1
 parameters.randomness = 0.5
 parameters.randomnessPower = 3
-parameters.insideColor = '#ff6030'
-parameters.outsideColor = '#1b3984'
+parameters.insideColor = '#ffffff'
+parameters.outsideColor = '#ffffff'
 
 let geometry = null
 let material = null
@@ -58,16 +58,22 @@ const generateSnow = () =>
     {
         const i3 = i * 3
 
-        // Position
-        const radius = Math.random() * parameters.radius
+        // Generate random spherical coordinates (uniformly distributed)
+        const u = Math.random(); // Uniform random value between 0 and 1
+        const v = Math.random(); // Uniform random value between 0 and 1
 
-        const randomX = (Math.random() - 0.5) * parameters.radius;
-        const randomY = (Math.random() - 0.5) * parameters.radius;
-        const randomZ = (Math.random() - 0.5) * parameters.radius;
+        const theta = 2 * Math.PI * u; // Azimuthal angle
+        const phi = Math.acos(2 * v - 1); // Polar angle (from -1 to 1, then acos to get 0 to pi)
 
-        positions[i3    ] = randomX
-        positions[i3 + 1] = randomY
-        positions[i3 + 2] = randomZ
+        const radius = parameters.radius;
+
+        const x = radius * Math.sin(phi) * Math.cos(theta);
+        const y = radius * Math.sin(phi) * Math.sin(theta);
+        const z = radius * Math.cos(phi);
+
+        positions[i3] = x;
+        positions[i3 + 1] = y;
+        positions[i3 + 2] = z;
 
         // Color
         const mixedColor = insideColor.clone()
@@ -97,7 +103,7 @@ const generateSnow = () =>
         uniforms:
           {
             uTime: { value: 0 },
-            uSize: { value: 30 * renderer.getPixelRatio() }
+            uSize: { value: 10 * renderer.getPixelRatio() }
           },
     })
 
@@ -110,11 +116,10 @@ const generateSnow = () =>
 
 gui.add(parameters, 'count').min(100).max(1000000).step(100).onFinishChange(generateSnow)
 gui.add(parameters, 'radius').min(0.01).max(20).step(0.01).onFinishChange(generateSnow)
-gui.add(parameters, 'branches').min(2).max(20).step(1).onFinishChange(generateSnow)
 gui.add(parameters, 'randomness').min(0).max(2).step(0.001).onFinishChange(generateSnow)
 gui.add(parameters, 'randomnessPower').min(1).max(10).step(0.001).onFinishChange(generateSnow)
-gui.addColor(parameters, 'insideColor').onFinishChange(generateSnow)
-gui.addColor(parameters, 'outsideColor').onFinishChange(generateSnow)
+// gui.addColor(parameters, 'insideColor').onFinishChange(generateSnow)
+// gui.addColor(parameters, 'outsideColor').onFinishChange(generateSnow)
 
 /**
  * Sizes
@@ -144,14 +149,15 @@ window.addEventListener('resize', () =>
  */
 // Base camera
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
-camera.position.x = 3
-camera.position.y = 3
-camera.position.z = 3
+camera.position.x = 0.001
+camera.position.y = 0.001
+camera.position.z = 0.001
 scene.add(camera)
 
 // Controls
 const controls = new OrbitControls(camera, canvas)
 controls.enableDamping = true
+controls.enableZoom = false
 
 /**
  * Renderer
