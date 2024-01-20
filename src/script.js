@@ -26,8 +26,8 @@ parameters.radius = 5
 parameters.spin = 1
 parameters.randomness = 0.5
 parameters.randomnessPower = 3
-parameters.insideColor = '#000000'
-parameters.outsideColor = '#000000'
+parameters.insideColor = '#ffffff'
+parameters.outsideColor = '#ffffff'
 
 let geometry = null
 let material = null
