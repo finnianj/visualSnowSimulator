@@ -97,7 +97,7 @@ const generateSnow = () =>
         uniforms:
           {
             uTime: { value: 0 },
-            uSize: { value: 30 * renderer.getPixelRatio() }
+            uSize: { value: 10 * renderer.getPixelRatio() }
           },
     })
 
