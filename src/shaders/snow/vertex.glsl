@@ -7,11 +7,19 @@ attribute vec3 aOffset; // Random offsets for each particle
 varying vec3 vColor;
 
 void main() {
-    // Calculate animation factor based on uTime
-    float animationFactor = sin(uTime) * 0.5 + 0.5; // Adjust the frequency and amplitude as needed
+     // Calculate animation factor based on uTime to continuously vary positions
+     // Calculate a unique seed for each particle
+    float seed = float(gl_VertexID);
 
-    // Apply animation factor to the offset
-    vec3 offset = aOffset * animationFactor * uSpeed;
+    // Calculate animation factor based on uTime and particle-specific seed
+    float animationFactor = mod(uTime * uSpeed + seed * 0.123, 1.0);
+
+    // Calculate random offsets based on animationFactor
+    vec3 offset = vec3(
+        (fract(sin(animationFactor * 753.5453123) * 43758.5453) - 0.5) * uSpeed,
+        (fract(cos(animationFactor * 435.9823987) * 78432.9384) - 0.5) * uSpeed,
+        (fract(sin(animationFactor * 239.8279874) * 83984.7398) - 0.5) * uSpeed
+    );
 
     vec4 modelPosition = modelMatrix * vec4(position + offset, 1.0);
 

@@ -27,7 +27,7 @@ parameters.radius = 5
 parameters.spin = 1
 parameters.insideColor = '#ffffff'
 parameters.outsideColor = '#ffffff'
-parameters.speed = 0.1
+parameters.speed = 0.01
 
 let geometry = null
 let material = null
