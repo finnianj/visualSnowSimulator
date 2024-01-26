@@ -17,12 +17,33 @@ const canvas = document.querySelector('canvas.webgl')
 const scene = new THREE.Scene()
 
 /**
+ * Loaders
+ */
+// ...
+const cubeTextureLoader = new THREE.CubeTextureLoader()
+
+/**
+ * Environment map
+ */
+// LDR cube texture
+const environmentMap = cubeTextureLoader.load([
+  '/environmentMaps/2/px.png',
+  '/environmentMaps/2/nx.png',
+  '/environmentMaps/2/py.png',
+  '/environmentMaps/2/ny.png',
+  '/environmentMaps/2/pz.png',
+  '/environmentMaps/2/nz.png'
+])
+
+scene.background = environmentMap
+
+/**
  * Snow
  */
 const parameters = {}
-parameters.density = 1000
+parameters.density = 10000
 // parameters.density = 20000
-parameters.size = 100
+parameters.size = 3
 parameters.softness = 0.25
 parameters.brightness = 1
 parameters.radius = 0.2
@@ -30,7 +51,7 @@ parameters.radius = 0.2
 parameters.spin = 1
 parameters.insideColor = '#ffffff'
 parameters.outsideColor = '#ffffff'
-parameters.speed = 0
+parameters.speed = 0.1
 // parameters.speed = 0.01
 parameters.maxDistance = 10
 parameters.allowPerspectiveScaling = false
