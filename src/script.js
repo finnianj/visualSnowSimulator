@@ -23,7 +23,7 @@ const parameters = {}
 parameters.density = 1000
 // parameters.density = 20000
 parameters.size = 100
-parameters.softness = 0.5
+parameters.softness = 0.25
 parameters.brightness = 1
 parameters.radius = 0.2
 // parameters.radius = 5
@@ -135,7 +135,7 @@ const generateSnow = () =>
 
 gui.add(parameters, 'density').name('Snow Density').min(100).max(1000000).step(100).onFinishChange(generateSnow)
 gui.add(parameters, 'size').name('Snow Size').min(1).max(250).step(1).onFinishChange(generateSnow)
-gui.add(parameters, 'softness').name('Snow Softness').min(0).max(1).step(0.01).onFinishChange(generateSnow)
+gui.add(parameters, 'softness').name('Snow Softness').min(0).max(0.5).step(0.01).onFinishChange(generateSnow)
 gui.add(parameters, 'radius').name('Snow Sphere Radius').min(0.2).max(20).step(0.01).onFinishChange(generateSnow)
 gui.add(parameters, 'brightness').name('Snow Brightness').min(0).max(1).step(0.01).onFinishChange(generateSnow)
 gui.add(parameters, 'speed').name('Shake Speed').min(0).max(1).step(0.001).onFinishChange(generateSnow)
