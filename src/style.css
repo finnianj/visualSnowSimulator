@@ -17,3 +17,7 @@ body
     left: 0;
     outline: none;
 }
+
+.blur{
+    filter: blur(0.1px);
+}
