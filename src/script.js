@@ -23,7 +23,6 @@ const scene = new THREE.Scene()
 const cubeTextureLoader = new THREE.CubeTextureLoader()
 
 
-
 /**
  * Snow
  */
@@ -191,6 +190,40 @@ window.addEventListener('resize', () =>
     renderer.setSize(sizes.width, sizes.height)
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 })
+
+const blurRenderTarget = new THREE.WebGLRenderTarget(sizes.width, sizes.height);
+
+const blurEffectMaterial = new THREE.ShaderMaterial({
+  uniforms: {
+    tDiffuse: { value: renderTarget.texture }, // Previous render target
+    resolution: { value: new THREE.Vector2(width, height) },
+  },
+  vertexShader: `
+    varying vec2 vUv;
+    void main() {
+      vUv = uv;
+      gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+    }
+  `,
+  fragmentShader: `
+    uniform sampler2D tDiffuse;
+    uniform vec2 resolution;
+    varying vec2 vUv;
+    void main() {
+      vec4 sum = vec4(0.0);
+
+      for (int x = -5; x <= 5; x++) {
+        for (int y = -5; y <= 5; y++) {
+          vec2 offset = vec2(float(x), float(y)) / resolution;
+          sum += texture2D(tDiffuse, vUv + offset);
+        }
+      }
+
+      gl_FragColor = sum / 121.0; // Adjust the divisor for the blur intensity
+    }
+  `,
+});
+
 
 /**
  * Camera
