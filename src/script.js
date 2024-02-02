@@ -5,6 +5,7 @@ import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
 import { DotScreenPass } from 'three/examples/jsm/postprocessing/DotScreenPass.js'
 import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js';
 import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
+import { GlitchPass } from 'three/examples/jsm/postprocessing/GlitchPass.js';
 import GUI from 'lil-gui'
 
 import snowVertexShader from './shaders/snow/vertex.glsl'
@@ -252,6 +253,11 @@ effectComposer.addPass(renderPass)
 
 // const dotScreenPass = new DotScreenPass()
 // effectComposer.addPass(dotScreenPass)
+
+
+const glitchPass = new GlitchPass()
+effectComposer.addPass(glitchPass)
+glitchPass.goWild = true
 
 
 generateSnow()
