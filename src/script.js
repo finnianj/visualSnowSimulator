@@ -9,6 +9,9 @@ import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js';
 import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
 import { GlitchPass } from 'three/examples/jsm/postprocessing/GlitchPass.js';
 import { RGBShiftShader } from 'three/examples/jsm/shaders/RGBShiftShader.js'
+import { FilmPass } from 'three/examples/jsm/postprocessing/FilmPass.js'
+import { HorizontalBlurShader } from 'three/examples/jsm/shaders/HorizontalBlurShader.js'
+import { VerticalBlurShader } from 'three/examples/jsm/shaders/VerticalBlurShader.js'
 import { GammaCorrectionShader } from 'three/examples/jsm/shaders/GammaCorrectionShader.js'
 
 import GUI from 'lil-gui'
@@ -39,26 +42,29 @@ const scene = new THREE.Scene()
 const cubeTextureLoader = new THREE.CubeTextureLoader()
 const textureLoader = new TextureLoader()
 
+// Other Parameters
+const miscParameters = {}
+miscParameters.environmentMap = 3
 
 /**
  * Snow
  */
-const parameters = {}
-parameters.density = 10000
-// parameters.density = 20000
-parameters.size = 3
-parameters.softness = 0.25
-parameters.brightness = 1
-parameters.radius = 0.2
-// parameters.radius = 5
-parameters.spin = 1
-parameters.insideColor = '#ffffff'
-parameters.outsideColor = '#ffffff'
-parameters.speed = 0.1
-// parameters.speed = 0.01
-parameters.maxDistance = 10
-parameters.allowPerspectiveScaling = false
-parameters.environmentMap = 3
+const snowParameters = {}
+snowParameters.density = 10000
+// snowParameters.density = 20000
+snowParameters.size = 3
+snowParameters.softness = 0.25
+snowParameters.brightness = 1
+snowParameters.radius = 0.2
+// snowParameters.radius = 5
+snowParameters.spin = 1
+snowParameters.insideColor = '#ffffff'
+snowParameters.outsideColor = '#ffffff'
+snowParameters.speed = 0.1
+// snowParameters.speed = 0.01
+snowParameters.maxDistance = 10
+snowParameters.allowPerspectiveScaling = false
+snowParameters.enabled = true
 
 let geometry = null
 let material = null
@@ -78,31 +84,33 @@ const generateSnow = () =>
      */
     // LDR cube texture
     const environmentMap = cubeTextureLoader.load([
-      `/environmentMaps/${parameters.environmentMap - 1}/px.png`,
-      `/environmentMaps/${parameters.environmentMap - 1}/nx.png`,
-      `/environmentMaps/${parameters.environmentMap - 1}/py.png`,
-      `/environmentMaps/${parameters.environmentMap - 1}/ny.png`,
-      `/environmentMaps/${parameters.environmentMap - 1}/pz.png`,
-      `/environmentMaps/${parameters.environmentMap - 1}/nz.png`
+      `/environmentMaps/${miscParameters.environmentMap - 1}/px.png`,
+      `/environmentMaps/${miscParameters.environmentMap - 1}/nx.png`,
+      `/environmentMaps/${miscParameters.environmentMap - 1}/py.png`,
+      `/environmentMaps/${miscParameters.environmentMap - 1}/ny.png`,
+      `/environmentMaps/${miscParameters.environmentMap - 1}/pz.png`,
+      `/environmentMaps/${miscParameters.environmentMap - 1}/nz.png`
     ])
 
     scene.background = environmentMap
+
+    if (!snowParameters.enabled) return
 
     /**
      * Geometry
      */
     geometry = new THREE.BufferGeometry()
 
-    const positions = new Float32Array(parameters.density * 3)
-    const colors = new Float32Array(parameters.density * 3)
-    const scales = new Float32Array(parameters.density * 1)
-    const offsets = new Float32Array(parameters.density * 3)
+    const positions = new Float32Array(snowParameters.density * 3)
+    const colors = new Float32Array(snowParameters.density * 3)
+    const scales = new Float32Array(snowParameters.density * 1)
+    const offsets = new Float32Array(snowParameters.density * 3)
 
 
-    const insideColor = new THREE.Color(parameters.insideColor)
-    const outsideColor = new THREE.Color(parameters.outsideColor)
+    const insideColor = new THREE.Color(snowParameters.insideColor)
+    const outsideColor = new THREE.Color(snowParameters.outsideColor)
 
-    for(let i = 0; i < parameters.density; i++)
+    for(let i = 0; i < snowParameters.density; i++)
     {
         const i3 = i * 3
 
@@ -113,7 +121,7 @@ const generateSnow = () =>
         const theta = 2 * Math.PI * u; // Azimuthal angle
         const phi = Math.acos(2 * v - 1); // Polar angle (from -1 to 1, then acos to get 0 to pi)
 
-        const radius = parameters.radius;
+        const radius = snowParameters.radius;
 
         const x = radius * Math.sin(phi) * Math.cos(theta);
         const y = radius * Math.sin(phi) * Math.sin(theta);
@@ -125,7 +133,7 @@ const generateSnow = () =>
 
         // Color
         const mixedColor = insideColor.clone()
-        mixedColor.lerp(outsideColor, radius / parameters.radius)
+        mixedColor.lerp(outsideColor, radius / snowParameters.radius)
 
         colors[i3    ] = mixedColor.r
         colors[i3 + 1] = mixedColor.g
@@ -157,12 +165,12 @@ const generateSnow = () =>
         uniforms:
           {
             uTime: { value: 0 },
-            uSize: { value: parameters.size },
-            uSoftness: { value: parameters.softness },
-            uBrightness: { value: parameters.brightness },
-            uSpeed: { value: parameters.speed * 0.01 },
-            uMaxDistance: { value: parameters.maxDistance },
-            uAllowPerspectiveScaling: { value: parameters.allowPerspectiveScaling },
+            uSize: { value: snowParameters.size },
+            uSoftness: { value: snowParameters.softness },
+            uBrightness: { value: snowParameters.brightness },
+            uSpeed: { value: snowParameters.speed * 0.01 },
+            uMaxDistance: { value: snowParameters.maxDistance },
+            uAllowPerspectiveScaling: { value: snowParameters.allowPerspectiveScaling },
           },
     })
 
@@ -175,18 +183,19 @@ const generateSnow = () =>
 
 const snowGui = gui.addFolder('Snow')
 
-snowGui.add(parameters, 'density').name('Snow Density').min(100).max(1000000).step(100).onFinishChange(generateSnow)
-snowGui.add(parameters, 'size').name('Snow Size').min(1).max(250).step(1).onFinishChange(generateSnow)
-snowGui.add(parameters, 'softness').name('Snow Softness').min(0).max(0.5).step(0.01).onFinishChange(generateSnow)
-snowGui.add(parameters, 'radius').name('Snow Sphere Radius').min(0.2).max(20).step(0.01).onFinishChange(generateSnow)
-snowGui.add(parameters, 'brightness').name('Snow Brightness').min(0).max(1).step(0.01).onFinishChange(generateSnow)
-snowGui.add(parameters, 'speed').name('Shake Speed').min(0).max(1).step(0.001).onFinishChange(generateSnow)
-snowGui.add(parameters, 'maxDistance').name('Shake Area').min(0).max(5000).step(0.1).onFinishChange(generateSnow)
+snowGui.add(snowParameters, 'enabled').name('Snow Enabled').onFinishChange(generateSnow)
+snowGui.add(snowParameters, 'density').name('Snow Density').min(100).max(1000000).step(100).onFinishChange(generateSnow)
+snowGui.add(snowParameters, 'size').name('Snow Size').min(1).max(250).step(1).onFinishChange(generateSnow)
+snowGui.add(snowParameters, 'softness').name('Snow Softness').min(0).max(0.5).step(0.01).onFinishChange(generateSnow)
+snowGui.add(snowParameters, 'radius').name('Snow Sphere Radius').min(0.2).max(20).step(0.01).onFinishChange(generateSnow)
+snowGui.add(snowParameters, 'brightness').name('Snow Brightness').min(0).max(1).step(0.01).onFinishChange(generateSnow)
+snowGui.add(snowParameters, 'speed').name('Shake Speed').min(0).max(1).step(0.001).onFinishChange(generateSnow)
+snowGui.add(snowParameters, 'maxDistance').name('Shake Area').min(0).max(5000).step(0.1).onFinishChange(generateSnow)
 
-gui.add(parameters, 'environmentMap').name('Environment Map').min(1).max(3).step(1).onFinishChange(generateSnow)
-gui.add(parameters, 'allowPerspectiveScaling').name('Allow Perspective Scaling').onFinishChange(generateSnow)
-// gui.addColor(parameters, 'insideColor').onFinishChange(generateSnow)
-// gui.addColor(parameters, 'outsideColor').onFinishChange(generateSnow)
+gui.add(miscParameters, 'environmentMap').name('Environment Map').min(1).max(3).step(1).onFinishChange(generateSnow)
+gui.add(snowParameters, 'allowPerspectiveScaling').name('Allow Perspective Scaling').onFinishChange(generateSnow)
+// gui.addColor(snowParameters, 'insideColor').onFinishChange(generateSnow)
+// gui.addColor(snowParameters, 'outsideColor').onFinishChange(generateSnow)
 
 
 /**
@@ -244,18 +253,6 @@ renderer.setSize(sizes.width, sizes.height)
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 
 
-const BlurShader = {
-  uniforms: {
-    uTime : { value: 0.0 },
-    uAmplitude: { value: 0.1 },
-    uFrequency: { value: 1.0 },
-    uResolution: { value: new THREE.Vector2(sizes.width, sizes.height) }
-  },
-  vertexShader: blurVertexShader,
-  fragmentShader: blurFragmentShader
-};
-
-
 /**
  * Post processing
  */
@@ -279,6 +276,9 @@ effectComposer.addPass(renderPass)
 // const rgbShiftPass = new ShaderPass(RGBShiftShader)
 // effectComposer.addPass(rgbShiftPass)
 
+const filmPass = new FilmPass( 2.35 )
+effectComposer.addPass(filmPass)
+
 const unrealBloomPass = new UnrealBloomPass()
 effectComposer.addPass(unrealBloomPass)
 unrealBloomPass.strength = 0.3
@@ -290,6 +290,8 @@ unrealBloomPass.threshold = 0.6
 // displacementPass.material.uniforms.uTime.value = 0
 // displacementPass.material.uniforms.uNormalMap.value = textureLoader.load('/textures/interfaceNormalMap.png')
 // effectComposer.addPass(displacementPass)
+
+postProcessingGui.add(filmPass, 'enabled').name('Film Grain enabled')
 
 postProcessingGui.add(unrealBloomPass, 'enabled').name('Bloom enabled')
 postProcessingGui.add(unrealBloomPass, 'strength').name('Bloom strength').min(0).max(2).step(0.001)
