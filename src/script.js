@@ -1,10 +1,15 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
+import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js';
+import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
+import GUI from 'lil-gui'
+
 import snowVertexShader from './shaders/snow/vertex.glsl'
 import snowFragmentShader from './shaders/snow/fragment.glsl'
 import blurVertexShader from './shaders/blur/vertex.glsl'
 import blurFragmentShader from './shaders/blur/fragment.glsl'
-import GUI from 'lil-gui'
 
 /**
  * Base
@@ -170,13 +175,24 @@ gui.add(parameters, 'environmentMap').name('Environment Map').min(1).max(3).step
 // gui.addColor(parameters, 'insideColor').onFinishChange(generateSnow)
 // gui.addColor(parameters, 'outsideColor').onFinishChange(generateSnow)
 
+
 /**
  * Sizes
- */
+*/
 const sizes = {
-    width: window.innerWidth,
-    height: window.innerHeight
+  width: window.innerWidth,
+  height: window.innerHeight
 }
+
+/**
+ * Camera
+ */
+// Base camera
+const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
+camera.position.x = 0.001
+camera.position.y = 0.001
+camera.position.z = 0.001
+scene.add(camera)
 
 window.addEventListener('resize', () =>
 {
@@ -193,27 +209,6 @@ window.addEventListener('resize', () =>
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 })
 
-const blurRenderTarget = new THREE.WebGLRenderTarget(sizes.width, sizes.height);
-
-const blurEffectMaterial = new THREE.ShaderMaterial({
-  uniforms: {
-    tDiffuse: { value: renderTarget.texture }, // Previous render target
-    resolution: { value: new THREE.Vector2(width, height) },
-  },
-  vertexShader: blurVertexShader,
-  fragmentShader: blurFragmentShader,
-});
-
-
-/**
- * Camera
- */
-// Base camera
-const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
-camera.position.x = 0.001
-camera.position.y = 0.001
-camera.position.z = 0.001
-scene.add(camera)
 
 // Controls
 const controls = new OrbitControls(camera, canvas)
@@ -228,6 +223,29 @@ const renderer = new THREE.WebGLRenderer({
 })
 renderer.setSize(sizes.width, sizes.height)
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+
+
+const BlurShader = {
+  uniforms: {
+    tDiffuse: { value: null },
+    resolution: { value: new THREE.Vector2(sizes.width, sizes.height) },
+  },
+  vertexShader: blurVertexShader,
+  fragmentShader: blurFragmentShader
+};
+
+
+
+// Create an EffectComposer
+const composer = new EffectComposer(renderer);
+
+// Render Pass (render the original scene)
+const renderPass = new RenderPass(scene, camera);
+composer.addPass(renderPass);
+
+// Blur Pass
+const blurPass = new ShaderPass(BlurShader);
+composer.addPass(blurPass);
 
 
 generateSnow()
@@ -250,6 +268,7 @@ const tick = () =>
 
     // Render
     renderer.render(scene, camera)
+    // composer.render();
 
     // Call tick again on the next frame
     window.requestAnimationFrame(tick)
