@@ -1,5 +1,6 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+import { TextureLoader } from 'three/src/loaders/TextureLoader.js'
 
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
@@ -11,6 +12,8 @@ import { RGBShiftShader } from 'three/examples/jsm/shaders/RGBShiftShader.js'
 import { GammaCorrectionShader } from 'three/examples/jsm/shaders/GammaCorrectionShader.js'
 
 import GUI from 'lil-gui'
+
+import { DisplacementShader } from './shaders/displacement/displacement';
 
 import snowVertexShader from './shaders/snow/vertex.glsl'
 import snowFragmentShader from './shaders/snow/fragment.glsl'
@@ -34,6 +37,7 @@ const scene = new THREE.Scene()
  */
 // ...
 const cubeTextureLoader = new THREE.CubeTextureLoader()
+const textureLoader = new TextureLoader()
 
 
 /**
@@ -281,6 +285,12 @@ unrealBloomPass.strength = 0.3
 unrealBloomPass.radius = 1
 unrealBloomPass.threshold = 0.6
 
+
+// const displacementPass = new ShaderPass(DisplacementShader)
+// displacementPass.material.uniforms.uTime.value = 0
+// displacementPass.material.uniforms.uNormalMap.value = textureLoader.load('/textures/interfaceNormalMap.png')
+// effectComposer.addPass(displacementPass)
+
 postProcessingGui.add(unrealBloomPass, 'enabled').name('Bloom enabled')
 postProcessingGui.add(unrealBloomPass, 'strength').name('Bloom strength').min(0).max(2).step(0.001)
 postProcessingGui.add(unrealBloomPass, 'radius').name('Bloom radius').min(0).max(2).step(0.001)
@@ -304,6 +314,9 @@ const tick = () =>
 
     // Update material
     material.uniforms.uTime.value = elapsedTime
+
+    // Update passes
+    // displacementPass.material.uniforms.uTime.value = elapsedTime
 
     // Update controls
     controls.update()
