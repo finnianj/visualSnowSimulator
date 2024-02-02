@@ -2,6 +2,7 @@ import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
+import { DotScreenPass } from 'three/examples/jsm/postprocessing/DotScreenPass.js'
 import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js';
 import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
 import GUI from 'lil-gui'
@@ -192,7 +193,9 @@ const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 
 camera.position.x = 0.001
 camera.position.y = 0.001
 camera.position.z = 0.001
+
 scene.add(camera)
+
 
 window.addEventListener('resize', () =>
 {
@@ -227,25 +230,28 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 
 const BlurShader = {
   uniforms: {
-    tDiffuse: { value: null },
-    resolution: { value: new THREE.Vector2(sizes.width, sizes.height) },
+    uTime : { value: 0.0 },
+    uAmplitude: { value: 0.1 },
+    uFrequency: { value: 1.0 },
+    uResolution: { value: new THREE.Vector2(sizes.width, sizes.height) }
   },
   vertexShader: blurVertexShader,
   fragmentShader: blurFragmentShader
 };
 
 
+/**
+ * Post processing
+ */
+const effectComposer = new EffectComposer(renderer)
+effectComposer.setSize(sizes.width, sizes.height)
+effectComposer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 
-// Create an EffectComposer
-const composer = new EffectComposer(renderer);
+const renderPass = new RenderPass(scene, camera)
+effectComposer.addPass(renderPass)
 
-// Render Pass (render the original scene)
-const renderPass = new RenderPass(scene, camera);
-composer.addPass(renderPass);
-
-// Blur Pass
-const blurPass = new ShaderPass(BlurShader);
-composer.addPass(blurPass);
+// const dotScreenPass = new DotScreenPass()
+// effectComposer.addPass(dotScreenPass)
 
 
 generateSnow()
@@ -267,8 +273,7 @@ const tick = () =>
     controls.update()
 
     // Render
-    renderer.render(scene, camera)
-    // composer.render();
+    effectComposer.render();
 
     // Call tick again on the next frame
     window.requestAnimationFrame(tick)
