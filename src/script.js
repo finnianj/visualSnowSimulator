@@ -22,20 +22,7 @@ const scene = new THREE.Scene()
 // ...
 const cubeTextureLoader = new THREE.CubeTextureLoader()
 
-/**
- * Environment map
- */
-// LDR cube texture
-const environmentMap = cubeTextureLoader.load([
-  '/environmentMaps/2/px.png',
-  '/environmentMaps/2/nx.png',
-  '/environmentMaps/2/py.png',
-  '/environmentMaps/2/ny.png',
-  '/environmentMaps/2/pz.png',
-  '/environmentMaps/2/nz.png'
-])
 
-scene.background = environmentMap
 
 /**
  * Snow
@@ -55,6 +42,7 @@ parameters.speed = 0.1
 // parameters.speed = 0.01
 parameters.maxDistance = 10
 parameters.allowPerspectiveScaling = false
+parameters.environmentMap = 3
 
 let geometry = null
 let material = null
@@ -68,6 +56,21 @@ const generateSnow = () =>
         material.dispose()
         scene.remove(points)
     }
+
+        /**
+     * Environment map
+     */
+    // LDR cube texture
+    const environmentMap = cubeTextureLoader.load([
+      `/environmentMaps/${parameters.environmentMap - 1}/px.png`,
+      `/environmentMaps/${parameters.environmentMap - 1}/nx.png`,
+      `/environmentMaps/${parameters.environmentMap - 1}/py.png`,
+      `/environmentMaps/${parameters.environmentMap - 1}/ny.png`,
+      `/environmentMaps/${parameters.environmentMap - 1}/pz.png`,
+      `/environmentMaps/${parameters.environmentMap - 1}/nz.png`
+    ])
+
+    scene.background = environmentMap
 
     /**
      * Geometry
@@ -162,6 +165,7 @@ gui.add(parameters, 'brightness').name('Snow Brightness').min(0).max(1).step(0.0
 gui.add(parameters, 'speed').name('Shake Speed').min(0).max(1).step(0.001).onFinishChange(generateSnow)
 gui.add(parameters, 'maxDistance').name('Shake Area').min(0).max(5000).step(0.1).onFinishChange(generateSnow)
 gui.add(parameters, 'allowPerspectiveScaling').name('Allow Perspective Scaling').onFinishChange(generateSnow)
+gui.add(parameters, 'environmentMap').name('Environment Map').min(1).max(3).step(1).onFinishChange(generateSnow)
 // gui.addColor(parameters, 'insideColor').onFinishChange(generateSnow)
 // gui.addColor(parameters, 'outsideColor').onFinishChange(generateSnow)
 
