@@ -13,6 +13,9 @@ import { FilmPass } from 'three/examples/jsm/postprocessing/FilmPass.js'
 import { HorizontalBlurShader } from 'three/examples/jsm/shaders/HorizontalBlurShader.js'
 import { VerticalBlurShader } from 'three/examples/jsm/shaders/VerticalBlurShader.js'
 import { GammaCorrectionShader } from 'three/examples/jsm/shaders/GammaCorrectionShader.js'
+import { RenderPixelatedPass } from 'three/addons/postprocessing/RenderPixelatedPass.js';
+import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
+
 
 import GUI from 'lil-gui'
 
@@ -295,6 +298,8 @@ effectVBlur.uniforms[ 'v' ].value = 0 / ( sizes.height / 2 );
 effectComposer.addPass(effectHBlur);
 effectComposer.addPass(effectVBlur);
 
+// const renderPixelatedPass = new RenderPixelatedPass( 50, scene, camera );
+// 			effectComposer.addPass( renderPixelatedPass );
 
 // const displacementPass = new ShaderPass(DisplacementShader)
 // displacementPass.material.uniforms.uTime.value = 0
