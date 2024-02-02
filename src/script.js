@@ -46,6 +46,7 @@ const textureLoader = new TextureLoader()
 const miscParameters = {}
 miscParameters.environmentMap = 3
 
+
 /**
  * Snow
  */
@@ -64,7 +65,7 @@ snowParameters.speed = 0.1
 // snowParameters.speed = 0.01
 snowParameters.maxDistance = 10
 snowParameters.allowPerspectiveScaling = false
-snowParameters.enabled = true
+snowParameters.enabled = false
 
 let geometry = null
 let material = null
@@ -277,13 +278,22 @@ effectComposer.addPass(renderPass)
 // effectComposer.addPass(rgbShiftPass)
 
 const filmPass = new FilmPass( 2.35 )
+filmPass.enabled = false
 effectComposer.addPass(filmPass)
 
 const unrealBloomPass = new UnrealBloomPass()
+unrealBloomPass.enabled = false
 effectComposer.addPass(unrealBloomPass)
 unrealBloomPass.strength = 0.3
 unrealBloomPass.radius = 1
 unrealBloomPass.threshold = 0.6
+
+const effectHBlur = new ShaderPass( HorizontalBlurShader );
+const effectVBlur = new ShaderPass( VerticalBlurShader );
+effectHBlur.uniforms[ 'h' ].value = 0 / ( sizes.width / 2 );
+effectVBlur.uniforms[ 'v' ].value = 0 / ( sizes.height / 2 );
+effectComposer.addPass(effectHBlur);
+effectComposer.addPass(effectVBlur);
 
 
 // const displacementPass = new ShaderPass(DisplacementShader)
@@ -291,12 +301,21 @@ unrealBloomPass.threshold = 0.6
 // displacementPass.material.uniforms.uNormalMap.value = textureLoader.load('/textures/interfaceNormalMap.png')
 // effectComposer.addPass(displacementPass)
 
-postProcessingGui.add(filmPass, 'enabled').name('Film Grain enabled')
+const blur = postProcessingGui.addFolder('Blur')
+const filmGrain = postProcessingGui.addFolder('Film Grain')
+const bloom = postProcessingGui.addFolder('Bloom')
 
-postProcessingGui.add(unrealBloomPass, 'enabled').name('Bloom enabled')
-postProcessingGui.add(unrealBloomPass, 'strength').name('Bloom strength').min(0).max(2).step(0.001)
-postProcessingGui.add(unrealBloomPass, 'radius').name('Bloom radius').min(0).max(2).step(0.001)
-postProcessingGui.add(unrealBloomPass, 'threshold').name('Bloom threshold').min(0).max(1).step(0.001)
+blur.add(effectHBlur, 'enabled').name('Horizontal Blur enabled')
+blur.add(effectHBlur.uniforms[ 'h' ], 'value').name('Horizontal Blur').min(0).max(0.01).step(0.0001)
+blur.add(effectVBlur, 'enabled').name('Vertical Blur enabled')
+blur.add(effectVBlur.uniforms[ 'v' ], 'value').name('Vertical Blur').min(0).max(0.01).step(0.0001)
+
+filmGrain.add(filmPass, 'enabled').name('Film Grain enabled')
+
+bloom.add(unrealBloomPass, 'enabled').name('Bloom enabled')
+bloom.add(unrealBloomPass, 'strength').name('Bloom strength').min(0).max(2).step(0.001)
+bloom.add(unrealBloomPass, 'radius').name('Bloom radius').min(0).max(2).step(0.001)
+bloom.add(unrealBloomPass, 'threshold').name('Bloom threshold').min(0).max(1).step(0.001)
 
 // Gamma correction
 const gammaCorrectionPass = new ShaderPass(GammaCorrectionShader)
@@ -314,8 +333,11 @@ const tick = () =>
 {
     const elapsedTime = clock.getElapsedTime()
 
-    // Update material
-    material.uniforms.uTime.value = elapsedTime
+    // Update snow material
+    if(material)
+    {
+        material.uniforms.uTime.value = elapsedTime
+    }
 
     // Update passes
     // displacementPass.material.uniforms.uTime.value = elapsedTime
