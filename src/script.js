@@ -169,15 +169,18 @@ const generateSnow = () =>
     scene.add(points)
 }
 
-gui.add(parameters, 'density').name('Snow Density').min(100).max(1000000).step(100).onFinishChange(generateSnow)
-gui.add(parameters, 'size').name('Snow Size').min(1).max(250).step(1).onFinishChange(generateSnow)
-gui.add(parameters, 'softness').name('Snow Softness').min(0).max(0.5).step(0.01).onFinishChange(generateSnow)
-gui.add(parameters, 'radius').name('Snow Sphere Radius').min(0.2).max(20).step(0.01).onFinishChange(generateSnow)
-gui.add(parameters, 'brightness').name('Snow Brightness').min(0).max(1).step(0.01).onFinishChange(generateSnow)
-gui.add(parameters, 'speed').name('Shake Speed').min(0).max(1).step(0.001).onFinishChange(generateSnow)
-gui.add(parameters, 'maxDistance').name('Shake Area').min(0).max(5000).step(0.1).onFinishChange(generateSnow)
-gui.add(parameters, 'allowPerspectiveScaling').name('Allow Perspective Scaling').onFinishChange(generateSnow)
+const snowGui = gui.addFolder('Snow')
+
+snowGui.add(parameters, 'density').name('Snow Density').min(100).max(1000000).step(100).onFinishChange(generateSnow)
+snowGui.add(parameters, 'size').name('Snow Size').min(1).max(250).step(1).onFinishChange(generateSnow)
+snowGui.add(parameters, 'softness').name('Snow Softness').min(0).max(0.5).step(0.01).onFinishChange(generateSnow)
+snowGui.add(parameters, 'radius').name('Snow Sphere Radius').min(0.2).max(20).step(0.01).onFinishChange(generateSnow)
+snowGui.add(parameters, 'brightness').name('Snow Brightness').min(0).max(1).step(0.01).onFinishChange(generateSnow)
+snowGui.add(parameters, 'speed').name('Shake Speed').min(0).max(1).step(0.001).onFinishChange(generateSnow)
+snowGui.add(parameters, 'maxDistance').name('Shake Area').min(0).max(5000).step(0.1).onFinishChange(generateSnow)
+
 gui.add(parameters, 'environmentMap').name('Environment Map').min(1).max(3).step(1).onFinishChange(generateSnow)
+gui.add(parameters, 'allowPerspectiveScaling').name('Allow Perspective Scaling').onFinishChange(generateSnow)
 // gui.addColor(parameters, 'insideColor').onFinishChange(generateSnow)
 // gui.addColor(parameters, 'outsideColor').onFinishChange(generateSnow)
 
@@ -215,6 +218,10 @@ window.addEventListener('resize', () =>
     // Update renderer
     renderer.setSize(sizes.width, sizes.height)
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+
+    // Update effect composer
+    effectComposer.setSize(sizes.width, sizes.height)
+    effectComposer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 })
 
 
@@ -248,6 +255,8 @@ const BlurShader = {
 /**
  * Post processing
  */
+const postProcessingGui = gui.addFolder('Post processing');
+
 const effectComposer = new EffectComposer(renderer)
 effectComposer.setSize(sizes.width, sizes.height)
 effectComposer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
@@ -263,8 +272,19 @@ effectComposer.addPass(renderPass)
 // effectComposer.addPass(glitchPass)
 // glitchPass.goWild = true
 
-const rgbShiftPass = new ShaderPass(RGBShiftShader)
-effectComposer.addPass(rgbShiftPass)
+// const rgbShiftPass = new ShaderPass(RGBShiftShader)
+// effectComposer.addPass(rgbShiftPass)
+
+const unrealBloomPass = new UnrealBloomPass()
+effectComposer.addPass(unrealBloomPass)
+unrealBloomPass.strength = 0.3
+unrealBloomPass.radius = 1
+unrealBloomPass.threshold = 0.6
+
+postProcessingGui.add(unrealBloomPass, 'enabled').name('Bloom enabled')
+postProcessingGui.add(unrealBloomPass, 'strength').name('Bloom strength').min(0).max(2).step(0.001)
+postProcessingGui.add(unrealBloomPass, 'radius').name('Bloom radius').min(0).max(2).step(0.001)
+postProcessingGui.add(unrealBloomPass, 'threshold').name('Bloom threshold').min(0).max(1).step(0.001)
 
 // Gamma correction
 const gammaCorrectionPass = new ShaderPass(GammaCorrectionShader)
