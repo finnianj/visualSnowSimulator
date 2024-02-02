@@ -1,11 +1,15 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
 import { DotScreenPass } from 'three/examples/jsm/postprocessing/DotScreenPass.js'
 import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js';
 import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
 import { GlitchPass } from 'three/examples/jsm/postprocessing/GlitchPass.js';
+import { RGBShiftShader } from 'three/examples/jsm/shaders/RGBShiftShader.js'
+import { GammaCorrectionShader } from 'three/examples/jsm/shaders/GammaCorrectionShader.js'
+
 import GUI from 'lil-gui'
 
 import snowVertexShader from './shaders/snow/vertex.glsl'
@@ -255,10 +259,16 @@ effectComposer.addPass(renderPass)
 // effectComposer.addPass(dotScreenPass)
 
 
-const glitchPass = new GlitchPass()
-effectComposer.addPass(glitchPass)
-glitchPass.goWild = true
+// const glitchPass = new GlitchPass()
+// effectComposer.addPass(glitchPass)
+// glitchPass.goWild = true
 
+const rgbShiftPass = new ShaderPass(RGBShiftShader)
+effectComposer.addPass(rgbShiftPass)
+
+// Gamma correction
+const gammaCorrectionPass = new ShaderPass(GammaCorrectionShader)
+effectComposer.addPass(gammaCorrectionPass)
 
 generateSnow()
 
