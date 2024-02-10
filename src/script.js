@@ -15,8 +15,7 @@ import { VerticalBlurShader } from 'three/examples/jsm/shaders/VerticalBlurShade
 import { GammaCorrectionShader } from 'three/examples/jsm/shaders/GammaCorrectionShader.js'
 import { RenderPixelatedPass } from 'three/addons/postprocessing/RenderPixelatedPass.js';
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
-import { AfterimagePass } from 'three/addons/postprocessing/AfterimagePass.js';
-
+import { AfterimagePass } from 'three/examples/jsm/postprocessing/AfterimagePass.js';
 
 import GUI from 'lil-gui'
 
@@ -196,9 +195,9 @@ snowGui.add(snowParameters, 'radius').name('Snow Sphere Radius').min(0.2).max(20
 snowGui.add(snowParameters, 'brightness').name('Snow Brightness').min(0).max(1).step(0.01).onFinishChange(generateSnow)
 snowGui.add(snowParameters, 'speed').name('Shake Speed').min(0).max(1).step(0.001).onFinishChange(generateSnow)
 snowGui.add(snowParameters, 'maxDistance').name('Shake Area').min(0).max(5000).step(0.1).onFinishChange(generateSnow)
+snowGui.add(snowParameters, 'allowPerspectiveScaling').name('Allow Perspective Scaling').onFinishChange(generateSnow)
 
 gui.add(miscParameters, 'environmentMap').name('Environment Map').min(1).max(3).step(1).onFinishChange(generateSnow)
-gui.add(snowParameters, 'allowPerspectiveScaling').name('Allow Perspective Scaling').onFinishChange(generateSnow)
 // gui.addColor(snowParameters, 'insideColor').onFinishChange(generateSnow)
 // gui.addColor(snowParameters, 'outsideColor').onFinishChange(generateSnow)
 
@@ -274,8 +273,17 @@ effectComposer.addPass(renderPass)
 const afterimagePass = new AfterimagePass()
 effectComposer.addPass(afterimagePass)
 afterimagePass.uniforms.damp.value = 0.9
+afterimagePass.enabled = false
 
-
+// Create shader pass for bokeh effect
+// const bokehPass = new BokehPass(scene, camera, {
+//   focus: 1.0,
+//   aperture: 0.025,
+//   maxblur: 0.01,
+//   width: sizes.width,
+//   height: sizes.height
+// })
+// effectComposer.addPass(bokehPass)
 
 // const dotScreenPass = new DotScreenPass()
 // effectComposer.addPass(dotScreenPass)
@@ -318,6 +326,7 @@ const blur = postProcessingGui.addFolder('Blur')
 const filmGrain = postProcessingGui.addFolder('Film Grain')
 const bloom = postProcessingGui.addFolder('Bloom')
 const afterimages = postProcessingGui.addFolder('Afterimages')
+
 
 afterimages.add(afterimagePass, 'enabled').name('Afterimages enabled')
 afterimages.add(afterimagePass.uniforms.damp, 'value').name('Afterimages damp').min(0).max(1).step(0.01)
