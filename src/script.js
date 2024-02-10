@@ -15,6 +15,7 @@ import { VerticalBlurShader } from 'three/examples/jsm/shaders/VerticalBlurShade
 import { GammaCorrectionShader } from 'three/examples/jsm/shaders/GammaCorrectionShader.js'
 import { RenderPixelatedPass } from 'three/addons/postprocessing/RenderPixelatedPass.js';
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
+import { AfterimagePass } from 'three/addons/postprocessing/AfterimagePass.js';
 
 
 import GUI from 'lil-gui'
@@ -269,6 +270,13 @@ effectComposer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 const renderPass = new RenderPass(scene, camera)
 effectComposer.addPass(renderPass)
 
+// Create shader pass for afterimage effect
+const afterimagePass = new AfterimagePass()
+effectComposer.addPass(afterimagePass)
+afterimagePass.uniforms.damp.value = 0.9
+
+
+
 // const dotScreenPass = new DotScreenPass()
 // effectComposer.addPass(dotScreenPass)
 
@@ -309,6 +317,10 @@ effectComposer.addPass(effectVBlur);
 const blur = postProcessingGui.addFolder('Blur')
 const filmGrain = postProcessingGui.addFolder('Film Grain')
 const bloom = postProcessingGui.addFolder('Bloom')
+const afterimages = postProcessingGui.addFolder('Afterimages')
+
+afterimages.add(afterimagePass, 'enabled').name('Afterimages enabled')
+afterimages.add(afterimagePass.uniforms.damp, 'value').name('Afterimages damp').min(0).max(1).step(0.01)
 
 blur.add(effectHBlur, 'enabled').name('Horizontal Blur enabled')
 blur.add(effectHBlur.uniforms[ 'h' ], 'value').name('Horizontal Blur').min(0).max(0.01).step(0.0001)
