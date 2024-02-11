@@ -25,6 +25,8 @@ import snowVertexShader from './shaders/snow/vertex.glsl'
 import snowFragmentShader from './shaders/snow/fragment.glsl'
 import blurVertexShader from './shaders/blur/vertex.glsl'
 import blurFragmentShader from './shaders/blur/fragment.glsl'
+import blobVertexShader from './shaders/blob/vertex.glsl'
+import blobFragmentShader from './shaders/blob/fragment.glsl'
 
 /**
  * Base
@@ -67,8 +69,6 @@ scene.background = environmentMap
 // gui.add(miscParameters, 'environmentMap').name('Environment Map').min(1).max(3).step(1).onFinishChange(generateSnow)
 // gui.addColor(snowParameters, 'insideColor').onFinishChange(generateSnow)
 // gui.addColor(snowParameters, 'outsideColor').onFinishChange(generateSnow)
-
-
 
 /**
  * Sizes
@@ -208,59 +208,15 @@ gui.close()
 // Create shader pass for custom shader
 const customShader = {
   uniforms: {
-    tDiffuse: { value: null },
+    uFrequency: 1.0,
+    uAmplitude: 0.6,
     uTime: { value: 0 },
+    uResolution: { value: new THREE.Vector2(sizes.width, sizes.height) },
+    uBlobs: [1000, 500, 0.1, 500, 100, 0.1],
+    uColors: [0, 0.447, 1, 0, 0.447, 1],
   },
-  vertexShader: `
-    varying vec2 vUv;
-
-    void main()
-    {
-      vUv = uv;
-      gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-    }
-  `,
-  fragmentShader: `
-    uniform sampler2D tDiffuse;
-    uniform float uTime;
-
-    varying vec2 vUv;
-
-    void main() {
-      // Define the initial position and radius of the circular blob
-      vec2 center = vec2(0.5, 0.5);
-      float radius = 0.05;
-
-      // Calculate the offset for the blob's position based on time
-      float speed = 0.1; // Adjust the speed of movement
-      float offsetX = sin(uTime * speed) * 0.2; // Adjust the magnitude of movement
-      float offsetY = cos(uTime * speed) * 0.2;
-
-      // Calculate the new position of the blob
-      vec2 newPosition = center + vec2(offsetX, offsetY);
-
-      // Calculate the distance from the new center to the current fragment
-      float dist = distance(newPosition, vUv);
-
-      // Calculate the blur factor based on the distance
-      float blurFactor = smoothstep(radius - 0.02, radius + 0.02, dist);
-
-
-      // Sample the color of the input texture
-      vec4 color = texture2D(tDiffuse, vUv);
-
-      // Check if the fragment is outside the circular blob
-      if (dist < radius) {
-        // Apply a light blur effect
-        vec4 blurredColor = mix(color, vec4(1.0), blurFactor); // Light blur
-        gl_FragColor = blurredColor;
-      } else {
-        // Inside the circular blob, render the input texture color
-        gl_FragColor = color;
-      }
-    }
-  `,
-
+  vertexShader: blobVertexShader,
+  fragmentShader: blobFragmentShader,
 };
 
 // Create shader material
@@ -275,9 +231,6 @@ const customPass = new ShaderPass(customMaterial);
 
 // Add pass to composer after other passes
 effectComposer.addPass(customPass);
-
-
-
 
 
 /**
