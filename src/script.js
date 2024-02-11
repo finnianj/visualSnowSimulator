@@ -49,157 +49,25 @@ const textureLoader = new TextureLoader()
 const miscParameters = {}
 miscParameters.environmentMap = 3
 
-
-/**
- * Snow
+  /**
+ * Environment map
  */
-const snowParameters = {}
-snowParameters.density = 10000
-// snowParameters.density = 20000
-snowParameters.size = 3
-snowParameters.softness = 0.25
-snowParameters.brightness = 1
-snowParameters.radius = 0.2
-// snowParameters.radius = 5
-snowParameters.spin = 1
-snowParameters.insideColor = '#ffffff'
-snowParameters.outsideColor = '#ffffff'
-snowParameters.speed = 0.1
-// snowParameters.speed = 0.01
-snowParameters.maxDistance = 10
-snowParameters.allowPerspectiveScaling = false
-snowParameters.enabled = false
+// LDR cube texture
+const environmentMap = cubeTextureLoader.load([
+  `/environmentMaps/${miscParameters.environmentMap - 1}/px.png`,
+  `/environmentMaps/${miscParameters.environmentMap - 1}/nx.png`,
+  `/environmentMaps/${miscParameters.environmentMap - 1}/py.png`,
+  `/environmentMaps/${miscParameters.environmentMap - 1}/ny.png`,
+  `/environmentMaps/${miscParameters.environmentMap - 1}/pz.png`,
+  `/environmentMaps/${miscParameters.environmentMap - 1}/nz.png`
+])
 
-let geometry = null
-let material = null
-let points = null
+scene.background = environmentMap
 
-const generateSnow = () =>
-{
-    if(points !== null)
-    {
-        geometry.dispose()
-        material.dispose()
-        scene.remove(points)
-    }
-
-        /**
-     * Environment map
-     */
-    // LDR cube texture
-    const environmentMap = cubeTextureLoader.load([
-      `/environmentMaps/${miscParameters.environmentMap - 1}/px.png`,
-      `/environmentMaps/${miscParameters.environmentMap - 1}/nx.png`,
-      `/environmentMaps/${miscParameters.environmentMap - 1}/py.png`,
-      `/environmentMaps/${miscParameters.environmentMap - 1}/ny.png`,
-      `/environmentMaps/${miscParameters.environmentMap - 1}/pz.png`,
-      `/environmentMaps/${miscParameters.environmentMap - 1}/nz.png`
-    ])
-
-    scene.background = environmentMap
-
-    if (!snowParameters.enabled) return
-
-    /**
-     * Geometry
-     */
-    geometry = new THREE.BufferGeometry()
-
-    const positions = new Float32Array(snowParameters.density * 3)
-    const colors = new Float32Array(snowParameters.density * 3)
-    const scales = new Float32Array(snowParameters.density * 1)
-    const offsets = new Float32Array(snowParameters.density * 3)
-
-
-    const insideColor = new THREE.Color(snowParameters.insideColor)
-    const outsideColor = new THREE.Color(snowParameters.outsideColor)
-
-    for(let i = 0; i < snowParameters.density; i++)
-    {
-        const i3 = i * 3
-
-        // Generate random spherical coordinates (uniformly distributed)
-        const u = Math.random(); // Uniform random value between 0 and 1
-        const v = Math.random(); // Uniform random value between 0 and 1
-
-        const theta = 2 * Math.PI * u; // Azimuthal angle
-        const phi = Math.acos(2 * v - 1); // Polar angle (from -1 to 1, then acos to get 0 to pi)
-
-        const radius = snowParameters.radius;
-
-        const x = radius * Math.sin(phi) * Math.cos(theta);
-        const y = radius * Math.sin(phi) * Math.sin(theta);
-        const z = radius * Math.cos(phi);
-
-        positions[i3    ] = x;
-        positions[i3 + 1] = y;
-        positions[i3 + 2] = z;
-
-        // Color
-        const mixedColor = insideColor.clone()
-        mixedColor.lerp(outsideColor, radius / snowParameters.radius)
-
-        colors[i3    ] = mixedColor.r
-        colors[i3 + 1] = mixedColor.g
-        colors[i3 + 2] = mixedColor.b
-
-        // Scale
-        scales[i] = Math.random()
-
-        // Offsets
-        offsets[i3    ] = Math.random()
-        offsets[i3 + 1] = Math.random()
-        offsets[i3 + 2] = Math.random()
-    }
-
-    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3))
-    geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3))
-    geometry.setAttribute('aScale', new THREE.BufferAttribute(scales, 1))
-    geometry.setAttribute('aOffset', new THREE.BufferAttribute(offsets, 3));
-
-    /**
-     * Material
-     */
-    material = new THREE.ShaderMaterial({
-        depthWrite: false,
-        blending: THREE.AdditiveBlending,
-        vertexColors: true,
-        vertexShader: snowVertexShader,
-        fragmentShader: snowFragmentShader,
-        uniforms:
-          {
-            uTime: { value: 0 },
-            uSize: { value: snowParameters.size },
-            uSoftness: { value: snowParameters.softness },
-            uBrightness: { value: snowParameters.brightness },
-            uSpeed: { value: snowParameters.speed * 0.01 },
-            uMaxDistance: { value: snowParameters.maxDistance },
-            uAllowPerspectiveScaling: { value: snowParameters.allowPerspectiveScaling },
-          },
-    })
-
-    /**
-     * Points
-     */
-    points = new THREE.Points(geometry, material)
-    scene.add(points)
-}
-
-const snowGui = gui.addFolder('Snow')
-
-snowGui.add(snowParameters, 'enabled').name('Snow Enabled').onFinishChange(generateSnow)
-snowGui.add(snowParameters, 'density').name('Snow Density').min(100).max(1000000).step(100).onFinishChange(generateSnow)
-snowGui.add(snowParameters, 'size').name('Snow Size').min(1).max(250).step(1).onFinishChange(generateSnow)
-snowGui.add(snowParameters, 'softness').name('Snow Softness').min(0).max(0.5).step(0.01).onFinishChange(generateSnow)
-snowGui.add(snowParameters, 'radius').name('Snow Sphere Radius').min(0.2).max(20).step(0.01).onFinishChange(generateSnow)
-snowGui.add(snowParameters, 'brightness').name('Snow Brightness').min(0).max(1).step(0.01).onFinishChange(generateSnow)
-snowGui.add(snowParameters, 'speed').name('Shake Speed').min(0).max(1).step(0.001).onFinishChange(generateSnow)
-snowGui.add(snowParameters, 'maxDistance').name('Shake Area').min(0).max(5000).step(0.1).onFinishChange(generateSnow)
-snowGui.add(snowParameters, 'allowPerspectiveScaling').name('Allow Perspective Scaling').onFinishChange(generateSnow)
-
-gui.add(miscParameters, 'environmentMap').name('Environment Map').min(1).max(3).step(1).onFinishChange(generateSnow)
+// gui.add(miscParameters, 'environmentMap').name('Environment Map').min(1).max(3).step(1).onFinishChange(generateSnow)
 // gui.addColor(snowParameters, 'insideColor').onFinishChange(generateSnow)
 // gui.addColor(snowParameters, 'outsideColor').onFinishChange(generateSnow)
+
 
 
 /**
@@ -215,7 +83,7 @@ const sizes = {
  */
 // Base camera
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
-camera.position.x = 0.001
+camera.position.x = -3
 camera.position.y = 0.001
 camera.position.z = 0.001
 
@@ -246,6 +114,7 @@ window.addEventListener('resize', () =>
 const controls = new OrbitControls(camera, canvas)
 controls.enableDamping = true
 controls.enableZoom = false
+controls.target.set(0, 0.5, -1)
 
 /**
  * Renderer
@@ -274,20 +143,6 @@ const afterimagePass = new AfterimagePass()
 effectComposer.addPass(afterimagePass)
 afterimagePass.uniforms.damp.value = 0.9
 afterimagePass.enabled = false
-
-// Create shader pass for bokeh effect
-// const bokehPass = new BokehPass(scene, camera, {
-//   focus: 1.0,
-//   aperture: 0.025,
-//   maxblur: 0.01,
-//   width: sizes.width,
-//   height: sizes.height
-// })
-// effectComposer.addPass(bokehPass)
-
-// const dotScreenPass = new DotScreenPass()
-// effectComposer.addPass(dotScreenPass)
-
 
 // const glitchPass = new GlitchPass()
 // effectComposer.addPass(glitchPass)
@@ -347,7 +202,82 @@ bloom.add(unrealBloomPass, 'threshold').name('Bloom threshold').min(0).max(1).st
 const gammaCorrectionPass = new ShaderPass(GammaCorrectionShader)
 effectComposer.addPass(gammaCorrectionPass)
 
-generateSnow()
+gui.close()
+
+
+// Create shader pass for custom shader
+const customShader = {
+  uniforms: {
+    tDiffuse: { value: null },
+    uTime: { value: 0 },
+  },
+  vertexShader: `
+    varying vec2 vUv;
+
+    void main()
+    {
+      vUv = uv;
+      gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+    }
+  `,
+  fragmentShader: `
+    uniform sampler2D tDiffuse;
+    uniform float uTime;
+
+    varying vec2 vUv;
+
+    void main() {
+      // Define the initial position and radius of the circular blob
+      vec2 center = vec2(0.5, 0.5);
+      float radius = 0.05;
+
+      // Calculate the offset for the blob's position based on time
+      float speed = 0.1; // Adjust the speed of movement
+      float offsetX = sin(uTime * speed) * 0.2; // Adjust the magnitude of movement
+      float offsetY = cos(uTime * speed) * 0.2;
+
+      // Calculate the new position of the blob
+      vec2 newPosition = center + vec2(offsetX, offsetY);
+
+      // Calculate the distance from the new center to the current fragment
+      float dist = distance(newPosition, vUv);
+
+      // Calculate the blur factor based on the distance
+      float blurFactor = smoothstep(radius - 0.02, radius + 0.02, dist);
+
+
+      // Sample the color of the input texture
+      vec4 color = texture2D(tDiffuse, vUv);
+
+      // Check if the fragment is outside the circular blob
+      if (dist < radius) {
+        // Apply a light blur effect
+        vec4 blurredColor = mix(color, vec4(1.0), blurFactor); // Light blur
+        gl_FragColor = blurredColor;
+      } else {
+        // Inside the circular blob, render the input texture color
+        gl_FragColor = color;
+      }
+    }
+  `,
+
+};
+
+// Create shader material
+const customMaterial = new THREE.ShaderMaterial({
+  uniforms: customShader.uniforms,
+  vertexShader: customShader.vertexShader,
+  fragmentShader: customShader.fragmentShader,
+});
+
+// Create shader pass
+const customPass = new ShaderPass(customMaterial);
+
+// Add pass to composer after other passes
+effectComposer.addPass(customPass);
+
+
+
 
 
 /**
@@ -359,14 +289,12 @@ const tick = () =>
 {
     const elapsedTime = clock.getElapsedTime()
 
-    // Update snow material
-    if(material)
-    {
-        material.uniforms.uTime.value = elapsedTime
-    }
-
-    // Update passes
-    // displacementPass.material.uniforms.uTime.value = elapsedTime
+    // // Update snow material
+    // if( material)
+    // {
+    //     material.uniforms.uTime.value = elapsedTime
+    // }
+    customShader.uniforms.uTime.value = elapsedTime
 
     // Update controls
     controls.update()
