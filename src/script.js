@@ -206,31 +206,31 @@ gui.close()
 
 
 // Create shader pass for custom shader
-const customShader = {
-  uniforms: {
-    uFrequency: 1.0,
-    uAmplitude: 0.6,
-    uTime: { value: 0 },
-    uResolution: { value: new THREE.Vector2(sizes.width, sizes.height) },
-    uBlobs: [1000, 500, 0.1, 500, 100, 0.1],
-    uColors: [0, 0.447, 1, 0, 0.447, 1],
-  },
-  vertexShader: blobVertexShader,
-  fragmentShader: blobFragmentShader,
-};
+// const customShader = {
+//   uniforms: {
+//     uFrequency: 1.0,
+//     uAmplitude: 0.6,
+//     uTime: { value: 0 },
+//     uResolution: { value: new THREE.Vector2(sizes.width, sizes.height) },
+//     uBlobs: [1000, 500, 0.1, 500, 100, 0.1],
+//     uColors: [0, 0.447, 1, 0, 0.447, 1],
+//   },
+//   vertexShader: blobVertexShader,
+//   fragmentShader: blobFragmentShader,
+// };
 
-// Create shader material
-const customMaterial = new THREE.ShaderMaterial({
-  uniforms: customShader.uniforms,
-  vertexShader: customShader.vertexShader,
-  fragmentShader: customShader.fragmentShader,
-});
+// // Create shader material
+// const customMaterial = new THREE.ShaderMaterial({
+//   uniforms: customShader.uniforms,
+//   vertexShader: customShader.vertexShader,
+//   fragmentShader: customShader.fragmentShader,
+// });
 
-// Create shader pass
-const customPass = new ShaderPass(customMaterial);
+// // Create shader pass
+// const customPass = new ShaderPass(customMaterial);
 
-// Add pass to composer after other passes
-effectComposer.addPass(customPass);
+// // Add pass to composer after other passes
+// effectComposer.addPass(customPass);
 
 
 /**
@@ -247,7 +247,7 @@ const tick = () =>
     // {
     //     material.uniforms.uTime.value = elapsedTime
     // }
-    customShader.uniforms.uTime.value = elapsedTime
+    // customShader.uniforms.uTime.value = elapsedTime
 
     // Update controls
     controls.update()
