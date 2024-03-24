@@ -1,6 +1,8 @@
 import React, { useEffect, useState, Suspense, startTransition, useMemo, useCallback } from 'react';
 import { Canvas, useFrame } from "@react-three/fiber";
 
+import Loading from './components/Loading';
+
 import { Environment, useEnvironment, OrbitControls } from '@react-three/drei'
 
 const mapsArray = [
@@ -31,10 +33,10 @@ export default function App() {
     return (
        <>
             <button onClick={changeMap} className='bg-teal-400 hover:bg-teal-500 transition-all text-white rounded-lg absolute z-50 p-4 m-4 shadow-lg'>Change Map</button>
-            {loadingMap && <div className='loading-indicator'>Loading...</div>}
+                {loadingMap && <Loading />}
             <Canvas>
                 <OrbitControls />
-                <Suspense fallback={<div className='text-4xl z-50 absolute'>Loading environment...</div>}>
+                <Suspense fallback={null}>
                 <Environment
                     background
                     map={envMap}
