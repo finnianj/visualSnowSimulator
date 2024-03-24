@@ -1,0 +1,53 @@
+import React, { useEffect, useState, Suspense, startTransition, useMemo, useCallback } from 'react';
+import { Canvas, useFrame } from "@react-three/fiber";
+import { EffectComposer, Glitch, Noise } from '@react-three/postprocessing'
+import { GlitchMode, BlendFunction } from 'postprocessing'
+
+
+import Loading from './components/Loading';
+
+import { Environment, useEnvironment, OrbitControls } from '@react-three/drei'
+
+const mapsArray = [
+    'berlin', 
+    'garden',
+    'metro',
+    'road'
+]
+
+export default function App() {
+    const [mapIndex, setMapIndex] = useState(3)
+    const envMap = useMemo(() => useEnvironment({ files: `./environmentMaps/hdri/${mapsArray[mapIndex]}.exr` }), [mapIndex]);
+    const [loadingMap, setLoadingMap] = useState(false)
+
+    const changeMap = useCallback(() => {
+        setLoadingMap(true)
+        startTransition(() => {
+            setMapIndex((prevIndex) => (prevIndex + 1) % mapsArray.length);
+            setLoadingMap(false)
+        });
+    }, [mapsArray.length]);
+
+
+
+    return (
+       <>
+            <button onClick={changeMap} className='bg-teal-400 hover:bg-teal-500 transition-all text-white rounded-lg absolute z-50 p-4 m-4 shadow-lg'>Change Map</button>
+                {loadingMap && <Loading />}
+            <Canvas>
+                <OrbitControls />
+                <Suspense fallback={null}>
+                <EffectComposer>
+                    <Noise 
+                            blendFunction={ BlendFunction.SOFT_LIGHT }
+                    />
+                    <Environment
+                        background
+                        map={envMap}
+                    />
+                </EffectComposer>
+                </Suspense>
+            </Canvas>
+       </>
+    );
+}
