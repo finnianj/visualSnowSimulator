@@ -1,5 +1,8 @@
 import React, { useEffect, useState, Suspense, startTransition, useMemo, useCallback } from 'react';
 import { Canvas, useFrame } from "@react-three/fiber";
+import { EffectComposer, Glitch, Noise } from '@react-three/postprocessing'
+import { GlitchMode, BlendFunction } from 'postprocessing'
+
 
 import Loading from './components/Loading';
 
@@ -13,18 +16,15 @@ const mapsArray = [
 ]
 
 export default function App() {
-    const [mapIndex, setMapIndex] = useState(0)
+    const [mapIndex, setMapIndex] = useState(3)
     const envMap = useMemo(() => useEnvironment({ files: `./environmentMaps/hdri/${mapsArray[mapIndex]}.exr` }), [mapIndex]);
     const [loadingMap, setLoadingMap] = useState(false)
 
     const changeMap = useCallback(() => {
         setLoadingMap(true)
-            // setMapIndex((prevIndex) => (prevIndex + 1) % mapsArray.length);
         startTransition(() => {
-            setTimeout(() => {
-                setMapIndex((prevIndex) => (prevIndex + 1) % mapsArray.length);
-                setLoadingMap(false)
-            }, 3000);
+            setMapIndex((prevIndex) => (prevIndex + 1) % mapsArray.length);
+            setLoadingMap(false)
         });
     }, [mapsArray.length]);
 
@@ -37,10 +37,15 @@ export default function App() {
             <Canvas>
                 <OrbitControls />
                 <Suspense fallback={null}>
-                <Environment
-                    background
-                    map={envMap}
-                />
+                <EffectComposer>
+                    <Noise 
+                            blendFunction={ BlendFunction.SOFT_LIGHT }
+                    />
+                    <Environment
+                        background
+                        map={envMap}
+                    />
+                </EffectComposer>
                 </Suspense>
             </Canvas>
        </>
