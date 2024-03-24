@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Canvas, useFrame } from "@react-three/fiber";
-import './style.css'
 
 import { Environment, useEnvironment, OrbitControls } from '@react-three/drei'
 
@@ -24,7 +23,6 @@ export default function App() {
 
     return (
        <>
-        <div className="bg-red-500 text-green-500">hjbkjhb
             <Canvas>
                 <OrbitControls />
                 <Environment
@@ -32,7 +30,6 @@ export default function App() {
                     map={envMap}
                 />
             </Canvas>
-        </div>
        </>
     );
 }
