@@ -2,48 +2,63 @@ import React, { useEffect, useState, Suspense, startTransition, useMemo, useCall
 import { Canvas, useFrame } from "@react-three/fiber";
 import { EffectComposer, Glitch, Noise } from '@react-three/postprocessing'
 import { GlitchMode, BlendFunction } from 'postprocessing'
+import { ChangeMap } from './components/ui';
 
 
 import Loading from './components/Loading';
 
 import { Environment, useEnvironment, OrbitControls } from '@react-three/drei'
 
-const mapsArray = [
-    'berlin', 
-    'garden',
-    'metro',
-    'road'
-]
-
 export default function App() {
-    const [mapIndex, setMapIndex] = useState(3)
-    const envMap = useMemo(() => useEnvironment({ files: `./environmentMaps/hdri/${mapsArray[mapIndex]}.exr` }), [mapIndex]);
-    const [loadingMap, setLoadingMap] = useState(false)
 
-    const changeMap = useCallback(() => {
+    const [loadingMap, setLoadingMap] = useState(false)
+    const [mapIndex, setMapIndex] = useState(0)
+
+    const berlin = useEnvironment({ files: './environmentMaps/hdri/berlin.exr' });
+    const garden = useEnvironment({ files: './environmentMaps/hdri/garden.exr' });
+    const metro = useEnvironment({ files: './environmentMaps/hdri/metro.exr' });
+    const road = useEnvironment({ files: './environmentMaps/hdri/road.exr' });
+    
+    const maps = [
+        {name: 'Berlin', map: berlin},
+        {name: 'Garden', map: garden},
+        {name: 'Metro', map: metro},
+        {name: 'Road', map: road}
+    ]
+
+    const changeMap = (name?: string) => {
         setLoadingMap(true)
-        startTransition(() => {
-            setMapIndex((prevIndex) => (prevIndex + 1) % mapsArray.length);
-            setLoadingMap(false)
-        });
-    }, [mapsArray.length]);
+        if (name) {
+            const index = maps.findIndex(map => map.name === name)
+            if (index !== -1) {
+                console.log('Changing map to:', maps[index].name)
+                setMapIndex(index)
+                setLoadingMap(false)
+                return
+            }
+        }
+        const newIndex = (mapIndex + 1) % maps.length
+        console.log('Changing map to:', maps[newIndex].name)
+        setMapIndex(newIndex)
+        setLoadingMap(false)
+    }
 
 
 
     return (
        <>
-            <button onClick={changeMap} className='bg-teal-400 hover:bg-teal-500 transition-all text-white rounded-lg absolute z-50 p-4 m-4 shadow-lg'>Change Map</button>
-                {loadingMap && <Loading />}
+            <ChangeMap changeMap={changeMap} maps={maps} />
+                    {loadingMap && <Loading />}
             <Canvas>
                 <OrbitControls />
-                <Suspense fallback={null}>
+                <Suspense fallback={<p>Loading...</p>}>
                 <EffectComposer>
                     <Noise 
                             blendFunction={ BlendFunction.SOFT_LIGHT }
                     />
                     <Environment
                         background
-                        map={envMap}
+                        map={maps[mapIndex].map}
                     />
                 </EffectComposer>
                 </Suspense>
