@@ -11,6 +11,7 @@ import { Environment, useEnvironment, OrbitControls } from '@react-three/drei'
 
 export default function App() {
     const [noiseOpacity, setNoiseOpacity] = useState(0.1)
+    const [bloomOpacity, setBloomOpacity] = useState(0.1)
 
     const [loadingMap, setLoadingMap] = useState(false)
     const [mapIndex, setMapIndex] = useState(0)
@@ -52,7 +53,7 @@ export default function App() {
 
             {/* UI */}
             <ChangeMap changeMap={changeMap} maps={maps} />
-            <ChangeEffects noiseOpacity={noiseOpacity} setNoiseOpacity={setNoiseOpacity} />
+            <ChangeEffects noiseOpacity={noiseOpacity} setNoiseOpacity={setNoiseOpacity} bloomOpacity={bloomOpacity} setBloomOpacity={setBloomOpacity} />
 
             {/* Scene */}
             <Canvas>
@@ -60,7 +61,7 @@ export default function App() {
                 <Suspense fallback={<p>Loading...</p>}>
                 <EffectComposer>
                     <Noise blendFunction={ BlendFunction.SOFT_LIGHT } opacity={noiseOpacity} />
-                    <Bloom luminanceThreshold={0} luminanceSmoothing={0.9} height={300} />
+                    <Bloom luminanceThreshold={0.1} luminanceSmoothing={0.9} height={300} opacity={bloomOpacity} />
                     <Environment
                         background
                         map={maps[mapIndex].map}
