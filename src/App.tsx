@@ -6,6 +6,7 @@ import { ChangeMap, ChangeEffects } from './components/ui';
 
 
 import Loading from './components/Loading';
+import EnvironmentMap from './components/EnvironmentMap';
 
 import { Environment, useEnvironment, OrbitControls } from '@react-three/drei'
 
@@ -17,29 +18,12 @@ export default function App() {
 
     const [loadingMap, setLoadingMap] = useState(true)
     const [mapIndex, setMapIndex] = useState(0)
-    
-    // Load maps
-    const berlin = useEnvironment({ files: './environmentMaps/hdri/berlin.exr' });
-    const garden = useEnvironment({ files: './environmentMaps/hdri/garden.exr' });
-    const metro = useEnvironment({ files: './environmentMaps/hdri/metro.exr' });
-    const road = useEnvironment({ files: './environmentMaps/hdri/road.exr' })
-    
     const maps = [
-        {name: 'Berlin', map: berlin, blendFunction: BlendFunction.SOFT_LIGHT},
-        {name: 'Garden', map: garden, blendFunction: BlendFunction.SOFT_LIGHT},
-        {name: 'Metro', map: metro, blendFunction: BlendFunction.HARD_LIGHT},
-        {name: 'Road', map: road, blendFunction: BlendFunction.SOFT_LIGHT}
+        {name: 'Berlin', map: './environmentMaps/hdri/berlin.exr', blendFunction: BlendFunction.SOFT_LIGHT},
+        {name: 'Garden', map: './environmentMaps/hdri/garden.exr', blendFunction: BlendFunction.SOFT_LIGHT},
+        {name: 'Metro', map: './environmentMaps/hdri/metro.exr', blendFunction: BlendFunction.HARD_LIGHT},
+        {name: 'Road', map: './environmentMaps/hdri/road.exr', blendFunction: BlendFunction.SOFT_LIGHT}
     ]
-    
-    useEffect(() => {
-        if (maps.every(map => map.map)) {
-            console.log('Maps loaded')
-            setLoadingMap(false)
-        } else {
-            console.log('Maps loading')
-            setLoadingMap(true)
-        }
-    }, [maps])
 
     const changeMap = (name?: string) => {
         setLoadingMap(true)
@@ -48,18 +32,13 @@ export default function App() {
             if (index !== -1) {
                 console.log('Changing map to:', maps[index].name)
                 setMapIndex(index)
-                setLoadingMap(false)
+
                 return
             }
         }
         const newIndex = (mapIndex + 1) % maps.length
         console.log('Changing map to:', maps[newIndex].name)
         setMapIndex(newIndex)
-        setLoadingMap(false)
-    }
-
-    if (loadingMap) {
-        return <Loading />
     }
 
     return (
@@ -77,22 +56,19 @@ export default function App() {
                 setContrast={setContrast}    
             />
 
-            {/* Scene */}
-            <Canvas>
-                <OrbitControls />
-                <Suspense fallback={<p>Loading...</p>}>
-                        <Environment
-                            background
-                            map={maps[mapIndex].map}
-                        />
-                </Suspense>
-                    <EffectComposer>
-                        <BrightnessContrast brightness={brightness} contrast={contrast} />
-                        <Bloom luminanceThreshold={0} luminanceSmoothing={0.9} height={300} opacity={bloomOpacity} />
-                        <Noise blendFunction={maps[mapIndex].blendFunction} opacity={noiseOpacity} />
-            
-                    </EffectComposer>
-            </Canvas>
+            <Suspense fallback={<Loading />}>
+                {/* Scene */}
+                <Canvas>
+                    <OrbitControls />
+                        <EnvironmentMap maps={maps} mapIndex={mapIndex} setLoadingMap={setLoadingMap} />
+                        <EffectComposer>
+                            <BrightnessContrast brightness={brightness} contrast={contrast} />
+                            <Bloom luminanceThreshold={0} luminanceSmoothing={0.9} height={300} opacity={bloomOpacity} />
+                            <Noise blendFunction={maps[mapIndex].blendFunction} opacity={noiseOpacity} />
+                
+                        </EffectComposer>
+                </Canvas>
+            </Suspense>
 
        </>
     );
