@@ -1,8 +1,8 @@
 import React, { useEffect, useState, Suspense, startTransition, useMemo, useCallback } from 'react';
 import { Canvas, useFrame } from "@react-three/fiber";
-import { EffectComposer, Glitch, Noise } from '@react-three/postprocessing'
+import { EffectComposer, Glitch, Noise, Bloom } from '@react-three/postprocessing'
 import { GlitchMode, BlendFunction } from 'postprocessing'
-import { ChangeMap } from './components/ui';
+import { ChangeMap, ChangeEffects } from './components/ui';
 
 
 import Loading from './components/Loading';
@@ -10,6 +10,7 @@ import Loading from './components/Loading';
 import { Environment, useEnvironment, OrbitControls } from '@react-three/drei'
 
 export default function App() {
+    const [noiseOpacity, setNoiseOpacity] = useState(0.1)
 
     const [loadingMap, setLoadingMap] = useState(false)
     const [mapIndex, setMapIndex] = useState(0)
@@ -47,15 +48,19 @@ export default function App() {
 
     return (
        <>
+            {loadingMap && <Loading />}
+
+            {/* UI */}
             <ChangeMap changeMap={changeMap} maps={maps} />
-                    {loadingMap && <Loading />}
+            <ChangeEffects noiseOpacity={noiseOpacity} setNoiseOpacity={setNoiseOpacity} />
+
+            {/* Scene */}
             <Canvas>
                 <OrbitControls />
                 <Suspense fallback={<p>Loading...</p>}>
                 <EffectComposer>
-                    <Noise 
-                            blendFunction={ BlendFunction.SOFT_LIGHT }
-                    />
+                    <Noise blendFunction={ BlendFunction.SOFT_LIGHT } opacity={noiseOpacity} />
+                    <Bloom luminanceThreshold={0} luminanceSmoothing={0.9} height={300} />
                     <Environment
                         background
                         map={maps[mapIndex].map}
@@ -63,6 +68,7 @@ export default function App() {
                 </EffectComposer>
                 </Suspense>
             </Canvas>
+
        </>
     );
 }
