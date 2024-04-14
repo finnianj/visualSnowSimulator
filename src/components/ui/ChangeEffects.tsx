@@ -2,14 +2,22 @@ type ChangeEffectsProps = {
     noiseOpacity: number,
     setNoiseOpacity: (value: number) => void,
     bloomOpacity: number,
-    setBloomOpacity: (value: number) => void
+    setBloomOpacity: (value: number) => void,
+    brightness: number,
+    setBrightness: (value: number) => void,
+    contrast: number,
+    setContrast: (value: number) => void
 }
 
 export const ChangeEffects = ({
     noiseOpacity,
     setNoiseOpacity, 
     bloomOpacity,
-    setBloomOpacity
+    setBloomOpacity,
+    brightness,
+    setBrightness,
+    contrast,
+    setContrast
 }: ChangeEffectsProps) => {
 
     return (
@@ -37,6 +45,30 @@ export const ChangeEffects = ({
                     value={bloomOpacity} 
                     onChange={(e) => setBloomOpacity(parseFloat(e.target.value))} 
                     className='w-fit hover:cursor-grab active:cursor-grabbing transition-all text-white accent-teal-600' 
+                />
+
+                {/* Brightness */}
+                <div className='text-white'>Brightness</div>
+                <input 
+                    type="range" 
+                    min="0" 
+                    max="1" 
+                    step="0.01" 
+                    value={brightness} 
+                    onChange={(e) => setBrightness(parseFloat(e.target.value))} 
+                    className='w-fit hover:cursor-grab active:cursor-grabbing transition-all text-white accent-teal-600'
+                />
+
+                {/* Contrast */}
+                <div className='text-white'>Contrast</div>
+                <input 
+                    type="range" 
+                    min="0" 
+                    max="1" 
+                    step="0.01" 
+                    value={contrast} 
+                    onChange={(e) => setContrast(parseFloat(e.target.value))} 
+                    className='w-fit hover:cursor-grab active:cursor-grabbing transition-all text-white accent-teal-600'
                 />
 
             </div>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState, Suspense, startTransition, useMemo, useCallback } from 'react';
 import { Canvas, useFrame } from "@react-three/fiber";
-import { EffectComposer, Glitch, Noise, Bloom } from '@react-three/postprocessing'
+import { EffectComposer, Glitch, Noise, Bloom, BrightnessContrast, LensFlare } from '@react-three/postprocessing'
 import { GlitchMode, BlendFunction } from 'postprocessing'
 import { ChangeMap, ChangeEffects } from './components/ui';
 
@@ -12,6 +12,8 @@ import { Environment, useEnvironment, OrbitControls } from '@react-three/drei'
 export default function App() {
     const [noiseOpacity, setNoiseOpacity] = useState(0.1)
     const [bloomOpacity, setBloomOpacity] = useState(0.1)
+    const [brightness, setBrightness] = useState(0)
+    const [contrast, setContrast] = useState(0)
 
     const [loadingMap, setLoadingMap] = useState(false)
     const [mapIndex, setMapIndex] = useState(0)
@@ -22,10 +24,10 @@ export default function App() {
     const road = useEnvironment({ files: './environmentMaps/hdri/road.exr' });
     
     const maps = [
-        {name: 'Berlin', map: berlin},
-        {name: 'Garden', map: garden},
-        {name: 'Metro', map: metro},
-        {name: 'Road', map: road}
+        {name: 'Berlin', map: berlin, bestSnowType: 'SOFT_LIGHT'},
+        {name: 'Garden', map: garden, bestSnowType: 'HARD_LIGHT'},
+        {name: 'Metro', map: metro, bestSnowType: 'HARD_LIGHT'},
+        {name: 'Road', map: road, bestSnowType: 'SOFT_LIGHT'}
     ]
 
     const changeMap = (name?: string) => {
@@ -53,19 +55,30 @@ export default function App() {
 
             {/* UI */}
             <ChangeMap changeMap={changeMap} maps={maps} />
-            <ChangeEffects noiseOpacity={noiseOpacity} setNoiseOpacity={setNoiseOpacity} bloomOpacity={bloomOpacity} setBloomOpacity={setBloomOpacity} />
+            <ChangeEffects 
+                noiseOpacity={noiseOpacity} 
+                setNoiseOpacity={setNoiseOpacity} 
+                bloomOpacity={bloomOpacity} 
+                setBloomOpacity={setBloomOpacity} 
+                brightness={brightness}
+                setBrightness={setBrightness}
+                contrast={contrast}
+                setContrast={setContrast}    
+            />
 
             {/* Scene */}
             <Canvas>
                 <OrbitControls />
                 <Suspense fallback={<p>Loading...</p>}>
                 <EffectComposer>
-                    <Noise blendFunction={ BlendFunction.SOFT_LIGHT } opacity={noiseOpacity} />
-                    <Bloom luminanceThreshold={0.1} luminanceSmoothing={0.9} height={300} opacity={bloomOpacity} />
                     <Environment
                         background
                         map={maps[mapIndex].map}
                     />
+                    <BrightnessContrast brightness={brightness} contrast={contrast} />
+                    <Bloom luminanceThreshold={0} luminanceSmoothing={0.9} height={300} opacity={bloomOpacity} />
+                    <Noise blendFunction={maps[mapIndex].bestSnowType === 'SOFT_LIGHT' ? BlendFunction.SOFT_LIGHT : BlendFunction.HARD_LIGHT} opacity={noiseOpacity} />
+        
                 </EffectComposer>
                 </Suspense>
             </Canvas>
