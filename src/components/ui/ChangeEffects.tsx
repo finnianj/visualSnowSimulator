@@ -36,7 +36,7 @@ export const ChangeEffects = ({
                 />
                 
                 {/* Bloom opacity */}
-                <div className='text-white'>Glare</div>
+                <div className='text-white'>Bloom</div>
                 <input 
                     type="range" 
                     min="0" 
