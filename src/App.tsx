@@ -1,14 +1,13 @@
 import React, { useEffect, useState, Suspense, startTransition, useMemo, useCallback } from 'react';
 import { Canvas, useFrame } from "@react-three/fiber";
-import { EffectComposer, Glitch, Noise, Bloom, BrightnessContrast, LensFlare } from '@react-three/postprocessing'
-import { GlitchMode, BlendFunction } from 'postprocessing'
+import { EffectComposer, Noise, Bloom, BrightnessContrast, LensFlare } from '@react-three/postprocessing'
+import { BlendFunction } from 'postprocessing'
 import { ChangeMap, ChangeEffects } from './components/ui';
 
 
 import Loading from './components/Loading';
-import EnvironmentMap from './components/EnvironmentMap';
-
-import { Environment, useEnvironment, OrbitControls } from '@react-three/drei'
+import { FallbackBackground } from './components/FallbackBackground';
+import { Environment, OrbitControls } from '@react-three/drei'
 import { loadExrTexture } from './components/helpers/loadExrTexture';
 
 import { Texture } from 'three';
@@ -76,6 +75,7 @@ export default function App() {
        <>
             {/* Loading */}
             {loadingMap && <Loading />}
+            {!mapTexture && <FallbackBackground />}
 
             {/* UI */}
             <ChangeMap changeMap={changeMap} maps={maps} />
@@ -97,9 +97,8 @@ export default function App() {
                     {mapTexture && <Environment map={mapTexture} background />}
                     <EffectComposer>
                         <BrightnessContrast brightness={brightness} contrast={contrast} />
-                        <Bloom luminanceThreshold={0} luminanceSmoothing={0.1} height={300} opacity={bloomOpacity} />
+                        <Bloom luminanceThreshold={0.4} luminanceSmoothing={0.1} height={300} opacity={bloomOpacity} />
                         <Noise blendFunction={maps[mapIndex].blendFunction} opacity={noiseOpacity} />
-            
                     </EffectComposer>
                 </Canvas>
             </Suspense>
