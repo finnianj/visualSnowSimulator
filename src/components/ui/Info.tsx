@@ -6,7 +6,7 @@ export const Info = () => {
 
 
     return (
-        <div className='fixed bottom-4 left-4 z-20 bg-slate-500 text-white rounded-full p-4'>
+        <div onClick={() => setShowInfo(true)} className='fixed bottom-4 left-4 z-20 bg-teal-500 text-white rounded-full p-4 shadow-md hover:cursor-pointer hover:bg-teal-600 transition-all'>
             Info
         </div>
     )
