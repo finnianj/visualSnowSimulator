@@ -2,7 +2,7 @@ import React, { useEffect, useState, Suspense, startTransition, useMemo, useCall
 import { Canvas, useFrame } from "@react-three/fiber";
 import { EffectComposer, Noise, Bloom, BrightnessContrast, LensFlare } from '@react-three/postprocessing'
 import { BlendFunction } from 'postprocessing'
-import { ChangeMap, ChangeEffects } from './components/ui';
+import { ChangeMap, ChangeEffects, Info } from './components/ui';
 
 
 import Loading from './components/Loading';
@@ -29,8 +29,8 @@ export default function App() {
     ]);
 
     useEffect(() => {
+        // Loading the maps
         const loadMap = async () => {
-            setLoadingMap(true)
             const map = maps[mapIndex];
             if (map.texture) {
                 console.log('Map already loaded:', map.texture);
@@ -39,6 +39,7 @@ export default function App() {
                 return
             }
             console.log('Loading map:', map.map);
+            setLoadingMap(true)
             const texture = await loadExrTexture(map.map);
             setMapTexture(texture);
             setMaps(maps.map((m, i) => {
@@ -59,15 +60,9 @@ export default function App() {
         setLoadingMap(true)
         if (name) {
             const index = maps.findIndex(map => map.name === name)
-            if (index !== -1) {
-                console.log('Changing map to:', maps[index].name)
-                setMapIndex(index)
-
-                return
-            }
+            if (index !== -1) return
         }
         const newIndex = (mapIndex + 1) % maps.length
-        console.log('Changing map to:', maps[newIndex].name)
         setMapIndex(newIndex)
     }
 
@@ -89,6 +84,7 @@ export default function App() {
                 contrast={contrast}
                 setContrast={setContrast}    
             />
+            <Info />
 
             <Suspense fallback={<Loading />}>
                 {/* Scene */}
