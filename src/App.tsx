@@ -1,53 +1,104 @@
 import React, { useEffect, useState, Suspense, startTransition, useMemo, useCallback } from 'react';
 import { Canvas, useFrame } from "@react-three/fiber";
-import { EffectComposer, Glitch, Noise } from '@react-three/postprocessing'
-import { GlitchMode, BlendFunction } from 'postprocessing'
+import { EffectComposer, Noise, Bloom, BrightnessContrast, LensFlare } from '@react-three/postprocessing'
+import { BlendFunction } from 'postprocessing'
+import { ChangeMap, ChangeEffects, Info } from './components/ui';
 
 
 import Loading from './components/Loading';
+import { FallbackBackground } from './components/FallbackBackground';
+import { Environment, OrbitControls } from '@react-three/drei'
+import { loadExrTexture } from './components/helpers/loadExrTexture';
 
-import { Environment, useEnvironment, OrbitControls } from '@react-three/drei'
-
-const mapsArray = [
-    'berlin', 
-    'garden',
-    'metro',
-    'road'
-]
+import { Texture } from 'three';
 
 export default function App() {
-    const [mapIndex, setMapIndex] = useState(3)
-    const envMap = useMemo(() => useEnvironment({ files: `./environmentMaps/hdri/${mapsArray[mapIndex]}.exr` }), [mapIndex]);
-    const [loadingMap, setLoadingMap] = useState(false)
+    const [noiseOpacity, setNoiseOpacity] = useState(0.1)
+    const [bloomOpacity, setBloomOpacity] = useState(0.1)
+    const [brightness, setBrightness] = useState(0)
+    const [contrast, setContrast] = useState(0)
 
-    const changeMap = useCallback(() => {
-        setLoadingMap(true)
-        startTransition(() => {
-            setMapIndex((prevIndex) => (prevIndex + 1) % mapsArray.length);
+    const [loadingMap, setLoadingMap] = useState(true)
+    const [mapTexture, setMapTexture] = useState<Texture | undefined>(undefined);
+    const [mapIndex, setMapIndex] = useState(0)
+    const [maps, setMaps] = useState<any[]>([
+        {name: 'Berlin', map: './environmentMaps/hdri/berlin.exr', blendFunction: BlendFunction.SOFT_LIGHT, texture: undefined},
+        {name: 'Garden', map: './environmentMaps/hdri/garden.exr', blendFunction: BlendFunction.SOFT_LIGHT, texture: undefined},
+        {name: 'Metro', map: './environmentMaps/hdri/metro.exr', blendFunction: BlendFunction.HARD_LIGHT, texture: undefined},
+        {name: 'Road', map: './environmentMaps/hdri/road.exr', blendFunction: BlendFunction.SOFT_LIGHT, texture: undefined}
+    ]);
+
+    useEffect(() => {
+        // Loading the maps
+        const loadMap = async () => {
+            const map = maps[mapIndex];
+            if (map.texture) {
+                console.log('Map already loaded:', map.texture);
+                setMapTexture(map.texture);
+                setLoadingMap(false)
+                return
+            }
+            console.log('Loading map:', map.map);
+            setLoadingMap(true)
+            const texture = await loadExrTexture(map.map);
+            setMapTexture(texture);
+            setMaps(maps.map((m, i) => {
+                if (i === mapIndex) {
+                    return {...m, texture}
+                }
+                return m
+            }));
+            console.log('Map loaded:', texture);
             setLoadingMap(false)
+        }
+        startTransition(() => {
+            loadMap();
         });
-    }, [mapsArray.length]);
+    }, [mapIndex]);
 
-
+    const changeMap = (name?: string) => {
+        setLoadingMap(true)
+        if (name) {
+            const index = maps.findIndex(map => map.name === name)
+            if (index !== -1) return
+        }
+        const newIndex = (mapIndex + 1) % maps.length
+        setMapIndex(newIndex)
+    }
 
     return (
        <>
-            <button onClick={changeMap} className='bg-teal-400 hover:bg-teal-500 transition-all text-white rounded-lg absolute z-50 p-4 m-4 shadow-lg'>Change Map</button>
-                {loadingMap && <Loading />}
-            <Canvas>
-                <OrbitControls />
-                <Suspense fallback={null}>
-                <EffectComposer>
-                    <Noise 
-                            blendFunction={ BlendFunction.SOFT_LIGHT }
-                    />
-                    <Environment
-                        background
-                        map={envMap}
-                    />
-                </EffectComposer>
-                </Suspense>
-            </Canvas>
+            {/* Loading */}
+            {loadingMap && <Loading />}
+            {!mapTexture && <FallbackBackground />}
+
+            {/* UI */}
+            <ChangeMap changeMap={changeMap} maps={maps} />
+            <ChangeEffects 
+                noiseOpacity={noiseOpacity} 
+                setNoiseOpacity={setNoiseOpacity} 
+                bloomOpacity={bloomOpacity} 
+                setBloomOpacity={setBloomOpacity} 
+                brightness={brightness}
+                setBrightness={setBrightness}
+                contrast={contrast}
+                setContrast={setContrast}    
+            />
+            <Info />
+
+            <Suspense fallback={<Loading />}>
+                {/* Scene */}
+                <Canvas>
+                    <OrbitControls />
+                    {mapTexture && <Environment map={mapTexture} background />}
+                    <EffectComposer>
+                        <BrightnessContrast brightness={brightness} contrast={contrast} />
+                        <Bloom luminanceThreshold={0.4} luminanceSmoothing={0.1} height={300} opacity={bloomOpacity} />
+                        <Noise blendFunction={maps[mapIndex].blendFunction} opacity={noiseOpacity} />
+                    </EffectComposer>
+                </Canvas>
+            </Suspense>
+
        </>
     );
 }
