@@ -22,20 +22,32 @@ export default function App() {
     const [loadingMap, setLoadingMap] = useState(true)
     const [mapTexture, setMapTexture] = useState<Texture | undefined>(undefined);
     const [mapIndex, setMapIndex] = useState(0)
-    const maps = [
-        {name: 'Berlin', map: './environmentMaps/hdri/berlin.exr', blendFunction: BlendFunction.SOFT_LIGHT},
-        {name: 'Garden', map: './environmentMaps/hdri/garden.exr', blendFunction: BlendFunction.SOFT_LIGHT},
-        {name: 'Metro', map: './environmentMaps/hdri/metro.exr', blendFunction: BlendFunction.HARD_LIGHT},
-        {name: 'Road', map: './environmentMaps/hdri/road.exr', blendFunction: BlendFunction.SOFT_LIGHT}
-    ]
+    const [maps, setMaps] = useState<any[]>([
+        {name: 'Berlin', map: './environmentMaps/hdri/berlin.exr', blendFunction: BlendFunction.SOFT_LIGHT, texture: undefined},
+        {name: 'Garden', map: './environmentMaps/hdri/garden.exr', blendFunction: BlendFunction.SOFT_LIGHT, texture: undefined},
+        {name: 'Metro', map: './environmentMaps/hdri/metro.exr', blendFunction: BlendFunction.HARD_LIGHT, texture: undefined},
+        {name: 'Road', map: './environmentMaps/hdri/road.exr', blendFunction: BlendFunction.SOFT_LIGHT, texture: undefined}
+    ]);
 
     useEffect(() => {
         const loadMap = async () => {
             setLoadingMap(true)
             const map = maps[mapIndex];
+            if (map.texture) {
+                console.log('Map already loaded:', map.texture);
+                setMapTexture(map.texture);
+                setLoadingMap(false)
+                return
+            }
             console.log('Loading map:', map.map);
             const texture = await loadExrTexture(map.map);
             setMapTexture(texture);
+            setMaps(maps.map((m, i) => {
+                if (i === mapIndex) {
+                    return {...m, texture}
+                }
+                return m
+            }));
             console.log('Map loaded:', texture);
             setLoadingMap(false)
         }
@@ -44,21 +56,21 @@ export default function App() {
         });
     }, [mapIndex]);
 
-    // const changeMap = (name?: string) => {
-    //     setLoadingMap(true)
-    //     if (name) {
-    //         const index = maps.findIndex(map => map.name === name)
-    //         if (index !== -1) {
-    //             console.log('Changing map to:', maps[index].name)
-    //             setMapIndex(index)
+    const changeMap = (name?: string) => {
+        setLoadingMap(true)
+        if (name) {
+            const index = maps.findIndex(map => map.name === name)
+            if (index !== -1) {
+                console.log('Changing map to:', maps[index].name)
+                setMapIndex(index)
 
-    //             return
-    //         }
-    //     }
-    //     const newIndex = (mapIndex + 1) % maps.length
-    //     console.log('Changing map to:', maps[newIndex].name)
-    //     setMapIndex(newIndex)
-    // }
+                return
+            }
+        }
+        const newIndex = (mapIndex + 1) % maps.length
+        console.log('Changing map to:', maps[newIndex].name)
+        setMapIndex(newIndex)
+    }
 
     return (
        <>
@@ -66,8 +78,8 @@ export default function App() {
             {loadingMap && <Loading />}
 
             {/* UI */}
-            {/* <ChangeMap changeMap={changeMap} maps={maps} /> */}
-            {/* <ChangeEffects 
+            <ChangeMap changeMap={changeMap} maps={maps} />
+            <ChangeEffects 
                 noiseOpacity={noiseOpacity} 
                 setNoiseOpacity={setNoiseOpacity} 
                 bloomOpacity={bloomOpacity} 
@@ -76,7 +88,7 @@ export default function App() {
                 setBrightness={setBrightness}
                 contrast={contrast}
                 setContrast={setContrast}    
-            /> */}
+            />
 
             <Suspense fallback={<Loading />}>
                 {/* Scene */}
