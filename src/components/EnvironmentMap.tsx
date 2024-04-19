@@ -1,19 +1,37 @@
-import { Environment, useEnvironment } from '@react-three/drei'
-import { Suspense } from 'react'
+import { startTransition, useEffect, useState } from 'react';
+import { Environment, useEnvironment } from '@react-three/drei';
+import { loadExrTexture } from './helpers/loadExrTexture';
+
+import { Texture } from 'three';
 
 type EnvironmentMapProps = {
-    setLoadingMap: (loading: boolean) => void
-    maps: any[],
-    mapIndex: number
-}
+  map: any,
+};
 
-export default function EnvironmentMap({ setLoadingMap, maps, mapIndex }: EnvironmentMapProps) {
-    console.log('Loading map:', maps[mapIndex].name)
+const EnvironmentMap = ({ map }: EnvironmentMapProps) => {
+    const [mapTexture, setMapTexture] = useState<Texture | undefined>(undefined);
+    const [isLoading, setLoading] = useState(true);  // Add a loading state
+    
+    useEffect(() => {
+        const loadMap = async () => {
+            console.log('Loading map:', map.map);
+            const texture = await loadExrTexture(map.map);
+            setMapTexture(texture);
+            console.log('Map loaded:', texture);
+        }
+        startTransition(() => {
+            loadMap();
+        });
+    }, [map]);
+
+    if (!mapTexture) return null;
 
     return (
-            <Environment
-                files={maps[mapIndex].map}
-                background
-            />
+        <Environment
+            map={mapTexture}
+            background
+        />
     );
-}
+};
+
+export default EnvironmentMap;
