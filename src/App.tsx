@@ -97,7 +97,7 @@ export default function App() {
                     {mapTexture && <Environment map={mapTexture} background />}
                     <EffectComposer>
                         <BrightnessContrast brightness={brightness} contrast={contrast} />
-                        <Bloom luminanceThreshold={0} luminanceSmoothing={0.9} height={300} opacity={bloomOpacity} />
+                        <Bloom luminanceThreshold={0} luminanceSmoothing={0.1} height={300} opacity={bloomOpacity} />
                         <Noise blendFunction={maps[mapIndex].blendFunction} opacity={noiseOpacity} />
             
                     </EffectComposer>
