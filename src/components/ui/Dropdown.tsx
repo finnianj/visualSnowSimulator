@@ -1,25 +1,20 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 
 import { FaChevronDown, FaChevronLeft } from 'react-icons/fa'
-import { getChildPositioning, getContainerPositioning } from '../helpers/positioning'
 
 type DropdownProps = {
     children: React.ReactNode,
     title: string,
-    side: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left',
-    classes?: string,
+    containerPosition?: string,
+    childPosition?: string,
     onTitleClick?: () => void
 }
 
-export const Dropdown = ({ children, title, side, classes, onTitleClick }: DropdownProps) => {
+export const Dropdown = ({ children, title, childPosition, containerPosition, onTitleClick }: DropdownProps) => {
     const [showList, setShowList] = useState(false)
 
-    const childPositioning = getChildPositioning(side)
-    const containerPositioning = getContainerPositioning(side)
-    if (!childPositioning || !containerPositioning) return null
-
     return (
-        <div className={`absolute z-20 ${containerPositioning} w-fit`}>
+        <div className={`absolute z-20 ${containerPosition ? containerPosition : ''} w-fit`}>
             <div className='relative flex bg-teal-400 h-fit rounded-lg shadow-mg justify-center items-center text-white'>
                 <DropdownHeader 
                     title={title} 
@@ -35,7 +30,7 @@ export const Dropdown = ({ children, title, side, classes, onTitleClick }: Dropd
                     }
                     />
 
-                <div className={`scale-0 ${showList ? 'scale-100' : ''} ${childPositioning} ${classes} absolute text-sm bg-teal-400 transition-all transform overflow-hidden w-full rounded-lg shadow-lg`}>
+                <div className={`scale-0 ${showList ? 'scale-100' : ''} ${childPosition ? childPosition : ''} absolute text-sm bg-teal-400 transition-all transform overflow-hidden w-full rounded-lg shadow-lg`}>
                     {children}
                 </div>
 

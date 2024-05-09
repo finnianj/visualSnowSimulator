@@ -35,7 +35,6 @@ export default function App() {
        <>
             {/* Loading */}
             <LoadingModal />
-
             <AudioProvider>
                 {/* Audio */}
                 <AudioPlayer />

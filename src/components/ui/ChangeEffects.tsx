@@ -25,7 +25,7 @@ export const ChangeEffects = ({
 }: ChangeEffectsProps) => {
 
     return (
-        <Dropdown title='Change Effects' side='top-left' classes={'space-y-4 p-4'}>
+        <Dropdown title='Change Effects' childPosition={'origin-top-left top-12 left-0 space-y-4 p-4'} containerPosition='left-4 top-4'>
             <>
                 {/* Snow opacity */}
                 <RangeInput 
