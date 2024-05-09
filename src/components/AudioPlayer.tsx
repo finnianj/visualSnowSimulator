@@ -72,7 +72,7 @@ export const AudioPlayer: React.FC = () => {
     return (
         <div>
             <audio ref={ambientAudioRef} className='invisible'>
-                <source src={ambientAudioSrc} type="audio/mpeg" />
+                <source src={`${ambientAudioRef}`} type="audio/mpeg" />
                 Your browser does not support the audio element.
             </audio>
             <audio ref={effectAudioRef} className='invisible'>

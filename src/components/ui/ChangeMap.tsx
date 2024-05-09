@@ -22,6 +22,7 @@ export const ChangeMap = ({changeMap, currentMap, maps}: ChangeMapProps) => {
 
         if (!newMap) return;
         const newAmbientAudio = newMap.audio || '';
+        console.log('Setting ambient audio to: ', newAmbientAudio);
         setAmbientAudioSrc(newAmbientAudio);
         changeMap(newMap);
     }

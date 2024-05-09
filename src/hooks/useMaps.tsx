@@ -7,7 +7,7 @@ import { MapType } from '../types';
 import { loadHdrTexture } from '../components/helpers/loadHdrTexture';
 import { FallbackBackground } from '../components/FallbackBackground';
 
-import { defaultMaps } from '../components/maps/maps';
+import { defaultMaps } from '../components/maps/defaultMaps';
 
 type useMapsType = {
     setIsLoading: (value: boolean) => void;
