@@ -4,6 +4,7 @@ import { Dropdown } from './shared/Dropdown'
 import { AudioControls } from '../audio/AudioControls'
 import { CheckBoxInput } from './shared/inputs/CheckboxInput'
 import { Brightness } from './effects/Brightness/Brightness'
+import { is } from '@react-three/fiber/dist/declarations/src/core/utils'
 
 type ChangeEffectsProps = {
     noiseOpacity: number,
@@ -12,8 +13,10 @@ type ChangeEffectsProps = {
     setBloomOpacity: (value: number) => void,
     brightness: number,
     setBrightness: (value: number) => void,
-    contrast: number,
-    setContrast: (value: number) => void,
+    isFlickering: boolean,
+    setIsFlickering: (value: boolean) => void,
+    flickerStrength: number,
+    setFlickerStrength: (value: number) => void,
 }
 
 export const ChangeEffects = ({
@@ -23,8 +26,10 @@ export const ChangeEffects = ({
     setBloomOpacity,
     brightness,
     setBrightness,
-    contrast,
-    setContrast,
+    isFlickering,
+    setIsFlickering,
+    flickerStrength,
+    setFlickerStrength
 }: ChangeEffectsProps) => {
 
 
@@ -53,7 +58,14 @@ export const ChangeEffects = ({
                 
 
                 {/* Brightness */}
-                <Brightness brightness={brightness} setBrightness={setBrightness} />
+                <Brightness 
+                    brightness={brightness} 
+                    setBrightness={setBrightness} 
+                    isFlickering={isFlickering}
+                    setIsFlickering={setIsFlickering}
+                    flickerStrength={flickerStrength}
+                    setFlickerStrength={setFlickerStrength}
+                />
                 
 
                 {/* Contrast */}

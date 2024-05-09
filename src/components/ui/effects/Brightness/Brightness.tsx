@@ -4,14 +4,15 @@ import { RangeInput, CheckBoxInput } from '../../shared/inputs';
 type BrightnessProps = {
     brightness: number;
     setBrightness: (value: number) => void;
+    isFlickering: boolean;
+    setIsFlickering: (value: boolean) => void;
+    flickerStrength: number;
+    setFlickerStrength: (value: number) => void;
 }
 
-export const Brightness = ({brightness, setBrightness}: BrightnessProps) => {
-    const [isFlickering, setIsFlickering] = useState<boolean>(false)
+export const Brightness = ({ brightness, setBrightness, isFlickering, setIsFlickering, flickerStrength, setFlickerStrength }: BrightnessProps) => {
     const flickerInterval = 20
-    const [flickerStrength, setFlickerStrength] = useState<number>(0)
-
-
+    
     // If isFlickering is true, randomly modulate the brightness by 0.01 every 100ms
     useEffect(() => {
         if (isFlickering) {

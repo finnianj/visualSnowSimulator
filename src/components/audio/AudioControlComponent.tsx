@@ -26,7 +26,7 @@ export const AudioControlComponent = ({title, isPlaying, setIsPlaying, volume, s
                     name={'Volume'}
                     min={0}
                     max={1}
-                    step={0.1}
+                    step={0.01}
                     value={volume}
                     onChange={(e) => setVolume(parseFloat(e.target.value))}
                 />

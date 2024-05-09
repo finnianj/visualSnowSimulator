@@ -27,8 +27,10 @@ export default function App() {
         setBloomOpacity, 
         brightness, 
         setBrightness, 
-        contrast, 
-        setContrast 
+        isFlickering,
+        setIsFlickering,
+        flickerStrength,
+        setFlickerStrength,
     } = useVisualEffects();
     
     return (
@@ -52,8 +54,10 @@ export default function App() {
                     setBloomOpacity={setBloomOpacity} 
                     brightness={brightness}
                     setBrightness={setBrightness}
-                    contrast={contrast}
-                    setContrast={setContrast}   
+                    isFlickering={isFlickering}
+                    setIsFlickering={setIsFlickering}
+                    flickerStrength={flickerStrength}
+                    setFlickerStrength={setFlickerStrength}
                 />
             </AudioProvider>
 
@@ -66,7 +70,7 @@ export default function App() {
                     <OrbitControls />
                     <BackgroundComponent />
                     <EffectComposer>
-                        <BrightnessContrast brightness={brightness} contrast={contrast} />
+                        <BrightnessContrast brightness={brightness} />
                         <Noise blendFunction={currentMap.blendFunction} opacity={noiseOpacity} />
                         <Bloom luminanceThreshold={0.1} luminanceSmoothing={0.1} height={300} opacity={bloomOpacity} />
                     </EffectComposer>
