@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import { Canvas } from "@react-three/fiber";
 import { EffectComposer, Noise, Bloom, BrightnessContrast, LensFlare } from '@react-three/postprocessing'
-import { ChangeMap, ChangeEffects, Info } from './components/ui';
+import { ChangeMap, ChangeEffects, Info, Donate } from './components/ui';
 
 import { OrbitControls } from '@react-three/drei'
 import { useVisualEffects, useMaps, useLoading } from './hooks';
@@ -62,6 +62,7 @@ export default function App() {
             </AudioProvider>
 
             <Info />
+            <Donate />
             <FallbackBackgroundComponent />
 
             {/* Scene */}
