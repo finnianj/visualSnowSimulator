@@ -6,71 +6,63 @@ import { ChangeMap, ChangeEffects, Info } from './components/ui';
 
 
 import Loading from './components/Loading';
-import { FallbackBackground } from './components/FallbackBackground';
 import { Environment, OrbitControls } from '@react-three/drei'
-import { loadExrTexture } from './components/helpers/loadExrTexture';
 
-import { Texture } from 'three';
+import { loadHdrTexture } from './components/helpers/loadHdrTexture';
+import { FallbackBackground } from './components/FallbackBackground';
+
 
 export default function App() {
     const [noiseOpacity, setNoiseOpacity] = useState(0.1)
     const [bloomOpacity, setBloomOpacity] = useState(0.1)
     const [brightness, setBrightness] = useState(0)
     const [contrast, setContrast] = useState(0)
-
-    const [loadingMap, setLoadingMap] = useState(true)
-    const [mapTexture, setMapTexture] = useState<Texture | undefined>(undefined);
-    const [mapIndex, setMapIndex] = useState(0)
     const [maps, setMaps] = useState<any[]>([
-        {name: 'Berlin', map: './environmentMaps/hdri/berlin.exr', blendFunction: BlendFunction.SOFT_LIGHT, texture: undefined},
-        {name: 'Garden', map: './environmentMaps/hdri/garden.exr', blendFunction: BlendFunction.SOFT_LIGHT, texture: undefined},
-        {name: 'Metro', map: './environmentMaps/hdri/metro.exr', blendFunction: BlendFunction.HARD_LIGHT, texture: undefined},
-        {name: 'Road', map: './environmentMaps/hdri/road.exr', blendFunction: BlendFunction.SOFT_LIGHT, texture: undefined}
+        { name: 'Quarry', id: 'quarry', blendFunction: BlendFunction.SOFT_LIGHT, texture: undefined },
+        { name: 'Metro', id: 'metro', blendFunction: BlendFunction.SOFT_LIGHT, texture: undefined },
     ]);
+    const [currentMap, setCurrentMap] = useState(maps[0])
+    const [mapTexture, setMapTexture] = useState<any>(null)
+    const [isLoading, setIsLoading] = useState(false)
 
     useEffect(() => {
-        // Loading the maps
+        setIsLoading(true)
+        if (currentMap.texture) {
+            setMapTexture(currentMap.texture)
+            setIsLoading(false)
+            return;
+        }
         const loadMap = async () => {
-            const map = maps[mapIndex];
-            if (map.texture) {
-                console.log('Map already loaded:', map.texture);
-                setMapTexture(map.texture);
-                setLoadingMap(false)
-                return
-            }
-            console.log('Loading map:', map.map);
-            setLoadingMap(true)
-            const texture = await loadExrTexture(map.map);
-            setMapTexture(texture);
-            setMaps(maps.map((m, i) => {
-                if (i === mapIndex) {
-                    return {...m, texture}
-                }
-                return m
-            }));
-            console.log('Map loaded:', texture);
-            setLoadingMap(false)
+            await loadHdrTexture(`./environmentMaps/hdri/${currentMap.id}.hdr`).then((texture) => {
+                setMapTexture(texture);
+                // Add texture to maps array
+                setMaps(maps.map(map => {
+                    if(map.name === currentMap.name) {
+                        return {...map, texture}
+                    }
+                    return map;
+                }))
+                setIsLoading(false)
+            })
         }
-        startTransition(() => {
-            loadMap();
-        });
-    }, [mapIndex]);
-
+        loadMap();
+    }, [currentMap])
+    
     const changeMap = (name?: string) => {
-        setLoadingMap(true)
+        let newMap;
         if (name) {
-            const index = maps.findIndex(map => map.name === name)
-            if (index !== -1) return
+            newMap = maps.find(map => map.name === name);
+        } else {
+            const currentIndex = maps.findIndex(map => map.name === currentMap.name);
+            newMap = maps[(currentIndex + 1) % maps.length];
         }
-        const newIndex = (mapIndex + 1) % maps.length
-        setMapIndex(newIndex)
+        setCurrentMap(newMap);
     }
 
     return (
        <>
             {/* Loading */}
-            {loadingMap && <Loading />}
-            {!mapTexture && <FallbackBackground />}
+            {isLoading && <Loading />}
 
             {/* UI */}
             <ChangeMap changeMap={changeMap} maps={maps} />
@@ -85,16 +77,16 @@ export default function App() {
                 setContrast={setContrast}    
             />
             <Info />
-
+            {!mapTexture && <FallbackBackground />}
             <Suspense fallback={<Loading />}>
                 {/* Scene */}
-                <Canvas>
+                <Canvas className='cursor-grab active:cursor-grabbing'>
                     <OrbitControls />
-                    {mapTexture && <Environment map={mapTexture} background />}
+                    {mapTexture && <Environment map={mapTexture} background/>}
                     <EffectComposer>
                         <BrightnessContrast brightness={brightness} contrast={contrast} />
                         <Bloom luminanceThreshold={0.4} luminanceSmoothing={0.1} height={300} opacity={bloomOpacity} />
-                        <Noise blendFunction={maps[mapIndex].blendFunction} opacity={noiseOpacity} />
+                        <Noise blendFunction={currentMap.blendFunction} opacity={noiseOpacity} />
                     </EffectComposer>
                 </Canvas>
             </Suspense>
