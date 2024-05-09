@@ -18,7 +18,7 @@ export const RangeInput = ({name, min, max, step, value, onChange}: RangeInputPr
                 step={step}
                 value={value} 
                 onChange={onChange} 
-                className='w-full hover:cursor-grab active:cursor-grabbing transition-all text-white accent-teal-600' 
+                className='w-1/2 hover:cursor-grab active:cursor-grabbing transition-all text-white accent-teal-600' 
             />
         </div>
     )

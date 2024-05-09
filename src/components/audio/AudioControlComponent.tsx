@@ -11,9 +11,8 @@ type AudioControlComponentProps = {
 export const AudioControlComponent = ({title, isPlaying, setIsPlaying, volume, setVolume}: AudioControlComponentProps) => {
     return (
         <div className='flex flex-col text-xxs'>
-            <p className='text-xs'>{title}</p>
-            <div className='flex items-center justify-between space-x-2 p-2'>
-                <label htmlFor='ambientAudioCheckbox' className='cursor-pointer'>Playing</label>
+            <div className='flex items-center justify-between space-x-2'>
+                <label htmlFor='ambientAudioCheckbox' className='cursor-pointer'>{title}</label>
                 <input 
                     type='checkbox'
                     id='ambientAudioCheckbox'
@@ -22,7 +21,7 @@ export const AudioControlComponent = ({title, isPlaying, setIsPlaying, volume, s
                     className='accent-teal-600 cursor-pointer'
                 />
             </div>
-            <div className='flex items-center justify-between space-x-2 p-2'>
+            <div className='flex items-center justify-between space-x-2'>
                 <RangeInput
                     name={'Volume'}
                     min={0}

@@ -8,8 +8,9 @@ type BrightnessProps = {
 
 export const Brightness = ({brightness, setBrightness}: BrightnessProps) => {
     const [isFlickering, setIsFlickering] = useState<boolean>(false)
-    const [flickerInterval, setFlickerInterval] = useState<number>(0)
+    const flickerInterval = 20
     const [flickerStrength, setFlickerStrength] = useState<number>(0)
+
 
     // If isFlickering is true, randomly modulate the brightness by 0.01 every 100ms
     useEffect(() => {
@@ -20,7 +21,7 @@ export const Brightness = ({brightness, setBrightness}: BrightnessProps) => {
             }, flickerInterval)
             return () => clearInterval(interval)
         }
-    }, [isFlickering, flickerInterval, flickerStrength])
+    }, [isFlickering, flickerStrength])
 
     return (
         <div>
@@ -33,7 +34,7 @@ export const Brightness = ({brightness, setBrightness}: BrightnessProps) => {
                 onChange={(e) => setBrightness(parseFloat(e.target.value))}
             />
             <CheckBoxInput
-                label='Flickering - (Auto modulate brightness)'
+                label='Flickering'
                 checked={isFlickering}
                 onChange={() => setIsFlickering(!isFlickering)}
             />
@@ -44,14 +45,6 @@ export const Brightness = ({brightness, setBrightness}: BrightnessProps) => {
                 step={0.001}
                 value={flickerStrength}
                 onChange={(e) => setFlickerStrength(parseFloat(e.target.value))}
-            />
-            <RangeInput
-                name={'Flicker Interval'}
-                min={10}
-                max={1000}
-                step={10}
-                value={flickerInterval}
-                onChange={(e) => setFlickerInterval(parseFloat(e.target.value))}
             />
         </div>
     )

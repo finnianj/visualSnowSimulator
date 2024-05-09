@@ -57,14 +57,14 @@ export const ChangeEffects = ({
                 
 
                 {/* Contrast */}
-                <RangeInput
+                {/* <RangeInput
                     name='Contrast'
                     min={-1}
                     max={1}
                     step={0.01}
                     value={contrast}
                     onChange={(e) => setContrast(parseFloat(e.target.value))}
-                />
+                /> */}
 
                 <AudioControls />
             </>
