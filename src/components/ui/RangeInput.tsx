@@ -1,5 +1,5 @@
 type RangeInputProps = {
-    name: string,
+    name: string | null,
     min: number,
     max: number,
     step: number,
@@ -10,7 +10,9 @@ type RangeInputProps = {
 export const RangeInput = ({name, min, max, step, value, onChange}: RangeInputProps) => {
     return (
         <div className="flex flex-col space-y-1">
-            <div className='text-white text-xs'>{name}</div>
+            {name && (
+                <div className='text-white text-xs'>{name}</div>
+            )}
             <input 
                 type="range" 
                 min={min}

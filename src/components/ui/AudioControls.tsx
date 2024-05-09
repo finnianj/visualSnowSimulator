@@ -1,4 +1,5 @@
 import { useAudio } from '../context/AudioContext';
+import { AudioControlComponent } from './AudioControlComponent';
 
 export const AudioControls = () => {
     const {
@@ -6,32 +7,30 @@ export const AudioControls = () => {
         setIsAmbientPlaying,
         isEffectsAudioPlaying,
         setIsEffectsAudioPlaying,
+        ambientVolume,
+        effectsVolume,
+        setAmbientVolume,
+        setEffectsVolume
     } = useAudio();
 
     return (
         <div className='flex flex-col text-xs space-y-2'>
 
-            <div className='flex items-center justify-between'>
-                <label htmlFor='ambientAudioCheckbox' className='cursor-pointer'>Ambient Audio</label>
-                <input 
-                    type='checkbox'
-                    id='ambientAudioCheckbox'
-                    onChange={() => setIsAmbientPlaying(!isAmbientPlaying)}
-                    checked={isAmbientPlaying}
-                    className='accent-teal-600 cursor-pointer'
-                />
-            </div>
+            <AudioControlComponent
+                title='Ambient Audio'
+                isPlaying={isAmbientPlaying}
+                setIsPlaying={setIsAmbientPlaying}
+                volume={ambientVolume}
+                setVolume={setAmbientVolume}
+            />
 
-            <div className='flex items-center justify-between'>
-                <label htmlFor='effectsAudioCheckbox' className='cursor-pointer'>Effects Audio</label>
-                <input 
-                    type='checkbox'
-                    id='effectsAudioCheckbox'
-                    onChange={() => setIsEffectsAudioPlaying(!isEffectsAudioPlaying)}
-                    checked={isEffectsAudioPlaying}
-                    className='accent-teal-600 cursor-pointer'
-                />
-            </div>
+            <AudioControlComponent
+                title='Effects Audio'
+                isPlaying={isEffectsAudioPlaying}
+                setIsPlaying={setIsEffectsAudioPlaying}
+                volume={effectsVolume}
+                setVolume={setEffectsVolume}
+            />
             
         </div>
         

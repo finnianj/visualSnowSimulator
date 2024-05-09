@@ -7,17 +7,14 @@ import { MapType } from '../types';
 import { loadHdrTexture } from '../components/helpers/loadHdrTexture';
 import { FallbackBackground } from '../components/FallbackBackground';
 
+import { defaultMaps } from '../components/maps/maps';
+
 type useMapsType = {
     setIsLoading: (value: boolean) => void;
 }
 
 export const useMaps = ({ setIsLoading }: useMapsType) => {
-    const [maps, setMaps] = useState<MapType[]>([
-        { name: 'Quarry', id: 'quarry', blendFunction: BlendFunction.SOFT_LIGHT, texture: undefined },
-        { name: 'Metro', id: 'metro', blendFunction: BlendFunction.SOFT_LIGHT, texture: undefined },
-        { name: 'Office', id: 'office', blendFunction: BlendFunction.SOFT_LIGHT, texture: undefined },
-        { name: 'Waterfront', id: 'waterfront', blendFunction: BlendFunction.SOFT_LIGHT, texture: undefined },
-    ]);
+    const [maps, setMaps] = useState<MapType[]>(defaultMaps);
     const [currentMap, setCurrentMap] = useState(maps[0])
     const [mapTexture, setMapTexture] = useState<Texture | undefined>(undefined)
 
@@ -44,15 +41,8 @@ export const useMaps = ({ setIsLoading }: useMapsType) => {
         loadMap();
     }, [currentMap])
 
-    const changeMap = ( name?: string ) => {
-        let newMap;
-        if (name) {
-            newMap = maps.find(map => map.name === name);
-        } else {
-            const currentIndex = maps.findIndex(map => map.name === currentMap.name);
-            newMap = maps[(currentIndex + 1) % maps.length];
-        }
-        if (newMap) setCurrentMap(newMap);
+    const changeMap = ( map: MapType ) => {
+        setCurrentMap(map);
     }
 
     const FallbackBackgroundComponent = () => {

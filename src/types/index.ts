@@ -6,4 +6,5 @@ export type MapType = {
     id: string;
     blendFunction: BlendFunction;
     texture: Texture | undefined;
+    audio?: string;
 }

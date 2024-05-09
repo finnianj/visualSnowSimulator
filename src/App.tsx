@@ -36,14 +36,16 @@ export default function App() {
             {/* Loading */}
             <LoadingModal />
 
-            {/* UI */}
-            <ChangeMap 
-                changeMap={changeMap} 
-                maps={maps} 
-            />
             <AudioProvider>
                 {/* Audio */}
                 <AudioPlayer />
+
+                {/* UI */}
+                <ChangeMap 
+                    changeMap={changeMap} 
+                    currentMap={currentMap}
+                    maps={maps} 
+                />
                 <ChangeEffects 
                     noiseOpacity={noiseOpacity} 
                     setNoiseOpacity={setNoiseOpacity} 
