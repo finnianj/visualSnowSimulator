@@ -9,6 +9,8 @@ export const AudioPlayer: React.FC = () => {
         isAmbientPlaying,
         effectsAudioSrc,
         isEffectsAudioPlaying,
+        ambientVolume,
+        effectsVolume,
     } = useAudio();
 
     // Handle playback of ambient audio
@@ -56,6 +58,16 @@ export const AudioPlayer: React.FC = () => {
             effectAudio.pause();
         };
     }, [effectsAudioSrc, isEffectsAudioPlaying]);
+
+    useEffect(() => {
+        const ambientAudio = ambientAudioRef.current;
+        const effectAudio = effectAudioRef.current;
+        if (!ambientAudio || !effectAudio) return;
+
+        // Volume control
+        ambientAudio.volume = ambientVolume;
+        effectAudio.volume = effectsVolume;
+    }, [ambientVolume, effectsVolume]);  
 
     return (
         <div>
