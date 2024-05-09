@@ -5,13 +5,31 @@ export const InfoTab = () => {
         <p className="mt-2">
             Visual Snow Syndrome is a neurological condition characterized by a continuous visual disturbance that resembles static, similar to the noise of an untuned analog television.
         </p>
-        <h4 className="text-md font-semibold mt-4 text-slate-600">Symptoms</h4>
-        <ul className="list-disc list-inside mt-1">
-            <li>Static or snow-like dots in the visual field</li>
-            <li>Flashes of light</li>
-            <li>Impaired night vision</li>
-            <li>Visual tinnitus</li>
-            <li>Increased afterimages or trailing of moving objects</li>
+        <h4 className="text-md font-semibold mt-4 text-slate-600">Symptoms may include:</h4>
+        <ul className="list-disc list-inside mt-1 overflow-y-scroll h-40">
+            <li>Visual snow (dynamic snow-like dots across the entire visual field)</li>
+            <li>Palinopsia (continuing to see an image after the stimulus has been removed)</li>
+            <li>Photopsia (flashes of light or small floating objects)</li>
+            <li>Enhanced entoptic phenomena (excessive floaters and rings of light shooting across the field, more noticeable when looking at bright surfaces such as the blue sky)</li>
+            <li>Photophobia (sensitivity or intolerance to light)</li>
+            <li>Nyctalopia (impaired night vision)</li>
+            <li>Diplopia (double vision)</li>
+            <li>Visual distortions</li>
+            <li>Susceptibility to sensory overload (the brain receives more sensory input than it can handle, triggering a “flight-or-fight” response)</li>
+            <li>Other visual phenomena, such as starbursts and halos</li>
+            <li>Tinnitus (ringing or buzzing noise in the ears)</li>
+            <li>Anxiety</li>
+            <li>Depression</li>
+            <li>Derealization</li>
+            <li>Depersonalization (feeling detached from yourself)</li>
+            <li>Frequent migraines</li>
+            <li>Brain fog and confusion</li>
+            <li>Dizziness</li>
+            <li>Nausea</li>
+            <li>Paresthesia (tingling “pins-and-needles” sensations, commonly in the arms, hands, legs, and feet)</li>
+            <li>Insomnia and other sleep-related issues</li>
+            <li>Sensory disturbances (such as “brain zaps”, or electric shock sensations)</li>
+            <li>Sensory hypersensitivity / hyperesthesia (sensitivity to stimuli, such as sights and sounds)</li>
         </ul>
         <h4 className="text-md font-semibold mt-4 text-slate-600">Potential Causes</h4>
         <p className="mt-2">
