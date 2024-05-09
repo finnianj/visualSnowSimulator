@@ -1,5 +1,6 @@
 import { RangeInput } from './RangeInput'
 import { Dropdown } from './Dropdown'
+import { AudioControls } from './AudioControls'
 
 type ChangeEffectsProps = {
     noiseOpacity: number,
@@ -9,7 +10,7 @@ type ChangeEffectsProps = {
     brightness: number,
     setBrightness: (value: number) => void,
     contrast: number,
-    setContrast: (value: number) => void
+    setContrast: (value: number) => void,
 }
 
 export const ChangeEffects = ({
@@ -20,11 +21,11 @@ export const ChangeEffects = ({
     brightness,
     setBrightness,
     contrast,
-    setContrast
+    setContrast,
 }: ChangeEffectsProps) => {
 
     return (
-        <Dropdown title='Change Effects' side='left' classes={'space-y-4 p-4'}>
+        <Dropdown title='Change Effects' side='top-left' classes={'space-y-4 p-4'}>
             <>
                 {/* Snow opacity */}
                 <RangeInput 
@@ -66,6 +67,8 @@ export const ChangeEffects = ({
                     value={contrast}
                     onChange={(e) => setContrast(parseFloat(e.target.value))}
                 />
+
+                <AudioControls />
             </>
         </Dropdown>    
     )

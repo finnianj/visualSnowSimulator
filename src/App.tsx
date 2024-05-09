@@ -5,6 +5,8 @@ import { ChangeMap, ChangeEffects, Info } from './components/ui';
 
 import { OrbitControls } from '@react-three/drei'
 import { useVisualEffects, useMaps, useLoading } from './hooks';
+import { AudioProvider } from './components/context/AudioContext';
+import { AudioPlayer } from './components/AudioPlayer';
 
 export default function App() {
     
@@ -39,16 +41,21 @@ export default function App() {
                 changeMap={changeMap} 
                 maps={maps} 
             />
-            <ChangeEffects 
-                noiseOpacity={noiseOpacity} 
-                setNoiseOpacity={setNoiseOpacity} 
-                bloomOpacity={bloomOpacity} 
-                setBloomOpacity={setBloomOpacity} 
-                brightness={brightness}
-                setBrightness={setBrightness}
-                contrast={contrast}
-                setContrast={setContrast}    
-            />
+            <AudioProvider>
+                {/* Audio */}
+                <AudioPlayer />
+                <ChangeEffects 
+                    noiseOpacity={noiseOpacity} 
+                    setNoiseOpacity={setNoiseOpacity} 
+                    bloomOpacity={bloomOpacity} 
+                    setBloomOpacity={setBloomOpacity} 
+                    brightness={brightness}
+                    setBrightness={setBrightness}
+                    contrast={contrast}
+                    setContrast={setContrast}   
+                />
+            </AudioProvider>
+
             <Info />
             <FallbackBackgroundComponent />
 
