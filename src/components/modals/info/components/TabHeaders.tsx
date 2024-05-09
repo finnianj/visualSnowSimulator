@@ -1,12 +1,12 @@
 type TabHeadersProps = {
     currentTab: string,
-    setCurrentTab: (value: string) => void
+    setCurrentTab: (value: string) => void,
 }
 
 export const TabHeaders = ({ currentTab, setCurrentTab } : TabHeadersProps) => {
 
     const getTabClasses = (tab: string) => {
-        return `text-xl ${currentTab === tab ? 'font-bold text-teal-500 border-b-4 border-teal-500' : 'text-slate-500'}`
+        return `text-xl ${currentTab === tab ? 'font-bold text-teal-500 border-b-4 border-teal-500 dark:text-teal-600 dark:border-teal-600': 'text-slate-500 hover:opacity-75 transition-all'}`
     }
 
     return (

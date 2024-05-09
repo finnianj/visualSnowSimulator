@@ -1,11 +1,11 @@
 export const InfoTab = () => {
     return (
         <div className="max-w-4xl mx-auto p-4 text-left text-slate-500">
-        <h3 className="text-lg text-center font-bold text-slate-600">Visual Snow Syndrome</h3>
+        <h3 className="text-lg text-center font-bold text-slate-600 dark:text-slate-400">Visual Snow Syndrome</h3>
         <p className="mt-2">
             Visual Snow Syndrome is a neurological condition characterized by a continuous visual disturbance that resembles static, similar to the noise of an untuned analog television.
         </p>
-        <h4 className="text-md font-semibold mt-4 text-slate-600">Symptoms may include:</h4>
+        <h4 className="text-md font-semibold mt-4 text-slate-600 dark:text-slate-400">Symptoms may include:</h4>
         <ul className="list-disc list-inside mt-1 overflow-y-scroll h-40">
             <li>Visual snow (dynamic snow-like dots across the entire visual field)</li>
             <li>Palinopsia (continuing to see an image after the stimulus has been removed)</li>
@@ -31,11 +31,11 @@ export const InfoTab = () => {
             <li>Sensory disturbances (such as “brain zaps”, or electric shock sensations)</li>
             <li>Sensory hypersensitivity / hyperesthesia (sensitivity to stimuli, such as sights and sounds)</li>
         </ul>
-        <h4 className="text-md font-semibold mt-4 text-slate-600">Potential Causes</h4>
+        <h4 className="text-md font-semibold mt-4 text-slate-600 dark:text-slate-400">Potential Causes</h4>
         <p className="mt-2">
             The exact cause of Visual Snow Syndrome is not fully understood, but it is thought to involve abnormal processing of visual information in the brain.
         </p>
-        <h4 className="text-md font-semibold mt-4 text-slate-600">Treatment Options</h4>
+        <h4 className="text-md font-semibold mt-4 text-slate-600 dark:text-slate-400">Treatment Options</h4>
         <p className="mt-2">
             There is currently no cure for Visual Snow Syndrome, but treatment is aimed at managing symptoms and may include medications, visual therapy, and lifestyle modifications.
         </p>
