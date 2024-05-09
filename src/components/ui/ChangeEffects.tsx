@@ -1,6 +1,4 @@
-import React, { useState } from 'react'
 import { RangeInput } from './RangeInput'
-import { FaChevronDown, FaChevronLeft } from 'react-icons/fa'
 import { Dropdown } from './Dropdown'
 
 type ChangeEffectsProps = {
@@ -52,7 +50,7 @@ export const ChangeEffects = ({
                 {/* Brightness */}
                 <RangeInput
                     name='Brightness'
-                    min={0}
+                    min={-1}
                     max={1}
                     step={0.01}
                     value={brightness}
@@ -62,7 +60,7 @@ export const ChangeEffects = ({
                 {/* Contrast */}
                 <RangeInput
                     name='Contrast'
-                    min={0}
+                    min={-1}
                     max={1}
                     step={0.01}
                     value={contrast}

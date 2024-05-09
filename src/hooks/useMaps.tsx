@@ -15,6 +15,8 @@ export const useMaps = ({ setIsLoading }: useMapsType) => {
     const [maps, setMaps] = useState<MapType[]>([
         { name: 'Quarry', id: 'quarry', blendFunction: BlendFunction.SOFT_LIGHT, texture: undefined },
         { name: 'Metro', id: 'metro', blendFunction: BlendFunction.SOFT_LIGHT, texture: undefined },
+        { name: 'Office', id: 'office', blendFunction: BlendFunction.SOFT_LIGHT, texture: undefined },
+        { name: 'Waterfront', id: 'waterfront', blendFunction: BlendFunction.SOFT_LIGHT, texture: undefined },
     ]);
     const [currentMap, setCurrentMap] = useState(maps[0])
     const [mapTexture, setMapTexture] = useState<Texture | undefined>(undefined)
