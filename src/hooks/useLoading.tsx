@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Loading from '../components/Loading';
+import Loading from '../components/modals/Loading';
 
 export const useLoading = () => {
     const [isLoading, setIsLoading] = useState(false);

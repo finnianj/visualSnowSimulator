@@ -1,4 +1,4 @@
-import { RangeInput } from './RangeInput';
+import { RangeInput } from '../ui/shared/inputs/RangeInput';
 
 type AudioControlComponentProps = {
     title: string;
@@ -23,9 +23,8 @@ export const AudioControlComponent = ({title, isPlaying, setIsPlaying, volume, s
                 />
             </div>
             <div className='flex items-center justify-between space-x-2 p-2'>
-                <p>Volume</p>
                 <RangeInput
-                    name={null}
+                    name={'Volume'}
                     min={0}
                     max={1}
                     step={0.1}

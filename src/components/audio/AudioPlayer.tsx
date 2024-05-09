@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { useAudio } from './context/AudioContext';
+import { useAudio } from '../context/AudioContext';
 
 export const AudioPlayer: React.FC = () => {
     const ambientAudioRef = useRef<HTMLAudioElement>(null);

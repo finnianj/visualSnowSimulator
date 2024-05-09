@@ -1,6 +1,9 @@
-import { RangeInput } from './RangeInput'
-import { Dropdown } from './Dropdown'
-import { AudioControls } from './AudioControls'
+import React, { useEffect, useState } from 'react'
+import { RangeInput } from './shared/inputs/RangeInput'
+import { Dropdown } from './shared/Dropdown'
+import { AudioControls } from '../audio/AudioControls'
+import { CheckBoxInput } from './shared/inputs/CheckboxInput'
+import { Brightness } from './effects/Brightness/Brightness'
 
 type ChangeEffectsProps = {
     noiseOpacity: number,
@@ -24,8 +27,9 @@ export const ChangeEffects = ({
     setContrast,
 }: ChangeEffectsProps) => {
 
+
     return (
-        <Dropdown title='Change Effects' childPosition={'origin-top-left top-12 left-0 space-y-4 p-4'} containerPosition='left-4 top-4'>
+        <Dropdown title='Change Effects' childPosition={'origin-top-left top-12 left-0 space-y-4 p-4 !w-96'} containerPosition='left-4 top-4'>
             <>
                 {/* Snow opacity */}
                 <RangeInput 
@@ -49,14 +53,8 @@ export const ChangeEffects = ({
                 
 
                 {/* Brightness */}
-                <RangeInput
-                    name='Brightness'
-                    min={-1}
-                    max={1}
-                    step={0.01}
-                    value={brightness}
-                    onChange={(e) => setBrightness(parseFloat(e.target.value))}
-                />
+                <Brightness brightness={brightness} setBrightness={setBrightness} />
+                
 
                 {/* Contrast */}
                 <RangeInput

@@ -15,7 +15,13 @@ export const AudioControls = () => {
 
     return (
         <div className='flex flex-col text-xs space-y-2'>
-
+            <AudioControlComponent
+                title='Tinnitus'
+                isPlaying={isEffectsAudioPlaying}
+                setIsPlaying={setIsEffectsAudioPlaying}
+                volume={effectsVolume}
+                setVolume={setEffectsVolume}
+            />
             <AudioControlComponent
                 title='Ambient Audio'
                 isPlaying={isAmbientPlaying}
@@ -23,15 +29,6 @@ export const AudioControls = () => {
                 volume={ambientVolume}
                 setVolume={setAmbientVolume}
             />
-
-            <AudioControlComponent
-                title='Effects Audio'
-                isPlaying={isEffectsAudioPlaying}
-                setIsPlaying={setIsEffectsAudioPlaying}
-                volume={effectsVolume}
-                setVolume={setEffectsVolume}
-            />
-            
         </div>
         
     )

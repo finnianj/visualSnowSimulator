@@ -6,7 +6,7 @@ import { ChangeMap, ChangeEffects, Info } from './components/ui';
 import { OrbitControls } from '@react-three/drei'
 import { useVisualEffects, useMaps, useLoading } from './hooks';
 import { AudioProvider } from './components/context/AudioContext';
-import { AudioPlayer } from './components/AudioPlayer';
+import { AudioPlayer } from './components/audio/AudioPlayer';
 
 export default function App() {
     
