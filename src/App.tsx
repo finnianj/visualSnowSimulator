@@ -1,25 +1,21 @@
-import React, { useEffect, useState, Suspense, startTransition, useMemo, useCallback } from 'react';
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Suspense } from 'react';
+import { Canvas } from "@react-three/fiber";
 import { EffectComposer, Noise, Bloom, BrightnessContrast, LensFlare } from '@react-three/postprocessing'
-import { BlendFunction } from 'postprocessing'
 import { ChangeMap, ChangeEffects, Info } from './components/ui';
 
-
-import Loading from './components/Loading';
-import { Environment, OrbitControls } from '@react-three/drei'
-
-import { FallbackBackground } from './components/FallbackBackground';
+import { OrbitControls } from '@react-three/drei'
 import { useVisualEffects, useMaps, useLoading } from './hooks';
 
 export default function App() {
     
-    const { isLoading, setIsLoading, Loading } = useLoading();
+    const { setIsLoading, LoadingModal } = useLoading();
     
     const { 
         maps, 
         currentMap, 
-        mapTexture,
-        changeMap
+        changeMap,
+        BackgroundComponent,
+        FallbackBackgroundComponent
     } = useMaps({ setIsLoading });
     
     const { 
@@ -33,11 +29,10 @@ export default function App() {
         setContrast 
     } = useVisualEffects();
     
-
     return (
        <>
             {/* Loading */}
-            {isLoading && <Loading />}
+            <LoadingModal />
 
             {/* UI */}
             <ChangeMap 
@@ -55,17 +50,17 @@ export default function App() {
                 setContrast={setContrast}    
             />
             <Info />
-            {!mapTexture && <FallbackBackground />}
+            <FallbackBackgroundComponent />
 
             {/* Scene */}
-            <Suspense fallback={<Loading />}>
+            <Suspense fallback={<LoadingModal />}>
                 <Canvas className='cursor-grab active:cursor-grabbing'>
                     <OrbitControls />
-                    {mapTexture && <Environment map={mapTexture} background/>}
+                    <BackgroundComponent />
                     <EffectComposer>
                         <BrightnessContrast brightness={brightness} contrast={contrast} />
-                        <Bloom luminanceThreshold={0.1} luminanceSmoothing={0.1} height={300} opacity={bloomOpacity} />
                         <Noise blendFunction={currentMap.blendFunction} opacity={noiseOpacity} />
+                        <Bloom luminanceThreshold={0.1} luminanceSmoothing={0.1} height={300} opacity={bloomOpacity} />
                     </EffectComposer>
                 </Canvas>
             </Suspense>

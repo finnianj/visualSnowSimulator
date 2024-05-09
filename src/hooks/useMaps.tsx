@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import { BlendFunction } from 'postprocessing';
 import { Texture } from 'three';
+import { Environment } from '@react-three/drei'
 
 import { MapType } from '../types';
 import { loadHdrTexture } from '../components/helpers/loadHdrTexture';
+import { FallbackBackground } from '../components/FallbackBackground';
 
 type useMapsType = {
     setIsLoading: (value: boolean) => void;
@@ -51,12 +53,28 @@ export const useMaps = ({ setIsLoading }: useMapsType) => {
         if (newMap) setCurrentMap(newMap);
     }
 
+    const FallbackBackgroundComponent = () => {
+        if (mapTexture) return null;
+
+        return (
+            <FallbackBackground />
+        )
+    }
+
+    const BackgroundComponent = () => {
+        if (!mapTexture) return null;
+        
+        return <Environment map={mapTexture} background />
+    }
+
     return {
         maps,
         currentMap,
         setCurrentMap,
         mapTexture,
         setMapTexture,
-        changeMap
+        changeMap,
+        BackgroundComponent,
+        FallbackBackgroundComponent
     }
 };
