@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import { FaChevronDown, FaChevronLeft } from 'react-icons/fa'
+import { MapType } from '../../types'
 
 type ChangeMapProps = {
-    changeMap: (name?: string) => void,
-    maps: {name: string, map: any}[]
+    changeMap: ( name?: string ) => void,
+    maps: MapType[]
 }
 
 export const ChangeMap = ({changeMap, maps}: ChangeMapProps) => {
