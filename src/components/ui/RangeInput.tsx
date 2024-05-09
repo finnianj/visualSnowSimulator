@@ -9,17 +9,17 @@ type RangeInputProps = {
 
 export const RangeInput = ({name, min, max, step, value, onChange}: RangeInputProps) => {
     return (
-        <>
-            <div className='text-white'>{name}</div>
-                <input 
-                    type="range" 
-                    min={min}
-                    max={max}
-                    step={step}
-                    value={value} 
-                    onChange={onChange} 
-                    className='w-fit hover:cursor-grab active:cursor-grabbing transition-all text-white accent-teal-600' 
+        <div className="flex flex-col space-y-1">
+            <div className='text-white text-xs'>{name}</div>
+            <input 
+                type="range" 
+                min={min}
+                max={max}
+                step={step}
+                value={value} 
+                onChange={onChange} 
+                className='w-full hover:cursor-grab active:cursor-grabbing transition-all text-white accent-teal-600' 
             />
-        </>
+        </div>
     )
 }

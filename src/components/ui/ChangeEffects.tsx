@@ -1,4 +1,7 @@
+import React, { useState } from 'react'
 import { RangeInput } from './RangeInput'
+import { FaChevronDown, FaChevronLeft } from 'react-icons/fa'
+import { Dropdown } from './Dropdown'
 
 type ChangeEffectsProps = {
     noiseOpacity: number,
@@ -23,8 +26,8 @@ export const ChangeEffects = ({
 }: ChangeEffectsProps) => {
 
     return (
-        <div className="absolute z-20 top-4 left-4 w-fit">
-            <div className='bg-teal-400 flex flex-col justify-center items-start shadow-lg rounded-lg p-4 text-sm space-y-2'>
+        <Dropdown title='Change Effects' side='left' classes={'space-y-4 p-4'}>
+            <>
                 {/* Snow opacity */}
                 <RangeInput 
                     name='Snow' 
@@ -65,7 +68,7 @@ export const ChangeEffects = ({
                     value={contrast}
                     onChange={(e) => setContrast(parseFloat(e.target.value))}
                 />
-            </div>
-        </div>    
+            </>
+        </Dropdown>    
     )
 }
