@@ -28,13 +28,13 @@ export const ChangeMap = ({changeMap, currentMap, maps}: ChangeMapProps) => {
     }
 
     return (
-        <Dropdown title='Change Map' onTitleClick={() => handleMapSelect()} childPosition={'origin-top-right top-12 left-0'} containerPosition='right-4 top-4'>
+        <Dropdown title='Change Map' onTitleClick={() => handleMapSelect()} childPosition={'origin-top-right top-8 sm:top-12  right-0'} containerPosition='right-4 top-4'>
             <>
                 {maps.map((map, index) => (
                     <div 
                         key={index} 
                         onClick={() => handleMapSelect(map.name)} 
-                        className='px-4 py-2 hover:bg-teal-500 transition-all text-white cursor-pointer'
+                        className='px-4 py-2 hover:bg-teal-500 text-xxs sm:text-base transition-all text-white cursor-pointer'
                     >
                         {map.name}
                     </div>

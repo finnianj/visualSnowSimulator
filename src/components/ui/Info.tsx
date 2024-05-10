@@ -22,6 +22,7 @@ export const Info = ({ darkMode, setDarkMode }: InfoProps) => {
 
             <Modal modalOpen={showInfo} setModalOpen={setShowInfo}>
                 <InfoModal
+                    setShowInfo={setShowInfo}
                     darkMode={darkMode}
                     setDarkMode={setDarkMode}
                 />

@@ -27,7 +27,7 @@ export const Modal = ({ modalOpen, setModalOpen, children }: ModalProps) => {
           aria-labelledby="modal-title"
           aria-modal="true"
         >
-          <div className=" flex justify-center items-center min-h-screen w-screen h-fit text-center py-[80px]">
+          <div className=" flex justify-center items-start md:pt-32 pt-4 min-h-screen w-screen h-fit text-center">
             <div
               className="fixed inset-0 flex justify-center items-center bg-gray-900 backdrop-blur-sm bg-opacity-10 transition-opacity hover:cursor-pointer"
               aria-hidden="true"
@@ -36,8 +36,7 @@ export const Modal = ({ modalOpen, setModalOpen, children }: ModalProps) => {
             </div>
 
             <div
-              className={`scale-0 ${grow ? 'scale-100 transition-all duration-500' : ''}
-               bg-white h-fit w-fit max-w-[60rem] flex justify-center items-center rounded-xl overflow-visible shadow-xl`}
+              className={`scale-0 ${grow ? 'scale-100 transition-all duration-500' : ''}`}
             >
               {children}
             </div>

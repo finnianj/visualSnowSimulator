@@ -41,11 +41,11 @@ export const Dropdown = ({ children, title, childPosition, containerPosition, on
 
 const DropdownHeader = ({ title, showList, onClick, onTitleClick }: { title: string, showList: boolean, onClick: () => void, onTitleClick?: () => void }) => {
     return (
-        <>
-            <p className={`px-4 py-2 h-10 rounded-l-lg transition-all ${onTitleClick ? 'cursor-pointer hover:bg-teal-500' : 'cursor-default'}`} onClick={onTitleClick}>{title}</p>
-            <div onClick={onClick} className="px-4 py-2 bg-teal-400 hover:bg-teal-500 transition-all text-white rounded-r-lg h-10 flex items-center shadow-lg cursor-pointer">
+        <div className='flex items-center h-6 sm:h-10 '>
+            <p className={`px-4 text-xs md:text-base rounded-l-lg transition-all ${onTitleClick ? 'cursor-pointer hover:bg-teal-500' : 'cursor-default'}`} onClick={onTitleClick}>{title}</p>
+            <div onClick={onClick} className="bg-teal-400 hover:bg-teal-500 transition-all text-white rounded-r-lg h-full px-2 flex items-center shadow-lg cursor-pointer">
                 {showList ? <FaChevronLeft /> : <FaChevronDown />}
             </div>   
-        </>
+        </div>
     )
 }
