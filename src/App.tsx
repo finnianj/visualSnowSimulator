@@ -31,6 +31,8 @@ export default function App() {
         setIsFlickering,
         flickerStrength,
         setFlickerStrength,
+        darkMode,
+        setDarkMode
     } = useVisualEffects();
     
     return (
@@ -61,7 +63,10 @@ export default function App() {
                 />
             </AudioProvider>
 
-            <Info />
+            <Info
+                darkMode={darkMode}
+                setDarkMode={setDarkMode}
+            />
             <Donate />
             <FallbackBackgroundComponent />
 

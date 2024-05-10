@@ -3,10 +3,13 @@ import { TabHeaders } from './components'
 import { InfoModalContent } from './InfoModalContent'
 import { FaMoon, FaSun } from "react-icons/fa";
 
+type InfoModalProps = {
+    darkMode: boolean
+    setDarkMode: React.Dispatch<React.SetStateAction<boolean>>
+}
 
-export const InfoModal = () => {
+export const InfoModal = ({ darkMode, setDarkMode }: InfoModalProps) => {
     const [currentTab, setCurrentTab] = useState<string>('info')
-    const [darkMode, setDarkMode] = useState<boolean>(false)
 
     return (
         <div className={`relative flex flex-col ${darkMode ? 'bg-gray-900 dark' : 'bg-gray-100'} rounded-lg shadow-lg p-4`}>

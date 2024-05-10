@@ -8,6 +8,8 @@ export const useVisualEffects = () => {
     const [isFlickering, setIsFlickering] = useState<boolean>(false)
     const [flickerStrength, setFlickerStrength] = useState<number>(0)
 
+    const [darkMode, setDarkMode] = useState<boolean>(false)
+
     return {
         noiseOpacity,
         setNoiseOpacity,
@@ -19,5 +21,7 @@ export const useVisualEffects = () => {
         setIsFlickering,
         flickerStrength,
         setFlickerStrength,
+        darkMode,
+        setDarkMode
     }
 }

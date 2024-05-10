@@ -12,8 +12,8 @@ export const TabHeaders = ({ currentTab, setCurrentTab } : TabHeadersProps) => {
     return (
         <div className="flex justify-center items-center space-x-16">
             <button onClick={() => setCurrentTab('info')} className={getTabClasses('info')}> Info</button>
-            <button onClick={() => setCurrentTab('settings')} className={getTabClasses('settings')}>Settings</button>
-            <button onClick={() => setCurrentTab('help')} className={getTabClasses('help')}>Help</button>
+            <button onClick={() => setCurrentTab('settings')} className={getTabClasses('settings')}>Support</button>
+            <button onClick={() => setCurrentTab('help')} className={getTabClasses('help')}>This Tool</button>
         </div>
     )
 }

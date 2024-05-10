@@ -1,4 +1,4 @@
 export * from './TabHeaders'
 export * from './InfoTab'
-export * from './SettingsTab'
-export * from './HelpTab'
+export * from './Support'
+export * from './thisTool'
