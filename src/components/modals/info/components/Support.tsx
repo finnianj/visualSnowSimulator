@@ -10,13 +10,6 @@ export const SettingsTab = () => {
                 Research into Visual Snow Syndrome is crucial as it remains a poorly understood condition. Funding is vital for advancing our understanding of its causes, developing effective treatments, and improving quality of life for those affected. Without adequate funding, progress in these areas remains slow.
             </p>
 
-            
-            {/* <h4 className="text-md font-semibold mt-4 text-slate-600 dark:text-slate-400">Ongoing Research</h4>
-            <p className="mt-2">
-                Current research efforts focus on identifying the neurological underpinnings of Visual Snow Syndrome, exploring genetic factors, and evaluating the efficacy of various pharmacological treatments. Studies are also being conducted on the impact of visual therapy and lifestyle adjustments on symptom severity.
-            </p> */}
-
-            
             <h3 className="text-md mt-4 font-bold text-slate-600 dark:text-slate-400">Latest Research</h3>
             <p className="mt-2">
                 Key areas of research include identifying biomarkers, understanding the pathophysiology of VSS, and exploring innovative treatments such as MBCT-vision (Mindfulness-Based Cognitive Therapy for vision) and neuromodulation techniques.
