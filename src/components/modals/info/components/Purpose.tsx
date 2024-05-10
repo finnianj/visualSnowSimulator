@@ -9,7 +9,7 @@ export const HelpTab = () => {
             <h3 className="text-lg text-center font-bold text-slate-600 dark:text-slate-400">Why This Simulator Was Built</h3>
 
             <p className="mt-2">
-                Visual Snow Syndrome is a condition that is both isolating and misunderstood, largely because it is an internal experience and affects a relatively small number of people globally. The Visual Snow Simulator was developed to bridge this gap in understanding by allowing non-sufferers to experience a visual approximation of the condition. This tool serves not only to spread awareness but also to foster empathy and support from the broader community, helping those affected feel less isolated.
+                Visual Snow Syndrome is a condition that is both isolating and misunderstood, largely because it is an internal experience and affects a relatively small number of people globally. The Visual Snow Simulator was developed to bridge this gap in understanding by allowing non-sufferers to experience a visual approximation of the condition, and by allowing people who experience Visual Snow to share their reality. This tool serves not only to spread awareness but also to foster empathy and support from the broader community, helping those affected feel less isolated.
             </p>
             
             <h4 className="text-md font-semibold mt-4 text-slate-600 dark:text-slate-400">About the Developer</h4>
