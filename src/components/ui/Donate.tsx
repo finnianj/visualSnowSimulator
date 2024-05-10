@@ -1,11 +1,11 @@
 import { BiDonateHeart } from "react-icons/bi";
+import { projectLinks } from "../links/projectLinks";
 
 export const Donate = () => {
-    const url = 'https://visualsnowinitiative.networkforgood.com/';
 
     const handleClick = () => {
         // Open donation page in new tab
-
+        window.open(projectLinks.vsiDonationLink, '_blank')
     }
 
     return (
