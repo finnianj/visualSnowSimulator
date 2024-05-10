@@ -27,7 +27,7 @@ export const Modal = ({ modalOpen, setModalOpen, children }: ModalProps) => {
           aria-labelledby="modal-title"
           aria-modal="true"
         >
-          <div className=" flex justify-center items-start md:pt-32 pt-4 min-h-screen w-screen h-fit text-center">
+          <div className=" flex justify-center items-start sm:pt-32 pt-4 min-h-screen w-screen h-fit text-center">
             <div
               className="fixed inset-0 flex justify-center items-center bg-gray-900 backdrop-blur-sm bg-opacity-10 transition-opacity hover:cursor-pointer"
               aria-hidden="true"
