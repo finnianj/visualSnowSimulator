@@ -2,6 +2,8 @@ import { Suspense } from 'react';
 import { Canvas } from "@react-three/fiber";
 import { EffectComposer, Noise, Bloom, BrightnessContrast, LensFlare } from '@react-three/postprocessing'
 import { ChangeMap, ChangeEffects, Info, Donate } from './components/ui';
+import { AfterimagePass } from 'three/examples/jsm/postprocessing/AfterimagePass.js';
+
 
 import { OrbitControls } from '@react-three/drei'
 import { useVisualEffects, useMaps, useLoading } from './hooks';
@@ -79,6 +81,7 @@ export default function App() {
                         <BrightnessContrast brightness={brightness} />
                         <Noise blendFunction={currentMap.blendFunction} opacity={noiseOpacity} />
                         <Bloom luminanceThreshold={0.1} luminanceSmoothing={0.1} height={300} opacity={bloomOpacity} />
+        
                     </EffectComposer>
                 </Canvas>
             </Suspense>
