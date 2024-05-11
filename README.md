@@ -1,7 +1,7 @@
 # Visual Snow Simulator
 
 <!-- Image -->
-![Screenshot](images/screenshot.png)
+![Screenshot](./static/images/screenshot.png)
 
 ## Introduction
 Welcome to Visual Snow Simulator, an open-source project dedicated to raising awareness of Visual Snow. This repository is the main hub for development, where contributors like you can help us grow and improve the project.
