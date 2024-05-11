@@ -19,3 +19,8 @@ body,
     height: 100%;
     overflow: hidden;
 }
+
+.text-xxs {
+    font-size: 10px;
+}
+

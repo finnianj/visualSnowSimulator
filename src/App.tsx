@@ -1,104 +1,87 @@
-import React, { useEffect, useState, Suspense, startTransition, useMemo, useCallback } from 'react';
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Suspense } from 'react';
+import { Canvas } from "@react-three/fiber";
 import { EffectComposer, Noise, Bloom, BrightnessContrast, LensFlare } from '@react-three/postprocessing'
-import { BlendFunction } from 'postprocessing'
-import { ChangeMap, ChangeEffects, Info } from './components/ui';
+import { ChangeMap, ChangeEffects, Info, Donate } from './components/ui';
 
-
-import Loading from './components/Loading';
-import { FallbackBackground } from './components/FallbackBackground';
-import { Environment, OrbitControls } from '@react-three/drei'
-import { loadExrTexture } from './components/helpers/loadExrTexture';
-
-import { Texture } from 'three';
+import { OrbitControls } from '@react-three/drei'
+import { useVisualEffects, useMaps, useLoading } from './hooks';
+import { AudioProvider } from './components/context/AudioContext';
+import { AudioPlayer } from './components/audio/AudioPlayer';
 
 export default function App() {
-    const [noiseOpacity, setNoiseOpacity] = useState(0.1)
-    const [bloomOpacity, setBloomOpacity] = useState(0.1)
-    const [brightness, setBrightness] = useState(0)
-    const [contrast, setContrast] = useState(0)
-
-    const [loadingMap, setLoadingMap] = useState(true)
-    const [mapTexture, setMapTexture] = useState<Texture | undefined>(undefined);
-    const [mapIndex, setMapIndex] = useState(0)
-    const [maps, setMaps] = useState<any[]>([
-        {name: 'Berlin', map: './environmentMaps/hdri/berlin.exr', blendFunction: BlendFunction.SOFT_LIGHT, texture: undefined},
-        {name: 'Garden', map: './environmentMaps/hdri/garden.exr', blendFunction: BlendFunction.SOFT_LIGHT, texture: undefined},
-        {name: 'Metro', map: './environmentMaps/hdri/metro.exr', blendFunction: BlendFunction.HARD_LIGHT, texture: undefined},
-        {name: 'Road', map: './environmentMaps/hdri/road.exr', blendFunction: BlendFunction.SOFT_LIGHT, texture: undefined}
-    ]);
-
-    useEffect(() => {
-        // Loading the maps
-        const loadMap = async () => {
-            const map = maps[mapIndex];
-            if (map.texture) {
-                console.log('Map already loaded:', map.texture);
-                setMapTexture(map.texture);
-                setLoadingMap(false)
-                return
-            }
-            console.log('Loading map:', map.map);
-            setLoadingMap(true)
-            const texture = await loadExrTexture(map.map);
-            setMapTexture(texture);
-            setMaps(maps.map((m, i) => {
-                if (i === mapIndex) {
-                    return {...m, texture}
-                }
-                return m
-            }));
-            console.log('Map loaded:', texture);
-            setLoadingMap(false)
-        }
-        startTransition(() => {
-            loadMap();
-        });
-    }, [mapIndex]);
-
-    const changeMap = (name?: string) => {
-        setLoadingMap(true)
-        if (name) {
-            const index = maps.findIndex(map => map.name === name)
-            if (index !== -1) return
-        }
-        const newIndex = (mapIndex + 1) % maps.length
-        setMapIndex(newIndex)
-    }
-
+    
+    const { setIsLoading, LoadingModal } = useLoading();
+    
+    const { 
+        maps, 
+        currentMap, 
+        changeMap,
+        BackgroundComponent,
+        FallbackBackgroundComponent
+    } = useMaps({ setIsLoading });
+    
+    const { 
+        noiseOpacity, 
+        setNoiseOpacity, 
+        bloomOpacity, 
+        setBloomOpacity, 
+        brightness, 
+        setBrightness, 
+        isFlickering,
+        setIsFlickering,
+        flickerStrength,
+        setFlickerStrength,
+        darkMode,
+        setDarkMode
+    } = useVisualEffects();
+    
     return (
        <>
             {/* Loading */}
-            {loadingMap && <Loading />}
-            {!mapTexture && <FallbackBackground />}
+            <LoadingModal />
+            <AudioProvider>
+                {/* Audio */}
+                <AudioPlayer />
 
-            {/* UI */}
-            <ChangeMap changeMap={changeMap} maps={maps} />
-            <ChangeEffects 
-                noiseOpacity={noiseOpacity} 
-                setNoiseOpacity={setNoiseOpacity} 
-                bloomOpacity={bloomOpacity} 
-                setBloomOpacity={setBloomOpacity} 
-                brightness={brightness}
-                setBrightness={setBrightness}
-                contrast={contrast}
-                setContrast={setContrast}    
+                {/* UI */}
+                <ChangeMap 
+                    changeMap={changeMap} 
+                    currentMap={currentMap}
+                    maps={maps} 
+                />
+                <ChangeEffects 
+                    noiseOpacity={noiseOpacity} 
+                    setNoiseOpacity={setNoiseOpacity} 
+                    bloomOpacity={bloomOpacity} 
+                    setBloomOpacity={setBloomOpacity} 
+                    brightness={brightness}
+                    setBrightness={setBrightness}
+                    isFlickering={isFlickering}
+                    setIsFlickering={setIsFlickering}
+                    flickerStrength={flickerStrength}
+                    setFlickerStrength={setFlickerStrength}
+                />
+            </AudioProvider>
+
+            <Info
+                darkMode={darkMode}
+                setDarkMode={setDarkMode}
             />
-            <Info />
+            <Donate />
+            <FallbackBackgroundComponent />
 
-            <Suspense fallback={<Loading />}>
-                {/* Scene */}
-                <Canvas>
+            {/* Scene */}
+            <Suspense fallback={<LoadingModal />}>
+                <Canvas className='cursor-grab active:cursor-grabbing'>
                     <OrbitControls />
-                    {mapTexture && <Environment map={mapTexture} background />}
+                    <BackgroundComponent />
                     <EffectComposer>
-                        <BrightnessContrast brightness={brightness} contrast={contrast} />
-                        <Bloom luminanceThreshold={0.4} luminanceSmoothing={0.1} height={300} opacity={bloomOpacity} />
-                        <Noise blendFunction={maps[mapIndex].blendFunction} opacity={noiseOpacity} />
+                        <BrightnessContrast brightness={brightness} />
+                        <Noise blendFunction={currentMap.blendFunction} opacity={noiseOpacity} />
+                        <Bloom luminanceThreshold={0.1} luminanceSmoothing={0.1} height={300} opacity={bloomOpacity} />
                     </EffectComposer>
                 </Canvas>
             </Suspense>
-
        </>
     );
 }
