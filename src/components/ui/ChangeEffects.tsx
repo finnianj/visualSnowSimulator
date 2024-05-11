@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react'
 import { RangeInput } from './shared/inputs/RangeInput'
 import { Dropdown } from './shared/Dropdown'
 import { AudioControls } from '../audio/AudioControls'
-import { CheckBoxInput } from './shared/inputs/CheckboxInput'
 import { Brightness } from './effects/Brightness/Brightness'
-import { is } from '@react-three/fiber/dist/declarations/src/core/utils'
+import { ShareConfig } from './ShareConfig'
+
 
 type ChangeEffectsProps = {
     noiseOpacity: number,
@@ -29,9 +28,8 @@ export const ChangeEffects = ({
     isFlickering,
     setIsFlickering,
     flickerStrength,
-    setFlickerStrength
+    setFlickerStrength,
 }: ChangeEffectsProps) => {
-
 
     return (
         <Dropdown title='Change Effects' childPosition={'origin-top-left top-8 sm:top-12 left-0 space-y-4 p-4 sm:w-96 w-80'} containerPosition='left-4 top-4'>
@@ -66,19 +64,17 @@ export const ChangeEffects = ({
                     flickerStrength={flickerStrength}
                     setFlickerStrength={setFlickerStrength}
                 />
-                
-
-                {/* Contrast */}
-                {/* <RangeInput
-                    name='Contrast'
-                    min={-1}
-                    max={1}
-                    step={0.01}
-                    value={contrast}
-                    onChange={(e) => setContrast(parseFloat(e.target.value))}
-                /> */}
-
+                    
                 <AudioControls />
+                
+                {/* Share */}   
+                <ShareConfig 
+                    noiseOpacity={noiseOpacity} 
+                    bloomOpacity={bloomOpacity} 
+                    brightness={brightness} 
+                    isFlickering={isFlickering} 
+                    flickerStrength={flickerStrength}
+                />
             </>
         </Dropdown>    
     )

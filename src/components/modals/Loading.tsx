@@ -1,6 +1,5 @@
 import { CgSpinner } from "react-icons/cg";
 
-
 export default function Loading() {
     return (
         <div className='loading-indicator hover:cursor-progress'>
