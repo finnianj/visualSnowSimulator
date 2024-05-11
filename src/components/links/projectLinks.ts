@@ -4,4 +4,5 @@ export const projectLinks = {
     marathonDonationLink: '',
     developersGithub: 'https://github.com/finnianj',
     projectGithub: 'https://github.com/finnianj/visualSnowSimulator',
+    contactEmail: 'visualsnowsimulator@gmail.com'
 }
