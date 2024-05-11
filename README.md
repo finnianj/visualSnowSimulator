@@ -1,5 +1,8 @@
 # Visual Snow Simulator
 
+<!-- Image -->
+![Screenshot](https://drive.google.com/file/d/1vYI65rNBqbmcmWwKuf2DFx-ScoGSSI36/view?usp=sharing)
+
 ## Introduction
 Welcome to Visual Snow Simulator, an open-source project dedicated to raising awareness of Visual Snow. This repository is the main hub for development, where contributors like you can help us grow and improve the project.
 
