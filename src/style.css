@@ -24,3 +24,31 @@ body,
     font-size: 10px;
 }
 
+
+@keyframes shine {
+    0%, 98% {
+      background-position: -600%; /* Starting position - Left of the div */
+      transform: scale(1.0);
+    }
+    98.5% {
+      transform: scale(1.2);
+    }
+    100% {
+      background-position: 600%; /* End position - Right of the div */
+      transform: scale(1.0);
+    }
+  }
+  
+  .shiny-effect {
+    overflow: hidden; /* Ensures the gradient doesn't go outside the div */
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.5) 0%, /* Adjust the color to match your design */
+      rgba(255, 255, 255, 0.75) 50%, /* Middle of the gradient is more opaque */
+      rgba(255, 255, 255, 0.5) 100%
+    );
+    background-repeat: no-repeat;
+    background-color: #14b8a6;
+    background-size: 80%; /* Adjust the size of the shine effect */
+    animation: shine 30s infinite linear; /* Adjust timing to suit your needs */
+  }

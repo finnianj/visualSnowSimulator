@@ -15,7 +15,7 @@ export const Info = ({ darkMode, setDarkMode }: InfoProps) => {
         <>
             <div 
                 onClick={() => setShowInfo(true)} 
-                className='fixed group bottom-0 left-0 z-20 bg-teal-500 text-white rounded-tr-full p-4 shadow-md hover:cursor-pointer  hover:scale-110 transition-all'
+                className='fixed group bottom-0 left-0 z-20 bg-teal-500 text-white rounded-tr-full p-4 shadow-md hover:cursor-pointer  hover:scale-110 transition-all shiny-effect'
             >
                 <FaInfoCircle className='w-8 h-8 text-teal-100 -translate-x-2 translate-y-2  group-hover:text-white transition-all' />
             </div>

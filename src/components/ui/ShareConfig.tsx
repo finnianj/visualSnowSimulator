@@ -41,8 +41,8 @@ export const ShareConfig = ({ noiseOpacity, bloomOpacity, brightness, isFlickeri
             setShowSpinner(false)
             setTimeout(() => {
                 setIsLinkCopied(false)
-            }, 2000)
-        }, 2000)
+            }, 3000)
+        }, 1000)
     }
  
     return (
@@ -50,18 +50,18 @@ export const ShareConfig = ({ noiseOpacity, bloomOpacity, brightness, isFlickeri
             { isLinkCopied ? (
                 <div className='text-white'>
                     {showSpinner ? (
-                        <div className='flex justify-center items-center space-x-2 text-xs text-white w-full mr-auto'>
+                        <div className='flex justify-start items-center space-x-2 px-4 text-xs text-white w-fit mx-auto'>
                             <Spinner />
                         </div>
                     ) : (
-                        <div className='flex justify-center items-center space-x-2 text-xs text-white w-fit mr-auto'>
+                        <div className='flex justify-center items-center space-x-2 text-xs text-white w-fit mx-auto'>
                             <FaCheckCircle className='scale-150' />
                             <p className=''>Link Copied!</p>
                         </div>
                     )}
                 </div>
             ) : (
-                <div onClick={handleShareConfig} className='flex justify-center items-center space-x-2 text-xs text-teal-500 bg-teal-200 w-fit px-4 py-2 rounded-lg mr-auto hover:bg-white hover:text-teal-500 hover:shadow-md transition-all cursor-pointer'>
+                <div onClick={handleShareConfig} className='flex justify-center items-center space-x-2 text-xs text-teal-500 bg-teal-200 w-fit px-4 py-2 rounded-lg mx-auto hover:bg-white hover:text-teal-500 hover:shadow-md transition-all cursor-pointer'>
                     <IoMdShare className='scale-150' />
                     <p className=''>Share My Settings</p>
                 </div>
