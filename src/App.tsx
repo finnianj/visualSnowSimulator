@@ -3,12 +3,18 @@ import { Canvas } from "@react-three/fiber";
 import { EffectComposer, Noise, Bloom, BrightnessContrast, LensFlare } from '@react-three/postprocessing'
 import { ChangeMap, ChangeEffects, Info, Donate } from './components/ui';
 import { AfterimagePass } from 'three/examples/jsm/postprocessing/AfterimagePass.js';
+import { ColorShiftEffect } from './shaders/eyeFloaters/ColorShiftEffect';
+import { EyeFloatersEffect } from './shaders/eyeFloaters/EyeFloaters';
+import { useFrame } from '@react-three/fiber';
+
 
 
 import { OrbitControls } from '@react-three/drei'
 import { useVisualEffects, useMaps, useLoading } from './hooks';
 import { AudioProvider } from './components/context/AudioContext';
 import { AudioPlayer } from './components/audio/AudioPlayer';
+
+import { Vector3 } from 'three';
 
 export default function App() {
     
@@ -80,8 +86,9 @@ export default function App() {
                     <EffectComposer>
                         <BrightnessContrast brightness={brightness} />
                         <Noise blendFunction={currentMap.blendFunction} opacity={noiseOpacity} />
-                        <Bloom luminanceThreshold={0.1} luminanceSmoothing={0.1} height={300} opacity={bloomOpacity} />
-        
+                        <Bloom luminanceThreshold={0.1} luminanceSmoothing={0.1} height={300} opacity={bloomOpacity} /> 
+                        {/* <ColorShiftEffect color={new Vector3(1, 0, 0)} amount={0.5} /> */}
+                        {/* <EyeFloatersEffect textureUrl='./textures/noise.png' /> */}
                     </EffectComposer>
                 </Canvas>
             </Suspense>
