@@ -47,4 +47,6 @@ If you have any questions or need support, please [open an issue](https://https:
 
 ## License
 Visual Snow Simulator is licensed under the [MIT License](LICENSE.md).
+
+Learn more about visual snow on the [Visual Snow Initiative website](https://www.visualsnowinitiative.org/).
 ```
