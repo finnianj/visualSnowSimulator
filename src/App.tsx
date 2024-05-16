@@ -1,6 +1,6 @@
-import { Suspense } from 'react';
+import { Suspense, useRef } from 'react';
 import { Canvas } from "@react-three/fiber";
-import { EffectComposer, Noise, Bloom, BrightnessContrast, LensFlare } from '@react-three/postprocessing'
+import { EffectComposer, Noise, Bloom, BrightnessContrast, LensFlare, Vignette } from '@react-three/postprocessing'
 import { ChangeMap, ChangeEffects, Info, Donate } from './components/ui';
 import { AfterimagePass } from 'three/examples/jsm/postprocessing/AfterimagePass.js';
 import { ColorShiftEffect } from './shaders/eyeFloaters/ColorShiftEffect';
@@ -15,6 +15,7 @@ import { AudioProvider } from './components/context/AudioContext';
 import { AudioPlayer } from './components/audio/AudioPlayer';
 
 import { Vector3 } from 'three';
+import Nausea from './shaders/nausea/Nausea';
 
 export default function App() {
     
@@ -42,6 +43,8 @@ export default function App() {
         darkMode,
         setDarkMode
     } = useVisualEffects();
+
+    const nauseaRef = useRef();
     
     return (
        <>
@@ -84,11 +87,15 @@ export default function App() {
                     <OrbitControls />
                     <BackgroundComponent />
                     <EffectComposer>
-                        <BrightnessContrast brightness={brightness} />
+                        <Nausea
+                            ref={nauseaRef}
+                            frequency={ 2 }
+                            amplitude={ 0.1 } 
+                        />
+                        {/* <BrightnessContrast brightness={brightness} />
                         <Noise blendFunction={currentMap.blendFunction} opacity={noiseOpacity} />
                         <Bloom luminanceThreshold={0.1} luminanceSmoothing={0.1} height={300} opacity={bloomOpacity} /> 
-                        {/* <ColorShiftEffect color={new Vector3(1, 0, 0)} amount={0.5} /> */}
-                        {/* <EyeFloatersEffect textureUrl='./textures/noise.png' /> */}
+                        <Vignette eskil={false} offset={0.5} darkness={0.7} /> */}
                     </EffectComposer>
                 </Canvas>
             </Suspense>
