@@ -1,6 +1,15 @@
 import { Effect } from 'postprocessing';
+import { Uniform } from 'three';
 
 const fragmentShader = `
+    uniform float frequency;
+    uniform float amplitude;
+    uniform float time;
+
+    void mainUv(inout vec2 uv)
+    {
+        uv.y += sin(uv.x * frequency + time) * amplitude;
+    }
     void mainImage(const in vec4 inputColor, const in vec2 uv, out vec4 outputColor)
     {
         vec4 color = inputColor;
@@ -21,8 +30,17 @@ export default class NauseaEffect extends Effect {
             'NauseaEffect',
             fragmentShader,
             {
-
+                uniforms: new Map([
+                    ['frequency', new Uniform(props.frequency)],
+                    ['amplitude', new Uniform(props.amplitude)],
+                    [ 'time', new Uniform(0) ]
+                ])
             }
         );
+    }
+
+    update(_renderer: any, _inputBuffer: any, deltaTime: number): void
+    {
+        (this.uniforms.get('time') as Uniform<number>).value += deltaTime;
     }
 }
