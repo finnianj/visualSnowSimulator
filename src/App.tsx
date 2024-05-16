@@ -90,7 +90,7 @@ export default function App() {
                     <BackgroundComponent />
                     <EffectComposer>
                         <EyeFloaters
-                            textureUrl={'./textures/noise.png'}
+                            textureUrl={'./textures/noise4.jpeg'}
                         />
                         {/* <Nausea
                             ref={nauseaRef}
