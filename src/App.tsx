@@ -91,11 +91,18 @@ export default function App() {
                     <EffectComposer>
                         <EyeFloaters
                             textureUrl={'./textures/noise4.jpeg'}
-                            particle_count={3}
-                            particle_transparency={0.4}
+                            particle_count={10}
+                            particle_transparency={1.0}
                             particle_size={0.1}
-                            particle_color={0.2}
+                            particle_color={0.1}
                         />
+                        {/* <EyeFloaters
+                            textureUrl={'./textures/noise4.jpeg'}
+                            particle_count={10}
+                            particle_transparency={1.0}
+                            particle_size={0.02}
+                            particle_color={0.2}
+                        /> */}
                         {/* <Nausea
                             ref={nauseaRef}
                             frequency={nauseaFrequency}

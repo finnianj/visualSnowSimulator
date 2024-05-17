@@ -32,7 +32,7 @@ void mainImage(const in vec4 inputColor, const in vec2 uv, out vec4 outputColor)
         float influence = smoothstep(particle_size, 0.0, d); // Smoothstep for smoother transition
 
         // Blend the particle color with input color
-        col = mix(col, particleColor, influence); // Blend the particle color
+        col = mix(col, particleColor, influence * particle_transparency); // Blend the particle color
         alpha = max(alpha, influence * particle_transparency); // Adjust alpha based on influence and transparency
     }
 
