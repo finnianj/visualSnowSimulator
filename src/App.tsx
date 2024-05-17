@@ -4,12 +4,12 @@ import { Simulator } from './Simulator';
 export default function App() {
     
     return (
-        <LoadingProvider>
-            <EffectsProvider>
+        <EffectsProvider>
+            <LoadingProvider>
                 <AudioProvider>
                         <Simulator />
                 </AudioProvider>
-            </EffectsProvider>
-        </LoadingProvider>
+            </LoadingProvider>
+        </EffectsProvider>
     );
 }

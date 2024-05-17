@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useEffects } from '../../context';
 
 interface ModalProps {
   modalOpen: boolean;
@@ -7,14 +8,17 @@ interface ModalProps {
 }
 
 export const Modal = ({ modalOpen, setModalOpen, children }: ModalProps) => {
+  const { setDisableAllEffects } = useEffects();
   const [grow, setGrow] = useState<boolean>(false);
   
   useEffect(() => {
     if (modalOpen && children) {
+      setDisableAllEffects(true);
       setTimeout(() => {
         setGrow(true);
       }, 200);
     } else {
+      setDisableAllEffects(false);
       setGrow(false);
     }
   }, [modalOpen, children])

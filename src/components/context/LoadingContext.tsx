@@ -1,4 +1,6 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
+
+import { useEffects } from './EffectsContext';
 import Loading from '../ui/modals/Loading';
 
 // Define the type for the context state
@@ -13,7 +15,16 @@ const LoadingContext = createContext<LoadingContextType | undefined>(undefined);
 
 // Provider component
 export const LoadingProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+    const { setDisableAllEffects } = useEffects();
     const [isLoading, setIsLoading] = useState<boolean>(false);
+
+    useEffect(() => {
+        if (isLoading) {
+            setDisableAllEffects(true);
+        } else {
+            setDisableAllEffects(false);
+        }
+    }, [isLoading, setDisableAllEffects]);
 
     const LoadingModal = () => {
         if (!isLoading) return null;
