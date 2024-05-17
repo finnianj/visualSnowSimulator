@@ -1,5 +1,5 @@
 import { BiDonateHeart } from "react-icons/bi";
-import { projectLinks } from "../../../links/projectLinks";
+import { projectLinks } from "../../../../links/projectLinks";
 
 export const SettingsTab = () => {
     return (

@@ -3,33 +3,21 @@ import { Dropdown } from './shared/Dropdown'
 import { AudioControls } from '../audio/AudioControls'
 import { Brightness } from './effects/Brightness/Brightness'
 import { ShareConfig } from './ShareConfig'
+import { useEffects } from '../context'
 
-
-type ChangeEffectsProps = {
-    noiseOpacity: number,
-    setNoiseOpacity: (value: number) => void,
-    bloomOpacity: number,
-    setBloomOpacity: (value: number) => void,
-    brightness: number,
-    setBrightness: (value: number) => void,
-    isFlickering: boolean,
-    setIsFlickering: (value: boolean) => void,
-    flickerStrength: number,
-    setFlickerStrength: (value: number) => void,
-}
-
-export const ChangeEffects = ({
-    noiseOpacity,
-    setNoiseOpacity, 
-    bloomOpacity,
-    setBloomOpacity,
-    brightness,
-    setBrightness,
-    isFlickering,
-    setIsFlickering,
-    flickerStrength,
-    setFlickerStrength,
-}: ChangeEffectsProps) => {
+export const ChangeEffects = () => {
+    const { 
+        noiseOpacity, 
+        setNoiseOpacity, 
+        bloomOpacity, 
+        setBloomOpacity, 
+        brightness, 
+        setBrightness, 
+        isFlickering,
+        setIsFlickering,
+        flickerStrength,
+        setFlickerStrength
+    } = useEffects();
 
     return (
         <Dropdown title='Change Effects' childPosition={'origin-top-left top-8 sm:top-12 left-0 space-y-4 p-4 sm:w-96 w-80'} containerPosition='left-4 top-4'>

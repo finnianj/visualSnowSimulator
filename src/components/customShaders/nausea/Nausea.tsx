@@ -7,7 +7,7 @@ type NauseaProps = {
     amplitude: number;
 }
 
-export default forwardRef(function Nausea(props: NauseaProps, ref) {
+export const Nausea = forwardRef(function Nausea(props: NauseaProps, ref) {
     const effect = new NauseaEffect(props);
     return <primitive ref={ref} object={effect} />
 });

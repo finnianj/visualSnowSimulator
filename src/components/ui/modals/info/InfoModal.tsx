@@ -3,14 +3,10 @@ import { TabHeaders } from './components'
 import { InfoModalContent } from './InfoModalContent'
 import { FaMoon, FaSun } from "react-icons/fa";
 import { MdClose } from "react-icons/md";
+import { useEffects } from '../../../context';
 
-type InfoModalProps = {
-    darkMode: boolean
-    setDarkMode: React.Dispatch<React.SetStateAction<boolean>>
-    setShowInfo: React.Dispatch<React.SetStateAction<boolean>>
-}
-
-export const InfoModal = ({ darkMode, setDarkMode, setShowInfo }: InfoModalProps) => {
+export const InfoModal = ({ setShowInfo }: { setShowInfo: (show: boolean) => void }) => {
+    const { darkMode, setDarkMode } = useEffects()
     const [currentTab, setCurrentTab] = useState<string>('info')
 
     return (

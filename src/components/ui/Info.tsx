@@ -1,14 +1,9 @@
 import React, { useState } from 'react'
 import { FaInfoCircle } from "react-icons/fa";
-import { Modal } from '../modals/Modal';
-import { InfoModal } from '../modals/info/InfoModal';
+import { Modal } from './modals/Modal';
+import { InfoModal } from './modals/info/InfoModal';
 
-type InfoProps = {
-    darkMode: boolean
-    setDarkMode: React.Dispatch<React.SetStateAction<boolean>>
-}
-
-export const Info = ({ darkMode, setDarkMode }: InfoProps) => {
+export const Info = () => {
     const [showInfo, setShowInfo] = useState(false)
 
     return (
@@ -21,11 +16,7 @@ export const Info = ({ darkMode, setDarkMode }: InfoProps) => {
             </div>
 
             <Modal modalOpen={showInfo} setModalOpen={setShowInfo}>
-                <InfoModal
-                    setShowInfo={setShowInfo}
-                    darkMode={darkMode}
-                    setDarkMode={setDarkMode}
-                />
+                <InfoModal setShowInfo={setShowInfo} />
             </Modal>
         </>
     )

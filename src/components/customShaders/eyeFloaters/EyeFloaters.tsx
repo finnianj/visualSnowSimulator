@@ -10,7 +10,7 @@ type EyeFloatersProps = {
     particle_color: number;
 }
 
-export default forwardRef(function EyeFloaters(props: EyeFloatersProps, ref) {
+export const EyeFloaters = forwardRef(function EyeFloaters(props: EyeFloatersProps, ref) {
     const effect = new EyeFloatersEffect(props);
     return <primitive ref={ref} object={effect} />
 }

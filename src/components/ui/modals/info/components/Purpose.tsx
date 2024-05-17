@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { projectLinks } from "../../../links/projectLinks"
-import { copyEmailToClipboard } from "../../../helpers/utils";
-import { FaGithub, FaCode, FaCheckCircle } from "react-icons/fa";
+import { projectLinks } from "../../../../links/projectLinks"
+import { copyEmailToClipboard } from "../../../../helpers/utils";
+import { FaGithub, FaCode, FaCheckCircle, FaDiscord } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 
 export const HelpTab = () => {
@@ -23,36 +23,36 @@ export const HelpTab = () => {
                 Visual Snow is a condition that is both isolating and misunderstood, largely because it is an internal experience and affects a relatively small number of people globally. The Visual Snow Simulator was developed to bridge this gap in understanding by allowing non-sufferers to experience a visual approximation of the condition, and by allowing people who experience Visual Snow to share their reality. This tool serves not only to spread awareness but also to foster empathy and support from the broader community, helping those affected feel less isolated.
             </p>
             
-            <h4 className="text-md font-semibold mt-4 text-slate-600 dark:text-slate-400">About the Developer</h4>
-            <div className="flex mt-2">
-                {/* <img src="./finn.png" alt="Developer" className="w-20 h-20 mr-4 rounded-full" /> */}
-                <div>
+            <h4 className="text-md font-semibold mt-4 text-slate-600 dark:text-slate-400">Support my Fundraiser</h4>
+            <div className="flex mt-2 flex-col">
                 <p>
                     The simulator was developed by Finn, a Drummer and Web Developer from the UK, living in Berlin, Germany. Finn is running the 2024 Berlin Marathon for the Visual Snow Initiative to raise awareness and funds for research into Visual Snow Syndrome. You can donate directly to his fundraiser <a href={projectLinks.marathonDonationLink || projectLinks.vsiDonationLink} target="_blank" className="text-blue-500 hover:text-blue-600">here</a>.
                 </p>
-                {/* Links to deve,op github and project code */}
-                <div className="flex mt-4">
-                    <a href={projectLinks.developersGithub} target="_blank" className="flex items-center text-blue-500 hover:text-blue-600">
-                        <FaGithub className="w-6 h-6 mr-1" />
-                        Developer's GitHub
-                    </a>
-                    <a href={projectLinks.projectGithub} target="_blank" className="flex items-center text-blue-500 hover:text-blue-600 ml-4">
-                        <FaCode className="w-6 h-6 mr-1" />
-                        Project Code
-                    </a>
-                    {/* Contact email */}
-                    {copiedEmail ? (
-                        <div className="flex items-center text-green-500 ml-4">
-                            <FaCheckCircle className="w-6 h-6 mr-1" />
-                            Email Copied!
-                        </div>
-                    ) : (
-                        <div onClick={handleCopyEmail} className="flex items-center text-blue-500 hover:text-blue-600 ml-4 cursor-pointer">
-                            <MdEmail className="w-6 h-6 mr-1" />
-                            Contact Developer
-                        </div>
-                    )}
-                </div>
+                <div className="flex justify-start items-center w-full">
+                    {/* Links to deve,op github and project code */}
+                    <div className="flex mt-4">
+                        <a href={projectLinks.projectGithub} target="_blank" className="flex items-center text-blue-500 hover:text-blue-600">
+                            <FaCode className="w-6 h-6 mr-1" />
+                            Project Code
+                        </a>
+                        {/* Contact email */}
+                        {copiedEmail ? (
+                            <div className="flex items-center text-green-500 ml-4">
+                                <FaCheckCircle className="w-6 h-6 mr-1" />
+                                Email Copied!
+                            </div>
+                        ) : (
+                            <div onClick={handleCopyEmail} className="flex items-center text-blue-500 hover:text-blue-600 ml-4 cursor-pointer">
+                                <MdEmail className="w-6 h-6 mr-1" />
+                                Contact Developer
+                            </div>
+                        )}
+                        {/* Discord */}
+                        <a href={projectLinks.discordInvite} target="_blank" className="flex items-center text-blue-500 hover:text-blue-600 ml-4">
+                            <FaDiscord className="w-6 h-6 mr-1" />
+                            Discord
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
