@@ -1,16 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { RangeInput, CheckBoxInput } from '../../shared/inputs';
 
-type BrightnessProps = {
-    brightness: number;
-    setBrightness: (value: number) => void;
-    isFlickering: boolean;
-    setIsFlickering: (value: boolean) => void;
-    flickerStrength: number;
-    setFlickerStrength: (value: number) => void;
-}
+import { useEffects } from '../../../context';
 
-export const Brightness = ({ brightness, setBrightness, isFlickering, setIsFlickering, flickerStrength, setFlickerStrength }: BrightnessProps) => {
+import { RangeInput, CheckBoxInput } from '.';
+
+export const BrightnessInputs = () => {
+    const { brightness, setBrightness, isFlickering, setIsFlickering, flickerStrength, setFlickerStrength } = useEffects()
+    
     const flickerInterval = 20
     
     // If isFlickering is true, randomly modulate the brightness by 0.01 every 100ms

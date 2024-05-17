@@ -2,7 +2,7 @@ import { useRef } from 'react';
 
 import { useEffects } from '../../context';
 
-import { EffectComposer } from '@react-three/postprocessing';
+import { EffectComposer, Noise } from '@react-three/postprocessing';
 import { EyeFloaters, Nausea } from '../../customShaders';
 
 import { MapType } from '../../../types';
@@ -32,6 +32,8 @@ export const EffectsComposerHeavy = ({ currentMap }: EffectsComposerHeavyProps) 
         largeEyeFloatersTransparency,
         largeEyeFloatersSize,
         largeEyeFloatersColor,
+
+        noiseOpacity
     } = useEffects();
 
     const nauseaRef = useRef();
@@ -41,9 +43,11 @@ export const EffectsComposerHeavy = ({ currentMap }: EffectsComposerHeavyProps) 
 
     return (
         <EffectComposer enabled={!disableAllEffects && (nauseaEnabled || smallEyeFloatersEnabled || largeEyeFloatersEnabled) }>
+                        <Noise blendFunction={currentMap.blendFunction} opacity={noiseOpacity} />
+
             {/* Small Eye Floaters */}
             <EyeFloaters
-                enabled={true}
+                enabled={smallEyeFloatersEnabled}
                 ref={smallEyeFloatersRef}
                 textureUrl={'./textures/noise4.jpeg'}
                 particle_count={smallEyeFloatersCount}
@@ -54,7 +58,7 @@ export const EffectsComposerHeavy = ({ currentMap }: EffectsComposerHeavyProps) 
             
             {/* Large Eye Floaters */}
             <EyeFloaters
-                enabled={true}
+                enabled={largeEyeFloatersEnabled}
                 ref={largeEyeFloatersRef}
                 textureUrl={'./textures/noise3.png'}
                 particle_count={largeEyeFloatersCount}
@@ -65,7 +69,7 @@ export const EffectsComposerHeavy = ({ currentMap }: EffectsComposerHeavyProps) 
             
             {/* Nausea */}
             <Nausea
-                enabled={false}
+                enabled={nauseaEnabled}
                 ref={nauseaRef}
                 frequency={nauseaFrequency}
                 amplitude={nauseaAmplitude} 

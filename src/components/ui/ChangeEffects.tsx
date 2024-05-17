@@ -1,9 +1,9 @@
-import { RangeInput } from './shared/inputs/RangeInput'
+import { useEffects } from '../context'
+
 import { Dropdown } from './shared/Dropdown'
 import { AudioControls } from '../audio/AudioControls'
-import { Brightness } from './effects/Brightness/Brightness'
+import { BrightnessInputs, NauseaInputs, RangeInput } from './shared/inputs'
 import { ShareConfig } from './ShareConfig'
-import { useEffects } from '../context'
 
 export const ChangeEffects = () => {
     const { 
@@ -46,14 +46,10 @@ export const ChangeEffects = () => {
                 
 
                 {/* Brightness */}
-                <Brightness 
-                    brightness={brightness} 
-                    setBrightness={setBrightness} 
-                    isFlickering={isFlickering}
-                    setIsFlickering={setIsFlickering}
-                    flickerStrength={flickerStrength}
-                    setFlickerStrength={setFlickerStrength}
-                />
+                <BrightnessInputs />
+
+                {/* Nausea */}
+                <NauseaInputs />
 
                 {/* Vignette */}
                 <RangeInput
