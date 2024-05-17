@@ -2,6 +2,7 @@ import React, { forwardRef } from 'react';
 import NauseaEffect from './NauseaEffect';
 
 type NauseaProps = {
+    enabled: boolean;
     frequency: number;
     amplitude: number;
 }

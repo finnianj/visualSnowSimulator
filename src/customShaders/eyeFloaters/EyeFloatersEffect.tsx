@@ -10,8 +10,13 @@ uniform int particle_count;
 uniform float particle_transparency;
 uniform float particle_size;
 uniform float particle_color;
+uniform bool enabled;
 
 void mainImage(const in vec4 inputColor, const in vec2 uv, out vec4 outputColor) {
+    if (!enabled) {
+        outputColor = inputColor;
+        return;
+    }
     vec3 col = inputColor.rgb; // Start with the input color
     float alpha = inputColor.a; // Start with the input alpha
     vec3 particleColor = vec3(particle_color); // Grey color for the particles
@@ -36,12 +41,12 @@ void mainImage(const in vec4 inputColor, const in vec2 uv, out vec4 outputColor)
         alpha = max(alpha, influence * particle_transparency); // Adjust alpha based on influence and transparency
     }
 
-
     outputColor = vec4(col, alpha); // Use the computed alpha value for final color
 }
 `;
 
 type EyeFloatersEffectProps = {
+    enabled: boolean;
     textureUrl: string;
     particle_count: number;
     particle_transparency: number;
@@ -49,10 +54,11 @@ type EyeFloatersEffectProps = {
     particle_color: number;
 }
 
-type UniformType = Uniform<number> | Uniform<Vector2> | Uniform<Texture>;
+type UniformType = Uniform<number> | Uniform<Vector2> | Uniform<Texture | boolean>;
 
 export default class EyeFloatersEffectImpl extends Effect {
     constructor({ 
+        enabled,
         textureUrl, 
         particle_count, 
         particle_transparency,
@@ -64,6 +70,7 @@ export default class EyeFloatersEffectImpl extends Effect {
             fragmentShader, 
             {
                 uniforms: new Map<string, UniformType>([
+                    ['enabled', new Uniform(enabled)],
                     ['time', new Uniform(0)],
                     ['resolution', new Uniform(new Vector2(window.innerWidth, window.innerHeight))],
                     ['noiseTexture', new Uniform(new TextureLoader().load(textureUrl))],
@@ -79,6 +86,10 @@ export default class EyeFloatersEffectImpl extends Effect {
     update(_renderer: any, _inputBuffer: any, deltaTime: number): void
     {
         (this.uniforms.get('time') as Uniform<number>).value += deltaTime;
+    }
+
+    onResize(): void {
+        (this.uniforms.get('resolution') as Uniform<Vector2>).value.set(window.innerWidth, window.innerHeight);
     }
 
 }

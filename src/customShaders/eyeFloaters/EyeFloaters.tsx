@@ -2,6 +2,7 @@ import React, { forwardRef } from 'react';
 import EyeFloatersEffect from './EyeFloatersEffect';
 
 type EyeFloatersProps = {
+    enabled: boolean;
     textureUrl: string;
     particle_count: number;
     particle_transparency: number;

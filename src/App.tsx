@@ -11,9 +11,10 @@ import { AudioProvider } from './components/context/AudioContext';
 import { AudioPlayer } from './components/audio/AudioPlayer';
 
 import { Vector3 } from 'three';
-import EyeFloaters from './shaders/eyeFloaters/EyeFloaters';
-import Nausea from './shaders/nausea/Nausea';
+import EyeFloaters from './customShaders/eyeFloaters/EyeFloaters';
+import Nausea from './customShaders/nausea/Nausea';
 import { RangeInput } from './components/ui/shared/inputs';
+import Blur from './customShaders/blur/Blur';
 
 export default function App() {
     
@@ -47,6 +48,8 @@ export default function App() {
     } = useVisualEffects();
 
     const nauseaRef = useRef();
+    const smallEyeFloatersRef = useRef();
+    const largeEyeFloatersRef = useRef();
     
     return (
        <>
@@ -86,28 +89,40 @@ export default function App() {
             {/* Scene */}
             <Suspense fallback={<LoadingModal />}>
                 <Canvas className='cursor-grab active:cursor-grabbing'>
-                    <OrbitControls />
+                    <OrbitControls 
+                        reverseVerticalOrbit={true}
+                        reverseHorizontalOrbit={true}
+                    />
                     <BackgroundComponent />
                     <EffectComposer>
+                        <Blur
+                            enabled={false} 
+                            strength={9} 
+                        />
                         <EyeFloaters
+                            enabled={true}
+                            ref={smallEyeFloatersRef}
                             textureUrl={'./textures/noise4.jpeg'}
                             particle_count={10}
-                            particle_transparency={1.0}
+                            particle_transparency={0.2}
                             particle_size={0.1}
                             particle_color={0.1}
                         />
-                        {/* <EyeFloaters
-                            textureUrl={'./textures/noise4.jpeg'}
-                            particle_count={10}
-                            particle_transparency={1.0}
+                        <EyeFloaters
+                            enabled={true}
+                            ref={largeEyeFloatersRef}
+                            textureUrl={'./textures/noise3.png'}
+                            particle_count={3}
+                            particle_transparency={0.1}
                             particle_size={0.02}
                             particle_color={0.2}
-                        /> */}
-                        {/* <Nausea
+                        />
+                        <Nausea
+                            enabled={true}
                             ref={nauseaRef}
                             frequency={nauseaFrequency}
                             amplitude={nauseaAmplitude} 
-                        /> */}
+                        />
                         {/* <BrightnessContrast brightness={brightness} />
                         <Noise blendFunction={currentMap.blendFunction} opacity={noiseOpacity} />
                         <Bloom luminanceThreshold={0.1} luminanceSmoothing={0.1} height={300} opacity={bloomOpacity} /> 
