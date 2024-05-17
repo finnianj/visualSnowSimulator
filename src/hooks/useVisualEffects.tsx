@@ -8,6 +8,9 @@ export const useVisualEffects = () => {
     const [isFlickering, setIsFlickering] = useState<boolean>(false)
     const [flickerStrength, setFlickerStrength] = useState<number>(0)
 
+    const [nauseaFrequency, setNauseaFrequency] = useState<number>(2)
+    const [nauseaAmplitude, setNauseaAmplitude] = useState<number>(0.1)
+
     const [darkMode, setDarkMode] = useState<boolean>(false)
 
     return {
@@ -22,6 +25,10 @@ export const useVisualEffects = () => {
         flickerStrength,
         setFlickerStrength,
         darkMode,
-        setDarkMode
+        setDarkMode,
+        nauseaFrequency,
+        setNauseaFrequency,
+        nauseaAmplitude,
+        setNauseaAmplitude
     }
 }

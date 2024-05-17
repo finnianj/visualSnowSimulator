@@ -38,8 +38,6 @@ We love your input! We want to make contributing to this project as easy and tra
 - Proposing new features
 - Becoming a maintainer
 
-### We Develop with GitHub
-We use GitHub to host code, to track issues and feature requests, as well as accept pull requests.
 
 ## Deployment
 Changes in this repository are reviewed before being mirrored to a private repository, which handles all deployment-related configurations and processes. For deployment requests or issues, please [open an issue](https://github.com/yourusername/project-name/issues).
@@ -49,4 +47,6 @@ If you have any questions or need support, please [open an issue](https://https:
 
 ## License
 Visual Snow Simulator is licensed under the [MIT License](LICENSE.md).
+
+Learn more about visual snow on the [Visual Snow Initiative website](https://www.visualsnowinitiative.org/).
 ```
