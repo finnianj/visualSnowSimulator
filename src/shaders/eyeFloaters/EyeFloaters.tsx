@@ -3,6 +3,10 @@ import EyeFloatersEffect from './EyeFloatersEffect';
 
 type EyeFloatersProps = {
     textureUrl: string;
+    particle_count: number;
+    particle_transparency: number;
+    particle_size: number;
+    particle_color: number;
 }
 
 export default forwardRef(function EyeFloaters(props: EyeFloatersProps, ref) {

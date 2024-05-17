@@ -6,12 +6,15 @@ const fragmentShader = `
 uniform float time;
 uniform vec2 resolution;
 uniform sampler2D noiseTexture;
+uniform int particle_count;
+uniform float particle_transparency;
+uniform float particle_size;
+uniform float particle_color;
 
 void mainImage(const in vec4 inputColor, const in vec2 uv, out vec4 outputColor) {
     vec3 col = inputColor.rgb; // Start with the input color
-    float alpha = 0.0; // Start with fully transparent
-    const int particle_count = 50;
-    vec3 particleColor = vec3(0.2); // Grey color for the particles
+    float alpha = inputColor.a; // Start with the input alpha
+    vec3 particleColor = vec3(particle_color); // Grey color for the particles
 
     for (int i = 0; i < particle_count; i++) {
         // Sample noise texture for particle position, scaled to UV space
@@ -26,24 +29,36 @@ void mainImage(const in vec4 inputColor, const in vec2 uv, out vec4 outputColor)
 
         // Calculate distance from current fragment to particle position
         float d = distance(uv, particle_pos);
-        float influence = (1.0 - d * 50.0) * float(d < 0.02); // Small influence radius
+        float influence = smoothstep(particle_size, 0.0, d); // Smoothstep for smoother transition
 
+        // Blend the particle color with input color
         col = mix(col, particleColor, influence); // Blend the particle color
-        alpha = max(alpha, influence * 0.5); // Update alpha based on influence
+        alpha = max(alpha, influence * particle_transparency); // Adjust alpha based on influence and transparency
     }
 
-    outputColor = vec4(col, 1.0); // Use the computed alpha value for final color
+
+    outputColor = vec4(col, alpha); // Use the computed alpha value for final color
 }
 `;
 
 type EyeFloatersEffectProps = {
     textureUrl: string;
+    particle_count: number;
+    particle_transparency: number;
+    particle_size: number;
+    particle_color: number;
 }
 
 type UniformType = Uniform<number> | Uniform<Vector2> | Uniform<Texture>;
 
 export default class EyeFloatersEffectImpl extends Effect {
-    constructor({ textureUrl }: EyeFloatersEffectProps) {
+    constructor({ 
+        textureUrl, 
+        particle_count, 
+        particle_transparency,
+        particle_size,
+        particle_color
+     }: EyeFloatersEffectProps) {
         super(
             'EyeFloatersEffect', 
             fragmentShader, 
@@ -52,6 +67,10 @@ export default class EyeFloatersEffectImpl extends Effect {
                     ['time', new Uniform(0)],
                     ['resolution', new Uniform(new Vector2(window.innerWidth, window.innerHeight))],
                     ['noiseTexture', new Uniform(new TextureLoader().load(textureUrl))],
+                    ['particle_count', new Uniform(particle_count)],
+                    ['particle_transparency', new Uniform(particle_transparency)],
+                    ['particle_size', new Uniform(particle_size)],
+                    ['particle_color', new Uniform(particle_color)],
                 ]),
             }
         );
