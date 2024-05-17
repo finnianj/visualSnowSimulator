@@ -44,6 +44,8 @@ type EffectsContextType = {
     setBlurEnabled: (value: boolean) => void;
     blurStrength: number;
     setBlurStrength: (value: number) => void;
+    vignetteStrength: number;
+    setVignetteStrength: (value: number) => void;
     darkMode: boolean;
     setDarkMode: (value: boolean) => void;
 };
@@ -81,6 +83,8 @@ export const EffectsProvider: React.FC<{ children: React.ReactNode }> = ({ child
 
     const [blurEnabled, setBlurEnabled] = useState<boolean>(false)
     const [blurStrength, setBlurStrength] = useState<number>(5)
+
+    const [vignetteStrength, setVignetteStrength] = useState<number>(0.5)
 
     const [darkMode, setDarkMode] = useState<boolean>(false)
 
@@ -127,6 +131,8 @@ export const EffectsProvider: React.FC<{ children: React.ReactNode }> = ({ child
         setBlurEnabled,
         blurStrength,
         setBlurStrength,
+        vignetteStrength,
+        setVignetteStrength,
         darkMode,
         setDarkMode
     };

@@ -17,8 +17,8 @@ export const EffectsComposerLight = ({ currentMap }: EffectsComposerLightProps) 
         brightness,
         noiseOpacity,
         bloomOpacity,
+        vignetteStrength,
     } = useEffects();
-
 
     return (
         <EffectComposer enabled={!disableAllEffects}>
@@ -29,7 +29,7 @@ export const EffectsComposerLight = ({ currentMap }: EffectsComposerLightProps) 
             <BrightnessContrast brightness={brightness} />
             <Noise blendFunction={currentMap.blendFunction} opacity={noiseOpacity} />
             <Bloom luminanceThreshold={0.1} luminanceSmoothing={0.1} height={300} opacity={bloomOpacity} /> 
-            <Vignette eskil={false} offset={0.5} darkness={0.7} />
+            <Vignette eskil={false} offset={0.5} darkness={vignetteStrength} />
         </EffectComposer>
     )
 }

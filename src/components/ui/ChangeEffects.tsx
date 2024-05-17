@@ -16,7 +16,9 @@ export const ChangeEffects = () => {
         isFlickering,
         setIsFlickering,
         flickerStrength,
-        setFlickerStrength
+        setFlickerStrength,
+        vignetteStrength,
+        setVignetteStrength
     } = useEffects();
 
     return (
@@ -51,6 +53,16 @@ export const ChangeEffects = () => {
                     setIsFlickering={setIsFlickering}
                     flickerStrength={flickerStrength}
                     setFlickerStrength={setFlickerStrength}
+                />
+
+                {/* Vignette */}
+                <RangeInput
+                    name='Vignette'
+                    min={0}
+                    max={1}
+                    step={0.01}
+                    value={vignetteStrength}
+                    onChange={(e) => setVignetteStrength(parseFloat(e.target.value))}
                 />
                     
                 <AudioControls />
