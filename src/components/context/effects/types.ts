@@ -1,7 +1,9 @@
 // Define the type for the context state
 export type EffectsContextType = {
-    disableAllEffects: boolean;
-    setDisableAllEffects: (value: boolean) => void;
+    modalBeingViewed: boolean;
+    setModalBeingViewed: (value: boolean) => void;
+    userHasPausedEffects: boolean;
+    setUserHasPausedEffects: (value: boolean) => void;
     noiseOpacity: number;
     setNoiseOpacity: (value: number) => void;
     bloomOpacity: number;

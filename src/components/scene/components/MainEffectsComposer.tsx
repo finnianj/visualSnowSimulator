@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { useEffects } from '../../context';
+import { useEffects, useLoading } from '../../context';
 
 import { EffectComposer, Noise, Bloom, BrightnessContrast, Vignette } from '@react-three/postprocessing';
 import { Blur, Flicker, EyeFloaters, Nausea } from '../../customShaders';
@@ -14,7 +14,8 @@ type EffectsComposerLightProps = {
 
 export const MainEffectsComposer = ({ currentMap }: EffectsComposerLightProps) => {
     const {
-        disableAllEffects,
+        modalBeingViewed,
+        userHasPausedEffects,
         brightness,
         noiseOpacity,
         bloomOpacity,
@@ -40,12 +41,14 @@ export const MainEffectsComposer = ({ currentMap }: EffectsComposerLightProps) =
         largeEyeFloatersColor,
     } = useEffects();
 
+    const { isLoading } = useLoading();
+
     const nauseaRef = useRef();
     const smallEyeFloatersRef = useRef();
     const largeEyeFloatersRef = useRef();
 
     return (
-            <EffectComposer enabled={!disableAllEffects}  >        
+            <EffectComposer enabled={!isLoading && !userHasPausedEffects && !modalBeingViewed} >        
                 {/* <Blur
                     enabled={blurEnabled} 
                     strength={blurStrength} 

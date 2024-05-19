@@ -3,7 +3,7 @@ import React, { useState} from 'react';
 import { useUI } from '../context';
 
 import { AudioPlayer } from '../audio/AudioPlayer';
-import { ChangeMap, ChangeEffects, Info, Donate } from './';
+import { ChangeMap, ChangeEffects, Info, Donate } from './components';
 import { MapType } from '../../types';
 
 import { Modal } from './modals/Modal';

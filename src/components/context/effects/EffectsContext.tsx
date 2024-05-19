@@ -9,7 +9,8 @@ const EffectsContext = createContext<EffectsContextType | undefined>(undefined);
 // Provider component
 export const EffectsProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
-    const [disableAllEffects, setDisableAllEffects] = useState<boolean>(false)
+    const [modalBeingViewed, setModalBeingViewed] = useState<boolean>(false)
+    const [userHasPausedEffects, setUserHasPausedEffects] = useState<boolean>(false)
 
     const [noiseOpacity, setNoiseOpacity] = useState(defaultEffectsValues.noiseOpacity)
     const [bloomOpacity, setBloomOpacity] = useState(defaultEffectsValues.bloomOpacity)
@@ -66,8 +67,6 @@ export const EffectsProvider: React.FC<{ children: React.ReactNode }> = ({ child
     }
 
     const usePreviousConfig = (config: {[key: string]: string}) => {
-        setDisableAllEffects(true)
-        console.log('Applying config and disabling effects: ')
         // Set values from config object
         for (const key in config) {
             if (effectsQueryParamMap[key as keyof typeof effectsQueryParamMap]) {
@@ -125,8 +124,10 @@ export const EffectsProvider: React.FC<{ children: React.ReactNode }> = ({ child
     }
 
     const value = { 
-        disableAllEffects,
-        setDisableAllEffects,
+        modalBeingViewed,
+        setModalBeingViewed,
+        userHasPausedEffects,
+        setUserHasPausedEffects,
 
         noiseOpacity,
         setNoiseOpacity,

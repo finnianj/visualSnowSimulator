@@ -1,4 +1,4 @@
-import { RangeInput } from '../ui/ChangeEffectsPanel/components/inputs/RangeInput';
+import { RangeInput } from '../ui/components/ChangeEffectsPanel/components/inputs/RangeInput';
 
 type AudioControlComponentProps = {
     title: string;

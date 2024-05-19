@@ -1,6 +1,6 @@
 export const InfoTab = () => {
     return (
-        <div className="max-w-4xl mx-auto p-4 text-left text-slate-500">
+        <div className="max-w-4xl mx-auto pt-4 text-left text-slate-500">
             <h3 className="text-lg text-center font-bold text-slate-600 dark:text-slate-400">What is Visual Snow Syndrome?</h3>
             <p className="mt-2">
                 Visual Snow Syndrome is a neurological condition characterized by a continuous visual disturbance that resembles static, similar to the noise of an untuned analog television.

@@ -1,11 +1,5 @@
-import React, { useState } from 'react'
-
-import { useEffects, useUI } from '../../../../context';
-import { useAudio } from '../../../../context/AudioContext'
-
-import { createConfigQueryParams, getBaseUrl, copyToClipboard } from '../../../../helpers/utils'
-import { Spinner } from '../../../shared/Spinner'
-import { DefaultTooltip } from '../../../shared/DefaultTooltip'
+import { useUI } from '../../../../../context';
+import { DefaultTooltip } from '../../../../shared/DefaultTooltip'
 
 import { IoMdShare } from "react-icons/io";
 

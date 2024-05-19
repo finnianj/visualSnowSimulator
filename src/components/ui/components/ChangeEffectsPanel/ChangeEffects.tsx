@@ -1,14 +1,14 @@
-import { useEffects } from '../../context'
+import { useEffects } from '../../../context'
 
-import { Dropdown } from '../shared/Dropdown'
-import { AudioControls } from '../../audio/AudioControls'
+import { Dropdown } from '../../shared/Dropdown'
+import { AudioControls } from '../../../audio/AudioControls'
 import { FlickerInputs, NauseaInputs, RangeInput, EyeFloatersInputs, CheckBoxInput } from './components/inputs'
 import { ButtonRow } from './components/buttons/ButtonRow'
 import { BlurInputs } from './components/inputs/BlurInputs'
 
 export const ChangeEffects = () => {
     const { 
-        disableAllEffects,
+        userHasPausedEffects,
         noiseOpacity, 
         setNoiseOpacity, 
         bloomOpacity, 
@@ -25,7 +25,7 @@ export const ChangeEffects = () => {
 
     return (
         <Dropdown title='Change Effects' childPosition={'origin-top-left top-8 sm:top-12 left-0 space-y-4 p-4 sm:w-96 w-[20rem] '} containerPosition='left-4 top-4'>
-            <div className={`flex flex-col space-y-2 ${!disableAllEffects ? '' : 'opacity-50 pointer-events-none'}`}>
+            <div className={`flex flex-col space-y-2 ${ userHasPausedEffects ? 'opacity-50 pointer-events-none' : '' }`}>
                 {/* Snow opacity */}
                 <RangeInput 
                     name='Snow' 

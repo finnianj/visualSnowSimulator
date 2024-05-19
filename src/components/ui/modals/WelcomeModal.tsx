@@ -13,18 +13,16 @@ export const WelcomeModal = ({ prevConfig, setShowWelcomeModal }: UserConfigLoad
     const isFlickering = prevConfig?.isFlickering === 'true'
     
     const { darkMode, setDarkMode } = useUI()
-    const { setIsFlickering, setDisableAllEffects } = useEffects()
+    const { setIsFlickering } = useEffects()
 
     const handleContinueAnyway = () => {
         // Continue anyway
         setShowWelcomeModal(false)
-        setDisableAllEffects(false)
     }
 
     const handleDisableFlickering = () => {
         // Disable flickering
         setIsFlickering(false)
-        setDisableAllEffects(false)
         setShowWelcomeModal(false)
     }
 
@@ -59,31 +57,40 @@ export const WelcomeModal = ({ prevConfig, setShowWelcomeModal }: UserConfigLoad
                     </>
                 ) : (
                     <>
-
-                    <p className="mt-2">
-                        You are now using <span className="font-bold text-teal-500">{name}</span>'s settings.
-                    </p>
-                    {isFlickering && (
-                        <>
-                            <p className="mt-2 text-red-500">
-                                Warning: The current settings include flickering effects, which could trigger epilepsy. Would you like to disable them? You can turn them back on later.
-                            </p>
-                            <div className="flex justify-between mt-4 w-full text-sm">
+                        <p className="mt-2">
+                            You are now using <span className="font-bold text-teal-500">{name ? name : 'an unnamed person'}</span>'s settings.
+                        </p>
+                        {isFlickering ? (
+                            <>
+                                <p className="mt-2 text-red-500">
+                                    Warning: The current settings include flickering effects, which could trigger epilepsy. Would you like to disable them? You can turn them back on later.
+                                </p>
+                                <div className="flex justify-between mt-4 w-full text-sm">
+                                    <button
+                                        className="flex items-center justify-center bg-slate-500 dark:bg-slate-600 dark:text-slate-100 text-white rounded-full p-2 px-10 hover:bg-slate-600 dark:hover:bg-slate-700 transition-all"
+                                        onClick={handleContinueAnyway}
+                                    >
+                                        Continue Anyway
+                                    </button>
+                                    <button
+                                        className="flex items-center justify-center bg-teal-500 dark:bg-teal-600 dark:text-slate-100 text-white rounded-full p-2 px-10 hover:bg-teal-600 dark:hover:bg-teal-700 transition-all"
+                                        onClick={handleDisableFlickering}
+                                    >
+                                        Disable Flickering
+                                    </button>
+                                </div>
+                            </>
+                        ) : (
+                            <>
                                 <button
-                                    className="flex items-center justify-center bg-slate-500 dark:bg-slate-600 dark:text-slate-100 text-white rounded-full p-2 px-10 hover:bg-slate-600 dark:hover:bg-slate-700 transition-all"
+                                    className="flex items-center justify-end bg-teal-500 dark:bg-teal-600 dark:text-slate-100 text-white rounded-full p-2 px-10 mx-auto hover:bg-teal-600 dark:hover:bg-teal-700 transition-all"
                                     onClick={handleContinueAnyway}
                                 >
-                                    Continue Anyway
+                                    Go
                                 </button>
-                                <button
-                                    className="flex items-center justify-center bg-teal-500 dark:bg-teal-600 dark:text-slate-100 text-white rounded-full p-2 px-10 hover:bg-teal-600 dark:hover:bg-teal-700 transition-all"
-                                    onClick={handleDisableFlickering}
-                                >
-                                    Disable Flickering
-                                </button>
-                            </div>
-                        </>
-                    )}
+                            </>
+
+                        )}
                     </>
                 )}
             </div>

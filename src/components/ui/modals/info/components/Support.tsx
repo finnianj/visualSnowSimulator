@@ -3,7 +3,7 @@ import { projectLinks } from "../../../../links/projectLinks";
 
 export const SettingsTab = () => {
     return (
-        <div className="max-w-4xl mx-auto p-4 text-left text-slate-500">
+        <div className="max-w-4xl mx-auto pt-4 text-left text-slate-500">
             <h3 className="text-lg text-center font-bold text-slate-600 dark:text-slate-400">Why Your Donation Matters</h3>
             
             <p className="mt-2">
@@ -31,7 +31,7 @@ export const SettingsTab = () => {
                     href={projectLinks.vsiDonationLink}
                     target="_blank" 
                     rel="noreferrer"
-                    className="mt- flex items-center justify-center bg-teal-500 dark:bg-teal-600 dark:text-slate-100 text-white rounded-full p-2 px-10 hover:bg-teal-600 dark:hover:bg-teal-700 transition-all "
+                    className="flex items-center justify-center bg-teal-500 dark:bg-teal-600 dark:text-slate-100 text-white rounded-full p-2 px-10 hover:bg-teal-600 dark:hover:bg-teal-700 transition-all "
                 >
                     <BiDonateHeart className="w-6 h-6 inline-block mr-1" />
                     Donate

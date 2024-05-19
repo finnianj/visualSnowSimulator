@@ -1,6 +1,6 @@
-import { useEffects, useAudio } from '../../../../context'
+import { useEffects, useAudio } from '../../../../../context'
 
-import { DefaultTooltip } from '../../../shared/DefaultTooltip';
+import { DefaultTooltip } from '../../../../shared/DefaultTooltip';
 import { RxReset } from "react-icons/rx";
 
 export const ResetEffects = () => {

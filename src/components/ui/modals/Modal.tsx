@@ -7,17 +7,24 @@ interface ModalProps {
   children: React.ReactNode;
 }
 
-export const Modal = ({ modalOpen, setModalOpen, children }: ModalProps) => {
-  const { setDisableAllEffects, disableAllEffects } = useEffects();
+export const Modal = ({ modalOpen = false, setModalOpen, children }: ModalProps) => {
+  const { setModalBeingViewed } = useEffects();
   const [grow, setGrow] = useState<boolean>(false);
+  const [initialised, setInitialised] = useState<boolean>(false);
   
   useEffect(() => {
     if (modalOpen) {
-      setDisableAllEffects(true);
       setTimeout(() => {
         setGrow(true);
       }, 200);
+      setInitialised(true);
+      setModalBeingViewed(true);
+      console.log('Modal opened');
     } else {
+      if (initialised) {
+        console.log('Modal closed');
+        setModalBeingViewed(false);
+      }
       setGrow(false);
     }
   }, [modalOpen])
@@ -34,10 +41,7 @@ export const Modal = ({ modalOpen, setModalOpen, children }: ModalProps) => {
             <div
               className="fixed inset-0 flex justify-center items-center bg-gray-900 backdrop-blur-sm bg-opacity-10 transition-opacity hover:cursor-pointer"
               aria-hidden="true"
-              onClick={() => { 
-                setModalOpen(false) 
-                setDisableAllEffects(false)
-              }}
+              onClick={() => setModalOpen(false) }
             >
             </div>
 

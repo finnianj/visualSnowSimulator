@@ -65,11 +65,11 @@ export const ShareConfigModal = () => {
     }
 
     return (
-        <div className={`flex flex-col items-center rounded-lg shadow-mg text-white min-w-24 p-4 ${darkMode ? 'bg-gray-900 dark' : 'bg-gray-100'}`}>
-            <div className='flex flex-col items-center text-slate-600 dark:text-slate-400 space-y-4 min-w-'>
+        <div className={`flex flex-col items-center rounded-lg shadow-mg text-white min-w-24 max-w-3xl p-4 ${darkMode ? 'bg-gray-900 dark' : 'bg-gray-100'}`}>
+            <div className='flex flex-col items-center text-slate-600 dark:text-slate-400 space-y-4 text-left'>
                 <p className='text-lg font-bold text-center'>Share your experience</p>
                 <p>
-                    Share your current configuration with others by entering your name and generating a link.
+                    Share your current configuration with others by entering your name and generating a link. Anyone who visits the link will see the same settings you have.
                 </p>
                 {/* Name input */}
                 <input

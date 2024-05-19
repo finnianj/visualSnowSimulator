@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { FaInfoCircle } from "react-icons/fa";
-import { Modal } from './modals/Modal';
-import { InfoModal } from './modals/info/InfoModal';
+import { Modal } from '../modals/Modal';
+import { InfoModal } from '../modals/info/InfoModal';
 
 export const Info = () => {
     const [showInfo, setShowInfo] = useState(false)
