@@ -16,6 +16,7 @@ export const EffectsProvider: React.FC<{ children: React.ReactNode }> = ({ child
     const [bloomOpacity, setBloomOpacity] = useState(defaultEffectsValues.bloomOpacity)
     
     const [brightness, setBrightness] = useState(defaultEffectsValues.brightness)
+    
     const [isFlickering, setIsFlickering] = useState<boolean>(false)
     const [flickerStrength, setFlickerStrength] = useState<number>(defaultEffectsValues.flickerStrength)
 

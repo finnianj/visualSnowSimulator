@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState} from 'react';
 
 import { AudioPlayer } from '../audio/AudioPlayer';
 import { ChangeMap, ChangeEffects, Info, Donate } from './';
 import { MapType } from '../../types';
+
+import { Modal } from './modals/Modal';
+import { FlickerWarningModal } from './modals/FlickerWarningModal';
 
 type UserInterfaceProps = {
     maps: MapType[];
@@ -12,6 +15,8 @@ type UserInterfaceProps = {
 }
 
 export const UserInterface = ({ maps, currentMap, changeMap, FallbackBackgroundComponent }: UserInterfaceProps) => {
+    const [showFlickerWarning, setShowFlickerWarning] = useState(false);
+    const [hasSeenFlickerWarning, setHasSeenFlickerWarning] = useState(false);
 
     return (
         <>
@@ -24,12 +29,23 @@ export const UserInterface = ({ maps, currentMap, changeMap, FallbackBackgroundC
                 currentMap={currentMap}
                 changeMap={changeMap}
             />
-            <ChangeEffects />
+            <ChangeEffects 
+                hasSeenFlickerWarning={hasSeenFlickerWarning}
+                setShowFlickerWarning={setShowFlickerWarning}
+            />
             <Info />
             <Donate />
 
             {/* Fallback background */}
             <FallbackBackgroundComponent />
+
+            {/* Flicker warning modal */}
+            <Modal modalOpen={showFlickerWarning} setModalOpen={setShowFlickerWarning}>
+                <FlickerWarningModal 
+                    setShowFlickerWarning={setShowFlickerWarning} 
+                    setHasSeenFlickerWarning={setHasSeenFlickerWarning}
+                />
+            </Modal>
         </>
 
     )
