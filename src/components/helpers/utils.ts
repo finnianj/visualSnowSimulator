@@ -1,18 +1,15 @@
-import { projectLinks } from "../links/projectLinks"
-
-export const copyEmailToClipboard = () => {
-    const email = projectLinks.contactEmail
-    navigator.clipboard.writeText(email)
+export const copyToClipboard = (item: string) => {
+    navigator.clipboard.writeText(item)
     // Also copy for mobile devices
     if (!navigator.clipboard) {
-        copyEmailToClipboardFallback(email)
+        copyToClipboardFallback(item)
     }
     
 }
 
-const copyEmailToClipboardFallback = (email: string) => {
+const copyToClipboardFallback = (item: string) => {
     const tempInput = document.createElement("input")
-    tempInput.value = email
+    tempInput.value = item
     document.body.appendChild(tempInput)
     tempInput.select()
     document.execCommand("copy")
@@ -20,14 +17,37 @@ const copyEmailToClipboardFallback = (email: string) => {
 }
 
 export const createConfigQueryParams = (config: any) => {
-    return Object.entries(config)
-        .filter(([key, value]) => value != null)
-        .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value as any)}`)
-        .join('&');
+    // Use the effectsQueryParamMap to map the config object to query params
+    const queryParams = new URLSearchParams()
+    for (const key in config) {
+        if (effectsQueryParamMap[key as keyof typeof effectsQueryParamMap]) {
+            queryParams.append(effectsQueryParamMap[key as keyof typeof effectsQueryParamMap], config[key])
+        }
+    }
+    return queryParams.toString()
 }
 
 export const getBaseUrl = () => {
     const isDev = process.env.NODE_ENV === 'development'
     return isDev ? 'http://localhost:5173' : process.env.PUBLIC_URL
 }
+
+export const effectsQueryParamMap = {
+    noiseOpacity: 'nO',
+    bloomOpacity: 'bO',
+    brightness: 'br',
+    isFlickering: 'f',
+    flickerStrength: 'fS',
+    smallEyeFloatersEnabled: 'sef',
+    largeEyeFloatersEnabled: 'lef',
+    smallEyeFloatersCount: 'sefC',
+    largeEyeFloatersCount: 'lefC',
+    smallEyeFloatersSize: 'sefS',
+    largeEyeFloatersSize: 'lefS',
+    smallEyeFloatersTransparency: 'sefT',
+    largeEyeFloatersTransparency: 'lefT',
+    nauseaEnabled: 'n',
+    vignetteStrength: 'vS',
+}
+
     

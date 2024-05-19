@@ -1,9 +1,9 @@
-import { useEffects } from '../context'
+import { useEffects } from '../../context'
 
-import { Dropdown } from './shared/Dropdown'
-import { AudioControls } from '../audio/AudioControls'
-import { BrightnessInputs, NauseaInputs, RangeInput } from './shared/inputs'
-import { ShareConfig } from './ShareConfig'
+import { Dropdown } from '../shared/Dropdown'
+import { AudioControls } from '../../audio/AudioControls'
+import { BrightnessInputs, NauseaInputs, RangeInput, EyeFloatersInputs } from './components/inputs'
+import { ButtonRow } from './components/buttons/ButtonRow'
 
 export const ChangeEffects = () => {
     const { 
@@ -11,12 +11,6 @@ export const ChangeEffects = () => {
         setNoiseOpacity, 
         bloomOpacity, 
         setBloomOpacity, 
-        brightness, 
-        setBrightness, 
-        isFlickering,
-        setIsFlickering,
-        flickerStrength,
-        setFlickerStrength,
         vignetteStrength,
         setVignetteStrength
     } = useEffects();
@@ -44,9 +38,11 @@ export const ChangeEffects = () => {
                     onChange={(e) => setBloomOpacity(parseFloat(e.target.value))}
                 />
                 
-
                 {/* Brightness */}
                 <BrightnessInputs />
+
+                {/* Eye Floaters */}
+                <EyeFloatersInputs /> 
 
                 {/* Nausea */}
                 <NauseaInputs />
@@ -63,14 +59,7 @@ export const ChangeEffects = () => {
                     
                 <AudioControls />
                 
-                {/* Share */}   
-                <ShareConfig 
-                    noiseOpacity={noiseOpacity} 
-                    bloomOpacity={bloomOpacity} 
-                    brightness={brightness} 
-                    isFlickering={isFlickering} 
-                    flickerStrength={flickerStrength}
-                />
+                <ButtonRow />
             </>
         </Dropdown>    
     )

@@ -1,4 +1,4 @@
-import { useEffects } from '../../../context';
+import { useEffects } from '../../../../context';
 
 import { RangeInput, CheckBoxInput } from '.';
 

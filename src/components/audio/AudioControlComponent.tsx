@@ -1,4 +1,4 @@
-import { RangeInput } from '../ui/shared/inputs/RangeInput';
+import { RangeInput } from '../ui/ChangeEffectsPanel/components/inputs/RangeInput';
 
 type AudioControlComponentProps = {
     title: string;
@@ -29,6 +29,7 @@ export const AudioControlComponent = ({title, isPlaying, setIsPlaying, volume, s
                     step={0.01}
                     value={volume}
                     onChange={(e) => setVolume(parseFloat(e.target.value))}
+                    indent={true}
                 />
             </div>
         </div>

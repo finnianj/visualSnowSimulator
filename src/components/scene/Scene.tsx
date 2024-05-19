@@ -4,7 +4,7 @@ import { useEffects } from '../context'
 
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
-import { EffectsComposerLight, EffectsComposerHeavy } from './components' 
+import { MainEffectsComposer } from './components' 
 
 import { MapType } from '../../types'
 
@@ -23,8 +23,7 @@ export const Scene = ({ currentMap, BackgroundComponent }: SceneProps) => {
                 reverseHorizontalOrbit={nauseaEnabled}
             />
             <BackgroundComponent />
-            <EffectsComposerLight currentMap={currentMap} />
-            <EffectsComposerHeavy currentMap={currentMap} />
+            <MainEffectsComposer currentMap={currentMap} />
         </Canvas>
     )
 }

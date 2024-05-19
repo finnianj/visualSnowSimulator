@@ -30,7 +30,7 @@ export const Dropdown = ({ children, title, childPosition, containerPosition, on
                     }
                     />
 
-                <div className={`scale-0 ${showList ? 'scale-100' : ''} ${childPosition ? childPosition : ''} absolute text-sm bg-teal-400 transition-all transform overflow-hidden w-full rounded-lg shadow-lg`}>
+                <div className={`scale-0 ${showList ? 'scale-100' : ''} ${childPosition ? childPosition : ''} absolute text-sm bg-teal-400 transition-all transform overflow-visible w-full rounded-lg shadow-lg`}>
                     {children}
                 </div>
 

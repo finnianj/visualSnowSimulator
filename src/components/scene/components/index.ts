@@ -1,2 +1,1 @@
-export * from './EffectsComposerLight';  
-export * from './EffectsComposerHeavy';
+export * from './MainEffectsComposer';  

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import { useEffects } from '../../../context';
+import { useEffects } from '../../../../context';
 
 import { RangeInput, CheckBoxInput } from '.';
 
@@ -10,15 +10,15 @@ export const BrightnessInputs = () => {
     const flickerInterval = 20
     
     // If isFlickering is true, randomly modulate the brightness by 0.01 every 100ms
-    useEffect(() => {
-        if (isFlickering) {
-            const interval = setInterval(() => {
-                const newBrightness = brightness + (Math.random() * flickerStrength)
-                setBrightness(newBrightness)
-            }, flickerInterval)
-            return () => clearInterval(interval)
-        }
-    }, [isFlickering, flickerStrength])
+    // useEffect(() => {
+    //     if (isFlickering) {
+    //         const interval = setInterval(() => {
+    //             const newBrightness = brightness + (Math.random() * flickerStrength)
+    //             setBrightness(newBrightness)
+    //         }, flickerInterval)
+    //         return () => clearInterval(interval)
+    //     }
+    // }, [isFlickering, flickerStrength])
 
     return (
         <div>
@@ -34,14 +34,16 @@ export const BrightnessInputs = () => {
                 label='Flickering'
                 checked={isFlickering}
                 onChange={() => setIsFlickering(!isFlickering)}
+                indent={true}
             />
             <RangeInput
                 name={'Flicker Strength'}
-                min={0.01}
-                max={0.1}
-                step={0.001}
+                min={0}
+                max={0.5}
+                step={0.01}
                 value={flickerStrength}
                 onChange={(e) => setFlickerStrength(parseFloat(e.target.value))}
+                indent={true}
             />
         </div>
     )

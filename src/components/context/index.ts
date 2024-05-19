@@ -1,3 +1,3 @@
 export * from './AudioContext';
-export * from './EffectsContext';
+export * from './effects/EffectsContext';
 export * from './LoadingContext';

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { projectLinks } from "../../../../links/projectLinks"
-import { copyEmailToClipboard } from "../../../../helpers/utils";
+import { copyToClipboard } from "../../../../helpers/utils";
 import { FaGithub, FaCode, FaCheckCircle, FaDiscord } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 
@@ -8,8 +8,8 @@ export const HelpTab = () => {
     const [copiedEmail, setCopiedEmail] = useState(false)
 
     const handleCopyEmail = () => {
+        copyToClipboard(projectLinks.contactEmail)
         setCopiedEmail(true)
-        copyEmailToClipboard()
         setTimeout(() => {
             setCopiedEmail(false)
         }, 3000)
@@ -44,7 +44,7 @@ export const HelpTab = () => {
                         ) : (
                             <div onClick={handleCopyEmail} className="flex items-center text-blue-500 hover:text-blue-600 ml-4 cursor-pointer">
                                 <MdEmail className="w-6 h-6 mr-1" />
-                                Contact Developer
+                                Contact
                             </div>
                         )}
                         {/* Discord */}
