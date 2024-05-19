@@ -37,7 +37,7 @@ export const WelcomeModal = ({ prevConfig, setShowWelcomeModal }: UserConfigLoad
             </div> 
             
             <h3 className="text-lg text-center font-bold text-slate-600 dark:text-slate-400">
-                Welcome 
+                Welcome
             </h3>
 
             <div className="flex flex-col space-y-4">
@@ -89,7 +89,6 @@ export const WelcomeModal = ({ prevConfig, setShowWelcomeModal }: UserConfigLoad
                                     Go
                                 </button>
                             </>
-
                         )}
                     </>
                 )}
