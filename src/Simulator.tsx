@@ -19,7 +19,7 @@ export const Simulator = () => {
         // Apply config from query params
         const config: {[key: string]: string} = {} 
         const urlParams = new URLSearchParams(window.location.search);
-        if (!urlParams) return;
+        if (!urlParams.size) return;
 
         // Get values using effectsQueryParamMap
         for (const key in effectsQueryParamMap) {

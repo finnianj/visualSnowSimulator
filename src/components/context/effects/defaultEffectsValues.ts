@@ -5,7 +5,7 @@ export const defaultEffectsValues: DefaultEffectsValuesType = {
     bloomOpacity: 0,
     brightness: 0,
     isFlickering: false,
-    flickerStrength: 0.05,
+    flickerStrength: 0.25,
     nauseaEnabled: false,
     nauseaFrequency: 2,
     nauseaAmplitude: 0.1,

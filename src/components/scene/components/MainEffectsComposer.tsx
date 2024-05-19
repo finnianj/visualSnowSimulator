@@ -14,6 +14,7 @@ type EffectsComposerLightProps = {
 
 export const MainEffectsComposer = ({ currentMap }: EffectsComposerLightProps) => {
     const {
+        isSimulatorOn,
         disableAllEffects,
         brightness,
         noiseOpacity,
@@ -43,7 +44,7 @@ export const MainEffectsComposer = ({ currentMap }: EffectsComposerLightProps) =
     const largeEyeFloatersRef = useRef();
 
     return (
-            <EffectComposer enabled={!disableAllEffects}  >            
+            <EffectComposer enabled={!disableAllEffects && isSimulatorOn}  >            
                 <Flicker enabled={isFlickering} textureUrl='./textures/noise4.jpeg' intensity={flickerStrength} />
                 <BrightnessContrast brightness={brightness} />
 

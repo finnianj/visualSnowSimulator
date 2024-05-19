@@ -2,6 +2,8 @@
 export type EffectsContextType = {
     disableAllEffects: boolean;
     setDisableAllEffects: (value: boolean) => void;
+    isSimulatorOn: boolean;
+    setIsSimulatorOn: (value: boolean) => void;
     noiseOpacity: number;
     setNoiseOpacity: (value: number) => void;
     bloomOpacity: number;

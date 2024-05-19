@@ -11,7 +11,7 @@ void mainImage(const in vec4 inputColor, const in vec2 uv, out vec4 outputColor)
 
     if (enabled) {
         // Calculate flicker based on time
-        float flickerFrequency = 0.2; // 20 milliseconds
+        float flickerFrequency = 0.04; 
         float flicker = step(0.5, fract(time / flickerFrequency)) * intensity;
 
         // Apply flicker to the input color
