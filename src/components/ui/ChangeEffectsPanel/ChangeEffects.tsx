@@ -2,8 +2,9 @@ import { useEffects } from '../../context'
 
 import { Dropdown } from '../shared/Dropdown'
 import { AudioControls } from '../../audio/AudioControls'
-import { FlickerInputs, NauseaInputs, RangeInput, EyeFloatersInputs } from './components/inputs'
+import { FlickerInputs, NauseaInputs, RangeInput, EyeFloatersInputs, CheckBoxInput } from './components/inputs'
 import { ButtonRow } from './components/buttons/ButtonRow'
+import { BlurInputs } from './components/inputs/BlurInputs'
 
 export const ChangeEffects = () => {
     const { 
@@ -15,11 +16,15 @@ export const ChangeEffects = () => {
         vignetteStrength,
         setVignetteStrength,
         brightness,
-        setBrightness
+        setBrightness,
+        blurEnabled,
+        setBlurEnabled,
+        blurStrength,
+        setBlurStrength,
     } = useEffects();
 
     return (
-        <Dropdown title='Change Effects' childPosition={'origin-top-left top-8 sm:top-12 left-0 space-y-4 p-4 sm:w-96 w-80'} containerPosition='left-4 top-4'>
+        <Dropdown title='Change Effects' childPosition={'origin-top-left top-8 sm:top-12 left-0 space-y-4 p-4 sm:w-96 w-[20rem] '} containerPosition='left-4 top-4'>
             <div className={`flex flex-col space-y-2 ${!disableAllEffects ? '' : 'opacity-50 pointer-events-none'}`}>
                 {/* Snow opacity */}
                 <RangeInput 
@@ -59,6 +64,9 @@ export const ChangeEffects = () => {
 
                 {/* Nausea */}
                 <NauseaInputs />
+
+                {/* Blur */}
+                {/* <BlurInputs /> */}
 
                 {/* Vignette */}
                 <RangeInput

@@ -24,6 +24,8 @@ export const MainEffectsComposer = ({ currentMap }: EffectsComposerLightProps) =
         nauseaEnabled,
         nauseaFrequency,
         nauseaAmplitude,
+        blurEnabled,
+        blurStrength,
 
         smallEyeFloatersEnabled,
         smallEyeFloatersCount,
@@ -43,10 +45,13 @@ export const MainEffectsComposer = ({ currentMap }: EffectsComposerLightProps) =
     const largeEyeFloatersRef = useRef();
 
     return (
-            <EffectComposer enabled={!disableAllEffects}  >            
+            <EffectComposer enabled={!disableAllEffects}  >        
+                {/* <Blur
+                    enabled={blurEnabled} 
+                    strength={blurStrength} 
+                />     */}
                 <Flicker enabled={isFlickering} textureUrl='./textures/noise4.jpeg' intensity={flickerStrength} />
                 <BrightnessContrast brightness={brightness} />
-
 
                 {/* Small Eye Floaters */}
                 <EyeFloaters
@@ -68,8 +73,7 @@ export const MainEffectsComposer = ({ currentMap }: EffectsComposerLightProps) =
                     particle_transparency={largeEyeFloatersTransparency}
                     particle_size={largeEyeFloatersSize}
                     particle_color={largeEyeFloatersColor}
-                    />
-
+                />
                 
                 {/* Nausea */}
                 <Nausea
@@ -79,14 +83,11 @@ export const MainEffectsComposer = ({ currentMap }: EffectsComposerLightProps) =
                     amplitude={nauseaAmplitude} 
                 />
 
-                <Blur
-                    enabled={false} 
-                    strength={9} 
-                />
+                
                 <Bloom luminanceThreshold={0.1} luminanceSmoothing={0.1} height={300} opacity={bloomOpacity} /> 
                 <Vignette eskil={false} offset={0.5} darkness={vignetteStrength} />
                 <Noise blendFunction={currentMap.blendFunction} opacity={noiseOpacity} />
                 
-            </EffectComposer>   
+            </EffectComposer>       
     )
 }

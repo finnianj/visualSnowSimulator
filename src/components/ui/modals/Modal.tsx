@@ -42,7 +42,7 @@ export const Modal = ({ modalOpen, setModalOpen, children }: ModalProps) => {
             </div>
 
             <div
-              className={`scale-0 ${grow ? 'scale-100 transition-all duration-500' : ''}`}
+              className={`scale-0 mx-2 ${grow ? 'scale-100 transition-all duration-500' : ''}`}
             >
               {children}
             </div>
