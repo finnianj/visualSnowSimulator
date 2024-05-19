@@ -86,7 +86,7 @@ export const MainEffectsComposer = ({ currentMap }: EffectsComposerLightProps) =
                 />
                 <Bloom luminanceThreshold={0.1} luminanceSmoothing={0.1} height={300} opacity={bloomOpacity} /> 
                 <Vignette eskil={false} offset={0.5} darkness={vignetteStrength} />
-<Noise blendFunction={currentMap.blendFunction} opacity={noiseOpacity} />
+                <Noise blendFunction={currentMap.blendFunction} opacity={noiseOpacity} />
                 
             </EffectComposer>   
     )

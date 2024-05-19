@@ -1,15 +1,11 @@
 import React, { useState } from 'react';
-import { useEffects } from '../../../../context';
+import { useEffects, useUI } from '../../../../context';
 
 import { RangeInput, CheckBoxInput } from '.';
 
-type FlickerInputsProps = {
-    hasSeenFlickerWarning: boolean;
-    setShowFlickerWarning: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-export const FlickerInputs = ({ setShowFlickerWarning, hasSeenFlickerWarning }: FlickerInputsProps) => {
+export const FlickerInputs = () => {
     const { isFlickering, setIsFlickering, flickerStrength, setFlickerStrength } = useEffects();
+    const { setShowFlickerWarning, hasSeenFlickerWarning } = useUI();
 
     const handleCheckboxChange = () => {
         if (!isFlickering) {
@@ -33,7 +29,7 @@ export const FlickerInputs = ({ setShowFlickerWarning, hasSeenFlickerWarning }: 
             <RangeInput
                 name={'Flicker Strength'}
                 min={0}
-                max={0.5}
+                max={0.3}
                 step={0.01}
                 value={flickerStrength}
                 onChange={(e) => setFlickerStrength(parseFloat(e.target.value))}

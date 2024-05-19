@@ -41,8 +41,6 @@ export const EffectsProvider: React.FC<{ children: React.ReactNode }> = ({ child
 
     const [vignetteStrength, setVignetteStrength] = useState<number>(defaultEffectsValues.vignetteStrength)
 
-    const [darkMode, setDarkMode] = useState<boolean>(false)
-
     const resetAllEffectsToDefault = () => {
         // use defaultEffectsValues to reset all values
         setNoiseOpacity(defaultEffectsValues.noiseOpacity)
@@ -69,6 +67,8 @@ export const EffectsProvider: React.FC<{ children: React.ReactNode }> = ({ child
     }
 
     const usePreviousConfig = (config: {[key: string]: string}) => {
+        setDisableAllEffects(true)
+        console.log('Applying config and disabling effects: ')
         // Set values from config object
         for (const key in config) {
             if (effectsQueryParamMap[key as keyof typeof effectsQueryParamMap]) {
@@ -173,8 +173,6 @@ export const EffectsProvider: React.FC<{ children: React.ReactNode }> = ({ child
         setBlurStrength,
         vignetteStrength,
         setVignetteStrength,
-        darkMode,
-        setDarkMode,
 
         resetAllEffectsToDefault,
         usePreviousConfig

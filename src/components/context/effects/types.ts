@@ -46,8 +46,6 @@ export type EffectsContextType = {
     setBlurStrength: (value: number) => void;
     vignetteStrength: number;
     setVignetteStrength: (value: number) => void;
-    darkMode: boolean;
-    setDarkMode: (value: boolean) => void;
 
     resetAllEffectsToDefault: () => void;
     usePreviousConfig: (config: {[key: string]: string}) => void;

@@ -8,20 +8,19 @@ interface ModalProps {
 }
 
 export const Modal = ({ modalOpen, setModalOpen, children }: ModalProps) => {
-  const { setDisableAllEffects } = useEffects();
+  const { setDisableAllEffects, disableAllEffects } = useEffects();
   const [grow, setGrow] = useState<boolean>(false);
   
   useEffect(() => {
-    if (modalOpen && children) {
+    if (modalOpen) {
       setDisableAllEffects(true);
       setTimeout(() => {
         setGrow(true);
       }, 200);
     } else {
-      setDisableAllEffects(false);
       setGrow(false);
     }
-  }, [modalOpen, children])
+  }, [modalOpen])
 
   return (
     <>
@@ -31,11 +30,14 @@ export const Modal = ({ modalOpen, setModalOpen, children }: ModalProps) => {
           aria-labelledby="modal-title"
           aria-modal="true"
         >
-          <div className=" flex justify-center items-start sm:pt-32 pt-4 min-h-screen w-screen h-fit text-center">
+          <div className=" flex justify-center items-center pt-4 min-h-screen w-screen h-fit text-center">
             <div
               className="fixed inset-0 flex justify-center items-center bg-gray-900 backdrop-blur-sm bg-opacity-10 transition-opacity hover:cursor-pointer"
               aria-hidden="true"
-              onClick={() => { setModalOpen(false) }}
+              onClick={() => { 
+                setModalOpen(false) 
+                setDisableAllEffects(false)
+              }}
             >
             </div>
 

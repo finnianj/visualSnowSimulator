@@ -15,13 +15,13 @@ const LoadingContext = createContext<LoadingContextType | undefined>(undefined);
 
 // Provider component
 export const LoadingProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    const { setDisableAllEffects } = useEffects();
+    const { disableAllEffects, setDisableAllEffects } = useEffects();
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
     useEffect(() => {
         if (isLoading) {
             setDisableAllEffects(true);
-        } else {
+        } else if (!isLoading && !disableAllEffects){
             setDisableAllEffects(false);
         }
     }, [isLoading, setDisableAllEffects]);

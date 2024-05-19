@@ -1,11 +1,14 @@
 import React, { useState} from 'react';
 
+import { useUI } from '../context';
+
 import { AudioPlayer } from '../audio/AudioPlayer';
 import { ChangeMap, ChangeEffects, Info, Donate } from './';
 import { MapType } from '../../types';
 
 import { Modal } from './modals/Modal';
 import { FlickerWarningModal } from './modals/FlickerWarningModal';
+import { ShareConfigModal } from './modals/ShareConfigModal';
 
 type UserInterfaceProps = {
     maps: MapType[];
@@ -15,8 +18,7 @@ type UserInterfaceProps = {
 }
 
 export const UserInterface = ({ maps, currentMap, changeMap, FallbackBackgroundComponent }: UserInterfaceProps) => {
-    const [showFlickerWarning, setShowFlickerWarning] = useState(false);
-    const [hasSeenFlickerWarning, setHasSeenFlickerWarning] = useState(false);
+    const { showFlickerWarning, setShowFlickerWarning, hasSeenFlickerWarning, setHasSeenFlickerWarning, showShareConfigModal, setShowShareConfigModal } = useUI();
 
     return (
         <>
@@ -29,10 +31,7 @@ export const UserInterface = ({ maps, currentMap, changeMap, FallbackBackgroundC
                 currentMap={currentMap}
                 changeMap={changeMap}
             />
-            <ChangeEffects 
-                hasSeenFlickerWarning={hasSeenFlickerWarning}
-                setShowFlickerWarning={setShowFlickerWarning}
-            />
+            <ChangeEffects />
             <Info />
             <Donate />
 
@@ -45,6 +44,11 @@ export const UserInterface = ({ maps, currentMap, changeMap, FallbackBackgroundC
                     setShowFlickerWarning={setShowFlickerWarning} 
                     setHasSeenFlickerWarning={setHasSeenFlickerWarning}
                 />
+            </Modal>
+
+            {/* Share Config modal */}
+            <Modal modalOpen={showShareConfigModal} setModalOpen={setShowShareConfigModal}>
+                <ShareConfigModal />
             </Modal>
         </>
 

@@ -1,12 +1,15 @@
 import { useState } from 'react'
+
+
+import { useEffects, useUI } from '../../../context';
 import { TabHeaders } from './components'
 import { InfoModalContent } from './InfoModalContent'
 import { FaMoon, FaSun } from "react-icons/fa";
 import { MdClose } from "react-icons/md";
-import { useEffects } from '../../../context';
 
 export const InfoModal = ({ setShowInfo }: { setShowInfo: (show: boolean) => void }) => {
-    const { darkMode, setDarkMode } = useEffects()
+    const { darkMode, setDarkMode } = useUI()
+    const { setDisableAllEffects } = useEffects()
     const [currentTab, setCurrentTab] = useState<string>('info')
 
     return (
@@ -20,7 +23,10 @@ export const InfoModal = ({ setShowInfo }: { setShowInfo: (show: boolean) => voi
                     </button>
                 </div>
                 <div className="absolute top-0 right-2 flex justify-end ">
-                    <button onClick={() => setShowInfo(false)} className="p-2 hover:opacity-75 transition-all scale-150">
+                    <button onClick={() => {
+                        setDisableAllEffects(false)
+                        setShowInfo(false)
+                    }} className="p-2 hover:opacity-75 transition-all scale-150">
                         <MdClose className="text-gray-900 dark:text-gray-400" />
                     </button>
                 </div>

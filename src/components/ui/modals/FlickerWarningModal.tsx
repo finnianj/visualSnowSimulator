@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { useEffects } from '../../context';
+import { useEffects, useUI } from '../../context';
 
 type FlickerWarningModalProps = {
     setShowFlickerWarning: React.Dispatch<React.SetStateAction<boolean>>;
@@ -9,11 +9,11 @@ type FlickerWarningModalProps = {
 
 
 export const FlickerWarningModal = ({ setShowFlickerWarning, setHasSeenFlickerWarning }: FlickerWarningModalProps) => {
-
-    const { setIsFlickering, darkMode } = useEffects();
+    const { darkMode } = useUI();
+    const { setIsFlickering, setDisableAllEffects } = useEffects();
 
     return (
-        <div className={`flex flex-col items-center sm:mt-64 rounded-lg shadow-mg text-white p-4 ${darkMode ? 'bg-gray-900 dark' : 'bg-gray-100'}`}>
+        <div className={`flex flex-col items-center rounded-lg shadow-mg text-white p-4 ${darkMode ? 'bg-gray-900 dark' : 'bg-gray-100'}`}>
             <div className='flex flex-col items-center text-slate-600 dark:text-slate-400'>
                 <p className='text-lg font-bold text-center '>Warning</p>
                 <p className='text-center '>
@@ -26,6 +26,7 @@ export const FlickerWarningModal = ({ setShowFlickerWarning, setHasSeenFlickerWa
                                 setIsFlickering(false);
                                 setHasSeenFlickerWarning(true);
                                 setShowFlickerWarning(false);
+                                setDisableAllEffects(false)
                         }}
                     >
                         Cancel
@@ -36,6 +37,7 @@ export const FlickerWarningModal = ({ setShowFlickerWarning, setHasSeenFlickerWa
                                 setIsFlickering(true);
                                 setHasSeenFlickerWarning(true);
                                 setShowFlickerWarning(false);
+                                setDisableAllEffects(false)
                             }}
                     >
                         Continue

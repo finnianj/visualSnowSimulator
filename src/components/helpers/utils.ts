@@ -33,6 +33,7 @@ export const getBaseUrl = () => {
 }
 
 export const effectsQueryParamMap = {
+    name: 'name',
     noiseOpacity: 'nO',
     bloomOpacity: 'bO',
     brightness: 'br',

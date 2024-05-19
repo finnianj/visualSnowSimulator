@@ -5,12 +5,7 @@ import { AudioControls } from '../../audio/AudioControls'
 import { FlickerInputs, NauseaInputs, RangeInput, EyeFloatersInputs } from './components/inputs'
 import { ButtonRow } from './components/buttons/ButtonRow'
 
-type ChangeEffectsProps = {
-    setShowFlickerWarning: React.Dispatch<React.SetStateAction<boolean>>;
-    hasSeenFlickerWarning: boolean;
-}
-
-export const ChangeEffects = ({ setShowFlickerWarning, hasSeenFlickerWarning }: ChangeEffectsProps) => {
+export const ChangeEffects = () => {
     const { 
         isSimulatorOn,
         noiseOpacity, 
@@ -57,10 +52,7 @@ export const ChangeEffects = ({ setShowFlickerWarning, hasSeenFlickerWarning }: 
                 />
 
                 {/* Flicker */}
-                <FlickerInputs 
-                    hasSeenFlickerWarning={hasSeenFlickerWarning}
-                    setShowFlickerWarning={setShowFlickerWarning}
-                />
+                <FlickerInputs />
 
                 {/* Eye Floaters */}
                 <EyeFloatersInputs /> 
