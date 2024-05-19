@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { useAudio } from '../context/AudioContext';
+import { useAudio, useEffects } from '../context';
 
 export const AudioPlayer: React.FC = () => {
     const ambientAudioRef = useRef<HTMLAudioElement>(null);
@@ -12,6 +12,7 @@ export const AudioPlayer: React.FC = () => {
         ambientVolume,
         effectsVolume,
     } = useAudio();
+    const { isSimulatorOn } = useEffects();
 
     // Handle playback of ambient audio
     useEffect(() => {
@@ -68,6 +69,25 @@ export const AudioPlayer: React.FC = () => {
         ambientAudio.volume = ambientVolume;
         effectAudio.volume = effectsVolume;
     }, [ambientVolume, effectsVolume]);  
+
+    useEffect(() => {
+        // If isSimulatorOn is false, pause all audio
+        const ambientAudio = ambientAudioRef.current;
+        const effectAudio = effectAudioRef.current;
+        if (!ambientAudio || !effectAudio) return;
+
+        if (!isSimulatorOn) {
+            ambientAudio.pause();
+            effectAudio.pause();
+        } else {
+            if (isAmbientPlaying) {
+                ambientAudio.play().catch(error => console.error('Error playing ambient audio:', error));
+            }
+            if (isEffectsAudioPlaying) {
+                effectAudio.play().catch(error => console.error('Error playing effects audio:', error));
+            }
+        }
+    }, [isSimulatorOn]);
 
     return (
         <div>
