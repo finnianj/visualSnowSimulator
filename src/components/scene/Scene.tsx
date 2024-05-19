@@ -14,13 +14,13 @@ type SceneProps = {
 }
 
 export const Scene = ({ currentMap, BackgroundComponent }: SceneProps) => {
-    const { nauseaEnabled } = useEffects();
+    const { nauseaEnabled, disableAllEffects } = useEffects();
 
     return (
         <Canvas className='cursor-grab active:cursor-grabbing'>
             <OrbitControls 
-                reverseVerticalOrbit={nauseaEnabled}
-                reverseHorizontalOrbit={nauseaEnabled}
+                reverseVerticalOrbit={nauseaEnabled && !disableAllEffects}
+                reverseHorizontalOrbit={nauseaEnabled && !disableAllEffects}
             />
             <BackgroundComponent />
             <MainEffectsComposer currentMap={currentMap} />

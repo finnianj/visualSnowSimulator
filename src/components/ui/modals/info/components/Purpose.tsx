@@ -28,8 +28,8 @@ export const HelpTab = () => {
                 <p>
                     The simulator was developed by Finn, a Drummer and Web Developer from the UK, living in Berlin, Germany. Finn is running the 2024 Berlin Marathon for the Visual Snow Initiative to raise awareness and funds for research into Visual Snow Syndrome. You can donate directly to his fundraiser <a href={projectLinks.marathonDonationLink || projectLinks.vsiDonationLink} target="_blank" className="text-blue-500 hover:text-blue-600">here</a>.
                 </p>
-                <div className="flex justify-start items-center w-full">
-                    {/* Links to deve,op github and project code */}
+                <div className="flex justify-center items-center w-full">
+                    {/* Links to github and project code */}
                     <div className="flex mt-4">
                         <a href={projectLinks.projectGithub} target="_blank" className="flex items-center text-blue-500 hover:text-blue-600">
                             <FaCode className="w-6 h-6 mr-1" />

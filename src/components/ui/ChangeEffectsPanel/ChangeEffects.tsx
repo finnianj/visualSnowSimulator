@@ -7,7 +7,7 @@ import { ButtonRow } from './components/buttons/ButtonRow'
 
 export const ChangeEffects = () => {
     const { 
-        isSimulatorOn,
+        disableAllEffects,
         noiseOpacity, 
         setNoiseOpacity, 
         bloomOpacity, 
@@ -20,7 +20,7 @@ export const ChangeEffects = () => {
 
     return (
         <Dropdown title='Change Effects' childPosition={'origin-top-left top-8 sm:top-12 left-0 space-y-4 p-4 sm:w-96 w-80'} containerPosition='left-4 top-4'>
-            <div className={`flex flex-col space-y-2 ${isSimulatorOn ? '' : 'opacity-50 pointer-events-none'}`}>
+            <div className={`flex flex-col space-y-2 ${!disableAllEffects ? '' : 'opacity-50 pointer-events-none'}`}>
                 {/* Snow opacity */}
                 <RangeInput 
                     name='Snow' 

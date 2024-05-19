@@ -53,7 +53,7 @@ export const Simulator = () => {
                 <Scene 
                     currentMap={currentMap}
                     BackgroundComponent={BackgroundComponent} 
-                    />
+                />
 
                 <Modal modalOpen={showWelcomeModal} setModalOpen={setShowWelcomeModal}>
                     <WelcomeModal prevConfig={prevConfig} setShowWelcomeModal={setShowWelcomeModal} />
