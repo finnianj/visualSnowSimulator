@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 export const useVisualEffects = () => {
-    const [noiseOpacity, setNoiseOpacity] = useState(0.1)
+    const [noiseOpacity, setNoiseOpacity] = useState(0.5)
     const [bloomOpacity, setBloomOpacity] = useState(0.1)
     
     const [brightness, setBrightness] = useState(0)

@@ -1,5 +1,5 @@
-import { BlendFunction } from 'postprocessing';
 import { Texture } from 'three';
+import { BlendFunction } from 'postprocessing';
 
 export type MapType = {
     name: string;

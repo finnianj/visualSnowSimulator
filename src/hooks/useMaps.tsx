@@ -9,14 +9,14 @@ import { FallbackBackground } from '../components/maps/FallbackBackground';
 
 import { defaultMaps } from '../components/maps/defaultMaps';
 
-type useMapsType = {
-    setIsLoading: (value: boolean) => void;
-}
+import { useLoading } from '../components/context';
 
-export const useMaps = ({ setIsLoading }: useMapsType) => {
+export const useMaps = () => {
+    const { isLoading, setIsLoading } = useLoading();
     const [maps, setMaps] = useState<MapType[]>(defaultMaps);
     const [currentMap, setCurrentMap] = useState(maps[0])
     const [mapTexture, setMapTexture] = useState<Texture | undefined>(undefined)
+
 
     useEffect(() => {
         setIsLoading(true)
