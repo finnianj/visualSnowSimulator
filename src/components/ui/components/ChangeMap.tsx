@@ -28,7 +28,7 @@ export const ChangeMap = ({changeMap, currentMap, maps}: ChangeMapProps) => {
     }
 
     return (
-        <Dropdown title='Change Map' onTitleClick={() => handleMapSelect()} childPosition={'origin-top-right top-8 !overflow-hidden sm:top-12 right-0'} containerPosition='right-4 top-4'>
+        <Dropdown title='Change Map' onTitleClick={() => handleMapSelect()} childPosition={'origin-top-right top-12 !overflow-hidden sm:top-12 right-0'} containerPosition='right-4 top-4'>
             <>
                 {maps.map((map, index) => (
                     <div 

@@ -24,7 +24,7 @@ export const ChangeEffects = () => {
     } = useEffects();
 
     return (
-        <Dropdown title='Change Effects' childPosition={'origin-top-left top-8 sm:top-12 left-0 space-y-4 p-4 sm:w-96 w-[20rem] '} containerPosition='left-4 top-4'>
+        <Dropdown title='Change Effects' childPosition={'origin-top-left top-12 left-0 space-y-4 p-4'} containerPosition='left-4 top-4'>
             <div className={`flex flex-col space-y-2 ${ userHasPausedEffects ? 'opacity-50 pointer-events-none' : '' }`}>
                 {/* Snow opacity */}
                 <RangeInput 
