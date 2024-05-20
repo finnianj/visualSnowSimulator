@@ -38,7 +38,7 @@ export const HelpTab = () => {
                     <div className="flex mt-4 space-x-8">
                         <a href={projectLinks.projectGithub} target="_blank" className="flex items-center text-blue-500 hover:text-blue-600">
                             <FaCode className="w-6 h-6 mr-1" />
-                            Project Code
+                            Code
                         </a>
                         {/* Contact email */}
                         {copiedEmail ? (

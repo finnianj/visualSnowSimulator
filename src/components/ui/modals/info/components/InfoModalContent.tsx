@@ -1,4 +1,4 @@
-import { InfoTab, SettingsTab, HelpTab } from './components';
+import { InfoTab, SettingsTab, HelpTab } from '.';
 
 export const InfoModalContent = ({ currentTab }: { currentTab: string }) => {
     return (
