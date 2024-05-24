@@ -2,7 +2,7 @@ import { useEffects } from '../../../context'
 
 import { Dropdown } from '../../shared/Dropdown'
 import { AudioControls } from '../../../audio/AudioControls'
-import { FlickerInputs, NauseaInputs, RangeInput, EyeFloatersInputs, CheckBoxInput } from './components/inputs'
+import { FlickerInputs, DizzinessInputs, RangeInput, EyeFloatersInputs, CheckBoxInput } from './components/inputs'
 import { ButtonRow } from './components/buttons/ButtonRow'
 import { BlurInputs } from './components/inputs/BlurInputs'
 
@@ -35,6 +35,9 @@ export const ChangeEffects = () => {
                     value={noiseOpacity} 
                     onChange={(e) => setNoiseOpacity(parseFloat(e.target.value))}
                 />
+
+                {/* Flicker */}
+                <FlickerInputs />
                 
                 {/* Bloom opacity */}
                 <RangeInput
@@ -56,14 +59,11 @@ export const ChangeEffects = () => {
                     onChange={(e) => setBrightness(parseFloat(e.target.value))}
                 />
 
-                {/* Flicker */}
-                <FlickerInputs />
-
                 {/* Eye Floaters */}
                 <EyeFloatersInputs /> 
 
-                {/* Nausea */}
-                <NauseaInputs />
+                {/* Dizziness */}
+                <DizzinessInputs />
 
                 {/* Blur */}
                 {/* <BlurInputs /> */}

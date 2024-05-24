@@ -24,7 +24,7 @@ const fragmentShader = `
     }
 `;
 
-type NauseaEffectProps = {
+type DizzinessEffectProps = {
     enabled: boolean;
     frequency: number;
     amplitude: number;
@@ -32,11 +32,11 @@ type NauseaEffectProps = {
 
 type UniformType = Uniform<number> | Uniform<Vector2 | boolean>;
 
-export default class NauseaEffect extends Effect {
-    constructor(props: NauseaEffectProps)
+export default class DizzinessEffect extends Effect {
+    constructor(props: DizzinessEffectProps)
     {
         super(
-            'NauseaEffect',
+            'DizzinessEffect',
             fragmentShader,
             {
                 uniforms: new Map<string, UniformType>([

@@ -20,9 +20,9 @@ export const EffectsProvider: React.FC<{ children: React.ReactNode }> = ({ child
     const [isFlickering, setIsFlickering] = useState<boolean>(false)
     const [flickerStrength, setFlickerStrength] = useState<number>(defaultEffectsValues.flickerStrength)
 
-    const [nauseaEnabled, setNauseaEnabled] = useState<boolean>(defaultEffectsValues.nauseaEnabled)
-    const [nauseaFrequency, setNauseaFrequency] = useState<number>(defaultEffectsValues.nauseaFrequency)
-    const [nauseaAmplitude, setNauseaAmplitude] = useState<number>(defaultEffectsValues.nauseaAmplitude)
+    const [dizzinessEnabled, setDizzinessEnabled] = useState<boolean>(defaultEffectsValues.dizzinessEnabled)
+    const [dizzinessFrequency, setDizzinessFrequency] = useState<number>(defaultEffectsValues.dizzinessFrequency)
+    const [dizzinessAmplitude, setDizzinessAmplitude] = useState<number>(defaultEffectsValues.dizzinessAmplitude)
 
     const [smallEyeFloatersEnabled, setSmallEyeFloatersEnabled] = useState<boolean>(defaultEffectsValues.smallEyeFloatersEnabled)
     const [smallEyeFloatersCount, setSmallEyeFloatersCount] = useState<number>(defaultEffectsValues.smallEyeFloatersCount)
@@ -48,9 +48,9 @@ export const EffectsProvider: React.FC<{ children: React.ReactNode }> = ({ child
         setBrightness(defaultEffectsValues.brightness)
         setIsFlickering(false)
         setFlickerStrength(defaultEffectsValues.flickerStrength)
-        setNauseaEnabled(defaultEffectsValues.nauseaEnabled)
-        setNauseaFrequency(defaultEffectsValues.nauseaFrequency)
-        setNauseaAmplitude(defaultEffectsValues.nauseaAmplitude)
+        setDizzinessEnabled(defaultEffectsValues.dizzinessEnabled)
+        setDizzinessFrequency(defaultEffectsValues.dizzinessFrequency)
+        setDizzinessAmplitude(defaultEffectsValues.dizzinessAmplitude)
         setSmallEyeFloatersEnabled(defaultEffectsValues.smallEyeFloatersEnabled)
         setSmallEyeFloatersCount(defaultEffectsValues.smallEyeFloatersCount)
         setSmallEyeFloatersTransparency(defaultEffectsValues.smallEyeFloatersTransparency)
@@ -110,8 +110,8 @@ export const EffectsProvider: React.FC<{ children: React.ReactNode }> = ({ child
                     case 'largeEyeFloatersTransparency':
                         setLargeEyeFloatersTransparency(parseFloat(config[key]))
                         break;
-                    case 'nauseaEnabled':
-                        setNauseaEnabled(config[key] === 'true')
+                    case 'dizzinessEnabled':
+                        setDizzinessEnabled(config[key] === 'true')
                         break;
                     case 'vignetteStrength':
                         setVignetteStrength(parseFloat(config[key]))
@@ -139,12 +139,12 @@ export const EffectsProvider: React.FC<{ children: React.ReactNode }> = ({ child
         setIsFlickering,
         flickerStrength,
         setFlickerStrength,
-        nauseaEnabled,
-        setNauseaEnabled,
-        nauseaFrequency,
-        setNauseaFrequency,
-        nauseaAmplitude,
-        setNauseaAmplitude,
+        dizzinessEnabled,
+        setDizzinessEnabled,
+        dizzinessFrequency,
+        setDizzinessFrequency,
+        dizzinessAmplitude,
+        setDizzinessAmplitude,
         smallEyeFloatersEnabled,
         setSmallEyeFloatersEnabled,
         smallEyeFloatersCount,

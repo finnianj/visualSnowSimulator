@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { useEffects, useLoading } from '../../context';
 
 import { EffectComposer, Noise, Bloom, BrightnessContrast, Vignette } from '@react-three/postprocessing';
-import { Blur, Flicker, EyeFloaters, Nausea } from '../../customShaders';
+import { Blur, Flicker, EyeFloaters, Afterimages, Dizziness } from '../../customShaders';
 
 import { MapType } from '../../../types';
 
@@ -22,9 +22,9 @@ export const MainEffectsComposer = ({ currentMap }: EffectsComposerLightProps) =
         vignetteStrength,
         isFlickering,
         flickerStrength,
-        nauseaEnabled,
-        nauseaFrequency,
-        nauseaAmplitude,
+        dizzinessEnabled,
+        dizzinessFrequency,
+        dizzinessAmplitude,
         blurEnabled,
         blurStrength,
 
@@ -43,9 +43,16 @@ export const MainEffectsComposer = ({ currentMap }: EffectsComposerLightProps) =
 
     const { isLoading } = useLoading();
 
-    const nauseaRef = useRef();
+    const dizzinessRef = useRef();
     const smallEyeFloatersRef = useRef();
     const largeEyeFloatersRef = useRef();
+
+    return (
+        <EffectComposer>
+            {/* Afterimages */}
+            <Afterimages enabled={true} />
+        </EffectComposer>
+    )
 
     return (
             <EffectComposer enabled={!isLoading && !userHasPausedEffects && !modalBeingViewed} >        
@@ -78,15 +85,14 @@ export const MainEffectsComposer = ({ currentMap }: EffectsComposerLightProps) =
                     particle_color={largeEyeFloatersColor}
                 />
                 
-                {/* Nausea */}
-                <Nausea
-                    enabled={nauseaEnabled}
-                    ref={nauseaRef}
-                    frequency={nauseaFrequency}
-                    amplitude={nauseaAmplitude} 
+                {/* Dizziness */}
+                <Dizziness
+                    enabled={dizzinessEnabled}
+                    ref={dizzinessRef}
+                    frequency={dizzinessFrequency}
+                    amplitude={dizzinessAmplitude} 
                 />
-
-                
+           
                 <Vignette eskil={false} offset={0.5} darkness={vignetteStrength} />
                 <Noise blendFunction={currentMap.blendFunction} opacity={noiseOpacity} />
                 <Bloom luminanceThreshold={0.1} luminanceSmoothing={0.1} height={300} opacity={bloomOpacity} /> 

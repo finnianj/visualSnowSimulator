@@ -24,7 +24,7 @@ export const HelpTab = () => {
             </p>
             
 
-            <h4 className="text-md font-semibold mt-4 text-slate-600 dark:text-slate-400">Limitations and Development</h4>
+            <h4 className="text-md font-semibold mt-4 text-slate-600 dark:text-slate-400">Disclaimer</h4>
             <p className="mt-2">
                 The simulator is a work in progress and may not accurately represent the visual disturbances experienced by all individuals with Visual Snow Syndrome. Some common symptoms of Visual Snow are very difficult to implement and have not been included. If you have any feedback or suggestions, or if you happen to be a talented GLSL developer, please get in touch.
             </p>

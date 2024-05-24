@@ -23,7 +23,7 @@ export const ShareConfigModal = () => {
         largeEyeFloatersSize,
         smallEyeFloatersTransparency,
         largeEyeFloatersTransparency,
-        nauseaEnabled,
+        dizzinessEnabled,
         vignetteStrength,
     } = useEffects()
 
@@ -47,7 +47,7 @@ export const ShareConfigModal = () => {
             largeEyeFloatersSize,
             smallEyeFloatersTransparency,
             largeEyeFloatersTransparency,
-            nauseaEnabled,
+            dizzinessEnabled,
             vignetteStrength,
         }
         const convertedToQueryParams = createConfigQueryParams(currentConfig)

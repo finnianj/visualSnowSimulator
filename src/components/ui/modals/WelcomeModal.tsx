@@ -12,17 +12,19 @@ export const WelcomeModal = ({ prevConfig, setShowWelcomeModal }: UserConfigLoad
     const name = prevConfig?.name || null
     const isFlickering = prevConfig?.isFlickering === 'true'
     
-    const { darkMode, setDarkMode } = useUI()
+    const { darkMode, setDarkMode, setHasSeenFlickerWarning } = useUI()
     const { setIsFlickering } = useEffects()
 
     const handleContinueAnyway = () => {
         // Continue anyway
+        setHasSeenFlickerWarning(true)
         setShowWelcomeModal(false)
     }
 
     const handleDisableFlickering = () => {
         // Disable flickering
         setIsFlickering(false)
+        setHasSeenFlickerWarning(true)
         setShowWelcomeModal(false)
     }
 
@@ -63,7 +65,7 @@ export const WelcomeModal = ({ prevConfig, setShowWelcomeModal }: UserConfigLoad
                         {isFlickering ? (
                             <>
                                 <p className="mt-2 text-red-500">
-                                    Warning: The current settings include flickering effects, which could trigger epilepsy. Would you like to disable them? You can turn them back on later.
+                                    <span className="font-bold">Warning</span>: The current settings include flickering effects, which could trigger seizures in individuals with photosensitive epilepsy. Would you like to disable them? You can turn them back on later.
                                 </p>
                                 <div className="flex justify-between mt-4 w-full text-sm">
                                     <button

@@ -25,7 +25,7 @@ export const InfoTab = () => {
                 <li>Frequent migraines</li>
                 <li>Brain fog and confusion</li>
                 <li>Dizziness</li>
-                <li>Nausea</li>
+                <li>Dizziness</li>
                 <li>Paresthesia (tingling “pins-and-needles” sensations, commonly in the arms, hands, legs, and feet)</li>
                 <li>Insomnia and other sleep-related issues</li>
                 <li>Sensory disturbances (such as “brain zaps”, or electric shock sensations)</li>
