@@ -34,6 +34,10 @@ export const WelcomeModal = ({ prevConfig, setShowWelcomeModal }: UserConfigLoad
         setShowWelcomeModal(false)
     }
 
+    const handleGo = () => {
+        setShowWelcomeModal(false)
+    }
+
     return (
         <div className={`max-w-4xl relative mx-auto p-4 text-left text-slate-500 ${darkMode ? 'bg-gray-900 dark' : 'bg-gray-100'} rounded-lg shadow-md flex flex-col`}>
             
@@ -62,7 +66,7 @@ export const WelcomeModal = ({ prevConfig, setShowWelcomeModal }: UserConfigLoad
                     <>
                         <button
                             className="flex items-center justify-end bg-teal-500 dark:bg-teal-600 dark:text-slate-100 text-white rounded-full p-2 px-10 mx-auto hover:bg-teal-600 dark:hover:bg-teal-700 transition-all"
-                            onClick={handleDisableFlickering}
+                            onClick={handleGo}
                         >
                             {t('buttons.go', { ns: 'translation'})}
                         </button>
@@ -100,7 +104,7 @@ export const WelcomeModal = ({ prevConfig, setShowWelcomeModal }: UserConfigLoad
                             <>
                                 <button
                                     className="flex items-center justify-end bg-teal-500 dark:bg-teal-600 dark:text-slate-100 text-white rounded-full p-2 px-10 mx-auto hover:bg-teal-600 dark:hover:bg-teal-700 transition-all"
-                                    onClick={handleContinueAnyway}
+                                    onClick={handleGo}
                                 >
                                     {t('buttons.go')}
                                 </button>
