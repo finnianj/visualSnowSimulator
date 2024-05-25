@@ -22,6 +22,10 @@ import modals_ru from "@/static/locales/ru/modals.json";
 import translation_zh from "@/static/locales/zh/translation.json";
 import modals_zh from "@/static/locales/zh/modals.json";
 
+// import all namespaces Japanese
+import translation_ja from "@/static/locales/ja/translation.json";
+import modals_ja from "@/static/locales/ja/modals.json";
+
 //type all translations
 export type LuccidTranslations = {
   translation: typeof translation_en;
@@ -35,6 +39,7 @@ enum SupportedLanguages {
   de = "de",
   ru = "ru",
   zh = "zh",
+  ja = "ja"
 }
 
 export const defaultNS = "translation";
@@ -62,6 +67,10 @@ export const resources: Record<SupportedLanguages, LuccidTranslations> = {
   zh: {
     translation: translation_zh,
     modals: modals_zh
+  },
+  ja: {
+    translation: translation_ja,
+    modals: modals_ja
   }
 } as const;
 

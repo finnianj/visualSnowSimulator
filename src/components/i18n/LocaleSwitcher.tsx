@@ -35,7 +35,11 @@ export const LocaleSwitcher = () => {
         {
             code: 'zh',
             name: '🇨🇳 中文'
-        }
+        },
+        {
+            code: 'ja',
+            name: '🇯🇵 日本語'
+        },
     ];
 
     return (

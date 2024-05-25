@@ -1,0 +1,48 @@
+{
+    "loadingTextures": "テクスチャを読み込み中...",
+    "changeEffectsPanel": {
+        "title": "効果を変更",
+        "snow": "雪",
+        "flickering": "ちらつき",
+        "flickerStrength": "ちらつきの強さ",
+        "bloom": "ブルーム",
+        "brightness": "明るさ",
+        "smallEyeFloaters": "小さな飛蚊症",
+        "sefCount": "数",
+        "sefSize": "サイズ",
+        "sefIntensity": "強度",
+        "largeEyeFloaters": "大きな飛蚊症",
+        "lefCount": "数",
+        "lefSize": "サイズ",
+        "lefIntensity": "強度",
+        "dizziness": "めまい",
+        "vignette": "ビネット",
+        "tinnitus": "耳鳴り",
+        "ambient": "環境音",
+        "volume": "音量",
+        "resetEffects": "すべての効果をデフォルトにリセット",
+        "play": "効果を再生",
+        "pause": "効果を一時停止",
+        "share": "現在の設定を共有"
+    },
+    "changeMapPanel": {
+        "title": "地図を変更",
+        "maps": {
+            "quarry": "採石場",
+            "office": "オフィス",
+            "waterfront": "ウォーターフロント",
+            "metro": "地下鉄"
+        }
+    },
+    "buttons": {
+        "go": "開始",
+        "continueAnyway": "続行",
+        "disableFlickering": "ちらつきを無効にする",
+        "cancel": "キャンセル",
+        "continue": "続行",
+        "donate": "寄付する",
+        "code": "コード",
+        "contact": "連絡",
+        "discord": "Discord"
+    }
+}
