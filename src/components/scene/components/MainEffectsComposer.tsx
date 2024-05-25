@@ -1,10 +1,10 @@
 import React, { useRef } from 'react';
-import { useEffects, useLoading } from '../../context';
+import { useEffects, useLoading } from '@/components/context';
 
 import { EffectComposer, Noise, Bloom, BrightnessContrast, Vignette } from '@react-three/postprocessing';
-import { Blur, Flicker, EyeFloaters, Afterimages, Dizziness } from '../../customShaders';
+import { Blur, Flicker, EyeFloaters, Afterimages, Dizziness } from '@/components/customShaders';
 
-import { MapType } from '../../../types';
+import { MapType } from '@/components/types';
 
 type EffectsComposerLightProps = {
     currentMap: MapType;

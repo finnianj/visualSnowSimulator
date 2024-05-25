@@ -1,6 +1,6 @@
-import { MapType } from '../../../types'
-import { Dropdown } from '../shared/Dropdown'
-import { useAudio } from '../../context/AudioContext'
+import { MapType } from '@/components/types';
+import { Dropdown } from '@/ui/shared/Dropdown';
+import { useAudio } from '@/components/context/AudioContext'
 
 type ChangeMapProps = {
     changeMap: ( map: MapType ) => void,

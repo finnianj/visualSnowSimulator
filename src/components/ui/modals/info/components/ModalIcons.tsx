@@ -1,4 +1,4 @@
-import { useUI } from '../../../../context';
+import { useUI } from '@/components/context';
 
 import { FaSun, FaMoon, FaGlobe } from 'react-icons/fa'
 import { MdClose } from 'react-icons/md'

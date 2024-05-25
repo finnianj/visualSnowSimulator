@@ -1,11 +1,17 @@
 {
+    "loadingTextures": "Loading textures...",
     "settings": {
 
     },
-    "modals": {
-
-    },
     "buttons": {
-        "go": "Go"
+        "go": "Go",
+        "continueAnyway": "Continue Anyway",
+        "disableFlickering": "Disable Flickering",
+        "cancel": "Cancel",
+        "continue": "Continue",
+        "donate": "Donate",
+        "code": "Code",
+        "contact": "Contact",
+        "discord": "Discord"
     }
 }

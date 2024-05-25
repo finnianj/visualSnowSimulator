@@ -3,7 +3,8 @@
       "baseUrl": ".",
       "paths": {
         "@/components/*": ["src/components/*"],
-        "@/static/*": ["static/*"],
+        "@/ui/*": ["src/components/ui/*"],
+        "@/static/*": ["static/*"]
       },
       "target": "ESNext",
       "useDefineForClassFields": true,

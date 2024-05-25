@@ -1,16 +1,16 @@
 import { Suspense, useEffect, useState } from 'react';
 
-import { useLoading, useEffects, UIProvider } from './components/context'
+import { useLoading, useEffects, UIProvider } from '@/components/context'
 
-import { Scene } from './components/scene/Scene';
-import { UserInterface } from './components/ui/UserInterface';
-import Loading from './components/ui/modals/Loading';
+import { Scene } from '@/components/scene/Scene';
+import { UserInterface } from '@/components/ui/UserInterface';
+import Loading from '@/components/ui/modals/Loading';
 
-import { useMaps } from './hooks';
+import { useMaps } from '@/components/hooks'
 
-import { effectsQueryParamMap } from './components/helpers/utils';
-import { Modal } from './components/ui/modals/Modal';
-import { WelcomeModal } from './components/ui/modals/WelcomeModal';
+import { effectsQueryParamMap } from '@/components/helpers/utils';
+import { Modal } from '@/components/ui/modals/Modal';
+import { WelcomeModal } from '@/components/ui/modals/WelcomeModal';
 
 export const Simulator = () => {
     const { LoadingModal } = useLoading();

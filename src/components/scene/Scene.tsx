@@ -1,13 +1,12 @@
 import React from 'react'
 
-import { useEffects } from '../context'
+import { useEffects } from '@/components/context'
 
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
-import { MainEffectsComposer } from './components' 
+import { MainEffectsComposer } from '@/components/scene/components/MainEffectsComposer'
 
-import { MapType } from '../../types'
-
+import { MapType } from '@/components/types'
 type SceneProps = {
     currentMap: MapType;
     BackgroundComponent: React.FC;
