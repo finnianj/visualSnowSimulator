@@ -19,10 +19,8 @@ export const Modal = ({ modalOpen = false, setModalOpen, children }: ModalProps)
       }, 200);
       setInitialised(true);
       setModalBeingViewed(true);
-      console.log('Modal opened');
     } else {
       if (initialised) {
-        console.log('Modal closed');
         setModalBeingViewed(false);
       }
       setGrow(false);

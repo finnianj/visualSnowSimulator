@@ -33,7 +33,6 @@ export const Simulator = () => {
                 config[key] = value
             }
         }
-        console.log('Applying settings from url query params: ', config)
         setPrevConfig(config)
         usePreviousConfig(config)
         // Show welcome modal and reference the previous config
