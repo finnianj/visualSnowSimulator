@@ -3,13 +3,13 @@ import { BlendFunction } from 'postprocessing';
 import { Texture } from 'three';
 import { Environment } from '@react-three/drei'
 
-import { MapType } from '../types';
-import { loadHdrTexture } from '../components/helpers/loadHdrTexture';
-import { FallbackBackground } from '../components/maps/FallbackBackground';
+import { MapType } from '@/components/types';
+import { loadHdrTexture } from '@/components/helpers/loadHdrTexture';
+import { FallbackBackground } from '@/components/maps/FallbackBackground';
 
-import { defaultMaps } from '../components/maps/defaultMaps';
+import { defaultMaps } from '@/components/maps/defaultMaps';
 
-import { useLoading } from '../components/context';
+import { useLoading } from '@/components/context';
 
 export const useMaps = () => {
     const { isLoading, setIsLoading } = useLoading();

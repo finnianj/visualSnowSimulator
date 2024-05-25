@@ -1,0 +1,83 @@
+{
+    "welcomeModal": {
+        "title": "Welcome",
+        "description": "Welcome to the <1>{{simulator}}</1>! This tool is designed to help simulate the visual effects of Visual Snow Syndrome. You can use it to understand and share what it's like to experience Visual Snow.",
+        "settingsUsed": "You are now using <1>{{name}}</1>'s settings.",
+        "unnamedPerson": "an unnamed person",
+        "warning": "Warning",
+        "flickeringWarning": "The current settings include flickering effects, which could trigger seizures in individuals with photosensitive epilepsy. Would you like to disable them? You can turn them back on later."
+    },
+    "infoModal": {
+        "info": "Info",
+        "support": "Support",
+        "purpose": "Purpose",
+        "tabs": {
+            "info": {
+                        "title": "What is Visual Snow Syndrome?",
+                        "description": "Visual Snow Syndrome is a neurological condition characterized by a continuous visual disturbance that resembles static, similar to the noise of an untuned analog television.",
+                        "symptomsTitle": "Symptoms may include:",
+                        "symptoms": [
+                            "Visual snow (dynamic snow-like dots across the entire visual field)",
+                            "Palinopsia (continuing to see an image after the stimulus has been removed)",
+                            "Photopsia (flashes of light or small floating objects)",
+                            "Enhanced entoptic phenomena (excessive floaters and rings of light shooting across the field, more noticeable when looking at bright surfaces such as the blue sky)",
+                            "Photophobia (sensitivity or intolerance to light)",
+                            "Nyctalopia (impaired night vision)",
+                            "Diplopia (double vision)",
+                            "Visual distortions",
+                            "Susceptibility to sensory overload (the brain receives more sensory input than it can handle, triggering a 'flight-or-fight' response)",
+                            "Other visual phenomena, such as starbursts and halos",
+                            "Tinnitus (ringing or buzzing noise in the ears)",
+                            "Anxiety",
+                            "Depression",
+                            "Derealization",
+                            "Depersonalization (feeling detached from yourself)",
+                            "Frequent migraines",
+                            "Brain fog and confusion",
+                            "Dizziness",
+                            "Paresthesia (tingling 'pins-and-needles' sensations, commonly in the arms, hands, legs, and feet)",
+                            "Insomnia and other sleep-related issues",
+                            "Sensory disturbances (such as 'brain zaps', or electric shock sensations)",
+                            "Sensory hypersensitivity / hyperesthesia (sensitivity to stimuli, such as sights and sounds)"
+                        ],
+                        "causesTitle": "Potential Causes",
+                        "causesDescription": "The exact cause of Visual Snow Syndrome is not fully understood, but it is thought to involve abnormal processing of visual information in the brain.",
+                        "treatmentTitle": "Treatment Options",
+                        "treatmentDescription": "There is currently no cure for Visual Snow Syndrome, but treatment is aimed at managing symptoms and may include medications, visual therapy, and lifestyle modifications.",
+                        "learnMoreTitle": "Learn More",
+                        "learnMoreDescription": "For more information about Visual Snow Syndrome, visit the <1>{{websiteName}}</1> website."
+            },
+            "support": {
+                "title": "Why Your Donation Matters",
+                "description": "Research into Visual Snow Syndrome is crucial as it remains a poorly understood condition. Funding is vital for advancing our understanding of its causes, developing effective treatments, and improving quality of life for those affected. Without adequate funding, progress in these areas remains slow.",
+                "latestResearchTitle": "Latest Research",
+                "latestResearchDescription": "Key areas of research include identifying biomarkers, understanding the pathophysiology of VSS, and exploring innovative treatments such as MBCT-vision (Mindfulness-Based Cognitive Therapy for vision) and neuromodulation techniques.",
+                "researchInstitutions": "These studies are conducted at leading research institutions around the world:",
+                "moreInfo": "For more detailed information about each project and the latest updates, visit the <1>{{pageName}}</1> section on the Visual Snow Initiative website.",
+                "pageNameText": "latest news",
+                "vsiNewsLink": "Visual Snow Initiative News"
+            },
+            "purpose": {
+                "title": "Why This Simulator Was Built",
+                "description": "The Visual Snow Simulator is an open source tool developed with the aim of raising awareness. Hopefully, it allows non-sufferers to experience a visual approximation of the condition, and those who have Visual Snow to share their reality with those close to them. If one person can feel less isolated through this tool, then it has achieved its purpose.",
+                "disclaimerTitle": "Disclaimer",
+                "disclaimer": "The simulator is a work in progress and may not accurately represent the visual disturbances experienced by all individuals with Visual Snow Syndrome. Some common symptoms of Visual Snow are very difficult to implement and have not been included. If you have any feedback or suggestions, or if you happen to be a talented GLSL developer, please get in touch.",
+                "supportTitle": "Support my Fundraiser",
+                "supportDescription": "The simulator was developed by Finn, a Drummer and Web Developer from the UK, living in Berlin, Germany. Finn is running the 2024 Berlin Marathon for the Visual Snow Initiative to raise awareness and funds for research into Visual Snow Syndrome. You can donate directly to his fundraiser <1>{{supportLinkText}}</1>.",
+                "supportLinkText": "here",
+                "emailCopied": "Email Copied!"
+            }
+        }
+    },
+    "shareConfigModal": {
+        "title": "Share your experience",
+        "description": "Share your current configuration with others by entering your name and generating a link. Anyone who visits the link will see the same settings you have.",
+        "placeholder": "Name",
+        "linkCopied": "Link Copied!",
+        "generateLink": "Generate Link"
+    },
+    "flickerWarning": {
+        "title": "Warning",
+        "description": "Flickering effects can cause seizures in people with photosensitive epilepsy."
+    }
+}

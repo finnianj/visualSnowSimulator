@@ -1,5 +1,11 @@
 {
     "compilerOptions": {
+      "baseUrl": ".",
+      "paths": {
+        "@/components/*": ["src/components/*"],
+        "@/ui/*": ["src/components/ui/*"],
+        "@/static/*": ["static/*"]
+      },
       "target": "ESNext",
       "useDefineForClassFields": true,
       "lib": ["DOM", "DOM.Iterable", "ESNext"],

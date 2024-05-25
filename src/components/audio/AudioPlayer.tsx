@@ -12,7 +12,7 @@ export const AudioPlayer: React.FC = () => {
         ambientVolume,
         effectsVolume,
     } = useAudio();
-    const { isSimulatorOn } = useEffects();
+    const { userHasPausedEffects } = useEffects();
 
     // Handle playback of ambient audio
     useEffect(() => {
@@ -71,12 +71,12 @@ export const AudioPlayer: React.FC = () => {
     }, [ambientVolume, effectsVolume]);  
 
     useEffect(() => {
-        // If isSimulatorOn is false, pause all audio
+        // If userHasPausedEffects is false, pause all audio
         const ambientAudio = ambientAudioRef.current;
         const effectAudio = effectAudioRef.current;
         if (!ambientAudio || !effectAudio) return;
-
-        if (!isSimulatorOn) {
+        
+        if (userHasPausedEffects) {
             ambientAudio.pause();
             effectAudio.pause();
         } else {
@@ -87,7 +87,7 @@ export const AudioPlayer: React.FC = () => {
                 effectAudio.play().catch(error => console.error('Error playing effects audio:', error));
             }
         }
-    }, [isSimulatorOn]);
+    }, [userHasPausedEffects]);
 
     return (
         <div>

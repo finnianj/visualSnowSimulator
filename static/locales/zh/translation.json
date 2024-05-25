@@ -1,0 +1,48 @@
+{
+    "loadingTextures": "加载纹理...",
+    "changeEffectsPanel": {
+        "title": "更改效果",
+        "snow": "雪",
+        "flickering": "闪烁",
+        "flickerStrength": "闪烁强度",
+        "bloom": "光晕",
+        "brightness": "亮度",
+        "smallEyeFloaters": "小眼漂浮物",
+        "sefCount": "数量",
+        "sefSize": "大小",
+        "sefIntensity": "强度",
+        "largeEyeFloaters": "大眼漂浮物",
+        "lefCount": "数量",
+        "lefSize": "大小",
+        "lefIntensity": "强度",
+        "dizziness": "头晕",
+        "vignette": "暗角",
+        "tinnitus": "耳鸣",
+        "ambient": "环境音",
+        "volume": "音量",
+        "resetEffects": "重置所有效果为默认值",
+        "play": "播放效果",
+        "pause": "暂停效果",
+        "share": "分享当前配置"
+    },
+    "changeMapPanel": {
+        "title": "更改地图",
+        "maps": {
+            "quarry": "采石场",
+            "office": "办公室",
+            "waterfront": "海滨",
+            "metro": "地铁"
+        }
+    },
+    "buttons": {
+        "go": "开始",
+        "continueAnyway": "继续",
+        "disableFlickering": "禁用闪烁",
+        "cancel": "取消",
+        "continue": "继续",
+        "donate": "捐赠",
+        "code": "代码",
+        "contact": "联系",
+        "discord": "Discord"
+    }
+}

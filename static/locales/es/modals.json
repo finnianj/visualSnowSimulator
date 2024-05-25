@@ -1,0 +1,83 @@
+{
+    "welcomeModal": {
+        "title": "Bienvenido",
+        "description": "Bienvenido al <1>{{simulator}}</1>! Esta herramienta está diseñada para ayudar a simular los efectos visuales del Síndrome de Nieve Visual. Puedes usarla para entender y compartir cómo es experimentar Nieve Visual.",
+        "settingsUsed": "Ahora estás usando la configuración de <1>{{name}}</1>.",
+        "unnamedPerson": "una persona sin nombre",
+        "warning": "Advertencia",
+        "flickeringWarning": "La configuración actual incluye efectos de parpadeo, que podrían desencadenar convulsiones en personas con epilepsia fotosensible. ¿Te gustaría desactivarlos? Puedes volver a activarlos más tarde."
+    },
+    "infoModal": {
+        "info": "Información",
+        "support": "Apoyo",
+        "purpose": "Propósito",
+        "tabs": {
+            "info": {
+                "title": "¿Qué es el Síndrome de Nieve Visual?",
+                "description": "El Síndrome de Nieve Visual es una condición neurológica caracterizada por una alteración visual continua que se asemeja a estática, similar al ruido de un televisor analógico desintonizado.",
+                "symptomsTitle": "Los síntomas pueden incluir:",
+                "symptoms": [
+                    "Nieve visual (puntos dinámicos similares a nieve en todo el campo visual)",
+                    "Palinopsia (seguir viendo una imagen después de que se haya retirado el estímulo)",
+                    "Fotopsia (destellos de luz u objetos flotantes pequeños)",
+                    "Fenómenos entópticos aumentados (miodesopsias y anillos de luz excesivos cruzando el campo, más notables al mirar superficies brillantes como el cielo azul)",
+                    "Fotofobia (sensibilidad o intolerancia a la luz)",
+                    "Nictalopía (visión nocturna deficiente)",
+                    "Diplopía (visión doble)",
+                    "Distorsiones visuales",
+                    "Susceptibilidad a la sobrecarga sensorial (el cerebro recibe más estímulos sensoriales de los que puede manejar, desencadenando una respuesta de 'lucha o huida')",
+                    "Otros fenómenos visuales, como halos y destellos",
+                    "Tinnitus (zumbidos o ruidos en los oídos)",
+                    "Ansiedad",
+                    "Depresión",
+                    "Desrealización",
+                    "Despersonalización (sensación de estar desconectado de uno mismo)",
+                    "Migrañas frecuentes",
+                    "Confusión y niebla mental",
+                    "Mareos",
+                    "Parestesia (sensaciones de hormigueo, comúnmente en los brazos, manos, piernas y pies)",
+                    "Insomnio y otros problemas relacionados con el sueño",
+                    "Alteraciones sensoriales (como 'descargas cerebrales' o sensaciones de choque eléctrico)",
+                    "Hipersensibilidad sensorial / hiperestesia (sensibilidad a estímulos como luces y sonidos)"
+                ],
+                "causesTitle": "Causas Potenciales",
+                "causesDescription": "La causa exacta del Síndrome de Nieve Visual no se entiende completamente, pero se cree que implica un procesamiento anormal de la información visual en el cerebro.",
+                "treatmentTitle": "Opciones de Tratamiento",
+                "treatmentDescription": "Actualmente no hay cura para el Síndrome de Nieve Visual, pero el tratamiento se enfoca en manejar los síntomas y puede incluir medicamentos, terapia visual y modificaciones en el estilo de vida.",
+                "learnMoreTitle": "Aprende Más",
+                "learnMoreDescription": "Para más información sobre el Síndrome de Nieve Visual, visita el sitio web de <1>{{websiteName}}</1>."
+            },
+            "support": {
+                "title": "Por Qué Tu Donación es Importante",
+                "description": "La investigación sobre el Síndrome de Nieve Visual es crucial ya que sigue siendo una condición poco entendida. La financiación es vital para avanzar en nuestra comprensión de sus causas, desarrollar tratamientos efectivos y mejorar la calidad de vida de quienes se ven afectados. Sin una financiación adecuada, el progreso en estas áreas es lento.",
+                "latestResearchTitle": "Investigación Reciente",
+                "latestResearchDescription": "Las áreas clave de investigación incluyen la identificación de biomarcadores, la comprensión de la fisiopatología del VSS y la exploración de tratamientos innovadores como MBCT-vision (Terapia Cognitiva Basada en Mindfulness para la visión) y técnicas de neuromodulación.",
+                "researchInstitutions": "Estos estudios se llevan a cabo en instituciones de investigación líderes en todo el mundo:",
+                "moreInfo": "Para información más detallada sobre cada proyecto y las últimas actualizaciones, visita la sección <1>{{pageName}}</1> en el sitio web de la Iniciativa de Nieve Visual.",
+                "pageNameText": "noticias más recientes",
+                "vsiNewsLink": "Noticias de la Iniciativa de Nieve Visual"
+            },
+            "purpose": {
+                "title": "Por Qué Se Construyó Este Simulador",
+                "description": "El Simulador de Nieve Visual es una herramienta de código abierto desarrollada con el objetivo de concienciar. Esperamos que permita a los no afectados experimentar una aproximación visual de la condición, y a quienes tienen Nieve Visual compartir su realidad con sus seres queridos. Si una persona puede sentirse menos aislada gracias a esta herramienta, habrá cumplido su propósito.",
+                "disclaimerTitle": "Descargo de Responsabilidad",
+                "disclaimer": "El simulador está en desarrollo y puede no representar con precisión las alteraciones visuales experimentadas por todas las personas con el Síndrome de Nieve Visual. Algunos síntomas comunes de la Nieve Visual son muy difíciles de implementar y no se han incluido. Si tienes comentarios o sugerencias, o si eres un desarrollador talentoso en GLSL, por favor ponte en contacto.",
+                "supportTitle": "Apoya mi Recaudación de Fondos",
+                "supportDescription": "El simulador fue desarrollado por Finn, un baterista y desarrollador web del Reino Unido que vive en Berlín, Alemania. Finn está corriendo el Maratón de Berlín 2024 para la Iniciativa de Nieve Visual para aumentar la concienciación y recaudar fondos para la investigación del Síndrome de Nieve Visual. Puedes donar directamente a su recaudación de fondos <1>{{supportLinkText}}</1>.",
+                "supportLinkText": "aquí",
+                "emailCopied": "¡Correo electrónico copiado!"
+            }
+        }
+    },
+    "shareConfigModal": {
+        "title": "Comparte tu experiencia",
+        "description": "Comparte tu configuración actual con otros ingresando tu nombre y generando un enlace. Cualquiera que visite el enlace verá la misma configuración que tú tienes.",
+        "placeholder": "Nombre",
+        "linkCopied": "¡Enlace copiado!",
+        "generateLink": "Generar enlace"
+    },
+    "flickerWarning": {
+        "title": "Advertencia",
+        "description": "Los efectos de parpadeo pueden causar convulsiones en personas con epilepsia fotosensible."
+    }
+}

@@ -1,0 +1,48 @@
+{
+    "loadingTextures": "Cargando texturas...",
+    "changeEffectsPanel": {
+        "title": "Cambiar Efectos",
+        "snow": "Nieve",
+        "flickering": "Parpadeo",
+        "flickerStrength": "Intensidad",
+        "bloom": "Resplandor",
+        "brightness": "Brillo",
+        "smallEyeFloaters": "Pequeñas Miodesopsias",
+        "sefCount": "Cantidad",
+        "sefSize": "Tamaño",
+        "sefIntensity": "Intensidad",
+        "largeEyeFloaters": "Grandes Miodesopsias",
+        "lefCount": "Cantidad",
+        "lefSize": "Tamaño",
+        "lefIntensity": "Intensidad",
+        "dizziness": "Mareo",
+        "vignette": "Viñeta",
+        "tinnitus": "Tinnitus",
+        "ambient": "Audio Ambiental",
+        "volume": "Volumen",
+        "resetEffects": "Restablecer todos los efectos a los valores predeterminados",
+        "play": "Reproducir efectos",
+        "pause": "Pausar efectos",
+        "share": "Compartir configuración actual"
+    },
+    "changeMapPanel": {
+        "title": "Cambiar Mapa",
+        "maps": {
+            "quarry": "Cantera",
+            "office": "Oficina",
+            "waterfront": "Ribera",
+            "metro": "Metro"
+        }
+    },
+    "buttons": {
+        "go": "Ir",
+        "continueAnyway": "Continuar de todas formas",
+        "disableFlickering": "Desactivar Parpadeo",
+        "cancel": "Cancelar",
+        "continue": "Continuar",
+        "donate": "Donar",
+        "code": "Código",
+        "contact": "Contacto",
+        "discord": "Discord"
+    }
+}

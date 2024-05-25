@@ -1,4 +1,5 @@
 export * from './blur/Blur';
 export * from './eyeFloaters/EyeFloaters';
-export * from './nausea/Nausea';
+export * from './afterimages/Afterimages';
 export * from './flicker/Flicker';
+export * from './dizziness/Dizziness';

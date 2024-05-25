@@ -1,8 +1,12 @@
-import { useEffects } from '../../../../../context';
+import { useEffects } from '@/components/context';
+
+import { useTranslation } from 'react-i18next';
 
 import { RangeInput, CheckBoxInput } from '.';
 
 export const EyeFloatersInputs = () => {
+    const { t } = useTranslation(['translation']);
+
     const { 
         smallEyeFloatersEnabled,
         setSmallEyeFloatersEnabled,
@@ -32,12 +36,12 @@ export const EyeFloatersInputs = () => {
         <div>
             {/* Small Eye Floaters */}
             <CheckBoxInput
-                label='Small Eye Floaters'
+                label={t('changeEffectsPanel.smallEyeFloaters')}
                 checked={smallEyeFloatersEnabled}
                 onChange={() => setSmallEyeFloatersEnabled(!smallEyeFloatersEnabled)}
             />
             <RangeInput
-                name={'SEF Count'}
+                name={t('changeEffectsPanel.sefCount')}
                 min={0}
                 max={20}
                 step={1}
@@ -46,7 +50,7 @@ export const EyeFloatersInputs = () => {
                 indent={true}
             />
             <RangeInput
-                name={'SEF Intensity'}
+                name={t('changeEffectsPanel.sefIntensity')}
                 min={0}
                 max={1}
                 step={0.01}
@@ -55,7 +59,7 @@ export const EyeFloatersInputs = () => {
                 indent={true}
             />
             <RangeInput
-                name={'SEF Size'}
+                name={t('changeEffectsPanel.sefSize')}
                 min={0}
                 max={0.03}
                 step={0.001}
@@ -75,12 +79,12 @@ export const EyeFloatersInputs = () => {
             <div className='h-2' />
             {/* Large Eye Floaters */}
             <CheckBoxInput
-                label='Large Eye Floaters'
+                label={t('changeEffectsPanel.largeEyeFloaters')}
                 checked={largeEyeFloatersEnabled}
                 onChange={() => setLargeEyeFloatersEnabled(!largeEyeFloatersEnabled)}
             />
             <RangeInput
-                name={'LEF Count'}
+                name={t('changeEffectsPanel.lefCount')}
                 min={1}
                 max={5}
                 step={1}
@@ -89,7 +93,7 @@ export const EyeFloatersInputs = () => {
                 indent={true}
             />
             <RangeInput
-                name={'LEF Intensity'}
+                name={t('changeEffectsPanel.lefIntensity')}
                 min={0}
                 max={1}
                 step={0.01}
@@ -98,7 +102,7 @@ export const EyeFloatersInputs = () => {
                 indent={true}
             />
             <RangeInput
-                name={'LEF Size'}
+                name={t('changeEffectsPanel.lefSize')}
                 min={0.05}
                 max={0.2}
                 step={0.001}

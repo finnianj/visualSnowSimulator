@@ -1,0 +1,83 @@
+{
+    "welcomeModal": {
+        "title": "Willkommen",
+        "description": "Willkommen beim <1>{{simulator}}</1>! Dieses Tool wurde entwickelt, um die visuellen Effekte des Visual Snow Syndroms zu simulieren. Sie können es verwenden, um zu verstehen und zu teilen, wie es ist, Visual Snow zu erleben.",
+        "settingsUsed": "Sie verwenden jetzt die Einstellungen von <1>{{name}}</1>.",
+        "unnamedPerson": "eine namenlose Person",
+        "warning": "Warnung",
+        "flickeringWarning": "Die aktuellen Einstellungen beinhalten Flackereffekte, die bei Menschen mit lichtempfindlicher Epilepsie Anfälle auslösen können. Möchten Sie sie deaktivieren? Sie können sie später wieder aktivieren."
+    },
+    "infoModal": {
+        "info": "Information",
+        "support": "Unterstützung",
+        "purpose": "Zweck",
+        "tabs": {
+            "info": {
+                "title": "Was ist das Visual Snow Syndrom?",
+                "description": "Das Visual Snow Syndrom ist eine neurologische Erkrankung, die durch eine kontinuierliche visuelle Störung gekennzeichnet ist, die einem Rauschen ähnelt, ähnlich dem Rauschen eines nicht abgestimmten analogen Fernsehers.",
+                "symptomsTitle": "Symptome können umfassen:",
+                "symptoms": [
+                    "Visual Snow (dynamische schneeflockenartige Punkte im gesamten Gesichtsfeld)",
+                    "Palinopsie (ein Bild weiterhin sehen, nachdem der Reiz entfernt wurde)",
+                    "Photopsie (Lichtblitze oder kleine schwebende Objekte)",
+                    "Verstärkte entoptische Phänomene (übermäßige Floater und Lichtkreise, die über das Gesichtsfeld schießen, besonders auffällig beim Betrachten heller Oberflächen wie dem blauen Himmel)",
+                    "Photophobie (Lichtempfindlichkeit oder -intoleranz)",
+                    "Nachtblindheit (eingeschränkte Nachtsicht)",
+                    "Doppelsehen (Diplopie)",
+                    "Visuelle Verzerrungen",
+                    "Empfindlichkeit gegenüber sensorischer Überlastung (das Gehirn erhält mehr sensorische Eingaben, als es verarbeiten kann, was eine 'Kampf-oder-Flucht'-Reaktion auslöst)",
+                    "Andere visuelle Phänomene, wie Halos und Sternchen",
+                    "Tinnitus (Klingeln oder Brummen in den Ohren)",
+                    "Angst",
+                    "Depression",
+                    "Derealisation",
+                    "Depersonalisation (das Gefühl, von sich selbst getrennt zu sein)",
+                    "Häufige Migräne",
+                    "Gehirnnebel und Verwirrung",
+                    "Schwindel",
+                    "Parästhesie (Kribbeln, oft in Armen, Händen, Beinen und Füßen)",
+                    "Schlaflosigkeit und andere Schlafprobleme",
+                    "Sensorische Störungen (wie 'Gehirnschocks' oder elektrische Schockempfindungen)",
+                    "Sensorische Überempfindlichkeit / Hyperästhesie (Empfindlichkeit gegenüber Reizen, wie Licht und Geräusche)"
+                ],
+                "causesTitle": "Mögliche Ursachen",
+                "causesDescription": "Die genaue Ursache des Visual Snow Syndroms ist nicht vollständig verstanden, aber es wird angenommen, dass es auf eine abnormale Verarbeitung visueller Informationen im Gehirn zurückzuführen ist.",
+                "treatmentTitle": "Behandlungsoptionen",
+                "treatmentDescription": "Es gibt derzeit keine Heilung für das Visual Snow Syndrom, aber die Behandlung zielt darauf ab, die Symptome zu bewältigen und kann Medikamente, visuelle Therapie und Änderungen des Lebensstils umfassen.",
+                "learnMoreTitle": "Erfahren Sie mehr",
+                "learnMoreDescription": "Für weitere Informationen über das Visual Snow Syndrom besuchen Sie die Website von <1>{{websiteName}}</1>."
+            },
+            "support": {
+                "title": "Warum Ihre Spende wichtig ist",
+                "description": "Die Forschung zum Visual Snow Syndrom ist von entscheidender Bedeutung, da es nach wie vor eine wenig verstandene Erkrankung ist. Die Finanzierung ist entscheidend für den Fortschritt unseres Verständnisses der Ursachen, die Entwicklung wirksamer Behandlungen und die Verbesserung der Lebensqualität der Betroffenen. Ohne ausreichende Finanzierung bleibt der Fortschritt in diesen Bereichen langsam.",
+                "latestResearchTitle": "Neueste Forschung",
+                "latestResearchDescription": "Wichtige Forschungsbereiche umfassen die Identifizierung von Biomarkern, das Verständnis der Pathophysiologie des VSS und die Erforschung innovativer Behandlungen wie MBCT-Vision (Achtsamkeitsbasierte kognitive Therapie für das Sehen) und Neuromodulationstechniken.",
+                "researchInstitutions": "Diese Studien werden an führenden Forschungseinrichtungen weltweit durchgeführt:",
+                "moreInfo": "Für detailliertere Informationen zu jedem Projekt und die neuesten Updates besuchen Sie den Abschnitt <1>{{pageName}}</1> auf der Website der Visual Snow Initiative.",
+                "pageNameText": "neueste Nachrichten",
+                "vsiNewsLink": "Nachrichten der Visual Snow Initiative"
+            },
+            "purpose": {
+                "title": "Warum dieser Simulator gebaut wurde",
+                "description": "Der Visual Snow Simulator ist ein Open-Source-Tool, das entwickelt wurde, um das Bewusstsein zu schärfen. Wir hoffen, dass es Nicht-Betroffenen ermöglicht, eine visuelle Annäherung an die Erkrankung zu erleben, und dass diejenigen, die Visual Snow haben, ihre Realität mit ihren Lieben teilen können. Wenn sich eine Person durch dieses Tool weniger isoliert fühlt, hat es seinen Zweck erfüllt.",
+                "disclaimerTitle": "Haftungsausschluss",
+                "disclaimer": "Der Simulator befindet sich in der Entwicklung und kann die visuellen Störungen, die von allen Personen mit dem Visual Snow Syndrom erlebt werden, möglicherweise nicht genau darstellen. Einige häufige Symptome von Visual Snow sind sehr schwierig umzusetzen und wurden nicht einbezogen. Wenn Sie Feedback oder Vorschläge haben oder ein talentierter GLSL-Entwickler sind, setzen Sie sich bitte mit uns in Verbindung.",
+                "supportTitle": "Unterstützen Sie meine Spendenaktion",
+                "supportDescription": "Der Simulator wurde von Finn, einem Schlagzeuger und Webentwickler aus Großbritannien, der in Berlin, Deutschland lebt, entwickelt. Finn läuft den Berlin Marathon 2024 für die Visual Snow Initiative, um das Bewusstsein zu schärfen und Gelder für die Forschung zum Visual Snow Syndrom zu sammeln. Sie können direkt für seine Spendenaktion <1>{{supportLinkText}}</1> spenden.",
+                "supportLinkText": "hier",
+                "emailCopied": "E-Mail kopiert!"
+            }
+        }
+    },
+    "shareConfigModal": {
+        "title": "Teilen Sie Ihre Erfahrung",
+        "description": "Teilen Sie Ihre aktuelle Konfiguration mit anderen, indem Sie Ihren Namen eingeben und einen Link generieren. Jeder, der den Link besucht, sieht dieselben Einstellungen wie Sie.",
+        "placeholder": "Name",
+        "linkCopied": "Link kopiert!",
+        "generateLink": "Link generieren"
+    },
+    "flickerWarning": {
+        "title": "Warnung",
+        "description": "Flackernde Effekte können bei Menschen mit lichtempfindlicher Epilepsie Anfälle auslösen."
+    }
+}

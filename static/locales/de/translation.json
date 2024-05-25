@@ -1,0 +1,48 @@
+{
+    "loadingTextures": "Laden von Texturen...",
+    "changeEffectsPanel": {
+        "title": "Effekte ändern",
+        "snow": "Schnee",
+        "flickering": "Flackern",
+        "flickerStrength": "Flackerstärke",
+        "bloom": "Blüte",
+        "brightness": "Helligkeit",
+        "smallEyeFloaters": "Kleine Augenflimmern",
+        "sefCount": "Anzahl",
+        "sefSize": "Größe",
+        "sefIntensity": "Intensität",
+        "largeEyeFloaters": "Große Augenflimmern",
+        "lefCount": "Anzahl",
+        "lefSize": "Größe",
+        "lefIntensity": "Intensität",
+        "dizziness": "Schwindel",
+        "vignette": "Vignette",
+        "tinnitus": "Tinnitus",
+        "ambient": "Umgebungsgeräusche",
+        "volume": "Lautstärke",
+        "resetEffects": "Alle Effekte auf Standard zurücksetzen",
+        "play": "Effekte abspielen",
+        "pause": "Effekte pausieren",
+        "share": "Aktuelle Konfiguration teilen"
+    },
+    "changeMapPanel": {
+        "title": "Karte ändern",
+        "maps": {
+            "quarry": "Steinbruch",
+            "office": "Büro",
+            "waterfront": "Wasserfront",
+            "metro": "U-Bahn"
+        }
+    },
+    "buttons": {
+        "go": "Los",
+        "continueAnyway": "Trotzdem fortfahren",
+        "disableFlickering": "Flackern deaktivieren",
+        "cancel": "Abbrechen",
+        "continue": "Fortfahren",
+        "donate": "Spenden",
+        "code": "Code",
+        "contact": "Kontakt",
+        "discord": "Discord"
+    }
+}

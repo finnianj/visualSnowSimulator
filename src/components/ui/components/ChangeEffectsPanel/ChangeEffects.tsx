@@ -1,12 +1,19 @@
-import { useEffects } from '../../../context'
+import React, { useState } from 'react'
 
-import { Dropdown } from '../../shared/Dropdown'
-import { AudioControls } from '../../../audio/AudioControls'
-import { FlickerInputs, NauseaInputs, RangeInput, EyeFloatersInputs, CheckBoxInput } from './components/inputs'
-import { ButtonRow } from './components/buttons/ButtonRow'
-import { BlurInputs } from './components/inputs/BlurInputs'
+import { useEffects } from '@/components/context'
+
+import { useTranslation } from 'react-i18next'
+
+import { Dropdown } from '@/ui/shared/Dropdown'
+import { AudioControls } from '@/components/audio/AudioControls'
+import { FlickerInputs, DizzinessInputs, RangeInput, EyeFloatersInputs, CheckBoxInput } from '@/ui/components/ChangeEffectsPanel/components/inputs'
+import { ButtonRow } from '@/ui/components/ChangeEffectsPanel/components/buttons/ButtonRow'
+import { BlurInputs } from '@/ui/components/ChangeEffectsPanel/components/inputs/BlurInputs'
 
 export const ChangeEffects = () => {
+    const [showList, setShowList] = useState(false)
+    const { t } = useTranslation(['translation'])
+
     const { 
         userHasPausedEffects,
         noiseOpacity, 
@@ -24,21 +31,30 @@ export const ChangeEffects = () => {
     } = useEffects();
 
     return (
-        <Dropdown title='Change Effects' childPosition={'origin-top-left top-8 sm:top-12 left-0 space-y-4 p-4 sm:w-96 w-[20rem] '} containerPosition='left-4 top-4'>
+        <Dropdown 
+            title={t('changeEffectsPanel.title')} 
+            childPosition={'origin-top-left top-12 left-0 space-y-4 p-4'} 
+            containerPosition='left-4 top-4'
+            showList={showList}
+            setShowList={setShowList}
+        >
             <div className={`flex flex-col space-y-2 ${ userHasPausedEffects ? 'opacity-50 pointer-events-none' : '' }`}>
                 {/* Snow opacity */}
                 <RangeInput 
-                    name='Snow' 
+                    name={t('changeEffectsPanel.snow')}
                     min={0} 
                     max={1} 
                     step={0.01} 
                     value={noiseOpacity} 
                     onChange={(e) => setNoiseOpacity(parseFloat(e.target.value))}
                 />
+
+                {/* Flicker */}
+                <FlickerInputs />
                 
                 {/* Bloom opacity */}
                 <RangeInput
-                    name='Bloom'
+                    name={t('changeEffectsPanel.bloom')}
                     min={0}
                     max={10}
                     step={0.01}
@@ -48,7 +64,7 @@ export const ChangeEffects = () => {
                 
                 {/* Brightness */}
                 <RangeInput
-                    name={'Brightness'}
+                    name={t('changeEffectsPanel.brightness')}
                     min={-1}
                     max={1}
                     step={0.01}
@@ -56,21 +72,18 @@ export const ChangeEffects = () => {
                     onChange={(e) => setBrightness(parseFloat(e.target.value))}
                 />
 
-                {/* Flicker */}
-                <FlickerInputs />
-
                 {/* Eye Floaters */}
                 <EyeFloatersInputs /> 
 
-                {/* Nausea */}
-                <NauseaInputs />
+                {/* Dizziness */}
+                <DizzinessInputs />
 
                 {/* Blur */}
                 {/* <BlurInputs /> */}
 
                 {/* Vignette */}
                 <RangeInput
-                    name='Vignette'
+                    name={t('changeEffectsPanel.vignette')}
                     min={0}
                     max={1}
                     step={0.01}

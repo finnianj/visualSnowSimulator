@@ -7,11 +7,12 @@ type DropdownProps = {
     title: string,
     containerPosition?: string,
     childPosition?: string,
-    onTitleClick?: () => void
+    onTitleClick?: () => void,
+    showList: boolean,
+    setShowList: (show: boolean) => void
 }
 
-export const Dropdown = ({ children, title, childPosition, containerPosition, onTitleClick }: DropdownProps) => {
-    const [showList, setShowList] = useState(false)
+export const Dropdown = ({ children, title, childPosition, containerPosition, onTitleClick, showList, setShowList }: DropdownProps) => {
 
     return (
         <div className={`absolute z-20 ${containerPosition ? containerPosition : ''} w-fit`}>
@@ -30,7 +31,7 @@ export const Dropdown = ({ children, title, childPosition, containerPosition, on
                     }
                     />
 
-                <div className={`scale-0 ${showList ? 'scale-100' : ''} ${childPosition ? childPosition : ''} absolute text-sm bg-teal-400 transition-all transform overflow-visible w-full rounded-lg shadow-lg`}>
+                <div className={`scale-0 !w-80 sm:!w-96 ${showList ? 'scale-100' : ''} ${childPosition ? childPosition : ''} absolute text-sm bg-teal-400 transition-all transform overflow-visible w-full rounded-lg shadow-lg`}>
                     {children}
                 </div>
 
@@ -41,8 +42,8 @@ export const Dropdown = ({ children, title, childPosition, containerPosition, on
 
 const DropdownHeader = ({ title, showList, onClick, onTitleClick }: { title: string, showList: boolean, onClick: () => void, onTitleClick?: () => void }) => {
     return (
-        <div className='flex items-center h-6 sm:h-10 transition-all cursor-pointer hover:bg-teal-500 rounded-lg'>
-            <p className={`px-2 sm:px-4 text-xs sm:text-base rounded-l-lg`} onClick={onTitleClick || onClick}>{title}</p>
+        <div className='flex items-center h-10 transition-all cursor-pointer hover:bg-teal-500 rounded-lg'>
+            <p className={`px-4 text-base rounded-l-lg`} onClick={onTitleClick || onClick}>{title}</p>
             <div onClick={onClick} className="bg-teal-400 hover:bg-teal-500 transition-all text-white rounded-r-lg h-full px-2 flex items-center shadow-lg cursor-pointer">
                 {showList ? <FaChevronLeft /> : <FaChevronDown />}
             </div>   
