@@ -1,7 +1,38 @@
 {
     "loadingTextures": "Loading textures...",
-    "settings": {
-
+    "changeEffectsPanel": {
+        "title": "Change Effects",
+        "snow": "Snow",
+        "flickering": "Flickering",
+        "flickerStrength": "Flicker Strength",
+        "bloom": "Bloom",
+        "brightness": "Brightness",
+        "smallEyeFloaters": "Small Eye Floaters",
+        "sefCount": "Count",
+        "sefSize": "Size",
+        "sefIntensity": "Intensity",
+        "largeEyeFloaters": "Large Eye Floaters",
+        "lefCount": "Count",
+        "lefSize": "Size",
+        "lefIntensity": "Intensity",
+        "dizziness": "Dizziness",
+        "vignette": "Vignette",
+        "tinnitus": "Tinnitus",
+        "ambient": "Ambient Audio",
+        "volume": "Volume",
+        "resetEffects": "Reset all effects to default",
+        "play": "Play effects",
+        "pause": "Pause effects",
+        "share": "Share current configuration"
+    },
+    "changeMapPanel": {
+        "title": "Change Map",
+        "maps": {
+            "quarry": "Quarry",
+            "office": "Office",
+            "waterfront": "Waterfront",
+            "metro": "Metro"
+        }
     },
     "buttons": {
         "go": "Go",

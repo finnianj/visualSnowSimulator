@@ -1,7 +1,9 @@
-import { useAudio } from '../context/AudioContext';
+import { useAudio } from '@/components/context/AudioContext';
+import { useTranslation } from 'react-i18next';
 import { AudioControlComponent } from './AudioControlComponent';
 
 export const AudioControls = () => {
+    const { t } = useTranslation(['translation']);
     const {
         isAmbientPlaying,
         setIsAmbientPlaying,
@@ -16,14 +18,14 @@ export const AudioControls = () => {
     return (
         <div className='flex flex-col text-xs space-y-2'>
             <AudioControlComponent
-                title='Tinnitus'
+                title={t('changeEffectsPanel.tinnitus')}
                 isPlaying={isEffectsAudioPlaying}
                 setIsPlaying={setIsEffectsAudioPlaying}
                 volume={effectsVolume}
                 setVolume={setEffectsVolume}
             />
             <AudioControlComponent
-                title='Ambient Audio'
+                title={t('changeEffectsPanel.ambient')}
                 isPlaying={isAmbientPlaying}
                 setIsPlaying={setIsAmbientPlaying}
                 volume={ambientVolume}

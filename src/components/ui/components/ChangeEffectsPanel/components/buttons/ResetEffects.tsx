@@ -1,9 +1,11 @@
-import { useEffects, useAudio } from '../../../../../context'
+import { useEffects, useAudio } from '@/components/context'
+import { useTranslation } from 'react-i18next';
 
-import { DefaultTooltip } from '../../../../shared/DefaultTooltip';
+import { DefaultTooltip } from '@/ui/shared/DefaultTooltip';
 import { RxReset } from "react-icons/rx";
 
 export const ResetEffects = () => {
+    const { t } = useTranslation(['translation'])
     const { resetAllEffectsToDefault } = useEffects()
     const { resetAllAudio } = useAudio()
 
@@ -18,7 +20,7 @@ export const ResetEffects = () => {
             onClick={handleReset}
         >
             <RxReset className='scale-150 cursor-pointer' />
-            <DefaultTooltip text='Reset all effects to default' classes='top-6 left-4 origin-top-left' />
+            <DefaultTooltip text={t('changeEffectsPanel.resetEffects')} classes='top-6 left-4 origin-top-left' />
         </button>
     )
 }

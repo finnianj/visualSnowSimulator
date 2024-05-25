@@ -1,4 +1,5 @@
 import { useUI } from '@/components/context';
+import { LocaleSwitcher } from '@/components/i18n/LocaleSwitcher';
 
 import { FaSun, FaMoon, FaGlobe } from 'react-icons/fa'
 import { MdClose } from 'react-icons/md'
@@ -17,10 +18,7 @@ export const ModalIcons = ({ setShowInfo } : ModalIconsProps ) => {
                 <button onClick={() => setDarkMode(!darkMode)} className="p-2 rounded-full">
                     {darkMode ? <FaSun className='text-yellow-600 hover:opacity-75 transition-all' /> : <FaMoon className="text-gray-900" />}
                 </button>
-                <div className='flex justify-center items-center space-x-2'>
-                    <FaGlobe className='text-gray-900 dark:text-gray-400' />
-                    
-                </div>
+                <LocaleSwitcher />
             </div>
             <div className='absolute top-2 right-2'>
                 <button onClick={() => setShowInfo(false)} className="p-2 hover:opacity-75 transition-all scale-150">

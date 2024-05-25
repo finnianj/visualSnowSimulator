@@ -1,6 +1,8 @@
 import { useUI, useEffects } from "@/components/context"
 import { useTranslation, Trans } from "react-i18next";
 
+import { LocaleSwitcher } from "@/components/i18n/LocaleSwitcher";
+
 import { FaMoon, FaSun } from "react-icons/fa"
 
 type UserConfigLoadedModalProps = {
@@ -35,10 +37,11 @@ export const WelcomeModal = ({ prevConfig, setShowWelcomeModal }: UserConfigLoad
     return (
         <div className={`max-w-4xl relative mx-auto p-4 text-left text-slate-500 ${darkMode ? 'bg-gray-900 dark' : 'bg-gray-100'} rounded-lg shadow-md flex flex-col`}>
             
-            <div className="absolute top-2 left-2">
+            <div className="absolute top-2 left-2 flex items-center">
                 <button onClick={() => setDarkMode(!darkMode)} className="p-2 rounded-full">
                     {darkMode ? <FaSun className='text-yellow-600 hover:opacity-75 transition-all' /> : <FaMoon className="text-gray-900" />}
                 </button>
+                <LocaleSwitcher />
             </div>
             
             <h3 className="text-lg text-center font-bold text-slate-600 dark:text-slate-400">
@@ -68,7 +71,7 @@ export const WelcomeModal = ({ prevConfig, setShowWelcomeModal }: UserConfigLoad
                     <>
                         <p className="mt-2">
                             <Trans
-                                i18nKey="modals.welcomeModal.settingsUsed"
+                                i18nKey="modals:welcomeModal.settingsUsed"
                                 values = {{ name }}
                                 components={{ 1: <span className='font-bold text-teal-500'>{name}</span> }}
                             /> 
@@ -76,7 +79,7 @@ export const WelcomeModal = ({ prevConfig, setShowWelcomeModal }: UserConfigLoad
                         {isFlickering ? (
                             <>
                                 <p className="mt-2 text-red-500">
-                                    <span className="font-bold">{t('modals.welcomeModal.warning')}</span>: {t('modals.welcomeModal.flickeringWarning')}
+                                    <span className="font-bold">{t('welcomeModal.warning', { ns: 'modals' })}</span>: {t('welcomeModal.flickeringWarning', { ns: 'modals' })}
                                 </p>
                                 <div className="flex justify-between mt-4 w-full text-sm">
                                     <button

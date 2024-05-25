@@ -20,7 +20,7 @@ export const SupportTab = () => {
         }
     ]
 
-    const pageName = "latest news";
+    const pageName = "News & Research";
 
     return (
         <div className="max-w-4xl mx-auto pt-4 text-left text-slate-500">
@@ -50,7 +50,7 @@ export const SupportTab = () => {
                 <Trans
                     i18nKey="modals:infoModal.tabs.support.moreInfo"
                     values = {{ pageName }}
-                    components={{ 1: <a href={projectLinks.vsiNewsLink} className="text-blue-500 hover:text-blue-600">{pageName}</a> }}
+                    components={{ 1: <a href={projectLinks.vsiNewsLink} target='_blank' className="text-blue-500 hover:text-blue-600">{pageName}</a> }}
                 />
             </p>
             {/* Donate button */}

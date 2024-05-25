@@ -1,0 +1,83 @@
+{
+    "welcomeModal": {
+        "title": "Bienvenue",
+        "description": "Bienvenue sur le <1>{{simulator}}</1>! Cet outil est conçu pour aider à simuler les effets visuels du Syndrome de la Neige Visuelle. Vous pouvez l'utiliser pour comprendre et partager ce que c'est que d'expérimenter la Neige Visuelle.",
+        "settingsUsed": "Vous utilisez maintenant les paramètres de <1>{{name}}</1>.",
+        "unnamedPerson": "une personne sans nom",
+        "warning": "Avertissement",
+        "flickeringWarning": "Les paramètres actuels incluent des effets de scintillement, ce qui pourrait déclencher des crises chez les personnes atteintes d'épilepsie photosensible. Voulez-vous les désactiver? Vous pouvez les réactiver plus tard."
+    },
+    "infoModal": {
+        "info": "Info",
+        "support": "Soutien",
+        "purpose": "But",
+        "tabs": {
+            "info": {
+                "title": "Qu'est-ce que le Syndrome de la Neige Visuelle?",
+                "description": "Le Syndrome de la Neige Visuelle est une condition neurologique caractérisée par une perturbation visuelle continue qui ressemble à de la statique, similaire au bruit d'un téléviseur analogique non syntonisé.",
+                "symptomsTitle": "Les symptômes peuvent inclure:",
+                "symptoms": [
+                    "Neige visuelle (points dynamiques semblables à de la neige dans tout le champ visuel)",
+                    "Palinopsie (voir une image après le retrait du stimulus)",
+                    "Photopsie (éclairs de lumière ou petits objets flottants)",
+                    "Phénomènes entoptiques améliorés (flotteurs et anneaux de lumière excessifs traversant le champ, plus visibles en regardant des surfaces brillantes comme le ciel bleu)",
+                    "Photophobie (sensibilité ou intolérance à la lumière)",
+                    "Nyctalopie (vision nocturne altérée)",
+                    "Diplopie (vision double)",
+                    "Distorsions visuelles",
+                    "Sensibilité à la surcharge sensorielle (le cerveau reçoit plus d'entrées sensorielles qu'il ne peut en gérer, déclenchant une réponse de 'lutte ou fuite')",
+                    "Autres phénomènes visuels, tels que les halos et les éclats de lumière",
+                    "Acouphènes (bourdonnement ou bruit dans les oreilles)",
+                    "Anxiété",
+                    "Dépression",
+                    "Déréalisation",
+                    "Dépersonnalisation (sensation de détachement de soi)",
+                    "Migraines fréquentes",
+                    "Confusion et brouillard mental",
+                    "Vertiges",
+                    "Paresthésie (sensations de picotements, courantes dans les bras, les mains, les jambes et les pieds)",
+                    "Insomnie et autres problèmes liés au sommeil",
+                    "Troubles sensoriels (comme les 'chocs cérébraux' ou les sensations de choc électrique)",
+                    "Hypersensibilité sensorielle / hyperesthésie (sensibilité aux stimuli, tels que les lumières et les sons)"
+                ],
+                "causesTitle": "Causes Potentielles",
+                "causesDescription": "La cause exacte du Syndrome de la Neige Visuelle n'est pas entièrement comprise, mais on pense qu'elle implique un traitement anormal de l'information visuelle dans le cerveau.",
+                "treatmentTitle": "Options de Traitement",
+                "treatmentDescription": "Il n'existe actuellement aucun remède pour le Syndrome de la Neige Visuelle, mais le traitement vise à gérer les symptômes et peut inclure des médicaments, une thérapie visuelle et des modifications du mode de vie.",
+                "learnMoreTitle": "En savoir plus",
+                "learnMoreDescription": "Pour plus d'informations sur le Syndrome de la Neige Visuelle, visitez le site web de <1>{{websiteName}}</1>."
+            },
+            "support": {
+                "title": "Pourquoi votre don est important",
+                "description": "La recherche sur le Syndrome de la Neige Visuelle est cruciale car il reste une condition peu comprise. Le financement est vital pour faire progresser notre compréhension de ses causes, développer des traitements efficaces et améliorer la qualité de vie des personnes concernées. Sans financement adéquat, les progrès dans ces domaines sont lents.",
+                "latestResearchTitle": "Recherche récente",
+                "latestResearchDescription": "Les domaines clés de la recherche incluent l'identification de biomarqueurs, la compréhension de la physiopathologie du VSS et l'exploration de traitements innovants tels que le MBCT-vision (Thérapie Cognitive Basée sur la Pleine Conscience pour la vision) et les techniques de neuromodulation.",
+                "researchInstitutions": "Ces études sont menées dans des institutions de recherche de premier plan dans le monde entier:",
+                "moreInfo": "Pour des informations plus détaillées sur chaque projet et les dernières mises à jour, visitez la section <1>{{pageName}}</1> sur le site web de l'Initiative de Neige Visuelle.",
+                "pageNameText": "dernières nouvelles",
+                "vsiNewsLink": "Nouvelles de l'Initiative de Neige Visuelle"
+            },
+            "purpose": {
+                "title": "Pourquoi ce simulateur a été construit",
+                "description": "Le Simulateur de Neige Visuelle est un outil open source développé dans le but de sensibiliser. Nous espérons qu'il permettra aux non-affectés de faire l'expérience d'une approximation visuelle de la condition, et à ceux qui ont la Neige Visuelle de partager leur réalité avec leurs proches. Si une personne peut se sentir moins isolée grâce à cet outil, il aura atteint son objectif.",
+                "disclaimerTitle": "Avertissement",
+                "disclaimer": "Le simulateur est en cours de développement et peut ne pas représenter fidèlement les perturbations visuelles ressenties par toutes les personnes atteintes du Syndrome de la Neige Visuelle. Certains symptômes courants de la Neige Visuelle sont très difficiles à implémenter et n'ont pas été inclus. Si vous avez des commentaires ou des suggestions, ou si vous êtes un développeur GLSL talentueux, veuillez nous contacter.",
+                "supportTitle": "Soutenez ma collecte de fonds",
+                "supportDescription": "Le simulateur a été développé par Finn, un batteur et développeur web du Royaume-Uni vivant à Berlin, en Allemagne. Finn court le Marathon de Berlin 2024 pour l'Initiative de Neige Visuelle afin de sensibiliser et de collecter des fonds pour la recherche sur le Syndrome de la Neige Visuelle. Vous pouvez faire un don directement à sa collecte de fonds <1>{{supportLinkText}}</1>.",
+                "supportLinkText": "ici",
+                "emailCopied": "E-mail copié!"
+            }
+        }
+    },
+    "shareConfigModal": {
+        "title": "Partagez votre expérience",
+        "description": "Partagez votre configuration actuelle avec d'autres en entrant votre nom et en générant un lien. Toute personne qui visitera le lien verra les mêmes paramètres que vous.",
+        "placeholder": "Nom",
+        "linkCopied": "Lien copié!",
+        "generateLink": "Générer un lien"
+    },
+    "flickerWarning": {
+        "title": "Avertissement",
+        "description": "Les effets de scintillement peuvent provoquer des crises chez les personnes atteintes d'épilepsie photosensible."
+    }
+}

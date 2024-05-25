@@ -1,8 +1,11 @@
-import { useEffects } from '../../../../../context';
+import { useEffects } from '@/components/context';
+
+import { useTranslation } from 'react-i18next';
 
 import { RangeInput, CheckBoxInput } from '.';
 
 export const DizzinessInputs = () => {
+    const { t } = useTranslation(['translation']);
     const { 
         dizzinessEnabled, 
         setDizzinessEnabled, 
@@ -16,7 +19,7 @@ export const DizzinessInputs = () => {
     return (
         <div>
             <CheckBoxInput
-                label='Dizziness'
+                label={t('changeEffectsPanel.dizziness')}
                 checked={dizzinessEnabled}
                 onChange={() => setDizzinessEnabled(!dizzinessEnabled)}
             />

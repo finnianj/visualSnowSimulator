@@ -47,12 +47,12 @@ export const MainEffectsComposer = ({ currentMap }: EffectsComposerLightProps) =
     const smallEyeFloatersRef = useRef();
     const largeEyeFloatersRef = useRef();
 
-    return (
-        <EffectComposer>
-            {/* Afterimages */}
-            <Afterimages enabled={true} />
-        </EffectComposer>
-    )
+    // return (
+    //     <EffectComposer>
+    //         {/* Afterimages */}
+    //         <Afterimages enabled={true} />
+    //     </EffectComposer>
+    // )
 
     return (
             <EffectComposer enabled={!isLoading && !userHasPausedEffects && !modalBeingViewed} >        

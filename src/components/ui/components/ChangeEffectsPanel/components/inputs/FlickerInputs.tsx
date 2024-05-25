@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
-import { useEffects, useUI } from '../../../../../context';
+import { useTranslation } from 'react-i18next';
+import { useEffects, useUI } from '@/components/context';
 
 import { RangeInput, CheckBoxInput } from '.';
 
 export const FlickerInputs = () => {
+    const { t } = useTranslation(['translation']);
     const { isFlickering, setIsFlickering, flickerStrength, setFlickerStrength } = useEffects();
     const { setShowFlickerWarning, hasSeenFlickerWarning } = useUI();
 
@@ -22,12 +23,12 @@ export const FlickerInputs = () => {
     return (
         <div>
             <CheckBoxInput
-                label='Flickering'
+                label={t('changeEffectsPanel.flickering')}
                 checked={isFlickering}
                 onChange={handleCheckboxChange}
             />
             <RangeInput
-                name={'Flicker Strength'}
+                name={t('changeEffectsPanel.flickerStrength')}
                 min={0}
                 max={0.3}
                 step={0.01}

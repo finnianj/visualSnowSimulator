@@ -1,5 +1,5 @@
 import { BlendFunction } from 'postprocessing'
-import { MapType } from '../../types'
+import { MapType } from '@/components/types'
 
 export const defaultMaps: MapType[] = [
     { name: 'Quarry', id: 'quarry', blendFunction: BlendFunction.SOFT_LIGHT, texture: undefined, audio: './audio/wind.mp3' },

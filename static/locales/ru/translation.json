@@ -1,0 +1,48 @@
+{
+    "loadingTextures": "Загрузка текстур...",
+    "changeEffectsPanel": {
+        "title": "Изменить эффекты",
+        "snow": "Снег",
+        "flickering": "Мерцание",
+        "flickerStrength": "Сила мерцания",
+        "bloom": "Цветение",
+        "brightness": "Яркость",
+        "smallEyeFloaters": "Маленькие мушки в глазах",
+        "sefCount": "Количество",
+        "sefSize": "Размер",
+        "sefIntensity": "Интенсивность",
+        "largeEyeFloaters": "Большие мушки в глазах",
+        "lefCount": "Количество",
+        "lefSize": "Размер",
+        "lefIntensity": "Интенсивность",
+        "dizziness": "Головокружение",
+        "vignette": "Виньетка",
+        "tinnitus": "Шум в ушах",
+        "ambient": "Фоновый звук",
+        "volume": "Громкость",
+        "resetEffects": "Сбросить все эффекты на стандартные настройки",
+        "play": "Воспроизвести эффекты",
+        "pause": "Приостановить эффекты",
+        "share": "Поделиться текущей конфигурацией"
+    },
+    "changeMapPanel": {
+        "title": "Изменить карту",
+        "maps": {
+            "quarry": "Карьера",
+            "office": "Офис",
+            "waterfront": "Набережная",
+            "metro": "Метро"
+        }
+    },
+    "buttons": {
+        "go": "Идти",
+        "continueAnyway": "Продолжить в любом случае",
+        "disableFlickering": "Отключить мерцание",
+        "cancel": "Отмена",
+        "continue": "Продолжить",
+        "donate": "Пожертвовать",
+        "code": "Код",
+        "contact": "Контакт",
+        "discord": "Discord"
+    }
+}

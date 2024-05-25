@@ -7,11 +7,12 @@ type DropdownProps = {
     title: string,
     containerPosition?: string,
     childPosition?: string,
-    onTitleClick?: () => void
+    onTitleClick?: () => void,
+    showList: boolean,
+    setShowList: (show: boolean) => void
 }
 
-export const Dropdown = ({ children, title, childPosition, containerPosition, onTitleClick }: DropdownProps) => {
-    const [showList, setShowList] = useState(false)
+export const Dropdown = ({ children, title, childPosition, containerPosition, onTitleClick, showList, setShowList }: DropdownProps) => {
 
     return (
         <div className={`absolute z-20 ${containerPosition ? containerPosition : ''} w-fit`}>

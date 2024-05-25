@@ -20,5 +20,3 @@ i18NInstance.init({
 });
 
 export default i18NInstance;
-
-export const aNum = 64

@@ -1,0 +1,48 @@
+{
+    "loadingTextures": "Chargement des textures...",
+    "changeEffectsPanel": {
+        "title": "Changer les effets",
+        "snow": "Neige",
+        "flickering": "Scintillement",
+        "flickerStrength": "Intensité",
+        "bloom": "Épanouissement",
+        "brightness": "Luminosité",
+        "smallEyeFloaters": "Petites corps flottants",
+        "sefCount": "Nombre",
+        "sefSize": "Taille",
+        "sefIntensity": "Intensité",
+        "largeEyeFloaters": "Grands corps flottants",
+        "lefCount": "Nombre",
+        "lefSize": "Taille",
+        "lefIntensity": "Intensité",
+        "dizziness": "Vertiges",
+        "vignette": "Vignette",
+        "tinnitus": "Acouphènes",
+        "ambient": "Audio Ambiant",
+        "volume": "Volume",
+        "resetEffects": "Réinitialiser tous les effets par défaut",
+        "play": "Lire les effets",
+        "pause": "Pause des effets",
+        "share": "Partager la configuration actuelle"
+    },
+    "changeMapPanel": {
+        "title": "Changer la carte",
+        "maps": {
+            "quarry": "Carrière",
+            "office": "Bureau",
+            "waterfront": "Front de mer",
+            "metro": "Métro"
+        }
+    },
+    "buttons": {
+        "go": "Aller",
+        "continueAnyway": "Continuer quand même",
+        "disableFlickering": "Désactiver le scintillement",
+        "cancel": "Annuler",
+        "continue": "Continuer",
+        "donate": "Faire un don",
+        "code": "Code",
+        "contact": "Contact",
+        "discord": "Discord"
+    }
+}

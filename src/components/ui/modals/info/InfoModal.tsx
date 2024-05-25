@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { useUI } from '../../../context';
+import { useUI } from '@/components/context';
 import { TabHeaders, ModalIcons, InfoModalContent } from './components'
 
 export const InfoModal = ({ setShowInfo }: { setShowInfo: (show: boolean) => void }) => {

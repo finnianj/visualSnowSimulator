@@ -1,4 +1,6 @@
-import { RangeInput } from '../ui/components/ChangeEffectsPanel/components/inputs/RangeInput';
+import { useTranslation } from 'react-i18next';
+
+import { RangeInput } from '@/ui/components/ChangeEffectsPanel/components/inputs/RangeInput';
 
 type AudioControlComponentProps = {
     title: string;
@@ -9,6 +11,8 @@ type AudioControlComponentProps = {
 }
 
 export const AudioControlComponent = ({title, isPlaying, setIsPlaying, volume, setVolume}: AudioControlComponentProps) => {
+    const { t } = useTranslation(['translation']);
+
     return (
         <div className='flex flex-col text-xxs'>
             <div className='flex items-center justify-between space-x-2'>
@@ -23,7 +27,7 @@ export const AudioControlComponent = ({title, isPlaying, setIsPlaying, volume, s
             </div>
             <div className='flex items-center justify-between space-x-2'>
                 <RangeInput
-                    name={'Volume'}
+                    name={t('changeEffectsPanel.volume')}
                     min={0}
                     max={1}
                     step={0.01}
