@@ -23,7 +23,11 @@
         "resetEffects": "Réinitialiser tous les effets par défaut",
         "play": "Lire les effets",
         "pause": "Pause des effets",
-        "share": "Partager la configuration actuelle"
+        "share": "Partager la configuration actuelle",
+        "afterimages": {
+            "title": "Images rémanentes",
+            "warning": "Les autres effets seront mis en pause pendant que cet effet est activé."
+        }
     },
     "changeMapPanel": {
         "title": "Changer la carte",

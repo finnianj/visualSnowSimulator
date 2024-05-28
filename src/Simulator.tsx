@@ -13,14 +13,16 @@ import { Modal } from '@/components/ui/modals/Modal';
 import { WelcomeModal } from '@/components/ui/modals/WelcomeModal';
 
 export const Simulator = () => {
-    const { LoadingModal } = useLoading();
+    const { LoadingModal, isLoading } = useLoading();
     const { usePreviousConfig } = useEffects();
     const { maps, currentMap, changeMap, BackgroundComponent, FallbackBackgroundComponent } = useMaps();
     
     const [showWelcomeModal, setShowWelcomeModal] = useState(true)
     const [prevConfig, setPrevConfig] = useState<{[key: string]: string}>({})
+    const [initialised, setInitialised] = useState(false)
 
     useEffect(() => {
+        if (isLoading || initialised) return;
         // Apply config from query params
         const config: {[key: string]: string} = {} 
         const urlParams = new URLSearchParams(window.location.search);
@@ -37,7 +39,8 @@ export const Simulator = () => {
         usePreviousConfig(config)
         // Show welcome modal and reference the previous config
         setShowWelcomeModal(true)
-    }, [])
+        setInitialised(true)
+    }, [isLoading])
 
     return (
         <Suspense fallback={<Loading />}>

@@ -14,7 +14,7 @@ export const AudioControlComponent = ({title, isPlaying, setIsPlaying, volume, s
     const { t } = useTranslation(['translation']);
 
     return (
-        <div className='flex flex-col text-xxs'>
+        <div className='flex flex-col text-xxs space-y-1'>
             <div className='flex items-center justify-between space-x-2'>
                 <label htmlFor='ambientAudioCheckbox' className='cursor-pointer'>{title}</label>
                 <input 

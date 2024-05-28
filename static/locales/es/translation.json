@@ -23,7 +23,11 @@
         "resetEffects": "Restablecer todos los efectos a los valores predeterminados",
         "play": "Reproducir efectos",
         "pause": "Pausar efectos",
-        "share": "Compartir configuración actual"
+        "share": "Compartir configuración actual",
+        "afterimages": {
+            "title": "Imágenes residuales",
+            "warning": "Otros efectos se pausarán mientras este efecto esté habilitado."
+        }
     },
     "changeMapPanel": {
         "title": "Cambiar Mapa",

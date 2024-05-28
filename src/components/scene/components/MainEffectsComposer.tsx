@@ -1,10 +1,10 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { useEffects, useLoading } from '@/components/context';
-
 import { EffectComposer, Noise, Bloom, BrightnessContrast, Vignette } from '@react-three/postprocessing';
-import { Blur, Flicker, EyeFloaters, Afterimages, Dizziness } from '@/components/customShaders';
+import { Flicker, EyeFloaters, Dizziness } from '@/components/customShaders';
 
 import { MapType } from '@/components/types';
+import { Afterimage } from '@/components/customShaders/afterimage/Afterimage';
 
 type EffectsComposerLightProps = {
     currentMap: MapType;
@@ -13,6 +13,7 @@ type EffectsComposerLightProps = {
 {/* Effects composer for performance lighter effects */}
 
 export const MainEffectsComposer = ({ currentMap }: EffectsComposerLightProps) => {
+
     const {
         modalBeingViewed,
         userHasPausedEffects,
@@ -39,6 +40,8 @@ export const MainEffectsComposer = ({ currentMap }: EffectsComposerLightProps) =
         largeEyeFloatersTransparency,
         largeEyeFloatersSize,
         largeEyeFloatersColor,
+
+        showAfterimages
     } = useEffects();
 
     const { isLoading } = useLoading();
@@ -46,16 +49,12 @@ export const MainEffectsComposer = ({ currentMap }: EffectsComposerLightProps) =
     const dizzinessRef = useRef();
     const smallEyeFloatersRef = useRef();
     const largeEyeFloatersRef = useRef();
-
-    // return (
-    //     <EffectComposer>
-    //         {/* Afterimages */}
-    //         <Afterimages enabled={true} />
-    //     </EffectComposer>
-    // )
-
+    
     return (
-            <EffectComposer enabled={!isLoading && !userHasPausedEffects && !modalBeingViewed} >        
+        <>
+            {showAfterimages && <Afterimage />}
+            
+            <EffectComposer enabled={!isLoading && !userHasPausedEffects && !modalBeingViewed && !showAfterimages} >        
                 {/* <Blur
                     enabled={blurEnabled} 
                     strength={blurStrength} 
@@ -98,5 +97,6 @@ export const MainEffectsComposer = ({ currentMap }: EffectsComposerLightProps) =
                 <Bloom luminanceThreshold={0.1} luminanceSmoothing={0.1} height={300} opacity={bloomOpacity} /> 
                 
             </EffectComposer>       
+            </>
     )
 }

@@ -23,7 +23,11 @@
         "resetEffects": "Reset all effects to default",
         "play": "Play effects",
         "pause": "Pause effects",
-        "share": "Share current configuration"
+        "share": "Share current configuration",
+        "afterimages": {
+            "title": "Afterimages",
+            "warning": "Other effects will pause while this effect is enabled."
+        }
     },
     "changeMapPanel": {
         "title": "Change Map",

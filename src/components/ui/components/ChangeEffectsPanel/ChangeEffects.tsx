@@ -9,6 +9,7 @@ import { AudioControls } from '@/components/audio/AudioControls'
 import { FlickerInputs, DizzinessInputs, RangeInput, EyeFloatersInputs, CheckBoxInput } from '@/ui/components/ChangeEffectsPanel/components/inputs'
 import { ButtonRow } from '@/ui/components/ChangeEffectsPanel/components/buttons/ButtonRow'
 import { BlurInputs } from '@/ui/components/ChangeEffectsPanel/components/inputs/BlurInputs'
+import { AfterimagesInputs } from './components/inputs/AfterimagesInputs'
 
 export const ChangeEffects = () => {
     const [showList, setShowList] = useState(false)
@@ -24,10 +25,12 @@ export const ChangeEffects = () => {
         setVignetteStrength,
         brightness,
         setBrightness,
-        blurEnabled,
-        setBlurEnabled,
-        blurStrength,
-        setBlurStrength,
+        showAfterimages,
+        setShowAfterimages,
+        // blurEnabled,
+        // setBlurEnabled,
+        // blurStrength,
+        // setBlurStrength,
     } = useEffects();
 
     return (
@@ -90,6 +93,11 @@ export const ChangeEffects = () => {
                     value={vignetteStrength}
                     onChange={(e) => setVignetteStrength(parseFloat(e.target.value))}
                 />
+
+                {/* Afterimages */}
+                <AfterimagesInputs />
+
+                <hr></hr>
                     
                 <AudioControls />
                 

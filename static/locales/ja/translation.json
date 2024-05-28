@@ -23,7 +23,11 @@
         "resetEffects": "すべての効果をデフォルトにリセット",
         "play": "効果を再生",
         "pause": "効果を一時停止",
-        "share": "現在の設定を共有"
+        "share": "現在の設定を共有",
+        "afterimages": {
+            "title": "残像",
+            "warning": "この効果が有効になっている間、他の効果は一時停止します。"
+        }
     },
     "changeMapPanel": {
         "title": "地図を変更",

@@ -26,6 +26,7 @@ export const ShareConfigModal = () => {
         largeEyeFloatersTransparency,
         dizzinessEnabled,
         vignetteStrength,
+        showAfterimages
     } = useEffects()
 
     const [isLinkCopied, setIsLinkCopied] = useState(false)
@@ -50,6 +51,7 @@ export const ShareConfigModal = () => {
             largeEyeFloatersTransparency,
             dizzinessEnabled,
             vignetteStrength,
+            showAfterimages
         }
         const convertedToQueryParams = createConfigQueryParams(currentConfig)
         const baseUrl = getBaseUrl()
