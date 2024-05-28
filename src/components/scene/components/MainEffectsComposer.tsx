@@ -52,7 +52,7 @@ export const MainEffectsComposer = ({ currentMap }: EffectsComposerLightProps) =
     
     return (
         <>
-            {showAfterimages && <Afterimage />}
+            {showAfterimages && !userHasPausedEffects && !modalBeingViewed && <Afterimage />}
             
             <EffectComposer enabled={!isLoading && !userHasPausedEffects && !modalBeingViewed && !showAfterimages} >        
                 {/* <Blur
