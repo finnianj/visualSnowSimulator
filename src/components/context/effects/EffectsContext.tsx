@@ -41,6 +41,8 @@ export const EffectsProvider: React.FC<{ children: React.ReactNode }> = ({ child
 
     const [vignetteStrength, setVignetteStrength] = useState<number>(defaultEffectsValues.vignetteStrength)
 
+    const [showAfterimages, setShowAfterimages] = useState<boolean>(false)
+
     const resetAllEffectsToDefault = () => {
         // use defaultEffectsValues to reset all values
         setNoiseOpacity(defaultEffectsValues.noiseOpacity)
@@ -64,6 +66,7 @@ export const EffectsProvider: React.FC<{ children: React.ReactNode }> = ({ child
         setBlurEnabled(defaultEffectsValues.blurEnabled)
         setBlurStrength(defaultEffectsValues.blurStrength)
         setVignetteStrength(defaultEffectsValues.vignetteStrength)
+        setShowAfterimages(false)
     }
 
     const usePreviousConfig = (config: {[key: string]: string}) => {
@@ -115,6 +118,9 @@ export const EffectsProvider: React.FC<{ children: React.ReactNode }> = ({ child
                         break;
                     case 'vignetteStrength':
                         setVignetteStrength(parseFloat(config[key]))
+                        break;
+                    case 'showAfterimages':
+                        setShowAfterimages(config[key] === 'true')
                         break;
                     default:
                         break;
@@ -171,6 +177,8 @@ export const EffectsProvider: React.FC<{ children: React.ReactNode }> = ({ child
         setBlurStrength,
         vignetteStrength,
         setVignetteStrength,
+        showAfterimages,
+        setShowAfterimages,
 
         resetAllEffectsToDefault,
         usePreviousConfig

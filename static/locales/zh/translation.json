@@ -23,7 +23,11 @@
         "resetEffects": "重置所有效果为默认值",
         "play": "播放效果",
         "pause": "暂停效果",
-        "share": "分享当前配置"
+        "share": "分享当前配置",
+        "afterimages": {
+            "title": "余像",
+            "warning": "启用此效果时，其他效果将暂停。"
+        }
     },
     "changeMapPanel": {
         "title": "更改地图",

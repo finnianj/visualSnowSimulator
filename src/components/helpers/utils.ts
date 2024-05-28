@@ -49,6 +49,7 @@ export const effectsQueryParamMap = {
     largeEyeFloatersTransparency: 'lefT',
     dizzinessEnabled: 'n',
     vignetteStrength: 'vS',
+    showAfterimages: 'sAi'
 }
 
     

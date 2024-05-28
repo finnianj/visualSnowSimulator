@@ -7,7 +7,7 @@ type CheckBoxInputProps = {
 
 export const CheckBoxInput = ({ label, checked, onChange, indent }: CheckBoxInputProps) => {
     return (
-        <div className='flex items-center justify-between space-x-2 text-xxs'>
+        <div className='flex items-center justify-between space-x-2 text-xxs w-full'>
             <label htmlFor={label} className={`${indent ? 'pl-4' : ''} cursor-pointer`}>{label}</label>
             <input 
                 type='checkbox'
