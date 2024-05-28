@@ -1,4 +1,4 @@
-// CustomAfterimageEffect.js
+// TODO - In this file, rework the AfterimagePass.js to be compatible wtih postprocessing EffectComposer
 import { Effect } from 'postprocessing';
 import { Uniform, WebGLRenderTarget, HalfFloatType, NearestFilter, ShaderMaterial, Vector2, MeshBasicMaterial } from 'three';
 import { FullScreenQuad } from './Pass';
