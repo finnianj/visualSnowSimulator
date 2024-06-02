@@ -22,4 +22,5 @@ export const defaultEffectsValues: DefaultEffectsValuesType = {
     blurEnabled: false,
     blurStrength: 5,
     vignetteStrength: 0.5,
+    showAfterimages: true
 }

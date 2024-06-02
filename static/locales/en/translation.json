@@ -26,7 +26,7 @@
         "share": "Share current configuration",
         "afterimages": {
             "title": "Afterimages",
-            "warning": "Other effects will pause while this effect is enabled."
+            "warning": "This may cause other effects to pause."
         }
     },
     "changeMapPanel": {

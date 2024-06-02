@@ -16,7 +16,7 @@ i18NInstance.init({
   },
 }, (err, t) => {
   if (err) return console.log('something went wrong loading', err);
-  console.log('i18n instance initialised');
+  // console.log('i18n instance initialised');
 });
 
 export default i18NInstance;

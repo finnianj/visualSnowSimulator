@@ -28,13 +28,13 @@ export const AudioProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     const [isAmbientPlaying, setIsAmbientPlaying] = useState<boolean>(false);
     const [isEffectsAudioPlaying, setIsEffectsAudioPlaying] = useState<boolean>(false);
     const [ambientVolume, setAmbientVolume] = useState<number>(0.5);
-    const [effectsVolume, setEffectsVolume] = useState<number>(0.5);
+    const [effectsVolume, setEffectsVolume] = useState<number>(0.05);
 
     const resetAllAudio = () => {
         setIsAmbientPlaying(false);
         setIsEffectsAudioPlaying(false);
         setAmbientVolume(0.5);
-        setEffectsVolume(0.5);
+        setEffectsVolume(0.05);
     }
 
     const value = { 

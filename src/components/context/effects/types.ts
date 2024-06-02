@@ -75,4 +75,5 @@ export type DefaultEffectsValuesType = {
     blurEnabled: boolean;
     blurStrength: number;
     vignetteStrength: number;
+    showAfterimages: boolean;
 };

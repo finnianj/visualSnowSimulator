@@ -17,16 +17,20 @@ export const Simulator = () => {
     const { usePreviousConfig } = useEffects();
     const { maps, currentMap, changeMap, BackgroundComponent, FallbackBackgroundComponent } = useMaps();
     
-    const [showWelcomeModal, setShowWelcomeModal] = useState(true)
+    const [showWelcomeModal, setShowWelcomeModal] = useState(false)
     const [prevConfig, setPrevConfig] = useState<{[key: string]: string}>({})
     const [initialised, setInitialised] = useState(false)
 
     useEffect(() => {
-        if (isLoading || initialised) return;
+        if (initialised || isLoading) return;
         // Apply config from query params
         const config: {[key: string]: string} = {} 
         const urlParams = new URLSearchParams(window.location.search);
-        if (!urlParams.size) return;
+        if (!urlParams.size) {
+            setShowWelcomeModal(true)
+            setInitialised(true)
+            return;
+        };
 
         // Get values using effectsQueryParamMap
         for (const key in effectsQueryParamMap) {

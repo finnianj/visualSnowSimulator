@@ -41,7 +41,7 @@ export const EffectsProvider: React.FC<{ children: React.ReactNode }> = ({ child
 
     const [vignetteStrength, setVignetteStrength] = useState<number>(defaultEffectsValues.vignetteStrength)
 
-    const [showAfterimages, setShowAfterimages] = useState<boolean>(false)
+    const [showAfterimages, setShowAfterimages] = useState<boolean>(defaultEffectsValues.showAfterimages)
 
     const resetAllEffectsToDefault = () => {
         // use defaultEffectsValues to reset all values

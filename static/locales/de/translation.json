@@ -26,7 +26,7 @@
         "share": "Aktuelle Konfiguration teilen",
         "afterimages": {
             "title": "Nachbilder",
-            "warning": "Andere Effekte werden pausieren, während dieser Effekt aktiviert ist."
+            "warning": "Dies kann dazu führen, dass andere Effekte pausieren."
         }
     },
     "changeMapPanel": {

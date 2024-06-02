@@ -54,6 +54,9 @@ export const ChangeEffects = () => {
 
                 {/* Flicker */}
                 <FlickerInputs />
+
+                {/* Afterimages */}
+                <AfterimagesInputs />
                 
                 {/* Bloom opacity */}
                 <RangeInput
@@ -93,9 +96,6 @@ export const ChangeEffects = () => {
                     value={vignetteStrength}
                     onChange={(e) => setVignetteStrength(parseFloat(e.target.value))}
                 />
-
-                {/* Afterimages */}
-                <AfterimagesInputs />
 
                 <hr></hr>
                     
