@@ -26,7 +26,7 @@
         "share": "分享当前配置",
         "afterimages": {
             "title": "余像",
-            "warning": "启用此效果时，其他效果将暂停。"
+            "zh": "这可能会导致其他效果暂停。"
         }
     },
     "changeMapPanel": {

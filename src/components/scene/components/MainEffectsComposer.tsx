@@ -50,21 +50,18 @@ export const MainEffectsComposer = ({ currentMap }: EffectsComposerLightProps) =
     const smallEyeFloatersRef = useRef();
     const largeEyeFloatersRef = useRef();
 
-    return (
-        <EffectComposer>
-            <Afterimage />
-        </EffectComposer>
-    )
     
     return (
         <>
-            {showAfterimages && !userHasPausedEffects && !modalBeingViewed && <Afterimage />}
             
-            <EffectComposer enabled={!isLoading && !userHasPausedEffects && !modalBeingViewed && !showAfterimages} >        
+            <EffectComposer enabled={!isLoading && !userHasPausedEffects && !modalBeingViewed}>     
                 {/* <Blur
                     enabled={blurEnabled} 
                     strength={blurStrength} 
                 />     */}
+
+                <Afterimage enabled={showAfterimages} damp={0.96} />
+
                 <Flicker enabled={isFlickering} textureUrl='./textures/noise4.jpeg' intensity={flickerStrength} />
                 <BrightnessContrast brightness={brightness} />
 
@@ -90,6 +87,7 @@ export const MainEffectsComposer = ({ currentMap }: EffectsComposerLightProps) =
                     particle_color={largeEyeFloatersColor}
                 />
                 
+
                 {/* Dizziness */}
                 <Dizziness
                     enabled={dizzinessEnabled}
@@ -97,12 +95,13 @@ export const MainEffectsComposer = ({ currentMap }: EffectsComposerLightProps) =
                     frequency={dizzinessFrequency}
                     amplitude={dizzinessAmplitude} 
                 />
-           
+
                 <Vignette eskil={false} offset={0.5} darkness={vignetteStrength} />
                 <Noise blendFunction={currentMap.blendFunction} opacity={noiseOpacity} />
                 <Bloom luminanceThreshold={0.1} luminanceSmoothing={0.1} height={300} opacity={bloomOpacity} /> 
                 
             </EffectComposer>       
+
             </>
     )
 }

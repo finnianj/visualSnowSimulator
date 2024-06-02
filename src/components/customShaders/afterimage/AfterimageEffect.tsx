@@ -1,13 +1,18 @@
 import { Effect } from 'postprocessing';
-import { Uniform, WebGLRenderTarget, HalfFloatType, NearestFilter, ShaderMaterial, Vector2, MeshBasicMaterial } from 'three';
+import { Uniform, WebGLRenderTarget, HalfFloatType, NearestFilter, ShaderMaterial } from 'three';
 import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass';
 import { Texture } from 'three/src/textures/Texture';
 
 const outputShader = `
   uniform sampler2D tFinal;
+  uniform bool enabled;
 
   void mainImage(const in vec4 inputColor, const in vec2 uv, out vec4 outputColor)
   {
+    if (!enabled) {
+      outputColor = inputColor;
+      return;
+    }
     vec4 finalColor = texture2D(tFinal, uv);
     outputColor = finalColor;
   }
@@ -26,7 +31,6 @@ const frameBlendShader = {
     uniform float damp;
     uniform sampler2D tOld;
     uniform sampler2D tNew;
-    uniform float frameCount;
     uniform sampler2D tDiffuse;
 
     varying vec2 vUv;
@@ -47,7 +51,7 @@ const frameBlendShader = {
   `
 };
 
-type UniformType = Uniform<Texture | null> | Uniform<number>;
+type UniformType = Uniform<Texture | null> | Uniform<number> | Uniform<boolean>;
 
 class AfterimageEffect extends Effect {
   compTexture: WebGLRenderTarget;
@@ -55,10 +59,8 @@ class AfterimageEffect extends Effect {
   compFsMaterial: ShaderMaterial;
   compFsQuad: FullScreenQuad;
   shader: { vertexShader: string; fragmentShader: string; };
-  copyFsMaterial: MeshBasicMaterial;
-  copyFsQuad: FullScreenQuad;
 
-  constructor({ damp = 0.96 } = {}) {
+  constructor({ enabled = false, damp = 0.96 } = {}) {
 
     super(
       'AfterimageEffect', 
@@ -69,8 +71,9 @@ class AfterimageEffect extends Effect {
           ['tOld', new Uniform(null)],
           ['tNew', new Uniform(null)],
           ['tFinal', new Uniform(null)],
-        ])
-      }
+          ['enabled', new Uniform(enabled)],
+        ]),
+      },
     );
 
     this.shader = frameBlendShader;
@@ -92,12 +95,10 @@ class AfterimageEffect extends Effect {
     } );
 
     this.compFsQuad = new FullScreenQuad( this.compFsMaterial );
-
-    this.copyFsMaterial = new MeshBasicMaterial();
-		this.copyFsQuad = new FullScreenQuad( this.copyFsMaterial );
   }
 
   update(renderer: any, inputBuffer: WebGLRenderTarget, deltaTime?: number) {
+    if (this.uniforms.get('enabled')?.value === false) return;
     // Set uniforms
     (this.uniforms.get('tOld') as Uniform<Texture>).value = this.oldTexture.texture;
     (this.uniforms.get('tNew') as Uniform<Texture>).value = inputBuffer.texture;

@@ -1,7 +1,7 @@
 import React from 'react';
 import AfterimageEffect from './AfterimageEffect';
 
-export const Afterimage = ({ damp } : { damp?: number }) => {
-    const effect = new AfterimageEffect({ damp });
+export const Afterimage = ({ enabled, damp } : { enabled: boolean, damp?: number }) => {
+    const effect = new AfterimageEffect({ enabled, damp });
     return <primitive object={effect} />
 };

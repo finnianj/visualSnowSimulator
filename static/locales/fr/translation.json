@@ -26,7 +26,7 @@
         "share": "Partager la configuration actuelle",
         "afterimages": {
             "title": "Images rémanentes",
-            "warning": "Les autres effets seront mis en pause pendant que cet effet est activé."
+            "fr": "Cela peut entraîner la pause d'autres effets."
         }
     },
     "changeMapPanel": {
