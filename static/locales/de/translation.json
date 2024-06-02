@@ -26,7 +26,7 @@
         "share": "Aktuelle Konfiguration teilen",
         "afterimages": {
             "title": "Nachbilder",
-            "de": "Dies kann dazu führen, dass andere Effekte pausieren."
+            "warning": "Dies kann dazu führen, dass andere Effekte pausieren."
         }
     },
     "changeMapPanel": {

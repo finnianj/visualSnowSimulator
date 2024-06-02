@@ -26,7 +26,7 @@
         "share": "Compartir configuración actual",
         "afterimages": {
             "title": "Imágenes residuales",
-            "es": "Esto puede causar que otros efectos se detengan."
+            "warning": "Esto puede causar que otros efectos se detengan."
         }
     },
     "changeMapPanel": {
