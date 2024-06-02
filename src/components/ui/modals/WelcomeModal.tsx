@@ -88,15 +88,15 @@ export const WelcomeModal = ({ prevConfig, setShowWelcomeModal }: UserConfigLoad
                                 <div className="flex justify-between mt-4 w-full text-sm">
                                     <button
                                         className="flex items-center justify-center bg-slate-500 dark:bg-slate-600 dark:text-slate-100 text-white rounded-full p-2 px-10 hover:bg-slate-600 dark:hover:bg-slate-700 transition-all"
-                                        onClick={handleContinueAnyway}
-                                    >
-                                        {t('buttons.continueAnyway')}
-                                    </button>
-                                    <button
-                                        className="flex items-center justify-center bg-teal-500 dark:bg-teal-600 dark:text-slate-100 text-white rounded-full p-2 px-10 hover:bg-teal-600 dark:hover:bg-teal-700 transition-all"
                                         onClick={handleDisableFlickering}
                                     >
                                         {t('buttons.disableFlickering')}
+                                    </button>
+                                    <button
+                                        className="flex items-center justify-center bg-teal-500 dark:bg-teal-600 dark:text-slate-100 text-white rounded-full p-2 px-10 hover:bg-teal-600 dark:hover:bg-teal-700 transition-all"
+                                        onClick={handleContinueAnyway}
+                                    >
+                                        {t('buttons.continueAnyway')}
                                     </button>
                                 </div>
                             </>
