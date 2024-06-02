@@ -4,7 +4,7 @@ import { EffectComposer, Noise, Bloom, BrightnessContrast, Vignette } from '@rea
 import { Flicker, EyeFloaters, Dizziness } from '@/components/customShaders';
 
 import { MapType } from '@/components/types';
-import { Afterimage } from '@/components/customShaders/afterimage/Afterimage';
+import { Afterimage } from '@/components/customShaders/Afterimage/Afterimage';
 
 type EffectsComposerLightProps = {
     currentMap: MapType;
@@ -49,6 +49,12 @@ export const MainEffectsComposer = ({ currentMap }: EffectsComposerLightProps) =
     const dizzinessRef = useRef();
     const smallEyeFloatersRef = useRef();
     const largeEyeFloatersRef = useRef();
+
+    return (
+        <EffectComposer>
+            <Afterimage />
+        </EffectComposer>
+    )
     
     return (
         <>
