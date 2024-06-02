@@ -34,7 +34,7 @@ export const AudioProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         setIsAmbientPlaying(false);
         setIsEffectsAudioPlaying(false);
         setAmbientVolume(0.5);
-        setEffectsVolume(0.5);
+        setEffectsVolume(0.05);
     }
 
     const value = { 

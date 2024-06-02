@@ -7,4 +7,5 @@ export type MapType = {
     blendFunction: BlendFunction;
     texture: Texture | undefined;
     audio?: string;
+    afterimageStrength: number;
 }
