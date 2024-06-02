@@ -4,7 +4,7 @@ import { EffectComposer, Noise, Bloom, BrightnessContrast, Vignette } from '@rea
 import { Flicker, EyeFloaters, Dizziness } from '@/components/customShaders';
 
 import { MapType } from '@/components/types';
-import { Afterimage } from '@/components/customShaders/Afterimage/Afterimage';
+import { Afterimage } from '@/components/customShaders/afterimage/Afterimage';
 
 type EffectsComposerLightProps = {
     currentMap: MapType;

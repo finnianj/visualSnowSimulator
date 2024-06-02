@@ -1,5 +1,4 @@
-import React from 'react';
-import AfterimageEffect from './AfterimageEffect';
+import AfterimageEffect from './AfterimageEffect'
 
 export const Afterimage = ({ enabled, damp } : { enabled: boolean, damp?: number }) => {
     const effect = new AfterimageEffect({ enabled, damp });
