@@ -15,14 +15,14 @@ import { WelcomeModal } from '@/components/ui/modals/WelcomeModal';
 export const Simulator = () => {
     const { LoadingModal, isLoading } = useLoading();
     const { usePreviousConfig } = useEffects();
-    const { maps, currentMap, changeMap, BackgroundComponent, FallbackBackgroundComponent } = useMaps();
+    const { maps, currentMap, changeMap, BackgroundComponent, FallbackBackgroundComponent, firstMapLoaded } = useMaps();
     
     const [showWelcomeModal, setShowWelcomeModal] = useState(false)
     const [prevConfig, setPrevConfig] = useState<{[key: string]: string}>({})
     const [initialised, setInitialised] = useState(false)
 
     useEffect(() => {
-        if (initialised || isLoading) return;
+        if (initialised || !firstMapLoaded) return;
         // Apply config from query params
         const config: {[key: string]: string} = {} 
         const urlParams = new URLSearchParams(window.location.search);
@@ -44,7 +44,7 @@ export const Simulator = () => {
         // Show welcome modal and reference the previous config
         setShowWelcomeModal(true)
         setInitialised(true)
-    }, [isLoading])
+    }, [firstMapLoaded])
 
     return (
         <Suspense fallback={<Loading />}>

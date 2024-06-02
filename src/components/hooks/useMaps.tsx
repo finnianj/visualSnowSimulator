@@ -16,6 +16,7 @@ export const useMaps = () => {
     const [maps, setMaps] = useState<MapType[]>(defaultMaps);
     const [currentMap, setCurrentMap] = useState(maps[0])
     const [mapTexture, setMapTexture] = useState<Texture | undefined>(undefined)
+    const [firstMapLoaded, setFirstMapLoaded] = useState(false)
 
 
     useEffect(() => {
@@ -36,6 +37,7 @@ export const useMaps = () => {
                     return map;
                 }))
                 setIsLoading(false)
+                setFirstMapLoaded(true)
             })
         }
         loadMap();
@@ -67,6 +69,7 @@ export const useMaps = () => {
         setMapTexture,
         changeMap,
         BackgroundComponent,
-        FallbackBackgroundComponent
+        FallbackBackgroundComponent,
+        firstMapLoaded  
     }
 };

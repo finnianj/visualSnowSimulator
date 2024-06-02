@@ -11,7 +11,7 @@ export default function App() {
             <EffectsProvider>
                 <LoadingProvider>
                     <AudioProvider>
-                            <Simulator />
+                        <Simulator />
                     </AudioProvider>
                 </LoadingProvider>
             </EffectsProvider>

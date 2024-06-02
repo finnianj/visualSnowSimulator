@@ -1,7 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
-import { useEffects } from './effects/EffectsContext';
-import Loading from '../ui/modals/Loading';
+import Loading from '@/ui/modals/Loading';
 
 // Define the type for the context state
 type LoadingContextType = {
