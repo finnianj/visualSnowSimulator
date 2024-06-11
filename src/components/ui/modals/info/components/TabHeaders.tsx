@@ -9,7 +9,7 @@ export const TabHeaders = ({ currentTab, setCurrentTab } : TabHeadersProps) => {
     const { t } = useTranslation('modals');
 
     const getTabClasses = (tab: string) => {
-        return `text-xl ${currentTab === tab ? 'font-bold text-teal-500 border-b-4 border-teal-500 dark:text-teal-600 dark:border-teal-600': 'text-slate-500 hover:opacity-75 transition-all'}`
+        return `text-xl w-20 ${currentTab === tab ? 'font-bold text-teal-500 border-b-4 border-teal-500 dark:text-teal-600 dark:border-teal-600': 'text-slate-500 hover:opacity-75 transition-all'}`
     }
 
     return (
