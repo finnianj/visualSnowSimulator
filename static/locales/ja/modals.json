@@ -41,7 +41,7 @@
                     "感覚過敏/過敏症（光や音などの刺激に対する感受性）"
                 ],
                 "causesTitle": "考えられる原因",
-                "causesDescription": "ビジュアルスノー症候群の正確な原因は完全には理解されていませんが、脳内の視覚情報の異常な処理に関連していると考えられています。",
+                "causesDescription": "ビジュアルスノー症候群の正確な原因は完全には理解されていませんが、脳の視覚皮質（舌状回）の過活動、および脳の視覚処理センターの異常、セロトニンとグルタミン酸の神経伝達が関与していると考えられています。",
                 "treatmentTitle": "治療法",
                 "treatmentDescription": "ビジュアルスノー症候群を治療する方法は現在ありませんが、症状を管理するための治療法があります。これには、薬物療法、視覚療法、ライフスタイルの変更が含まれることがあります。",
                 "learnMoreTitle": "もっと知る",
@@ -53,8 +53,9 @@
                 "latestResearchTitle": "最新の研究",
                 "latestResearchDescription": "主要な研究分野には、バイオマーカーの特定、VSSの病態生理学の理解、MBCT-vision（視覚のためのマインドフルネスに基づく認知療法）や神経調節技術などの革新的な治療法の探索が含まれます。",
                 "researchInstitutions": "これらの研究は、世界中の主要な研究機関で行われています：",
-                "moreInfo": "各プロジェクトの詳細情報と最新の更新については、ビジュアルスノーイニシアチブのウェブサイトの <1>{{pageName}}</1> セクションをご覧ください。",
-                "pageNameText": "最新ニュース",
+                "newsAndResearchPage": "ニュース & リサーチ",
+                "activeStudiesPage": "VSI資金提供のアクティブな研究",
+                "moreInfo": "各プロジェクトの詳細情報や最新の更新については、Visual Snow Initiativeのウェブサイトの<1>{{newsAndResearchPage}}</1>セクションを訪れるか、<2>{{activeStudiesPage}}</2>をチェックしてください。",                "pageNameText": "最新ニュース",
                 "vsiNewsLink": "ビジュアルスノーイニシアチブニュース"
             },
             "purpose": {

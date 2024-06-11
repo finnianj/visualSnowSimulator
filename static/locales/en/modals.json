@@ -41,7 +41,7 @@
                             "Sensory hypersensitivity / hyperesthesia (sensitivity to stimuli, such as sights and sounds)"
                         ],
                         "causesTitle": "Potential Causes",
-                        "causesDescription": "The exact cause of Visual Snow Syndrome is not fully understood, but it is thought to involve abnormal processing of visual information in the brain.",
+                        "causesDescription": "The exact cause of Visual Snow Syndrome is not fully understood, but it is thought to involve hyperactivity in the visual cortex (lingual gyrus) of the brain, as well as abnormalities in the visual processing centers of the brain and the neurotransmission of serotonin and glutamate.",
                         "treatmentTitle": "Treatment Options",
                         "treatmentDescription": "There is currently no cure for Visual Snow Syndrome, but treatment is aimed at managing symptoms and may include medications, visual therapy, and lifestyle modifications.",
                         "learnMoreTitle": "Learn More",
@@ -53,7 +53,9 @@
                 "latestResearchTitle": "Latest Research",
                 "latestResearchDescription": "Key areas of research include identifying biomarkers, understanding the pathophysiology of VSS, and exploring innovative treatments such as MBCT-vision (Mindfulness-Based Cognitive Therapy for vision) and neuromodulation techniques.",
                 "researchInstitutions": "These studies are conducted at leading research institutions around the world:",
-                "moreInfo": "For more detailed information about each project and the latest updates, visit the <1>{{pageName}}</1> section on the Visual Snow Initiative website.",
+                "newsAndResearchPage": "News & Research",
+                "activeStudiesPage": "Active VSI-Funded Studies",
+                "moreInfo": "For more detailed information about each project and the latest updates, visit the <1>{{newsAndResearchPage}}</1> section on the Visual Snow Initiative website, or check out their <2>{{activeStudiesPage}}</2>.",
                 "pageNameText": "latest news",
                 "vsiNewsLink": "Visual Snow Initiative News"
             },

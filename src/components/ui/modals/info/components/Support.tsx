@@ -8,7 +8,7 @@ export const SupportTab = () => {
     const researchInstitutions = [
         {
             name: "King's College London",
-            researchers: ["Dr. Francesca Puledda"]
+            researchers: ["Dr. Francesca Puledda in association with Dr. Peter Goadsby"]
         },
         {
             name: "Guy's and St Thomas' NHS Foundation Trust",
@@ -20,7 +20,8 @@ export const SupportTab = () => {
         }
     ]
 
-    const pageName = "News & Research";
+    const newsAndResearchPage = t('infoModal.tabs.support.newsAndResearchPage');
+    const activeStudiesPage = t('infoModal.tabs.support.activeStudiesPage');
 
     return (
         <div className="max-w-4xl mx-auto pt-4 text-left text-slate-500">
@@ -49,14 +50,17 @@ export const SupportTab = () => {
             <p className="mt-2">
                 <Trans
                     i18nKey="modals:infoModal.tabs.support.moreInfo"
-                    values = {{ pageName }}
-                    components={{ 1: <a href={projectLinks.vsiNewsLink} target='_blank' className="text-blue-500 hover:text-blue-600">{pageName}</a> }}
+                    values = {{ newsAndResearchPage, activeStudiesPage }}
+                    components={{ 
+                        1: <a href={projectLinks.vsiNewsLink} target='_blank' className="text-blue-500 hover:text-blue-600">{newsAndResearchPage}</a>,
+                        2: <a href={projectLinks.vsiActiveStudies} target='_blank' className="text-blue-500 hover:text-blue-600">{activeStudiesPage}</a>
+                    }}
                 />
             </p>
             {/* Donate button */}
             <div className="flex justify-center items-center mt-4">
                 <a 
-                    href={projectLinks.vsiDonationLink}
+                    href={projectLinks.marathonDonationLink || projectLinks.vsiDonationLink}
                     target="_blank" 
                     rel="noreferrer"
                     className="flex items-center justify-center bg-teal-500 dark:bg-teal-600 dark:text-slate-100 text-white rounded-full p-2 px-10 hover:bg-teal-600 dark:hover:bg-teal-700 transition-all "
