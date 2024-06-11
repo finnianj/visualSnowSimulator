@@ -41,7 +41,7 @@
                     "感官过敏/感觉过敏（对刺激，如光和声音的敏感）"
                 ],
                 "causesTitle": "潜在原因",
-                "causesDescription": "视觉雪综合症的确切原因尚不完全清楚，但据信与大脑中视觉信息的异常处理有关。",
+                "causesDescription": "视觉雪综合症的确切原因尚不完全清楚，但据信它涉及大脑视觉皮层（舌回）的过度活动，以及大脑视觉处理中心的异常和血清素和谷氨酸的神经传递。",
                 "treatmentTitle": "治疗方案",
                 "treatmentDescription": "目前没有治愈视觉雪综合症的方法，但治疗旨在管理症状，可能包括药物、视觉治疗和生活方式的改变。",
                 "learnMoreTitle": "了解更多",
@@ -53,7 +53,9 @@
                 "latestResearchTitle": "最新研究",
                 "latestResearchDescription": "关键研究领域包括识别生物标志物，理解视觉雪综合症的病理生理学，并探索创新的治疗方法，如基于正念的认知疗法（MBCT）和神经调节技术。",
                 "researchInstitutions": "这些研究在全球领先的研究机构中进行：",
-                "moreInfo": "有关每个项目的详细信息和最新更新，请访问视觉雪倡议网站上的 <1>{{pageName}}</1> 部分。",
+                "newsAndResearchPage": "新闻与研究",
+                "activeStudiesPage": "VSI资助的活跃研究",
+                "moreInfo": "有关每个项目的详细信息和最新更新，请访问视觉雪计划网站上的<1>{{newsAndResearchPage}}</1>部分，或查看他们的<2>{{activeStudiesPage}}</2>。",
                 "pageNameText": "最新消息",
                 "vsiNewsLink": "视觉雪倡议新闻"
             },

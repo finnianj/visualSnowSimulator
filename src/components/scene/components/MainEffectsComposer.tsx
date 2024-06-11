@@ -5,6 +5,7 @@ import { Flicker, EyeFloaters, Dizziness } from '@/components/customShaders';
 
 import { MapType } from '@/components/types';
 import { Afterimage } from '@/components/customShaders/afterimage/Afterimage';
+import { Snow } from '@/components/customShaders/snow/Snow';
 
 type EffectsComposerLightProps = {
     currentMap: MapType;

@@ -41,7 +41,7 @@
                     "Sensorische Überempfindlichkeit / Hyperästhesie (Empfindlichkeit gegenüber Reizen, wie Licht und Geräusche)"
                 ],
                 "causesTitle": "Mögliche Ursachen",
-                "causesDescription": "Die genaue Ursache des Visual Snow Syndroms ist nicht vollständig verstanden, aber es wird angenommen, dass es auf eine abnormale Verarbeitung visueller Informationen im Gehirn zurückzuführen ist.",
+                "causesDescription": "Die genaue Ursache des Visual Snow Syndroms ist nicht vollständig verstanden, aber es wird angenommen, dass es eine Hyperaktivität im visuellen Kortex (Gyrus lingualis) des Gehirns sowie Abnormalitäten in den visuellen Verarbeitungszentren des Gehirns und der Neurotransmission von Serotonin und Glutamat umfasst.",
                 "treatmentTitle": "Behandlungsoptionen",
                 "treatmentDescription": "Es gibt derzeit keine Heilung für das Visual Snow Syndrom, aber die Behandlung zielt darauf ab, die Symptome zu bewältigen und kann Medikamente, visuelle Therapie und Änderungen des Lebensstils umfassen.",
                 "learnMoreTitle": "Erfahren Sie mehr",
@@ -53,7 +53,9 @@
                 "latestResearchTitle": "Neueste Forschung",
                 "latestResearchDescription": "Wichtige Forschungsbereiche umfassen die Identifizierung von Biomarkern, das Verständnis der Pathophysiologie des VSS und die Erforschung innovativer Behandlungen wie MBCT-Vision (Achtsamkeitsbasierte kognitive Therapie für das Sehen) und Neuromodulationstechniken.",
                 "researchInstitutions": "Diese Studien werden an führenden Forschungseinrichtungen weltweit durchgeführt:",
-                "moreInfo": "Für detailliertere Informationen zu jedem Projekt und die neuesten Updates besuchen Sie den Abschnitt <1>{{pageName}}</1> auf der Website der Visual Snow Initiative.",
+                "newsAndResearchPage": "Nachrichten & Forschung",
+                "activeStudiesPage": "Aktive VSI-finanzierte Studien",
+                "moreInfo": "Für detailliertere Informationen zu jedem Projekt und die neuesten Updates besuchen Sie den Abschnitt <1>{{newsAndResearchPage}}</1> auf der Website der Visual Snow Initiative oder schauen Sie sich ihre <2>{{activeStudiesPage}}</2> an.",
                 "pageNameText": "neueste Nachrichten",
                 "vsiNewsLink": "Nachrichten der Visual Snow Initiative"
             },

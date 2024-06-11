@@ -41,7 +41,7 @@
                     "Hipersensibilidad sensorial / hiperestesia (sensibilidad a estímulos como luces y sonidos)"
                 ],
                 "causesTitle": "Causas Potenciales",
-                "causesDescription": "La causa exacta del Síndrome de Nieve Visual no se entiende completamente, pero se cree que implica un procesamiento anormal de la información visual en el cerebro.",
+                "causesDescription": "La causa exacta del Síndrome de Nieve Visual no se entiende completamente, pero se cree que implica hiperactividad en la corteza visual (giro lingual) del cerebro, así como anomalías en los centros de procesamiento visual del cerebro y la neurotransmisión de serotonina y glutamato.",
                 "treatmentTitle": "Opciones de Tratamiento",
                 "treatmentDescription": "Actualmente no hay cura para el Síndrome de Nieve Visual, pero el tratamiento se enfoca en manejar los síntomas y puede incluir medicamentos, terapia visual y modificaciones en el estilo de vida.",
                 "learnMoreTitle": "Aprende Más",
@@ -53,7 +53,9 @@
                 "latestResearchTitle": "Investigación Reciente",
                 "latestResearchDescription": "Las áreas clave de investigación incluyen la identificación de biomarcadores, la comprensión de la fisiopatología del VSS y la exploración de tratamientos innovadores como MBCT-vision (Terapia Cognitiva Basada en Mindfulness para la visión) y técnicas de neuromodulación.",
                 "researchInstitutions": "Estos estudios se llevan a cabo en instituciones de investigación líderes en todo el mundo:",
-                "moreInfo": "Para información más detallada sobre cada proyecto y las últimas actualizaciones, visita la sección <1>{{pageName}}</1> en el sitio web de la Iniciativa de Nieve Visual.",
+                "newsAndResearchPage": "Noticias e Investigación",
+                "activeStudiesPage": "Estudios Financiados por VSI Activos",
+                "moreInfo": "Para obtener información más detallada sobre cada proyecto y las últimas actualizaciones, visite la sección <1>{{newsAndResearchPage}}</1> en el sitio web de la Iniciativa Nieve Visual, o consulte sus <2>{{activeStudiesPage}}</2>.",
                 "pageNameText": "noticias más recientes",
                 "vsiNewsLink": "Noticias de la Iniciativa de Nieve Visual"
             },

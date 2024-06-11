@@ -41,7 +41,7 @@
                     "Hypersensibilité sensorielle / hyperesthésie (sensibilité aux stimuli, tels que les lumières et les sons)"
                 ],
                 "causesTitle": "Causes Potentielles",
-                "causesDescription": "La cause exacte du Syndrome de la Neige Visuelle n'est pas entièrement comprise, mais on pense qu'elle implique un traitement anormal de l'information visuelle dans le cerveau.",
+                "causesDescription": "La cause exacte du syndrome de la neige visuelle n'est pas entièrement comprise, mais on pense qu'elle implique une hyperactivité dans le cortex visuel (gyrus lingual) du cerveau, ainsi que des anomalies dans les centres de traitement visuel du cerveau et la neurotransmission de la sérotonine et du glutamate.",
                 "treatmentTitle": "Options de Traitement",
                 "treatmentDescription": "Il n'existe actuellement aucun remède pour le Syndrome de la Neige Visuelle, mais le traitement vise à gérer les symptômes et peut inclure des médicaments, une thérapie visuelle et des modifications du mode de vie.",
                 "learnMoreTitle": "En savoir plus",
@@ -53,7 +53,9 @@
                 "latestResearchTitle": "Recherche récente",
                 "latestResearchDescription": "Les domaines clés de la recherche incluent l'identification de biomarqueurs, la compréhension de la physiopathologie du VSS et l'exploration de traitements innovants tels que le MBCT-vision (Thérapie Cognitive Basée sur la Pleine Conscience pour la vision) et les techniques de neuromodulation.",
                 "researchInstitutions": "Ces études sont menées dans des institutions de recherche de premier plan dans le monde entier:",
-                "moreInfo": "Pour des informations plus détaillées sur chaque projet et les dernières mises à jour, visitez la section <1>{{pageName}}</1> sur le site web de l'Initiative de Neige Visuelle.",
+                "newsAndResearchPage": "Actualités & Recherche",
+                "activeStudiesPage": "Études Financé par VSI Actives",
+                "moreInfo": "Pour plus d'informations détaillées sur chaque projet et les dernières mises à jour, visitez la section <1>{{newsAndResearchPage}}</1> sur le site de l'Initiative Neige Visuelle, ou consultez leurs <2>{{activeStudiesPage}}</2>.",
                 "pageNameText": "dernières nouvelles",
                 "vsiNewsLink": "Nouvelles de l'Initiative de Neige Visuelle"
             },
