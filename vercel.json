@@ -10,11 +10,11 @@
         ]
       },
       {
-        "source": "/static/(.*)",
+        "source": "/environmentMaps/(.*)",
         "headers": [
           {
             "key": "Cache-Control",
-            "value": "max-age=2592000 immutable"
+            "value": "max-age=2592000"
           }
         ]
       }
