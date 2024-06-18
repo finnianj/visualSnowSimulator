@@ -1,5 +1,7 @@
 // Define the type for the context state
 export type EffectsContextType = {
+    key: number;
+    setKey: (value: number) => void;
     modalBeingViewed: boolean;
     setModalBeingViewed: (value: boolean) => void;
     userHasPausedEffects: boolean;

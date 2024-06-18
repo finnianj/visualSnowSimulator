@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { useEffects, useLoading } from '@/components/context';
 import { EffectComposer, Noise, Bloom, BrightnessContrast, Vignette } from '@react-three/postprocessing';
 import { Flicker, EyeFloaters, Dizziness } from '@/components/customShaders';
@@ -14,6 +14,9 @@ type EffectsComposerLightProps = {
 export const MainEffectsComposer = ({ currentMap }: EffectsComposerLightProps) => {
 
     const {
+        key, 
+        setKey,
+
         modalBeingViewed,
         userHasPausedEffects,
         brightness,
@@ -46,8 +49,6 @@ export const MainEffectsComposer = ({ currentMap }: EffectsComposerLightProps) =
     const dizzinessRef = useRef();
     const smallEyeFloatersRef = useRef();
     const largeEyeFloatersRef = useRef();
-
-    const [key, setKey] = useState(0);
 
     useEffect(() => {
         // For some reason, the noise effect keeps bugging out. By re rendering the composer when something changes, it fixes the issue

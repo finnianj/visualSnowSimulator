@@ -3,6 +3,8 @@ import { BlendFunction } from 'postprocessing';
 import { Texture } from 'three';
 import { Environment } from '@react-three/drei'
 
+import { useEffects } from '@/components/context';
+
 import { MapType } from '@/components/types';
 import { loadHdrTexture } from '@/components/helpers/loadHdrTexture';
 import { FallbackBackground } from '@/components/maps/FallbackBackground';
@@ -13,6 +15,7 @@ import { useLoading } from '@/components/context';
 
 export const useMaps = () => {
     const { isLoading, setIsLoading } = useLoading();
+    const { key, setKey } = useEffects();
     const [maps, setMaps] = useState<MapType[]>(defaultMaps);
     const [currentMap, setCurrentMap] = useState(maps[0])
     const [mapTexture, setMapTexture] = useState<Texture | undefined>(undefined)
@@ -24,6 +27,9 @@ export const useMaps = () => {
         if (currentMap.texture) {
             setMapTexture(currentMap.texture)
             setIsLoading(false)
+            setTimeout(() => {
+                setKey(key + 1)
+            }, 100)
             return;
         }
         const loadMap = async () => {
@@ -38,6 +44,7 @@ export const useMaps = () => {
                 }))
                 setIsLoading(false)
                 setFirstMapLoaded(true)
+                setKey(key + 1)
             })
         }
         loadMap();
