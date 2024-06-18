@@ -1,8 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, SetStateAction } from 'react';
 import { BlendFunction } from 'postprocessing';
 import { Texture } from 'three';
 import { Environment } from '@react-three/drei'
-
 import { useEffects } from '@/components/context';
 
 import { MapType } from '@/components/types';
@@ -34,7 +33,7 @@ export const useMaps = () => {
             return;
         }
         const loadMap = async () => {
-            await loadHdrTexture(`./environmentMaps/hdri/${currentMap.id}.hdr`).then((texture) => {
+            await loadHdrTexture(`./environmentMaps/hdri/${currentMap.id}.hdr`).then((texture: Texture) => {
                 setMapTexture(texture);
                 // Add texture to maps array
                 setMaps(maps.map(map => {

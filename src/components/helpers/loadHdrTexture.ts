@@ -26,3 +26,4 @@ export async function loadHdrTextureWithUploadedFile (file: File) {
         reader.readAsDataURL(file);
     });
 }
+

@@ -3,7 +3,7 @@ import { AudioProvider, EffectsProvider, LoadingProvider } from './components/co
 import { Simulator } from './Simulator';
 
 import i18nInstance from '@/components/i18n/i18n'
-    
+
 export default function App() {    
 
     return (
