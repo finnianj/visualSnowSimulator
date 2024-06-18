@@ -13,13 +13,12 @@ type ChangeMapProps = {
     changeMap: ( map: MapType ) => void,
     currentMap: MapType,
     maps: MapType[],
-    setMaps: (maps: MapType[]) => void
+    setShowAddMapModal: (open: boolean) => void,
 }
 
-export const ChangeMap = ({changeMap, currentMap, maps, setMaps}: ChangeMapProps) => {
+export const ChangeMap = ({ changeMap, currentMap, maps, setShowAddMapModal }: ChangeMapProps) => {
     const { t } = useTranslation(['translation']);
     const [showList, setShowList] = useState(false);
-    const [showAddMapModal, setShowAddMapModal] = useState(false);
     const { setAmbientAudioSrc } = useAudio();
 
     const handleMapSelect = (name?: string) => {
@@ -71,9 +70,6 @@ export const ChangeMap = ({changeMap, currentMap, maps, setMaps}: ChangeMapProps
                     </div>
                 </>
             </Dropdown>
-            <Modal modalOpen={showAddMapModal} setModalOpen={setShowAddMapModal}>
-                <AddMap maps={maps} setMaps={setMaps} />
-            </Modal>
         </>
 
     )

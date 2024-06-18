@@ -12,6 +12,8 @@ type UIContextType = {
     setHasSeenFlickerWarning: React.Dispatch<React.SetStateAction<boolean>>;
     showShareConfigModal: boolean;
     setShowShareConfigModal: React.Dispatch<React.SetStateAction<boolean>>;
+    showAddMapModal: boolean;
+    setShowAddMapModal: React.Dispatch<React.SetStateAction<boolean>>;
     name: string;
     setName: (name: string) => void;
 };
@@ -27,6 +29,7 @@ export const UIProvider: React.FC<{ children: React.ReactNode }> = ({ children }
    const [hasSeenFlickerWarning, setHasSeenFlickerWarning] = useState(false);
 
    const [showShareConfigModal, setShowShareConfigModal] = useState(false);
+   const [showAddMapModal, setShowAddMapModal] = useState(false);
    const [name, setName] = useState<string>('');
 
     const value = { 
@@ -40,9 +43,10 @@ export const UIProvider: React.FC<{ children: React.ReactNode }> = ({ children }
         setHasSeenFlickerWarning, 
         showShareConfigModal, 
         setShowShareConfigModal, 
+        showAddMapModal,
+        setShowAddMapModal,
         name, 
         setName
-        
     };
 
     return (
