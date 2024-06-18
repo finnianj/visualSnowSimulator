@@ -7,14 +7,16 @@ import { MapType } from '@/components/types';
 import { Dropdown } from '@/ui/shared/Dropdown';
 import { Modal } from '@/ui/modals/Modal';
 import { useAudio } from '@/components/context/AudioContext'
+import { AddMap } from '@/ui/modals/AddMap';
 
 type ChangeMapProps = {
     changeMap: ( map: MapType ) => void,
     currentMap: MapType,
-    maps: MapType[]
+    maps: MapType[],
+    setMaps: (maps: MapType[]) => void
 }
 
-export const ChangeMap = ({changeMap, currentMap, maps}: ChangeMapProps) => {
+export const ChangeMap = ({changeMap, currentMap, maps, setMaps}: ChangeMapProps) => {
     const { t } = useTranslation(['translation']);
     const [showList, setShowList] = useState(false);
     const [showAddMapModal, setShowAddMapModal] = useState(false);
@@ -70,7 +72,7 @@ export const ChangeMap = ({changeMap, currentMap, maps}: ChangeMapProps) => {
                 </>
             </Dropdown>
             <Modal modalOpen={showAddMapModal} setModalOpen={setShowAddMapModal}>
-                <p>lhsdbflds</p>
+                <AddMap maps={maps} setMaps={setMaps} />
             </Modal>
         </>
 

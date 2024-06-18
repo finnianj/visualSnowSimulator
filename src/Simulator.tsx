@@ -15,7 +15,7 @@ import { WelcomeModal } from '@/components/ui/modals/WelcomeModal';
 export const Simulator = () => {
     const { LoadingModal, isLoading } = useLoading();
     const { usePreviousConfig } = useEffects();
-    const { maps, currentMap, changeMap, BackgroundComponent, FallbackBackgroundComponent, firstMapLoaded } = useMaps();
+    const { maps, setMaps, currentMap, changeMap, BackgroundComponent, FallbackBackgroundComponent, firstMapLoaded } = useMaps();
     
     const [showWelcomeModal, setShowWelcomeModal] = useState(false)
     const [prevConfig, setPrevConfig] = useState<{[key: string]: string}>({})
@@ -52,6 +52,7 @@ export const Simulator = () => {
             <UIProvider>
                 <UserInterface
                     maps={maps}
+                    setMaps={setMaps}
                     currentMap={currentMap}
                     changeMap={changeMap}
                     FallbackBackgroundComponent={FallbackBackgroundComponent}

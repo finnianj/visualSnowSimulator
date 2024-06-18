@@ -63,6 +63,7 @@ export const useMaps = () => {
 
     return {
         maps,
+        setMaps,
         currentMap,
         setCurrentMap,
         mapTexture,

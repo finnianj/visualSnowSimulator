@@ -12,12 +12,13 @@ import { ShareConfigModal } from './modals/ShareConfigModal';
 
 type UserInterfaceProps = {
     maps: MapType[];
+    setMaps: (maps: MapType[]) => void;
     currentMap: MapType;
     changeMap: (map: MapType) => void;
     FallbackBackgroundComponent: React.FC;
 }
 
-export const UserInterface = ({ maps, currentMap, changeMap, FallbackBackgroundComponent }: UserInterfaceProps) => {
+export const UserInterface = ({ maps, setMaps, currentMap, changeMap, FallbackBackgroundComponent }: UserInterfaceProps) => {
     const { showFlickerWarning, setShowFlickerWarning, hasSeenFlickerWarning, setHasSeenFlickerWarning, showShareConfigModal, setShowShareConfigModal } = useUI();
 
     return (
@@ -28,6 +29,7 @@ export const UserInterface = ({ maps, currentMap, changeMap, FallbackBackgroundC
             {/* UI */}
             <ChangeMap 
                 maps={maps}
+                setMaps={setMaps}
                 currentMap={currentMap}
                 changeMap={changeMap}
             />
