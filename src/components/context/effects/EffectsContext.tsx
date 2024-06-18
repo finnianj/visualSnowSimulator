@@ -9,6 +9,8 @@ const EffectsContext = createContext<EffectsContextType | undefined>(undefined);
 // Provider component
 export const EffectsProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
+    const [key, setKey] = useState<number>(0) // This is used to force a re-render of the EffectsComposer
+
     const [modalBeingViewed, setModalBeingViewed] = useState<boolean>(false)
     const [userHasPausedEffects, setUserHasPausedEffects] = useState<boolean>(false)
 
@@ -130,6 +132,9 @@ export const EffectsProvider: React.FC<{ children: React.ReactNode }> = ({ child
     }
 
     const value = { 
+        key,
+        setKey,
+
         modalBeingViewed,
         setModalBeingViewed,
         userHasPausedEffects,

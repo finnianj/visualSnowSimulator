@@ -78,6 +78,18 @@
         "linkCopied": "¡Enlace copiado!",
         "generateLink": "Generar enlace"
     },
+    "addMapModal": {
+            "title": "Agregar un mapa personalizado",
+            "description": "Puede subir cualquier mapa HDRI que desee utilizando las instrucciones a continuación. Por motivos de rendimiento, los mapas predeterminados en este simulador son todos 2K, pero puede subir uno con una resolución aún mayor.",
+            "instructions": "Instrucciones",
+            "1": "1. Elija un mapa de <1>{{hdriLinkName}}</1>.",
+            "2": "2. Seleccione una resolución (por ejemplo, 4K) y haga clic en descargar.",
+            "3": "3. Una vez que el archivo se haya descargado en su computadora, cárguelo usando el botón a continuación.",
+            "button": "Elegir archivo",
+            "hdriLinkName": "esta biblioteca de mapas HDRI",
+            "disclaimer": "No todos los mapas funcionarán. Es posible que tenga que probar un poco.",
+            "error": "Error: Este mapa no se pudo cargar correctamente como textura. Por favor, intente con otro diferente."
+    },
     "flickerWarning": {
         "title": "Advertencia",
         "description": "Los efectos de parpadeo pueden causar convulsiones en personas con epilepsia fotosensible."

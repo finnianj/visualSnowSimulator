@@ -2,7 +2,8 @@ import { useState, useEffect, SetStateAction } from 'react';
 import { BlendFunction } from 'postprocessing';
 import { Texture } from 'three';
 import { Environment } from '@react-three/drei'
-import * as THREE from 'three';
+import { useEffects } from '@/components/context';
+
 import { MapType } from '@/components/types';
 import { loadHdrTexture } from '@/components/helpers/loadHdrTexture';
 import { FallbackBackground } from '@/components/maps/FallbackBackground';
@@ -13,6 +14,7 @@ import { useLoading } from '@/components/context';
 
 export const useMaps = () => {
     const { isLoading, setIsLoading } = useLoading();
+    const { key, setKey } = useEffects();
     const [maps, setMaps] = useState<MapType[]>(defaultMaps);
     const [currentMap, setCurrentMap] = useState(maps[0])
     const [mapTexture, setMapTexture] = useState<Texture | undefined>(undefined)
@@ -24,6 +26,10 @@ export const useMaps = () => {
         if (currentMap.texture) {
             setMapTexture(currentMap.texture)
             setIsLoading(false)
+            // Refresh effects composer once the map is loaded after delay or snow will not be visible
+            setTimeout(() => {
+                setKey(key + 1)
+            }, 100)
             return;
         }
         const loadMap = async () => {
@@ -38,6 +44,10 @@ export const useMaps = () => {
                 }))
                 setIsLoading(false)
                 setFirstMapLoaded(true)
+                // Refresh effects composer once the map is loaded after delay or snow will not be visible
+                setTimeout(() => {
+                    setKey(key + 1)
+                }, 100)
             })
         }
         loadMap();
@@ -63,6 +73,7 @@ export const useMaps = () => {
 
     return {
         maps,
+        setMaps,
         currentMap,
         setCurrentMap,
         mapTexture,

@@ -78,6 +78,18 @@
         "linkCopied": "Link kopiert!",
         "generateLink": "Link generieren"
     },
+    "addMapModal": {
+        "title": "Benutzerdefinierte Karte hinzufügen",
+        "description": "Sie können jede HDRI-Karte hochladen, die Ihnen gefällt, indem Sie die folgenden Anweisungen befolgen. Aus Leistungsgründen sind die Standardkarten in diesem Simulator alle in 2K, aber Sie können auch eine mit noch höherer Auflösung hochladen.",
+        "instructions": "Anleitung",
+        "1": "1. Wählen Sie eine Karte aus <1>{{hdriLinkName}}</1>.",
+        "2": "2. Wählen Sie eine Auflösung (z. B. 4K) und klicken Sie auf Herunterladen.",
+        "3": "3. Nachdem die Datei auf Ihren Computer heruntergeladen wurde, laden Sie sie mit dem unten stehenden Button hoch.",
+        "button": "Datei auswählen",
+        "hdriLinkName": "dieser Bibliothek von HDRI-Karten",
+        "disclaimer": "Nicht alle Karten werden funktionieren. Möglicherweise müssen Sie ein wenig herumprobieren.",
+        "error": "Fehler: Diese Karte konnte nicht erfolgreich als Textur geladen werden. Bitte versuchen Sie es mit einer anderen."
+    },
     "flickerWarning": {
         "title": "Warnung",
         "description": "Flackernde Effekte können bei Menschen mit lichtempfindlicher Epilepsie Anfälle auslösen."

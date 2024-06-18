@@ -5,6 +5,7 @@ import { Simulator } from './Simulator';
 import i18nInstance from '@/components/i18n/i18n'
 
 export default function App() {    
+
     return (
         <I18nextProvider i18n={i18nInstance}>
             <EffectsProvider>

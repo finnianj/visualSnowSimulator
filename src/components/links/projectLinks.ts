@@ -8,4 +8,5 @@ export const projectLinks = {
     projectGithub: 'https://github.com/finnianj/visualSnowSimulator',
     contactEmail: 'visualsnowsimulator@gmail.com',
     discordInvite: 'https://discord.gg/9Ga92FuMAy',
+    hdriMaps: 'https://polyhaven.com/hdris',
 }

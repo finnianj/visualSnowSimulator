@@ -31,6 +31,7 @@
     },
     "changeMapPanel": {
         "title": "Karte ändern",
+        "add": "Benutzerdefinierte Karte hinzufügen (mit Anleitung)",
         "maps": {
             "quarry": "Steinbruch",
             "office": "Büro",

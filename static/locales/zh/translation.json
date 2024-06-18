@@ -31,6 +31,7 @@
     },
     "changeMapPanel": {
         "title": "更改地图",
+        "add": "添加自定义地图（带演练）",
         "maps": {
             "quarry": "采石场",
             "office": "办公室",
