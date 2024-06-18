@@ -1,4 +1,5 @@
 import { Suspense, useEffect, useState } from 'react';
+import * as THREE from 'three';
 
 import { useLoading, useEffects, UIProvider } from '@/components/context'
 
@@ -13,6 +14,8 @@ import { Modal } from '@/components/ui/modals/Modal';
 import { WelcomeModal } from '@/components/ui/modals/WelcomeModal';
 
 export const Simulator = () => {
+    THREE.Cache.enabled = true;
+
     const { LoadingModal, isLoading } = useLoading();
     const { usePreviousConfig } = useEffects();
     const { maps, currentMap, changeMap, BackgroundComponent, FallbackBackgroundComponent, firstMapLoaded } = useMaps();
