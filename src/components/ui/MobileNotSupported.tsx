@@ -17,8 +17,8 @@ export const MobileNotSupported = () => {
                         <FaChevronDown />
                     </div>
                     <div className="bg-teal-500 text-white p-2 rounded-lg shadow-md flex justify-center items-center space-x-2">
-                        <FaChevronDown />
                         <p>Change Map</p>
+                        <FaChevronDown />
                     </div>
                 </div>
 

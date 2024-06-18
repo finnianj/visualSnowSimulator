@@ -86,14 +86,14 @@ export const MainEffectsComposer = ({ currentMap }: EffectsComposerLightProps) =
         <EffectComposer enabled={!isLoading && !userHasPausedEffects && !modalBeingViewed} key={key}>     
             <Afterimage enabled={showAfterimages} damp={currentMap.afterimageStrength} />
 
-            <Flicker enabled={isFlickering} textureUrl='./textures/noise4.jpeg' intensity={flickerStrength} />
+            <Flicker enabled={isFlickering} textureUrl='./textures/noise4.png' intensity={flickerStrength} />
             <BrightnessContrast brightness={brightness} />
 
             {/* Small Eye Floaters */}
             <EyeFloaters
                 enabled={smallEyeFloatersEnabled}
                 ref={smallEyeFloatersRef}
-                textureUrl={'./textures/noise4.jpeg'}
+                textureUrl={'./textures/noise4.png'}
                 particle_count={smallEyeFloatersCount}
                 particle_transparency={smallEyeFloatersTransparency}
                 particle_size={smallEyeFloatersSize}
