@@ -55,7 +55,7 @@ export const ChangeMap = ({ changeMap, currentMap, maps, setShowAddMapModal }: C
                             onClick={() => handleMapSelect(map.name)} 
                             className='px-4 py-2 hover:bg-teal-500 text-xxs sm:text-base transition-all text-white cursor-pointer'
                         >
-                            {t(`changeMapPanel.maps.${map.id}`)}
+                            {map.id ? t(`changeMapPanel.maps.${map.id}`) : map.name}
                         </div>
                     ))}
                     <hr className='mx-4'></hr>

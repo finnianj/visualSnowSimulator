@@ -30,7 +30,7 @@ export const AddMap = ({ maps, setMaps, setCurrentMap, setModalOpen }: AddMapPro
         setLoading(true);
 
         const newMap: MapType = {
-            name: 'New Map',
+            name: 'Custom Map',
             id: '',
             audio: '',
             texture: undefined,
@@ -50,6 +50,13 @@ export const AddMap = ({ maps, setMaps, setCurrentMap, setModalOpen }: AddMapPro
         loadMap(newHdriMap);
     }
 
+    const handleClick = () => {
+        const fileInput = document.getElementById('fileInput');
+        if (fileInput) {
+            fileInput.click();
+        }
+    };
+
 
     return (
         <div className={`flex flex-col items-center rounded-lg shadow-mg text-white min-w-24 max-w-3xl p-4 ${darkMode ? 'bg-gray-900 dark' : 'bg-gray-100'}`}>
@@ -62,11 +69,11 @@ export const AddMap = ({ maps, setMaps, setCurrentMap, setModalOpen }: AddMapPro
             <div className='flex flex-col items-start text-slate-600 dark:text-slate-400 space-y-4 text-left'>
                 <p className='text-lg w-full font-bold text-center'>
                     {/* {t('shareConfigModal.title', { ns: 'modals' })} */}
-                    Add Map
+                    Add a Custom Map
                 </p>
                 <p>
                     {/* {t('shareConfigModal.description', { ns: 'modals' })} */}
-                    You can upload any HDRI map you like using the instructions below. For the sake of performance, the default maps in this simulator are all 2K, but you can upload one with even higher reslution. 
+                    You can upload any HDRI map you like using the instructions below. For the sake of performance, the default maps in this simulator are all 2K, but you can upload one with an even higher reslution. 
                 </p>
                 
                 {/* Walkthrough */}
@@ -94,15 +101,21 @@ export const AddMap = ({ maps, setMaps, setCurrentMap, setModalOpen }: AddMapPro
                         <Spinner />
                     </div>
                 ): (
-                    <div className='flex flex-col space-y-2 justify-center items-start'>
-                        <p className='text-teal-500 font-semibold'>HDRI Image:</p>
+                    <div className='flex flex-col space-y-2 w-full justify-center items-center'>
                         <input 
+                            id='fileInput'
                             onChange={(e) => createNewMap(e)}
                             type='file' 
                             // accept hdri
                             accept='.hdr'
-                            className='w-full p-2 bg-gray-200 dark:bg-gray-800 text-slate-600 dark:text-slate-400 rounded-lg'
+                            className='hidden'
                         />
+                        <button 
+                            onClick={handleClick}
+                            className='px-4 py-2 bg-teal-500 text-white rounded-lg cursor-pointer'
+                        >
+                            Choose File
+                        </button>
                     </div>
                 )}
 
