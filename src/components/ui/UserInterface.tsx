@@ -1,10 +1,10 @@
-import React, { useState} from 'react';
+import React from 'react';
 
-import { useUI } from '../context';
+import { useUI } from '@/components/context';
 
-import { AudioPlayer } from '../audio/AudioPlayer';
+import { AudioPlayer } from '@/components/audio/AudioPlayer';
 import { ChangeMap, ChangeEffects, Info, Donate } from './components';
-import { MapType } from '../../types';
+import { MapType } from '@/components/types';
 
 import { Modal } from './modals/Modal';
 import { FlickerWarningModal } from './modals/FlickerWarningModal';
