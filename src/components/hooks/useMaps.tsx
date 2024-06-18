@@ -27,6 +27,7 @@ export const useMaps = () => {
         if (currentMap.texture) {
             setMapTexture(currentMap.texture)
             setIsLoading(false)
+            // Refresh effects composer once the map is loaded after delay or snow will not be visible
             setTimeout(() => {
                 setKey(key + 1)
             }, 100)
@@ -44,7 +45,10 @@ export const useMaps = () => {
                 }))
                 setIsLoading(false)
                 setFirstMapLoaded(true)
-                setKey(key + 1)
+                // Refresh effects composer once the map is loaded after delay or snow will not be visible
+                setTimeout(() => {
+                    setKey(key + 1)
+                }, 100)
             })
         }
         loadMap();

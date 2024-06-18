@@ -31,6 +31,7 @@
     },
     "changeMapPanel": {
         "title": "地図を変更",
+        "add": "カスタムマップを追加（ウォークスルー付き）",
         "maps": {
             "quarry": "採石場",
             "office": "オフィス",

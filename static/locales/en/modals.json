@@ -78,6 +78,18 @@
         "linkCopied": "Link Copied!",
         "generateLink": "Generate Link"
     },
+    "addMapModal": {
+        "title": "Add a Custom Map",
+        "description": "You can upload any HDRI map you like using the instructions below. For the sake of performance, the default maps in this simulator are all 2K, but you can upload one with an even higher reslution. ",
+        "instructions": "Instructions",
+        "1": "1. Choose a map from <1>{{hdriLinkName}}</1>.",
+        "2": "2. Select a resolution (eg. 4K) and click download.",
+        "3": "3. Once the file has downloaded to your computer, upload it using the button below.",
+        "button": "Choose File",
+        "hdriLinkName": "this library of hdri maps",
+        "disclaimer": "Not all maps will work. You may have to play around a bit.",
+        "error": "Error: This map could not be succesfully loaded as a texture. Please try a different one."
+    },
     "flickerWarning": {
         "title": "Warning",
         "description": "Flickering effects can cause seizures in people with photosensitive epilepsy."

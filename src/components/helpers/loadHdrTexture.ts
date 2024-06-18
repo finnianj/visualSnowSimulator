@@ -21,8 +21,7 @@ export async function loadHdrTextureWithUploadedFile (file: File) {
     return new Promise<THREE.Texture>((resolve, reject) => {
         const reader = new FileReader();
         reader.onload = async (e) => {
-            const texture = await loadHdrTexture(e.target?.result as string);
-            resolve(texture);
+            await loadHdrTexture(e.target?.result as string).then((texture) => resolve(texture)).catch((error) => reject(error));
         }
         reader.readAsDataURL(file);
     });

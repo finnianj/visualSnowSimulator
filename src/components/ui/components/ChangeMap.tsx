@@ -66,7 +66,7 @@ export const ChangeMap = ({ changeMap, currentMap, maps, setShowAddMapModal }: C
                     >
                         {/* {t('changeMapPanel.addMap')} */}
                         <FaPlus className='mr-2' />
-                        Add custom map (with walkthrough)
+                        {t(`changeMapPanel.add`)}
                     </div>
                 </>
             </Dropdown>

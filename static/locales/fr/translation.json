@@ -31,6 +31,7 @@
     },
     "changeMapPanel": {
         "title": "Changer la carte",
+        "add": "Ajouter une carte personnalisée (avec guide)",
         "maps": {
             "quarry": "Carrière",
             "office": "Bureau",
