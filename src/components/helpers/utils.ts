@@ -28,7 +28,8 @@ export const createConfigQueryParams = (config: any) => {
 }
 
 export const getBaseUrl = () => {
-    const isDev = process.env.NODE_ENV === 'development'
+    const isDev = process.env.ENV === 'development'
+    console.log(process.env.ENV)
     return isDev ? 'http://localhost:5173' : process.env.PUBLIC_URL
 }
 
