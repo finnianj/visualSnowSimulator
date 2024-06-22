@@ -1,3 +1,5 @@
+import { projectLinks } from "@/components/links/projectLinks"
+
 export const copyToClipboard = (item: string) => {
     navigator.clipboard.writeText(item)
     // Also copy for mobile devices
@@ -28,8 +30,8 @@ export const createConfigQueryParams = (config: any) => {
 }
 
 export const getBaseUrl = () => {
-    const isDev = process.env.NODE_ENV === 'development'
-    return isDev ? 'http://localhost:5173' : process.env.PUBLIC_URL
+    const isDev = import.meta.env.DEV
+    return isDev ? 'http://localhost:5173' : projectLinks.productionUrl
 }
 
 export const effectsQueryParamMap = {

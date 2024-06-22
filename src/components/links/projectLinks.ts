@@ -1,4 +1,5 @@
 export const projectLinks = {
+    productionUrl: 'https://visualsnowsimulator.com',
     vsiHomepage: 'https://www.visualsnowinitiative.org/',
     vsiDonationLink: 'https://visualsnowinitiative.networkforgood.com/',
     vsiNewsLink: 'https://www.visualsnowinitiative.org/news/',
