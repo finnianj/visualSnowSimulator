@@ -19,6 +19,7 @@ export const useMaps = () => {
     const [currentMap, setCurrentMap] = useState(maps[0])
     const [mapTexture, setMapTexture] = useState<Texture | undefined>(undefined)
     const [firstMapLoaded, setFirstMapLoaded] = useState(false)
+    const isMobile = window.innerWidth < 768;
 
 
     useEffect(() => {
@@ -33,7 +34,8 @@ export const useMaps = () => {
             return;
         }
         const loadMap = async () => {
-            await loadHdrTexture(`./environmentMaps/hdri/${currentMap.id}.hdr`).then((texture: Texture) => {
+            const path = isMobile ? `./environmentMaps/hdri/mobile/${currentMap.id}.hdr` : `./environmentMaps/hdri/${currentMap.id}.hdr`
+            await loadHdrTexture(path).then((texture: Texture) => {
                 setMapTexture(texture);
                 // Add texture to maps array
                 setMaps(maps.map(map => {
