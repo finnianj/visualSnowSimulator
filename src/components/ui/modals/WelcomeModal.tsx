@@ -16,10 +16,10 @@ export const WelcomeModal = ({ prevConfig, setShowWelcomeModal }: UserConfigLoad
     const isFlickering = prevConfig?.isFlickering === 'true'
     const { darkMode, setDarkMode, setHasSeenFlickerWarning } = useUI()
     const { setIsFlickering } = useEffects()
+    const isMobile = window.innerWidth < 768
 
     const simulator = 'Visual Snow Simulator'
-    const name = prevConfig?.name || t('modals.welcomeModal.unnamedPerson')
-    
+    const name = prevConfig?.name || t('welcomeModal.unnamedPerson', { ns: 'modals' })
 
     const handleContinueAnyway = () => {
         // Continue anyway
@@ -39,7 +39,7 @@ export const WelcomeModal = ({ prevConfig, setShowWelcomeModal }: UserConfigLoad
     }
 
     return (
-        <div className={`max-w-4xl relative mx-auto p-4 text-left text-slate-500 ${darkMode ? 'bg-gray-900 dark' : 'bg-gray-100'} rounded-lg shadow-md flex flex-col`}>
+        <div className={`max-w-4xl relative mx-auto p-4 text-sm sm:text-base text-left text-slate-500 ${darkMode ? 'bg-gray-900 dark' : 'bg-gray-100'} rounded-lg shadow-md flex flex-col`}>
             
             <div className="absolute top-2 left-2 flex items-center">
                 <button onClick={() => setDarkMode(!darkMode)} className="p-2 rounded-full">
@@ -55,13 +55,21 @@ export const WelcomeModal = ({ prevConfig, setShowWelcomeModal }: UserConfigLoad
             <div className="flex flex-col space-y-4">
                 <img src='./images/logoNoText.png' alt='logo' className='w-32 h-32 rounded-full mx-auto my-2 shadow-md' />
 
-                <p className="mt-2">
+                <p className="mt-2 text-xs sm:text-base">
                     <Trans
                         i18nKey={'modals:welcomeModal.description'}
                         values = {{ simulator }}
                         components={{ 1: <span className='font-bold text-teal-500'>{simulator}</span> }}
                     /> 
                 </p>
+
+                {isMobile && (
+                    <p className="text-xs sm:text-base">
+                        {/* Desktop Reccomended */}
+                        {t('welcomeModal.desktopRecommended', { ns: 'modals' })}
+                    </p>
+                )}
+
                 {!configProvided ? (
                     <>
                         <button
@@ -73,27 +81,29 @@ export const WelcomeModal = ({ prevConfig, setShowWelcomeModal }: UserConfigLoad
                     </>
                 ) : (
                     <>
-                        <p className="mt-2">
+                        <p className="mt-2 text-xs sm:text-base">
                             <Trans
                                 i18nKey="modals:welcomeModal.settingsUsed"
                                 values = {{ name }}
                                 components={{ 1: <span className='font-bold text-teal-500'>{name}</span> }}
                             /> 
                         </p>
+
+
                         {isFlickering ? (
                             <>
-                                <p className="mt-2 text-red-500">
+                                <p className="mt-2 text-red-500 text-xs sm:text-base">
                                     <span className="font-bold">{t('welcomeModal.warning', { ns: 'modals' })}</span>: {t('welcomeModal.flickeringWarning', { ns: 'modals' })}
                                 </p>
                                 <div className="flex justify-between mt-4 w-full text-sm">
                                     <button
-                                        className="flex items-center justify-center bg-slate-500 dark:bg-slate-600 dark:text-slate-100 text-white rounded-full p-2 px-10 hover:bg-slate-600 dark:hover:bg-slate-700 transition-all"
+                                        className="flex items-center justify-center bg-slate-500 dark:bg-slate-600 dark:text-slate-100 text-white rounded-full p-1 px-4 sm:p-2 sm:px-10 hover:bg-slate-600 dark:hover:bg-slate-700 transition-all"
                                         onClick={handleDisableFlickering}
                                     >
                                         {t('buttons.disableFlickering')}
                                     </button>
                                     <button
-                                        className="flex items-center justify-center bg-teal-500 dark:bg-teal-600 dark:text-slate-100 text-white rounded-full p-2 px-10 hover:bg-teal-600 dark:hover:bg-teal-700 transition-all"
+                                        className="flex items-center justify-center bg-teal-500 dark:bg-teal-600 dark:text-slate-100 text-white rounded-full p-1 px-4 sm:p-2 sm:px-10 hover:bg-teal-600 dark:hover:bg-teal-700 transition-all"
                                         onClick={handleContinueAnyway}
                                     >
                                         {t('buttons.continueAnyway')}

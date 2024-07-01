@@ -46,7 +46,7 @@ export const ChangeEffects = () => {
                 <RangeInput 
                     name={t('changeEffectsPanel.snow')}
                     min={0} 
-                    max={1} 
+                    max={2} 
                     step={0.01} 
                     value={noiseOpacity} 
                     onChange={(e) => setNoiseOpacity(parseFloat(e.target.value))}

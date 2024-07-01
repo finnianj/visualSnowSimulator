@@ -5,7 +5,8 @@
         "settingsUsed": "You are now using <1>{{name}}</1>'s settings.",
         "unnamedPerson": "an unnamed person",
         "warning": "Warning",
-        "flickeringWarning": "The current settings include flickering effects, which could trigger seizures in individuals with photosensitive epilepsy. Would you like to disable them? You can turn them back on later."
+        "flickeringWarning": "The current settings include flickering effects, which could trigger seizures in individuals with photosensitive epilepsy. Would you like to disable them? You can turn them back on later.",
+        "desktopRecommended": "For the best experience, it is recommended to use a desktop or laptop computer."
     },
     "infoModal": {
         "info": "Info",

@@ -14,11 +14,12 @@ import { useLoading } from '@/components/context';
 
 export const useMaps = () => {
     const { isLoading, setIsLoading } = useLoading();
-    const { key, setKey } = useEffects();
+    const { key, setKey, noiseOpacity, setNoiseOpacity } = useEffects();
     const [maps, setMaps] = useState<MapType[]>(defaultMaps);
     const [currentMap, setCurrentMap] = useState(maps[0])
     const [mapTexture, setMapTexture] = useState<Texture | undefined>(undefined)
     const [firstMapLoaded, setFirstMapLoaded] = useState(false)
+    const isMobile = window.innerWidth < 768;
 
 
     useEffect(() => {
@@ -33,7 +34,8 @@ export const useMaps = () => {
             return;
         }
         const loadMap = async () => {
-            await loadHdrTexture(`./environmentMaps/hdri/${currentMap.id}.hdr`).then((texture: Texture) => {
+            const path = isMobile ? `./environmentMaps/hdri/mobile/${currentMap.id}.hdr` : `./environmentMaps/hdri/${currentMap.id}.hdr`
+            await loadHdrTexture(path).then((texture: Texture) => {
                 setMapTexture(texture);
                 // Add texture to maps array
                 setMaps(maps.map(map => {
@@ -47,6 +49,7 @@ export const useMaps = () => {
                 // Refresh effects composer once the map is loaded after delay or snow will not be visible
                 setTimeout(() => {
                     setKey(key + 1)
+                    setNoiseOpacity(noiseOpacity + 0.0001)
                 }, 100)
             })
         }
