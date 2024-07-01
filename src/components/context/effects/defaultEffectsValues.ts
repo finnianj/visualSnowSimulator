@@ -1,7 +1,7 @@
 import { DefaultEffectsValuesType } from "./types"
 
 export const defaultEffectsValues: DefaultEffectsValuesType = {
-    noiseOpacity: 0.5,
+    noiseOpacity: 1,
     bloomOpacity: 0,
     brightness: 0,
     isFlickering: false,

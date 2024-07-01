@@ -19,7 +19,7 @@ export const WelcomeModal = ({ prevConfig, setShowWelcomeModal }: UserConfigLoad
 
     const simulator = 'Visual Snow Simulator'
     const name = prevConfig?.name || t('modals.welcomeModal.unnamedPerson')
-    
+    const isMobile = window.innerWidth < 768;
 
     const handleContinueAnyway = () => {
         // Continue anyway
@@ -39,7 +39,7 @@ export const WelcomeModal = ({ prevConfig, setShowWelcomeModal }: UserConfigLoad
     }
 
     return (
-        <div className={`max-w-4xl relative mx-auto p-4 text-left text-slate-500 ${darkMode ? 'bg-gray-900 dark' : 'bg-gray-100'} rounded-lg shadow-md flex flex-col`}>
+        <div className={`max-w-4xl relative mx-auto p-4 text-sm sm:text-base text-left text-slate-500 ${darkMode ? 'bg-gray-900 dark' : 'bg-gray-100'} rounded-lg shadow-md flex flex-col`}>
             
             <div className="absolute top-2 left-2 flex items-center">
                 <button onClick={() => setDarkMode(!darkMode)} className="p-2 rounded-full">

@@ -44,7 +44,7 @@ export const Modal = ({ modalOpen = false, setModalOpen, children }: ModalProps)
             </div>
 
             <div
-              className={`scale-0 mx-2 overflow-y-scroll ${grow ? 'scale-100 transition-all duration-500' : ''}`}
+              className={`scale-0 mx-2 overflow-y-scroll md:overflow-auto ${grow ? 'scale-100 transition-all duration-500' : ''}`}
             >
               {children}
             </div>

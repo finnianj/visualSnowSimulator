@@ -14,7 +14,7 @@ import { useLoading } from '@/components/context';
 
 export const useMaps = () => {
     const { isLoading, setIsLoading } = useLoading();
-    const { key, setKey } = useEffects();
+    const { key, setKey, noiseOpacity, setNoiseOpacity } = useEffects();
     const [maps, setMaps] = useState<MapType[]>(defaultMaps);
     const [currentMap, setCurrentMap] = useState(maps[0])
     const [mapTexture, setMapTexture] = useState<Texture | undefined>(undefined)
@@ -49,6 +49,7 @@ export const useMaps = () => {
                 // Refresh effects composer once the map is loaded after delay or snow will not be visible
                 setTimeout(() => {
                     setKey(key + 1)
+                    setNoiseOpacity(noiseOpacity + 0.001)
                 }, 100)
             })
         }
