@@ -5,7 +5,8 @@
         "settingsUsed": "Vous utilisez maintenant les paramètres de <1>{{name}}</1>.",
         "unnamedPerson": "une personne sans nom",
         "warning": "Avertissement",
-        "flickeringWarning": "Les paramètres actuels incluent des effets de scintillement, ce qui pourrait déclencher des crises chez les personnes atteintes d'épilepsie photosensible. Voulez-vous les désactiver? Vous pouvez les réactiver plus tard."
+        "flickeringWarning": "Les paramètres actuels incluent des effets de scintillement, ce qui pourrait déclencher des crises chez les personnes atteintes d'épilepsie photosensible. Voulez-vous les désactiver? Vous pouvez les réactiver plus tard.",
+        "desktopRecommended": "Pour une meilleure expérience, il est recommandé d'utiliser un ordinateur de bureau ou un ordinateur portable."
     },
     "infoModal": {
         "info": "Info",

@@ -5,7 +5,8 @@
         "settingsUsed": "Sie verwenden jetzt die Einstellungen von <1>{{name}}</1>.",
         "unnamedPerson": "eine namenlose Person",
         "warning": "Warnung",
-        "flickeringWarning": "Die aktuellen Einstellungen beinhalten Flackereffekte, die bei Menschen mit lichtempfindlicher Epilepsie Anfälle auslösen können. Möchten Sie sie deaktivieren? Sie können sie später wieder aktivieren."
+        "flickeringWarning": "Die aktuellen Einstellungen beinhalten Flackereffekte, die bei Menschen mit lichtempfindlicher Epilepsie Anfälle auslösen können. Möchten Sie sie deaktivieren? Sie können sie später wieder aktivieren.",
+        "desktopRecommended": "Für das beste Erlebnis wird empfohlen, einen Desktop- oder Laptop-Computer zu verwenden."
     },
     "infoModal": {
         "info": "Information",

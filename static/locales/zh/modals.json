@@ -5,7 +5,8 @@
         "settingsUsed": "您现在使用的是 <1>{{name}}</1> 的设置。",
         "unnamedPerson": "未命名的人",
         "warning": "警告",
-        "flickeringWarning": "当前设置包括闪烁效果，可能会引发光敏性癫痫患者的癫痫发作。你想要禁用它们吗？你可以稍后再开启它们。"
+        "flickeringWarning": "当前设置包括闪烁效果，可能会引发光敏性癫痫患者的癫痫发作。你想要禁用它们吗？你可以稍后再开启它们。",
+        "desktopRecommended": "为了获得最佳体验，建议使用台式电脑或笔记本电脑。"
     },
     "infoModal": {
         "info": "信息",

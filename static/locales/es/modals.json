@@ -5,7 +5,8 @@
         "settingsUsed": "Ahora estás usando la configuración de <1>{{name}}</1>.",
         "unnamedPerson": "una persona sin nombre",
         "warning": "Advertencia",
-        "flickeringWarning": "La configuración actual incluye efectos de parpadeo, que podrían desencadenar convulsiones en personas con epilepsia fotosensible. ¿Te gustaría desactivarlos? Puedes volver a activarlos más tarde."
+        "flickeringWarning": "La configuración actual incluye efectos de parpadeo, que podrían desencadenar convulsiones en personas con epilepsia fotosensible. ¿Te gustaría desactivarlos? Puedes volver a activarlos más tarde.",
+        "desktopRecommended": "Para una mejor experiencia, se recomienda usar una computadora de escritorio o portátil."
     },
     "infoModal": {
         "info": "Información",

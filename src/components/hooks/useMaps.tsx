@@ -49,7 +49,7 @@ export const useMaps = () => {
                 // Refresh effects composer once the map is loaded after delay or snow will not be visible
                 setTimeout(() => {
                     setKey(key + 1)
-                    setNoiseOpacity(noiseOpacity + 0.001)
+                    setNoiseOpacity(noiseOpacity + 0.0001)
                 }, 100)
             })
         }
